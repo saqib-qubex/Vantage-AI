@@ -1,1 +1,1 @@
-# vantage
+# vantage-ai
