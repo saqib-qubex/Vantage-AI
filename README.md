@@ -4,8 +4,6 @@
 
 This repository contains the code for the Vantage AI landing page, a modern and responsive website showcasing our AI-powered solution for medical professionals.
 
-![Uploading Screenshot 2024-10-14 at 1.19.15 PM.png…]()
-
 
 ## Features
 
