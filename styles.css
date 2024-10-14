@@ -18,23 +18,31 @@ nav {
     align-items: center;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+.logo, .placeholder {
+    flex: 1;
 }
 
-nav ul {
+.logo-image {
+    height: 40px; /* Adjust this value to fit your logo size */
+    width: auto;
+}
+
+.nav-links {
+    flex: 2;
     display: flex;
+    justify-content: center;
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-nav ul li {
-    margin-left: 1rem;
+.nav-links li {
+    margin: 0 1rem;
 }
 
-.user-actions a {
-    margin-left: 1rem;
+.nav-links li a {
     text-decoration: none;
+    color: #333;
 }
 
 .hero {
