@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarNav = document.querySelector('#navbarNav');
     const header = document.querySelector('header');
 
-    const popularDomains = ['gmail.com', 'hotmail.com', 'yahoo.com'];
+    const popularDomains = ['gmail.com', 'yahoo.com', 'hotmail.com'];
 
     // Phone number formatting
     phoneInput.addEventListener('input', function(e) {
@@ -28,7 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear previous suggestions
         emailSuggestions.innerHTML = '';
 
-        if (atIndex !== -1) {
+        if (atIndex === -1) {
+            popularDomains.forEach(domain => {
+                const option = document.createElement('option');
+                option.value = inputValue + '@' + domain;
+                emailSuggestions.appendChild(option);
+            });
+        } else {
             const domainPart = inputValue.slice(atIndex + 1);
             popularDomains.forEach(domain => {
                 if (domain.startsWith(domainPart)) {
@@ -99,4 +105,33 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', toggleHeaderButton);
     window.addEventListener('resize', toggleHeaderButton);
     toggleHeaderButton(); // Initial check
+
+    // AI-related animations
+    const featureCards = document.querySelectorAll('.card');
+    featureCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px) scale(1.05)';
+            card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.boxShadow = 'none';
+        });
+    });
+
+    // Typing effect for hero title
+    const heroTitle = document.querySelector('.hero h1');
+    const originalText = heroTitle.textContent;
+    heroTitle.textContent = '';
+    let i = 0;
+
+    function typeWriter() {
+        if (i < originalText.length) {
+            heroTitle.textContent += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+        }
+    }
+
+    typeWriter();
 });
