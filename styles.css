@@ -182,6 +182,50 @@ header.bg-light {
     border-top-color: #dee2e6;
 }
 
+/* Hamburger menu styles */
+.navbar-toggler {
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    background: transparent;
+}
+
+.hamburger-icon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hamburger-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #333333;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-icon span:nth-child(1) {
+    top: 6px;
+}
+
+.hamburger-icon span:nth-child(2) {
+    bottom: 6px;
+}
+
+.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 13px;
+}
+
+.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(2) {
+    transform: rotate(-45deg);
+    bottom: 14px;
+}
+
 @media (max-width: 991.98px) {
     .navbar-brand {
         margin-right: 0;
@@ -199,5 +243,9 @@ header.bg-light {
     #navbarNav .btn-primary {
         margin-top: 10px;
         margin-left: 0;
+    }
+
+    .navbar-toggler {
+        display: block;
     }
 }

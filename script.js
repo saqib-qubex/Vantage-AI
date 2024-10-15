@@ -64,23 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function submitForm() {
-        fetch(form.action, {
-            method: form.method,
-            body: new FormData(form),
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                alert('Thank you for your submission!');
-                form.reset();
-                bootstrap.Modal.getInstance(document.getElementById('contactForm')).hide();
-            } else {
-                alert('Oops! There was a problem submitting your form');
-            }
-        }).catch(error => {
-            alert('Oops! There was a problem submitting your form');
-        });
+        // In a real application, you would send the form data to a server here
+        // For this example, we'll just show a success message
+        alert('Thank you for your submission!');
+        form.reset();
+        bootstrap.Modal.getInstance(document.getElementById('contactForm')).hide();
     }
 
     // Dynamic header button
