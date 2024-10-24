@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/avenir');
 
+/* Base Styles */
 body {
     font-family: 'Avenir Light', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #ffffff;
@@ -9,6 +10,7 @@ body {
     padding: 0;
 }
 
+/* Background and Hero Section */
 .bg-gradient {
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
 }
@@ -50,6 +52,7 @@ body {
     margin-right: auto;
 }
 
+/* Feature Section Styles */
 .feature-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -68,6 +71,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* About Section Styles */
 #about {
     position: relative;
     overflow: hidden;
@@ -91,6 +95,7 @@ body {
     z-index: 2;
 }
 
+/* Navigation Styles */
 .navbar-nav {
     display: flex;
     justify-content: center;
@@ -127,13 +132,9 @@ body {
     margin-right: auto;
 }
 
+/* General UI Elements */
 .bg-light {
     background-color: #ffffff !important;
-}
-
-.modal-content {
-    background-color: #ffffff;
-    color: #333333;
 }
 
 .sticky-top {
@@ -147,6 +148,7 @@ header.bg-light {
     right: 0;
 }
 
+/* Button Styles */
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
@@ -157,6 +159,7 @@ header.bg-light {
     border-color: #0056b3;
 }
 
+/* Form Styles */
 .form-control, .form-select {
     background-color: #ffffff;
     color: #333333;
@@ -174,6 +177,7 @@ header.bg-light {
     color: #6c757d;
 }
 
+/* Modal Styles */
 .modal-header {
     border-bottom-color: #dee2e6;
 }
@@ -182,7 +186,12 @@ header.bg-light {
     border-top-color: #dee2e6;
 }
 
-/* Hamburger menu styles */
+.modal-content {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* Hamburger Menu Styles */
 .navbar-toggler {
     border: none;
     padding: 0;
@@ -226,6 +235,48 @@ header.bg-light {
     bottom: 14px;
 }
 
+/* Klaviyo Form Styles */
+.klaviyo-form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    z-index: 10;
+    position: relative;
+}
+
+.klaviyo-form input {
+    font-family: 'Avenir Light', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    background-color: #ffffff !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 1rem !important;
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+}
+
+.klaviyo-form button {
+    font-family: 'Avenir Light', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #ffffff !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+.klaviyo-form button:hover {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+    transform: translateY(-1px) !important;
+}
+
+.klaviyo-form .klaviyo-close-form {
+    color: #6c757d !important;
+    font-size: 0.875rem !important;
+}
+
+/* Responsive Styles */
 @media (max-width: 991.98px) {
     .navbar-brand {
         margin-right: 0;
@@ -247,5 +298,24 @@ header.bg-light {
 
     .navbar-toggler {
         display: block;
+    }
+    
+    .klaviyo-form-container {
+        max-width: 100%;
+    }
+    
+    .hero {
+        padding: 4rem 0;
+        min-height: 60vh;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
     }
 }
