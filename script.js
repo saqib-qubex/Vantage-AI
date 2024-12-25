@@ -31,14 +31,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Handle navbar background on scroll
+    const navbar = document.querySelector('.navbar');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+
     // Handle dropdown menu on mobile
     const dropdowns = document.querySelectorAll('.dropdown-toggle');
+    
     dropdowns.forEach(dropdown => {
         dropdown.addEventListener('click', function(e) {
             if (window.innerWidth < 992) {
                 e.preventDefault();
                 const dropdownMenu = this.nextElementSibling;
                 dropdownMenu.classList.toggle('show');
+                this.setAttribute('aria-expanded', 
+                    this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+                );
             }
         });
     });
@@ -48,17 +68,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!e.target.closest('.navbar-nav')) {
             document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
                 menu.classList.remove('show');
+                menu.previousElementSibling.setAttribute('aria-expanded', 'false');
             });
         }
     });
 
-    // Handle navbar background on scroll
-    let navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+    // Handle animations for persona sections
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.persona-section').forEach(section => {
+        observer.observe(section);
     });
 });
