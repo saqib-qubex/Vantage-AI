@@ -3,16 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdowns = document.querySelectorAll('.dropdown-toggle');
     let activeDropdown = null;
     
-    function closeDropdown(dropdown) {
-        const menu = dropdown.nextElementSibling;
-        menu.classList.remove('show');
-        dropdown.setAttribute('aria-expanded', 'false');
-        activeDropdown = null;
-    }
-
-    dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', function(e) {
-            if (window.innerWidth < 992) {
+    // Only apply click handling for mobile
+    if (window.innerWidth < 992) {
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 
@@ -20,44 +14,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Close previous dropdown
                 if (activeDropdown && activeDropdown !== this) {
-                    closeDropdown(activeDropdown);
+                    const activeMenu = activeDropdown.nextElementSibling;
+                    activeMenu.classList.remove('show');
+                    activeDropdown.setAttribute('aria-expanded', 'false');
                 }
 
                 // Toggle current dropdown
                 if (this.getAttribute('aria-expanded') === 'true') {
-                    closeDropdown(this);
+                    menu.classList.remove('show');
+                    this.setAttribute('aria-expanded', 'false');
+                    activeDropdown = null;
                 } else {
                     menu.classList.add('show');
                     this.setAttribute('aria-expanded', 'true');
                     activeDropdown = this;
                 }
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown') && activeDropdown) {
+                const menu = activeDropdown.nextElementSibling;
+                menu.classList.remove('show');
+                activeDropdown.setAttribute('aria-expanded', 'false');
+                activeDropdown = null;
             }
         });
-    });
-
-    // Desktop hover handling
-    if (window.innerWidth >= 992) {
-        dropdowns.forEach(dropdown => {
-            const menu = dropdown.nextElementSibling;
-            
-            dropdown.addEventListener('mouseenter', () => {
-                menu.classList.add('show');
-                dropdown.setAttribute('aria-expanded', 'true');
-            });
-
-            dropdown.addEventListener('mouseleave', () => {
-                menu.classList.remove('show');
-                dropdown.setAttribute('aria-expanded', 'false');
-            });
-        });
     }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown') && activeDropdown) {
-            closeDropdown(activeDropdown);
-        }
-    });
 
     // Handle navbar background on scroll
     const navbar = document.querySelector('.navbar');
@@ -80,14 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
-            if (window.innerWidth >= 992) {
-                dropdowns.forEach(dropdown => {
-                    const menu = dropdown.nextElementSibling;
+            const isMobile = window.innerWidth < 992;
+            
+            dropdowns.forEach(dropdown => {
+                const menu = dropdown.nextElementSibling;
+                
+                if (!isMobile) {
+                    // Remove all event listeners and classes for desktop
                     menu.classList.remove('show');
                     dropdown.setAttribute('aria-expanded', 'false');
-                });
-                activeDropdown = null;
-            }
+                }
+            });
+            
+            activeDropdown = null;
         }, 250);
     });
 
