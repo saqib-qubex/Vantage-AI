@@ -57,7 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth Scrolling
     function initializeSmoothScroll() {
-        const scrollToElement = (element, headerOffset = 100) => {
+        const scrollToElement = (element) => {
+            const headerOffset = 100;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             
@@ -67,40 +68,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         };
 
-        // All anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Handle all feature links
+        document.querySelectorAll('a[href*="#features"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const featuresSection = document.querySelector('#features');
+                if (featuresSection) {
+                    scrollToElement(featuresSection);
+                }
+            });
+        });
+
+        // Handle other anchor links
+        document.querySelectorAll('a[href^="#"]:not([href*="#features"])').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
                 if (target) {
                     scrollToElement(target);
                 }
             });
         });
-
-        // Specific buttons
-        const exploreButton = document.querySelector('a[href="#features"]');
-        const learnMoreButton = document.querySelector('a[href="#about"]');
-
-        if (exploreButton) {
-            exploreButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector('#features');
-                if (target) {
-                    scrollToElement(target);
-                }
-            });
-        }
-
-        if (learnMoreButton) {
-            learnMoreButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector('#about');
-                if (target) {
-                    scrollToElement(target);
-                }
-            });
-        }
     }
 
     // Navbar Scroll Behavior
