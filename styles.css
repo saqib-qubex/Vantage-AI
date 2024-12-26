@@ -124,6 +124,75 @@ body {
     border-radius: 50%;
 }
 
+/* Hamburger Menu Styles */
+.navbar-toggler {
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.hamburger-icon {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #007bff;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: left center;
+}
+
+/* Hamburger Animation */
+.hamburger-icon.active span:nth-child(1) {
+    transform: rotate(45deg);
+    width: 105%;
+}
+
+.hamburger-icon.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.hamburger-icon.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    width: 105%;
+}
+
+/* Hover effect */
+.navbar-toggler:hover .hamburger-icon span {
+    background: #0056b3;
+}
+
+/* Mobile navbar animation */
+.navbar-collapse {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-collapse.collapsing {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.navbar-collapse.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Feature Cards */
 .feature-card {
     padding: 2rem;
@@ -214,7 +283,6 @@ body {
 
 /* Mobile Styles */
 @media (max-width: 991.98px) {
-    /* Navbar Mobile */
     .navbar-collapse {
         background: white;
         padding: 1rem;
@@ -227,7 +295,6 @@ body {
         padding: 0.5rem 0;
     }
 
-    /* Mobile Dropdown */
     .navbar-nav .dropdown-menu {
         border: none;
         box-shadow: none;
@@ -246,20 +313,6 @@ body {
         border-radius: 4px;
     }
 
-    /* Hamburger Menu */
-    .navbar-toggler {
-        padding: 0.5rem;
-        margin-left: 0.5rem;
-    }
-
-    .hamburger-icon span {
-        width: 100%;
-        height: 2px;
-        background-color: #333;
-        transition: all 0.3s ease;
-    }
-
-    /* Hero Section Mobile */
     .hero {
         padding: 4rem 0;
     }
@@ -273,17 +326,14 @@ body {
         max-width: 200px;
     }
 
-    /* Feature Cards Mobile */
     .feature-card {
         margin-bottom: 1rem;
     }
 
-    /* Workflow Steps Mobile */
     .workflow-step {
         margin-bottom: 1.5rem;
     }
 
-    /* Benefit Cards Mobile */
     .benefit-card {
         margin-bottom: 1rem;
     }
