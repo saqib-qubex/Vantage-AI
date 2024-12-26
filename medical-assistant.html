@@ -12,11 +12,23 @@
     <header class="bg-light sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand me-2" href="index.html">
                     <img src="assets/logo.png" height="40" class="d-inline-block align-top" alt="Vantage AI Logo">
                 </a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <!-- AI Agents dropdown - visible only on desktop -->
+                <div class="nav-item dropdown primary-dropdown d-none d-lg-block">
+                    <a class="nav-link dropdown-toggle featured-dropdown" href="#" id="aiAgentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        AI Agents
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdown">
+                        <li><a class="dropdown-item active" href="medical-assistant.html">AI Medical Assistant</a></li>
+                        <li><a class="dropdown-item" href="ai-scribe.html">AI Scribe</a></li>
+                        <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
+                    </ul>
+                </div>
+
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <div class="hamburger-icon">
                         <span></span>
                         <span></span>
@@ -24,19 +36,20 @@
                 </button>
                 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#features">Features</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="aiAgentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- AI Agents dropdown - visible only on mobile -->
+                        <li class="nav-item dropdown d-lg-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="aiAgentsDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 AI Agents
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdownMobile">
                                 <li><a class="dropdown-item active" href="medical-assistant.html">AI Medical Assistant</a></li>
                                 <li><a class="dropdown-item" href="ai-scribe.html">AI Scribe</a></li>
                                 <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About</a>
@@ -135,7 +148,6 @@
             </div>
         </section>
 
-        <!-- Continue with the rest of sections -->
         <!-- Capabilities Section -->
         <section id="capabilities" class="capabilities-section py-4 py-md-5 bg-light">
             <div class="container">
