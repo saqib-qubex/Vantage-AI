@@ -91,6 +91,75 @@ body {
     animation: pulse 15s infinite;
 }
 
+/* Video Showcase Styles */
+.video-showcase-wrapper {
+    position: relative;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background: #f8f9fa;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 123, 255, 0.2);
+}
+
+.product-demo-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+}
+
+.video-container:hover .video-overlay {
+    opacity: 1;
+}
+
+.play-pause-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play-pause-btn:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+.play-pause-btn i {
+    color: #007bff;
+    font-size: 1.5rem;
+}
+
 /* Hero Buttons */
 .hero .btn {
     padding: 0.75rem 1.5rem;
@@ -127,108 +196,6 @@ body {
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
 }
 
-/* Persona Styles */
-.persona-container {
-    position: relative;
-    padding: 2rem;
-}
-
-.persona-image-wrapper {
-    position: relative;
-    max-width: 300px;
-    margin: 0 auto;
-    transition: transform 0.3s ease;
-}
-
-.persona-image-wrapper:hover {
-    transform: translateY(-5px);
-}
-
-.persona-image {
-    border: 4px solid #fff;
-    box-shadow: 0 15px 35px rgba(0, 123, 255, 0.2);
-}
-
-.persona-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(0,123,255,0.1) 0%, rgba(0,123,255,0) 70%);
-    pointer-events: none;
-    border-radius: 50%;
-}
-
-/* Hamburger Menu Styles */
-.navbar-toggler {
-    padding: 0;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    margin-left: 1rem;
-}
-
-.navbar-toggler:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-.hamburger-icon {
-    width: 30px;
-    height: 20px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.hamburger-icon span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: #007bff;
-    border-radius: 3px;
-    transition: all 0.3s ease-in-out;
-    transform-origin: left center;
-}
-
-/* Hamburger Animation */
-.hamburger-icon.active span:nth-child(1) {
-    transform: rotate(45deg);
-    width: 105%;
-}
-
-.hamburger-icon.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
-}
-
-.hamburger-icon.active span:nth-child(3) {
-    transform: rotate(-45deg);
-    width: 105%;
-}
-
-/* Hover effect */
-.navbar-toggler:hover .hamburger-icon span {
-    background: #0056b3;
-}
-
-/* Mobile navbar animation */
-.navbar-collapse {
-    transition: all 0.3s ease-in-out;
-}
-
-.navbar-collapse.collapsing {
-    opacity: 0;
-    transform: translateY(-10px);
-}
-
-.navbar-collapse.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Feature Cards */
 .feature-card {
     padding: 2rem;
@@ -246,38 +213,6 @@ body {
 .feature-icon {
     color: #007bff;
     margin-bottom: 1.5rem;
-}
-
-/* Workflow Steps */
-.workflow-step {
-    padding: 2rem;
-    text-align: center;
-}
-
-.step-number {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    background: #007bff;
-    color: white;
-    border-radius: 50%;
-    margin: 0 auto;
-    font-weight: bold;
-}
-
-/* Benefit Cards */
-.benefit-card {
-    padding: 2rem;
-    text-align: center;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    height: 100%;
-}
-
-.benefit-card:hover {
-    transform: translateY(-5px);
 }
 
 /* CTA Section */
@@ -302,22 +237,18 @@ body {
         padding: 0.5rem 0;
     }
 
-    .navbar-nav .dropdown-menu {
-        border: none;
-        box-shadow: none;
-        padding-left: 1rem;
-        margin-top: 0;
-        background: transparent;
+    .video-showcase-wrapper {
+        padding: 0.5rem;
+        margin-top: 2rem;
     }
 
-    .navbar-nav .dropdown-item {
-        padding: 0.5rem 1rem;
-        color: #333;
+    .play-pause-btn {
+        width: 50px;
+        height: 50px;
     }
 
-    .navbar-nav .dropdown-item:hover {
-        background-color: rgba(0, 123, 255, 0.1);
-        border-radius: 4px;
+    .play-pause-btn i {
+        font-size: 1.25rem;
     }
 
     .hero {
@@ -328,27 +259,6 @@ body {
         padding: 0.625rem 1.25rem;
         min-width: 140px;
     }
-
-    .persona-container {
-        padding: 1rem;
-        margin-top: 2rem;
-    }
-
-    .persona-image-wrapper {
-        max-width: 200px;
-    }
-
-    .feature-card {
-        margin-bottom: 1rem;
-    }
-
-    .workflow-step {
-        margin-bottom: 1.5rem;
-    }
-
-    .benefit-card {
-        margin-bottom: 1rem;
-    }
 }
 
 /* Animations */
@@ -358,16 +268,10 @@ body {
     100% { transform: scale(1); }
 }
 
-/* Footer */
-footer {
-    background-color: #f8f9fa;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 2rem 0;
-}
-
 /* Utility Classes */
 .text-primary { color: #007bff !important; }
 .bg-primary { background-color: #007bff !important; }
 .shadow-lg { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important; }
 .rounded { border-radius: 0.5rem !important; }
+.rounded-xl { border-radius: 1rem !important; }
 .transition-all { transition: all 0.3s ease; }

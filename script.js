@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHamburgerMenu();
     initializeSmoothScroll();
     initializeNavbarScroll();
+    initializeHeroVideo();
 
     // Bootstrap Dropdown Initialization
     function initializeDropdowns() {
@@ -107,6 +108,73 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             lastScrollTop = scrollTop;
+        });
+    }
+
+    // Hero Video Playback Handler
+    function initializeHeroVideo() {
+        const videoContainer = document.querySelector('.video-container');
+        const video = document.querySelector('.product-demo-video');
+        const playPauseBtn = document.querySelector('.play-pause-btn');
+        
+        if (!videoContainer || !video || !playPauseBtn) return;
+        
+        const playPauseIcon = playPauseBtn.querySelector('i');
+        let isPlaying = true;
+
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                playPauseIcon.classList.remove('fa-play');
+                playPauseIcon.classList.add('fa-pause');
+                isPlaying = true;
+            } else {
+                video.pause();
+                playPauseIcon.classList.remove('fa-pause');
+                playPauseIcon.classList.add('fa-play');
+                isPlaying = false;
+            }
+        }
+
+        // Add click event to play/pause button
+        playPauseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            togglePlayPause();
+        });
+
+        // Add click event to video container
+        videoContainer.addEventListener('click', (e) => {
+            if (e.target !== playPauseBtn && !playPauseBtn.contains(e.target)) {
+                togglePlayPause();
+            }
+        });
+
+        // Update play/pause button state when video state changes
+        video.addEventListener('play', () => {
+            playPauseIcon.classList.remove('fa-play');
+            playPauseIcon.classList.add('fa-pause');
+        });
+
+        video.addEventListener('pause', () => {
+            playPauseIcon.classList.remove('fa-pause');
+            playPauseIcon.classList.add('fa-play');
+        });
+
+        // Ensure video restarts playing when it ends
+        video.addEventListener('ended', () => {
+            if (video.loop) {
+                video.play();
+            }
+        });
+
+        // Handle visibility change to pause/play video
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                video.pause();
+            } else if (isPlaying) {
+                video.play();
+            }
         });
     }
 });
