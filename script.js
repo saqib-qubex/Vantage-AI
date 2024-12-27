@@ -5,89 +5,82 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScroll();
     initializeNavbarScroll();
     initializeHeroVideo();
+    initializeCalButtons();
 
     // Bootstrap Dropdown Initialization
     function initializeDropdowns() {
         var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
-        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+        dropdownElementList.map(function (dropdownToggleEl) {
             return new bootstrap.Dropdown(dropdownToggleEl);
         });
     }
 
     // Hamburger Menu
     function initializeHamburgerMenu() {
-        const hamburger = document.querySelector('.hamburger-icon');
+        const hamburgerBtn = document.querySelector('.navbar-toggler');
+        const hamburgerIcon = document.querySelector('.hamburger-icon');
         const navbarCollapse = document.querySelector('.navbar-collapse');
         
-        if (hamburger && navbarCollapse) {
-            // Add click event to hamburger
-            hamburger.parentElement.addEventListener('click', function(e) {
-                hamburger.classList.toggle('active');
+        if (hamburgerBtn && hamburgerIcon && navbarCollapse) {
+            let bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                toggle: false
             });
-            
-            // Handle navbar show/hide events
-            navbarCollapse.addEventListener('show.bs.collapse', function () {
-                hamburger.classList.add('active');
+
+            hamburgerBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                hamburgerIcon.classList.toggle('active');
+                bsCollapse.toggle();
             });
-            
-            navbarCollapse.addEventListener('hide.bs.collapse', function () {
-                hamburger.classList.remove('active');
-            });
-            
+
             // Close menu when clicking outside
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('.navbar') && navbarCollapse.classList.contains('show')) {
-                    bootstrap.Collapse.getInstance(navbarCollapse).hide();
-                    hamburger.classList.remove('active');
+                if (!hamburgerBtn.contains(e.target) && 
+                    !navbarCollapse.contains(e.target) && 
+                    navbarCollapse.classList.contains('show')) {
+                    bsCollapse.hide();
+                    hamburgerIcon.classList.remove('active');
                 }
             });
 
-            // Handle window resize
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    if (window.innerWidth >= 992 && navbarCollapse.classList.contains('show')) {
-                        bootstrap.Collapse.getInstance(navbarCollapse).hide();
-                        hamburger.classList.remove('active');
+            // Close menu when clicking on a nav item
+            const navItems = navbarCollapse.querySelectorAll('.nav-link');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        bsCollapse.hide();
+                        hamburgerIcon.classList.remove('active');
                     }
-                }, 250);
+                });
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 992 && navbarCollapse.classList.contains('show')) {
+                    bsCollapse.hide();
+                    hamburgerIcon.classList.remove('active');
+                }
             });
         }
     }
 
     // Smooth Scrolling
     function initializeSmoothScroll() {
-        const scrollToElement = (element) => {
-            const headerOffset = 100;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        };
-
-        // Handle all feature links
-        document.querySelectorAll('a[href*="#features"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const featuresSection = document.querySelector('#features');
-                if (featuresSection) {
-                    scrollToElement(featuresSection);
-                }
-            });
-        });
-
-        // Handle other anchor links
-        document.querySelectorAll('a[href^="#"]:not([href*="#features"])').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
-                    scrollToElement(target);
+                if (targetId === '#') return; // Skip empty links
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
@@ -97,11 +90,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function initializeNavbarScroll() {
         const navbar = document.querySelector('.navbar');
         let lastScrollTop = 0;
+        let scrollThreshold = 50;
 
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (scrollTop > 50) {
+            if (scrollTop > scrollThreshold) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
@@ -117,64 +111,75 @@ document.addEventListener('DOMContentLoaded', function() {
         const video = document.querySelector('.product-demo-video');
         const playPauseBtn = document.querySelector('.play-pause-btn');
         
-        if (!videoContainer || !video || !playPauseBtn) return;
-        
-        const playPauseIcon = playPauseBtn.querySelector('i');
-        let isPlaying = true;
+        if (videoContainer && video && playPauseBtn) {
+            const playPauseIcon = playPauseBtn.querySelector('i');
+            let isPlaying = true;
 
-        function togglePlayPause() {
-            if (video.paused) {
-                video.play();
+            function togglePlayPause() {
+                if (video.paused) {
+                    video.play();
+                    playPauseIcon.classList.remove('fa-play');
+                    playPauseIcon.classList.add('fa-pause');
+                    isPlaying = true;
+                } else {
+                    video.pause();
+                    playPauseIcon.classList.remove('fa-pause');
+                    playPauseIcon.classList.add('fa-play');
+                    isPlaying = false;
+                }
+            }
+
+            playPauseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                togglePlayPause();
+            });
+
+            videoContainer.addEventListener('click', function(e) {
+                if (e.target !== playPauseBtn && !playPauseBtn.contains(e.target)) {
+                    togglePlayPause();
+                }
+            });
+
+            // Handle video state changes
+            video.addEventListener('play', () => {
                 playPauseIcon.classList.remove('fa-play');
                 playPauseIcon.classList.add('fa-pause');
-                isPlaying = true;
-            } else {
-                video.pause();
+            });
+
+            video.addEventListener('pause', () => {
                 playPauseIcon.classList.remove('fa-pause');
                 playPauseIcon.classList.add('fa-play');
-                isPlaying = false;
-            }
+            });
+
+            video.addEventListener('ended', () => {
+                if (video.loop) {
+                    video.play();
+                }
+            });
+
+            // Handle visibility change
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    video.pause();
+                } else if (isPlaying) {
+                    video.play();
+                }
+            });
         }
+    }
 
-        // Add click event to play/pause button
-        playPauseBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            togglePlayPause();
-        });
-
-        // Add click event to video container
-        videoContainer.addEventListener('click', (e) => {
-            if (e.target !== playPauseBtn && !playPauseBtn.contains(e.target)) {
-                togglePlayPause();
-            }
-        });
-
-        // Update play/pause button state when video state changes
-        video.addEventListener('play', () => {
-            playPauseIcon.classList.remove('fa-play');
-            playPauseIcon.classList.add('fa-pause');
-        });
-
-        video.addEventListener('pause', () => {
-            playPauseIcon.classList.remove('fa-pause');
-            playPauseIcon.classList.add('fa-play');
-        });
-
-        // Ensure video restarts playing when it ends
-        video.addEventListener('ended', () => {
-            if (video.loop) {
-                video.play();
-            }
-        });
-
-        // Handle visibility change to pause/play video
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                video.pause();
-            } else if (isPlaying) {
-                video.play();
-            }
+    // Cal.com Button Initialization
+    function initializeCalButtons() {
+        const bookButtons = document.querySelectorAll('[data-cal-link]');
+        bookButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const namespace = this.getAttribute('data-cal-namespace');
+                if (window.Cal && namespace) {
+                    window.Cal.ns[namespace].showModal();
+                }
+            });
         });
     }
 });

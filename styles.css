@@ -18,6 +18,10 @@ body {
     border-bottom: 1px solid rgba(0, 123, 255, 0.1);
     transition: all 0.3s ease;
     padding: 0.75rem 1.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1030;
 }
 
 .navbar.scrolled {
@@ -72,12 +76,53 @@ body {
     color: #007bff;
 }
 
+/* Hamburger Icon Styles */
+.hamburger-icon {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.hamburger-icon span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #007bff;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger-icon span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburger-icon span:nth-child(2) {
+    top: 9px;
+}
+
+.hamburger-icon.active span:nth-child(1) {
+    top: 9px;
+    transform: rotate(45deg);
+}
+
+.hamburger-icon.active span:nth-child(2) {
+    top: 9px;
+    transform: rotate(-45deg);
+}
+
 /* Hero Section */
 .hero {
     position: relative;
     overflow: hidden;
     padding: 6rem 0;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    margin-top: 60px; /* Account for fixed navbar */
 }
 
 .hero::before {
@@ -96,19 +141,19 @@ body {
     position: relative;
     padding: 1rem;
     transition: transform 0.3s ease;
-    max-width: 400px; /* Reduced max-width for a more contained presentation */
-    margin: 0 auto; /* Center the wrapper */
+    max-width: 350px;
+    margin: 0 auto;
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    padding-top: 177.77%; /* Maintains iPhone video ratio (9:16) */
+    padding-top: 177.77%;
     background: #f8f9fa;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 15px 35px rgba(0, 123, 255, 0.2);
-    max-height: 80vh; /* Prevent excessive height */
+    max-height: 80vh;
 }
 
 .product-demo-video {
@@ -117,7 +162,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Changed back to cover for better filling */
+    object-fit: cover;
     border-radius: 12px;
 }
 
@@ -151,6 +196,7 @@ body {
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 2;
 }
 
 .play-pause-btn:hover {
@@ -171,11 +217,14 @@ body {
     font-weight: 500;
     min-width: 160px;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .hero .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
+    color: white;
 }
 
 .hero .btn-primary:hover {
@@ -226,24 +275,74 @@ body {
     color: white;
 }
 
+/* Persona Styles */
+.persona-container {
+    position: relative;
+    padding: 1rem;
+}
+
+.persona-image-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.persona-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(0, 123, 255, 0.2);
+}
+
+.persona-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(0,123,255,0.1) 0%, rgba(0,123,255,0) 70%);
+    border-radius: 50%;
+}
+
 /* Mobile Styles */
 @media (max-width: 991.98px) {
     .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
         background: white;
         padding: 1rem;
-        border-radius: 8px;
+        border-radius: 0 0 8px 8px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        margin-top: 1rem;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        z-index: 1000;
     }
 
-    .navbar-nav .nav-item {
+    .navbar-collapse .navbar-nav {
         padding: 0.5rem 0;
+    }
+
+    .navbar-collapse .nav-item {
+        margin: 0.5rem 0;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0;
+        border: none;
+        z-index: 1001;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+        outline: none;
     }
 
     .video-showcase-wrapper {
         padding: 0.5rem;
         margin-top: 2rem;
-        max-width: 100%; /* Allow full width on mobile */
+        max-width: 300px;
     }
 
     .play-pause-btn {
@@ -263,6 +362,21 @@ body {
         padding: 0.625rem 1.25rem;
         min-width: 140px;
     }
+    
+    .navbar-nav .dropdown-menu {
+        border: none;
+        box-shadow: none;
+        padding-left: 1rem;
+        margin-top: 0;
+    }
+    
+    .dropdown-item:hover {
+        transform: none;
+    }
+
+    .primary-dropdown {
+        margin-left: 0;
+    }
 }
 
 /* Animations */
@@ -279,3 +393,24 @@ body {
 .rounded { border-radius: 0.5rem !important; }
 .rounded-xl { border-radius: 1rem !important; }
 .transition-all { transition: all 0.3s ease; }
+
+/* Active States */
+.nav-link.active,
+.dropdown-item.active {
+    color: #007bff;
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Button Focus States */
+.btn:focus,
+.navbar-toggler:focus,
+.nav-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Additional Helpers */
+.z-1 { z-index: 1; }
+.z-2 { z-index: 2; }
+.position-relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
