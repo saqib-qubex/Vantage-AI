@@ -36,7 +36,7 @@
                 </button>
                 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-center">
                         <!-- AI Agents dropdown - visible only on mobile -->
                         <li class="nav-item dropdown d-lg-none">
                             <a class="nav-link dropdown-toggle" href="#" id="aiAgentsDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,6 +53,14 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <button 
+                                class="btn btn-primary"
+                                data-cal-link="qubex/30min"
+                                data-cal-namespace="30min">
+                                Book a Demo
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -229,7 +237,12 @@
             <div class="container text-center">
                 <h2 class="text-white mb-4">Transform Your Practice's Front Desk</h2>
                 <p class="lead text-white mb-4">Experience the future of patient management with our AI Receptionist.</p>
-                <a href="#contact" class="btn btn-light btn-lg">Get Started Today</a>
+                <button
+                    class="btn btn-light btn-lg"
+                    data-cal-link="qubex/30min"
+                    data-cal-namespace="30min">
+                    Book a Demo
+                </button>
             </div>
         </section>
     </main>
@@ -244,5 +257,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <!-- Cal element-click embed code begins -->
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "30min", {origin:"https://cal.com"});
+      
+      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+    <!-- Cal element-click embed code ends -->
 </body>
 </html>
