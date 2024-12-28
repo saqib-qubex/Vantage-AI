@@ -42,10 +42,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // Close menu when clicking on a nav item
+            // Close menu only when clicking on non-dropdown nav items
             const navItems = navbarCollapse.querySelectorAll('.nav-link');
             navItems.forEach(item => {
-                item.addEventListener('click', () => {
+                item.addEventListener('click', (e) => {
+                    // Don't collapse if it's a dropdown toggle
+                    if (item.classList.contains('dropdown-toggle')) {
+                        e.stopPropagation();
+                        return;
+                    }
+                    
+                    // Don't collapse if clicked within dropdown menu
+                    if (item.closest('.dropdown-menu')) {
+                        return;
+                    }
+                    
                     if (navbarCollapse.classList.contains('show')) {
                         bsCollapse.hide();
                         hamburgerIcon.classList.remove('active');
@@ -53,12 +64,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
-            // Handle window resize
+            // Handle window resize and dropdown clicks
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 992 && navbarCollapse.classList.contains('show')) {
                     bsCollapse.hide();
                     hamburgerIcon.classList.remove('active');
                 }
+            });
+
+            // Prevent dropdown items from collapsing the menu
+            const dropdownItems = navbarCollapse.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    // Only prevent collapse if it's not an actual navigation
+                    if (!item.getAttribute('href') || item.getAttribute('href') === '#') {
+                        e.stopPropagation();
+                    }
+                });
             });
         }
     }
