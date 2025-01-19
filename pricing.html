@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - VantageAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+</head>
+<body>
+    <header class="bg-light sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand me-2" href="index.html">
+                    <img src="assets/logo.png" height="40" class="d-inline-block align-top" alt="Vantage AI Logo">
+                </a>
+                
+                <!-- AI Agents dropdown - visible only on desktop -->
+                <div class="nav-item dropdown primary-dropdown d-none d-lg-block">
+                    <a class="nav-link dropdown-toggle featured-dropdown" href="#" id="aiAgentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        AI Agents
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdown">
+                        <li><a class="dropdown-item" href="medical-assistant.html">AI Medical Assistant</a></li>
+                        <li><a class="dropdown-item" href="ai-scribe.html">AI Scribe</a></li>
+                        <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
+                    </ul>
+                </div>
+
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <div class="hamburger-icon">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <!-- AI Agents dropdown - visible only on mobile -->
+                        <li class="nav-item dropdown d-lg-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="aiAgentsDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                AI Agents
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdownMobile">
+                                <li><a class="dropdown-item" href="medical-assistant.html">AI Medical Assistant</a></li>
+                                <li><a class="dropdown-item" href="ai-scribe.html">AI Scribe</a></li>
+                                <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="pricing.html">Pricing</a>
+                        </li>
+                        <li class="nav-item ms-lg-3">
+                            <button 
+                                class="btn btn-primary"
+                                data-cal-link="qubex/30min"
+                                data-cal-namespace="30min">
+                                Book a Demo
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        <!-- Pricing Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center">
+                        <h1 class="display-4 mb-4 fw-bold">Simple, Transparent Pricing</h1>
+                        <p class="lead mb-4">
+                            Choose the plan that best fits your practice's needs. All plans include our core AI features.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stripe Pricing Table Section -->
+        <section class="pricing-section py-4 py-md-5">
+            <div class="container">
+                <stripe-pricing-table
+                    pricing-table-id="prctbl_1QebE0QOCJSKvHIqCqAKwO4r"
+                    publishable-key="pk_test_51QeXHZQOCJSKvHIqL4WH588WSqXiaklVXSQAaJOJHB3uLbPYpfuTFWA0eLY0iW1doNKzj6fYmkpi8Lb1KErIB8eM00MfcCQHcn">
+                </stripe-pricing-table>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section py-4 py-md-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="accordion" id="pricingFAQ">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        Can I switch plans at any time?
+                                    </button>
+                                </h3>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#pricingFAQ">
+                                    <div class="accordion-body">
+                                        Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                        Is there a free trial available?
+                                    </button>
+                                </h3>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                    <div class="accordion-body">
+                                        We offer a 14-day free trial for all our plans. No credit card required during the trial period.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                        What payment methods do you accept?
+                                    </button>
+                                </h3>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                    <div class="accordion-body">
+                                        We accept all major credit cards, ACH payments, and wire transfers for enterprise plans.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section py-4 py-md-5">
+            <div class="container text-center">
+                <h2 class="text-white mb-4">Ready to Transform Your Practice?</h2>
+                <p class="lead text-white mb-4">Start your 14-day free trial today. No credit card required.</p>
+                <button
+                    class="btn btn-light btn-lg"
+                    data-cal-link="qubex/30min"
+                    data-cal-namespace="30min">
+                    Book a Demo
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 QubeX, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <!-- Cal element-click embed code begins -->
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "30min", {origin:"https://cal.com"});
+      
+      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+    <!-- Cal element-click embed code ends -->
+
+    <!-- Stripe Parameters Script -->
+    <script>
+        // Parse the query parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        // Get the 'email' and 'isComingFromMobile' parameters
+        const email = urlParams.get('email');
+        const isComingFromMobile = urlParams.get('isComingFromMobile');
+        // If email is provided, update the stripe-pricing-table attribute
+        if (email) {
+            const pricingTable = document.querySelector('stripe-pricing-table');
+            if (pricingTable) {
+                pricingTable.setAttribute('customer-email', email);
+                console.log('Customer email set:', email);
+            }
+        }
+        // Log the 'isComingFromMobile' parameter
+        if (isComingFromMobile) {
+            console.log('Incoming from mobile:', isComingFromMobile);
+        }
+    </script>
+</body>
+</html>
