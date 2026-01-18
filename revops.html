@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Operations Platform - VantageAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="assets/logowhite.png" alt="Vantage" height="32">
+                </a>
+
+                <nav class="nav-menu">
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            Revenue Operations
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#capture" class="dropdown-item">
+                                <i class="fas fa-phone-volume"></i>
+                                <div>
+                                    <strong>Revenue Capture</strong>
+                                    <span>Never miss a patient</span>
+                                </div>
+                            </a>
+                            <a href="#conversion" class="dropdown-item">
+                                <i class="fas fa-calendar-check"></i>
+                                <div>
+                                    <strong>Revenue Conversion</strong>
+                                    <span>Intent to booked—automatically</span>
+                                </div>
+                            </a>
+                            <a href="#retention" class="dropdown-item">
+                                <i class="fas fa-rotate"></i>
+                                <div>
+                                    <strong>Revenue Retention</strong>
+                                    <span>Maximize lifetime value</span>
+                                </div>
+                            </a>
+                            <a href="#intelligence" class="dropdown-item">
+                                <i class="fas fa-brain"></i>
+                                <div>
+                                    <strong>Revenue Intelligence</strong>
+                                    <span>AI agents that execute</span>
+                                </div>
+                            </a>
+                            <a href="#control" class="dropdown-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Revenue Control</strong>
+                                    <span>Enterprise-grade safety</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            Resources
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <strong>Documentation</strong>
+                                    <span>Setup guides & tutorials</span>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <div>
+                                    <strong>Blog</strong>
+                                    <span>Healthcare AI insights</span>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Security & Compliance</strong>
+                                    <span>HIPAA, SOC 2, GDPR</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#customers" class="nav-link">Customers</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button class="btn-text" data-cal-link="qubex/30min" data-cal-namespace="30min">Sign in</button>
+                    <button class="btn-primary" data-cal-link="qubex/30min" data-cal-namespace="30min">Start for free</button>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <h3>Revenue Operations</h3>
+                <a href="#capture">Revenue Capture</a>
+                <a href="#conversion">Revenue Conversion</a>
+                <a href="#retention">Revenue Retention</a>
+                <a href="#intelligence">Revenue Intelligence</a>
+                <a href="#control">Revenue Control</a>
+            </div>
+            <div class="mobile-menu-section">
+                <h3>Resources</h3>
+                <a href="#">Documentation</a>
+                <a href="#">Blog</a>
+                <a href="#">Security & Compliance</a>
+            </div>
+            <div class="mobile-menu-section">
+                <a href="#customers">Customers</a>
+                <a href="pricing.html">Pricing</a>
+            </div>
+            <div class="mobile-menu-actions">
+                <button class="btn-text" data-cal-link="qubex/30min" data-cal-namespace="30min">Sign in</button>
+                <button class="btn-primary" data-cal-link="qubex/30min" data-cal-namespace="30min">Start for free</button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">AI-Native Revenue Operations for Clinical Practices</h1>
+                    <p class="hero-subtitle">We help clinical practices capture, convert, and retain patient revenue using AI agents that operate across calls, scheduling, messaging, and follow-ups.</p>
+
+                    <div class="hero-cta">
+                        <button class="btn-primary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Run a Revenue Assessment</button>
+                        <button class="btn-secondary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Talk to sales</button>
+                    </div>
+
+                    <div class="hero-email-capture">
+                        <p class="email-helper">Not CRM, marketing software, or scheduling tools—those are components of a RevOps system</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [01] Revenue Capture -->
+        <section id="capture" class="numbered-features">
+            <div class="container">
+                <div class="feature-block">
+                    <div class="feature-number">01</div>
+                    <div class="feature-grid">
+                        <div class="feature-text">
+                            <h2>Revenue Capture</h2>
+                            <h3>Turn every patient interaction into a revenue opportunity</h3>
+                            <p>Never miss a patient. Every inbound signal is captured. Demand doesn't leak.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <h4 style="color: var(--color-text-primary); margin-bottom: 1rem;">Backed by</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Voice AI call ingestion (RetellAI)</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> SMS & email endpoints (Twilio, SendGrid)</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Consent & quiet-hours enforcement</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Missed-call visibility via Calls UI</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface-elevated); border-radius: var(--radius-lg);">
+                                <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Outcome Story</h4>
+                                <p style="color: var(--color-text-secondary);">Clinics stop losing revenue before the visit even happens.</p>
+                            </div>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="dashboard-mockup">
+                                <div class="mockup-header">
+                                    <div class="mockup-tabs">
+                                        <span class="active">Inbound Calls</span>
+                                        <span>SMS & Email</span>
+                                        <span>Missed Opportunities</span>
+                                    </div>
+                                </div>
+                                <div class="mockup-table">
+                                    <div class="table-row header">
+                                        <span>Patient</span>
+                                        <span>Channel</span>
+                                        <span>Status</span>
+                                        <span>Action</span>
+                                    </div>
+                                    <div class="table-row">
+                                        <span><strong>Sarah Johnson</strong></span>
+                                        <span>Voice Call</span>
+                                        <span class="status active">Captured</span>
+                                        <span>AI Scheduled</span>
+                                    </div>
+                                    <div class="table-row">
+                                        <span><strong>Mike Chen</strong></span>
+                                        <span>SMS</span>
+                                        <span class="status active">Captured</span>
+                                        <span>Consent Logged</span>
+                                    </div>
+                                    <div class="table-row">
+                                        <span><strong>Lisa Park</strong></span>
+                                        <span>Missed Call</span>
+                                        <span class="status followup">Auto Follow-up</span>
+                                        <span>SMS Sent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [02] Revenue Conversion -->
+        <section id="conversion" class="numbered-features" style="background: var(--color-surface);">
+            <div class="container">
+                <div class="feature-block">
+                    <div class="feature-number">02</div>
+                    <div class="feature-grid reverse">
+                        <div class="feature-text">
+                            <h2>Revenue Conversion</h2>
+                            <h3>Move patients from intent → booked → confirmed → arrived</h3>
+                            <p>From interest to booked—automatically. No-shows are a systems problem, not a people problem.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <h4 style="color: var(--color-text-primary); margin-bottom: 1rem;">Backed by</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Scheduling + availability + booking</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Deep scheduling sync via Cal.com</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Appointment lifecycle APIs</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Automated reminders + confirmations</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Patient timeline (appointments + actions)</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface-elevated); border-radius: var(--radius-lg);">
+                                <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Outcome Story</h4>
+                                <p style="color: var(--color-text-secondary);">Clinics fill more chairs without hiring more staff.</p>
+                            </div>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="dashboard-mockup">
+                                <div class="workflow-visual">
+                                    <div class="workflow-step">
+                                        <div class="workflow-icon"><i class="fas fa-phone"></i></div>
+                                        <span>Patient Interest</span>
+                                    </div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-step">
+                                        <div class="workflow-icon"><i class="fas fa-calendar-plus"></i></div>
+                                        <span>AI Books Slot</span>
+                                    </div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-step">
+                                        <div class="workflow-icon"><i class="fas fa-bell"></i></div>
+                                        <span>Auto Reminders</span>
+                                    </div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-step">
+                                        <div class="workflow-icon"><i class="fas fa-check-circle"></i></div>
+                                        <span>Patient Arrives</span>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 2rem; padding: 1rem; background: var(--color-background); border-radius: var(--radius-md);">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="font-size: var(--font-size-xs); color: var(--color-text-tertiary);">Show Rate</div>
+                                            <div style="font-size: var(--font-size-2xl); font-weight: 600; color: var(--color-success);">94.2%</div>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: var(--font-size-xs); color: var(--color-text-tertiary);">No-shows Prevented</div>
+                                            <div style="font-size: var(--font-size-2xl); font-weight: 600; color: var(--color-primary);">↓ 67%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [03] Revenue Retention -->
+        <section id="retention" class="numbered-features">
+            <div class="container">
+                <div class="feature-block">
+                    <div class="feature-number">03</div>
+                    <div class="feature-grid">
+                        <div class="feature-text">
+                            <h2>Revenue Retention</h2>
+                            <h3>Maximize lifetime value after the visit</h3>
+                            <p>Retention is operational. Revenue doesn't end at checkout.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <h4 style="color: var(--color-text-primary); margin-bottom: 1rem;">Backed by</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Patient timeline aggregation</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Marketing campaigns (email/SMS)</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Brand profile + compliant outreach</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Patient portal APIs (messages, tasks, feedback)</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Recall & follow-up automation</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface-elevated); border-radius: var(--radius-lg);">
+                                <h4 style="color: var(--color-warning); margin-bottom: 1rem;">Honest Positioning</h4>
+                                <p style="color: var(--color-text-secondary); margin-bottom: 0.5rem;">APIs + core engine are live</p>
+                                <p style="color: var(--color-text-secondary);">Advanced editors and portal UI are rolling out</p>
+                            </div>
+
+                            <div style="margin-top: 1rem; padding: 1.5rem; background: var(--color-surface-elevated); border-radius: var(--radius-lg);">
+                                <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Outcome Story</h4>
+                                <p style="color: var(--color-text-secondary);">Clinics keep patients engaged between visits without manual follow-ups.</p>
+                            </div>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="dashboard-mockup">
+                                <div class="chart-grid">
+                                    <div class="chart-card">
+                                        <h4>Patient Lifetime Value</h4>
+                                        <div class="chart-bars">
+                                            <div class="bar" style="height: 60%"><span>Q1</span></div>
+                                            <div class="bar" style="height: 75%"><span>Q2</span></div>
+                                            <div class="bar" style="height: 90%"><span>Q3</span></div>
+                                            <div class="bar" style="height: 100%"><span>Q4</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-card">
+                                        <h4>Recall Success Rate</h4>
+                                        <div class="stat-large">87%</div>
+                                        <div class="stat-change positive">↑ 23% vs last quarter</div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 1.5rem; padding: 1rem; background: var(--color-background); border-radius: var(--radius-md);">
+                                    <h4 style="font-size: var(--font-size-sm); margin-bottom: 0.75rem;">Active Campaigns</h4>
+                                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                        <div style="display: flex; justify-content: space-between; font-size: var(--font-size-xs);">
+                                            <span>6-Month Recall</span>
+                                            <span style="color: var(--color-success);">Active</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: var(--font-size-xs);">
+                                            <span>Annual Checkup</span>
+                                            <span style="color: var(--color-success);">Active</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: var(--font-size-xs);">
+                                            <span>Follow-up Care</span>
+                                            <span style="color: var(--color-success);">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [04] Revenue Intelligence -->
+        <section id="intelligence" class="numbered-features" style="background: var(--color-surface);">
+            <div class="container">
+                <div class="feature-block">
+                    <div class="feature-number">04</div>
+                    <div class="feature-grid reverse">
+                        <div class="feature-text">
+                            <h2>Revenue Intelligence (AI & Agents)</h2>
+                            <h3>AI doesn't suggest—it executes</h3>
+                            <p style="font-weight: 600; color: var(--color-accent);">This is your biggest differentiator.</p>
+                            <p>AI agents that work inside your ops. From insight to action, instantly.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <h4 style="color: var(--color-text-primary); margin-bottom: 1rem;">Backed by</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Healix AI assistant embedded in CRM</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Streaming context-aware chat</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Safe agent actions (notes, drafts, updates)</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Automation engine via Inngest</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Execution logs + audit trails</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface-elevated); border-radius: var(--radius-lg);">
+                                <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Outcome Story</h4>
+                                <p style="color: var(--color-text-secondary);">Staff spend time on patients—not systems.</p>
+                            </div>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="dashboard-mockup">
+                                <div style="padding: 1.5rem; background: var(--color-background); border-radius: var(--radius-md); margin-bottom: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent); display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-brain" style="color: white;"></i>
+                                        </div>
+                                        <div>
+                                            <div style="font-weight: 600;">Healix AI</div>
+                                            <div style="font-size: var(--font-size-xs); color: var(--color-text-tertiary);">Context-aware assistant</div>
+                                        </div>
+                                    </div>
+                                    <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary); padding: 1rem; background: var(--color-surface); border-radius: var(--radius-sm);">
+                                        "I've drafted follow-up messages for 12 patients who missed their recall appointments. Ready to send?"
+                                    </div>
+                                </div>
+
+                                <div class="integration-grid">
+                                    <div class="integration-card">
+                                        <div class="integration-logo"><i class="fas fa-robot"></i></div>
+                                        <span>Smart Agents</span>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo"><i class="fas fa-bolt"></i></div>
+                                        <span>Auto Actions</span>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo"><i class="fas fa-clipboard-check"></i></div>
+                                        <span>Execution Logs</span>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo"><i class="fas fa-comments"></i></div>
+                                        <span>Context Chat</span>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo"><i class="fas fa-cogs"></i></div>
+                                        <span>Workflows</span>
+                                    </div>
+                                    <div class="integration-card">
+                                        <div class="integration-logo"><i class="fas fa-file-alt"></i></div>
+                                        <span>Note Drafts</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [05] Revenue Control -->
+        <section id="control" class="numbered-features">
+            <div class="container">
+                <div class="feature-block">
+                    <div class="feature-number">05</div>
+                    <div class="feature-grid">
+                        <div class="feature-text">
+                            <h2>Revenue Control & Trust</h2>
+                            <h3>Enterprise-grade safety, built for healthcare realities</h3>
+                            <p>Every action is traceable. Compliance isn't a feature—it's built in.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <h4 style="color: var(--color-text-primary); margin-bottom: 1rem;">Backed by</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Multi-tenant architecture</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> PHI redaction</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Audit logging across AI, CRM, marketing</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Role-based access</li>
+                                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i> Secure foundation using Next.js, Prisma, PostgreSQL</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-surface-elevated); border-radius: var(--radius-lg);">
+                                <h4 style="color: var(--color-accent); margin-bottom: 1rem;">Outcome Story</h4>
+                                <p style="color: var(--color-text-secondary);">Owners trust the system because nothing is a black box.</p>
+                            </div>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="dashboard-mockup">
+                                <div class="compliance-badges">
+                                    <div class="badge-card">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <h4>HIPAA</h4>
+                                        <p>Compliant</p>
+                                    </div>
+                                    <div class="badge-card">
+                                        <i class="fas fa-file-contract"></i>
+                                        <h4>Audit Trails</h4>
+                                        <p>Every Action</p>
+                                    </div>
+                                    <div class="badge-card">
+                                        <i class="fas fa-user-shield"></i>
+                                        <h4>PHI Redaction</h4>
+                                        <p>Automatic</p>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 2rem; padding: 1.5rem; background: var(--color-background); border-radius: var(--radius-md);">
+                                    <h4 style="font-size: var(--font-size-sm); margin-bottom: 1rem;">Recent Audit Log</h4>
+                                    <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: var(--font-size-xs);">
+                                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--color-surface); border-radius: var(--radius-sm);">
+                                            <span>AI Action: Draft created</span>
+                                            <span style="color: var(--color-text-tertiary);">2m ago</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--color-surface); border-radius: var(--radius-sm);">
+                                            <span>User: Campaign sent</span>
+                                            <span style="color: var(--color-text-tertiary);">15m ago</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; padding: 0.5rem; background: var(--color-surface); border-radius: var(--radius-sm);">
+                                            <span>System: Appointment booked</span>
+                                            <span style="color: var(--color-text-tertiary);">1h ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Differentiator -->
+        <section class="testimonial-hero" style="background: linear-gradient(135deg, var(--color-accent) 0%, #2563eb 100%);">
+            <div class="container">
+                <blockquote class="testimonial-quote" style="font-size: var(--font-size-3xl); margin-bottom: 1.5rem;">
+                    "This is the operational layer my practice never had—not another tool my staff has to learn."
+                </blockquote>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <h3 style="color: white; font-weight: 400; font-size: var(--font-size-xl);">You are building:</h3>
+                    <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                        <div>
+                            <div style="font-size: var(--font-size-2xl); font-weight: 700;">Systems</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">not campaigns</div>
+                        </div>
+                        <div>
+                            <div style="font-size: var(--font-size-2xl); font-weight: 700;">Execution</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">not insights</div>
+                        </div>
+                        <div>
+                            <div style="font-size: var(--font-size-2xl); font-weight: 700;">Agents</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">not dashboards</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 2rem; font-size: var(--font-size-lg); font-weight: 600;">That's Revenue Ops.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to stop losing revenue?</h2>
+                    <p>See exactly where demand is leaking in your practice. Run a free Revenue Operations Assessment.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Run a Revenue Assessment</button>
+                        <button class="btn-secondary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Talk to sales</button>
+                    </div>
+                    <p class="cta-note">No credit card required • See results in 30 minutes • HIPAA compliant</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Revenue Operations</h4>
+                    <a href="#capture">Revenue Capture</a>
+                    <a href="#conversion">Revenue Conversion</a>
+                    <a href="#retention">Revenue Retention</a>
+                    <a href="#intelligence">Revenue Intelligence</a>
+                    <a href="#control">Revenue Control</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Integrations</h4>
+                    <a href="#">Epic</a>
+                    <a href="#">Cerner</a>
+                    <a href="#">Athenahealth</a>
+                    <a href="#">eClinicalWorks</a>
+                    <a href="#">View all</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Careers</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Partners</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="#">Security</a>
+                    <a href="#">HIPAA Compliance</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="assets/logowhite.png" alt="Vantage" height="24">
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="footer-copyright">&copy; 2025 QubeX, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Cal element-click embed code begins -->
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "30min", {origin:"https://cal.com"});
+
+      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+    <!-- Cal element-click embed code ends -->
+</body>
+</html>
