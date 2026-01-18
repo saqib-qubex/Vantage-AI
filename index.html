@@ -3,115 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VantageAI - Medical AI Solutions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Vantage - Patient Relationship Magic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <header class="bg-light sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand me-2" href="index.html">
-                    <img src="assets/logo.png" height="40" class="d-inline-block align-top" alt="Vantage AI Logo">
+    <!-- Top Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="assets/logowhite.png" alt="Vantage" height="32">
                 </a>
-                
-                <!-- AI Agents dropdown - visible only on desktop -->
-                <div class="nav-item dropdown primary-dropdown d-none d-lg-block">
-                    <a class="nav-link dropdown-toggle featured-dropdown" href="#" id="aiAgentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        AI Agents
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdown">
-                        <li><a class="dropdown-item" href="medical-assistant.html">AI Medical Assistant</a></li>
-                        <li><a class="dropdown-item" href="ai-scribe.html">AI Scribe</a></li>
-                        <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
-                    </ul>
-                </div>
 
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <!-- AI Agents dropdown - visible only on mobile -->
-                        <li class="nav-item dropdown d-lg-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="aiAgentsDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                AI Agents
+                <nav class="nav-menu">
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            Platform
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="medical-assistant.html" class="dropdown-item">
+                                <i class="fas fa-user-md"></i>
+                                <div>
+                                    <strong>AI Medical Assistant</strong>
+                                    <span>Clinical decision support</span>
+                                </div>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdownMobile">
-                                <li><a class="dropdown-item" href="medical-assistant.html">AI Medical Assistant</a></li>
-                                <li><a class="dropdown-item" href="ai-scribe.html">AI Scribe</a></li>
-                                <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#features">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
- <!--                       <li class="nav-item">
-                            <a class="nav-link" href="pricing.html">Pricing</a>
-                        </li> -->
-                        <li class="nav-item ms-lg-3">
-                            <button 
-                                class="btn btn-primary"
-                                data-cal-link="qubex/30min"
-                                data-cal-namespace="30min">
-                                Book a Demo
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main role="main">
-        <!-- Hero Section with Video -->
-        <section class="hero">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0">
-                        <h1 class="display-4 mb-4 fw-bold">Domain Specific AI for Medical Professionals</h1>
-                        <h2 class="h3 mb-4">Focus on Your Patients, Let Us Handle the Notes</h2>
-                        <p class="lead mb-4">
-                            Our AI-powered solution helps you save time, reduce manual documentation, 
-                            and focus on patient care—all while ensuring accuracy, privacy, and compliance.
-                        </p>
-                        <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                            <button 
-                                class="btn btn-primary"
-                                data-cal-link="qubex/30min"
-                                data-cal-namespace="30min">
-                                Book a Demo
-                            </button>
-                            <a href="#features" class="btn btn-outline-primary">Learn More</a>
+                            <a href="ai-scribe.html" class="dropdown-item">
+                                <i class="fas fa-file-medical"></i>
+                                <div>
+                                    <strong>AI Scribe</strong>
+                                    <span>Automated documentation</span>
+                                </div>
+                            </a>
+                            <a href="ai-receptionist.html" class="dropdown-item">
+                                <i class="fas fa-calendar-check"></i>
+                                <div>
+                                    <strong>AI Receptionist</strong>
+                                    <span>Patient scheduling & intake</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="video-showcase-wrapper">
-                            <div class="video-container rounded-xl shadow-lg">
-                                <!-- Video placeholder - replace src with actual video -->
-                                <video 
-                                    class="product-demo-video" 
-                                    autoplay 
-                                    muted 
-                                    loop 
-                                    playsinline
-                                    poster="/assets/video-placeholder.jpeg">
-                                    <source src="/assets/product-demo.MP4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <!-- Play/Pause Overlay -->
-                                <div class="video-overlay">
-                                    <button class="play-pause-btn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
+
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            Resources
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-book"></i>
+                                <div>
+                                    <strong>Documentation</strong>
+                                    <span>Setup guides & tutorials</span>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-lightbulb"></i>
+                                <div>
+                                    <strong>Blog</strong>
+                                    <span>Healthcare AI insights</span>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Security & Compliance</strong>
+                                    <span>HIPAA, SOC 2, GDPR</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="#customers" class="nav-link">Customers</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button class="btn-text" data-cal-link="qubex/30min" data-cal-namespace="30min">Sign in</button>
+                    <button class="btn-primary" data-cal-link="qubex/30min" data-cal-namespace="30min">Start for free</button>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <h3>Platform</h3>
+                <a href="medical-assistant.html">AI Medical Assistant</a>
+                <a href="ai-scribe.html">AI Scribe</a>
+                <a href="ai-receptionist.html">AI Receptionist</a>
+            </div>
+            <div class="mobile-menu-section">
+                <h3>Resources</h3>
+                <a href="#">Documentation</a>
+                <a href="#">Blog</a>
+                <a href="#">Security & Compliance</a>
+            </div>
+            <div class="mobile-menu-section">
+                <a href="#customers">Customers</a>
+                <a href="pricing.html">Pricing</a>
+            </div>
+            <div class="mobile-menu-actions">
+                <button class="btn-text" data-cal-link="qubex/30min" data-cal-namespace="30min">Sign in</button>
+                <button class="btn-primary" data-cal-link="qubex/30min" data-cal-namespace="30min">Start for free</button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Patient relationship magic.</h1>
+                    <p class="hero-subtitle">The modern CRM for healthcare providers. Manage patient relationships, automate workflows, and deliver exceptional care—all in one powerful platform.</p>
+
+                    <div class="hero-cta">
+                        <button class="btn-primary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Start for free</button>
+                        <button class="btn-secondary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Talk to sales</button>
+                    </div>
+
+                    <div class="hero-email-capture">
+                        <form class="email-form">
+                            <input type="email" placeholder="Enter your work email" class="email-input">
+                            <button type="submit" class="btn-primary">Get started</button>
+                        </form>
+                        <p class="email-helper">No credit card required • HIPAA compliant</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Quote -->
+        <section class="testimonial-hero">
+            <div class="container">
+                <blockquote class="testimonial-quote">
+                    "Vantage transformed how we manage patient relationships. Our team saves 10+ hours per week on documentation alone."
+                </blockquote>
+                <div class="testimonial-author">
+                    <strong>Dr. Sarah Martinez</strong>
+                    <span>Medical Director, Oakland Family Medicine</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Showcase with Tabs -->
+        <section class="feature-tabs">
+            <div class="container">
+                <div class="tabs-wrapper">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="patients">
+                            <i class="fas fa-users"></i>
+                            Patient Management
+                        </button>
+                        <button class="tab-button" data-tab="workflows">
+                            <i class="fas fa-project-diagram"></i>
+                            Workflows
+                        </button>
+                        <button class="tab-button" data-tab="reporting">
+                            <i class="fas fa-chart-line"></i>
+                            Reporting
+                        </button>
+                        <button class="tab-button" data-tab="integrations">
+                            <i class="fas fa-plug"></i>
+                            Integrations
+                        </button>
+                    </div>
+
+                    <div class="tab-content-wrapper">
+                        <div class="tab-content active" data-tab="patients">
+                            <div class="tab-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="mockup-header">
+                                        <div class="mockup-tabs">
+                                            <span class="active">All Patients</span>
+                                            <span>Active Treatment</span>
+                                            <span>Follow-ups</span>
+                                        </div>
+                                        <div class="mockup-actions">
+                                            <button><i class="fas fa-filter"></i></button>
+                                            <button><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="mockup-table">
+                                        <div class="table-row header">
+                                            <span>Patient</span>
+                                            <span>Last Visit</span>
+                                            <span>Status</span>
+                                            <span>Next Appointment</span>
+                                        </div>
+                                        <div class="table-row">
+                                            <span><strong>John Anderson</strong></span>
+                                            <span>Jan 15, 2025</span>
+                                            <span class="status active">Active</span>
+                                            <span>Jan 22, 2025</span>
+                                        </div>
+                                        <div class="table-row">
+                                            <span><strong>Maria Garcia</strong></span>
+                                            <span>Jan 10, 2025</span>
+                                            <span class="status followup">Follow-up</span>
+                                            <span>Jan 24, 2025</span>
+                                        </div>
+                                        <div class="table-row">
+                                            <span><strong>Robert Chen</strong></span>
+                                            <span>Jan 8, 2025</span>
+                                            <span class="status active">Active</span>
+                                            <span>Feb 1, 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-description">
+                                <h3>Comprehensive patient profiles</h3>
+                                <p>Track every patient interaction, treatment history, and care plan in one unified view. Custom fields adapt to your specialty.</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" data-tab="workflows">
+                            <div class="tab-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="workflow-visual">
+                                        <div class="workflow-step">
+                                            <div class="workflow-icon"><i class="fas fa-calendar-plus"></i></div>
+                                            <span>New Appointment</span>
+                                        </div>
+                                        <div class="workflow-arrow">→</div>
+                                        <div class="workflow-step">
+                                            <div class="workflow-icon"><i class="fas fa-bell"></i></div>
+                                            <span>Send Reminder</span>
+                                        </div>
+                                        <div class="workflow-arrow">→</div>
+                                        <div class="workflow-step">
+                                            <div class="workflow-icon"><i class="fas fa-check-circle"></i></div>
+                                            <span>Check-in</span>
+                                        </div>
+                                        <div class="workflow-arrow">→</div>
+                                        <div class="workflow-step">
+                                            <div class="workflow-icon"><i class="fas fa-file-medical"></i></div>
+                                            <span>Generate Notes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-description">
+                                <h3>Automate your practice</h3>
+                                <p>Build custom workflows that trigger actions automatically. From appointment reminders to follow-up protocols, let Vantage handle the routine.</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" data-tab="reporting">
+                            <div class="tab-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="chart-grid">
+                                        <div class="chart-card">
+                                            <h4>Patient Volume</h4>
+                                            <div class="chart-bars">
+                                                <div class="bar" style="height: 60%"></div>
+                                                <div class="bar" style="height: 80%"></div>
+                                                <div class="bar" style="height: 95%"></div>
+                                                <div class="bar" style="height: 70%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="chart-card">
+                                            <h4>No-Show Rate</h4>
+                                            <div class="stat-large">4.2%</div>
+                                            <div class="stat-change positive">↓ 2.1% vs last month</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-description">
+                                <h3>Data-driven insights</h3>
+                                <p>Understand practice performance with real-time analytics. Track patient volume, outcomes, and operational metrics that matter.</p>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" data-tab="integrations">
+                            <div class="tab-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="integration-grid">
+                                        <div class="integration-card">
+                                            <div class="integration-logo">EHR</div>
+                                            <span>Epic</span>
+                                        </div>
+                                        <div class="integration-card">
+                                            <div class="integration-logo">EHR</div>
+                                            <span>Cerner</span>
+                                        </div>
+                                        <div class="integration-card">
+                                            <div class="integration-logo">💳</div>
+                                            <span>Stripe</span>
+                                        </div>
+                                        <div class="integration-card">
+                                            <div class="integration-logo">📧</div>
+                                            <span>Email</span>
+                                        </div>
+                                        <div class="integration-card">
+                                            <div class="integration-logo">📅</div>
+                                            <span>Calendar</span>
+                                        </div>
+                                        <div class="integration-card">
+                                            <div class="integration-logo">💬</div>
+                                            <span>SMS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-description">
+                                <h3>Connect everything</h3>
+                                <p>Seamlessly integrate with your existing EHR, billing, and communication tools. Vantage works with your workflow, not against it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Numbered Feature Sections -->
+        <section class="numbered-features">
+            <div class="container">
+                <!-- [01] Powerful Platform -->
+                <div class="feature-block">
+                    <div class="feature-number">01</div>
+                    <div class="feature-grid">
+                        <div class="feature-text">
+                            <h2>Powerful platform built for healthcare</h2>
+                            <p>Manage patient relationships at scale with enterprise-grade tools designed specifically for medical practices. From solo providers to multi-location clinics.</p>
+                            <a href="#" class="feature-link">Explore the platform <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="platform-demo">
+                                <div class="demo-card">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4>HIPAA Compliant</h4>
+                                    <p>End-to-end encryption</p>
+                                </div>
+                                <div class="demo-card">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>99.9% Uptime</h4>
+                                    <p>Always available</p>
+                                </div>
+                                <div class="demo-card">
+                                    <i class="fas fa-sync"></i>
+                                    <h4>Real-time Sync</h4>
+                                    <p>Across all devices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- [02] Adaptive Model -->
+                <div class="feature-block">
+                    <div class="feature-number">02</div>
+                    <div class="feature-grid reverse">
+                        <div class="feature-text">
+                            <h2>Flexible data model that adapts to you</h2>
+                            <p>Whether you're a family practice, specialist, or multi-specialty clinic, customize fields and workflows to match your unique needs.</p>
+                            <a href="#" class="feature-link">See customization options <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="specialty-selector">
+                                <div class="specialty-tab active">
+                                    <span>Family Practice</span>
+                                    <div class="specialty-fields">
+                                        <span class="field">Demographics</span>
+                                        <span class="field">Medical History</span>
+                                        <span class="field">Immunizations</span>
+                                        <span class="field">Preventive Care</span>
+                                    </div>
+                                </div>
+                                <div class="specialty-tab">
+                                    <span>Cardiology</span>
+                                    <div class="specialty-fields">
+                                        <span class="field">EKG Results</span>
+                                        <span class="field">BP Monitoring</span>
+                                        <span class="field">Medications</span>
+                                        <span class="field">Risk Scores</span>
+                                    </div>
+                                </div>
+                                <div class="specialty-tab">
+                                    <span>Pediatrics</span>
+                                    <div class="specialty-fields">
+                                        <span class="field">Growth Charts</span>
+                                        <span class="field">Developmental</span>
+                                        <span class="field">Vaccines</span>
+                                        <span class="field">Parent Contact</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- [03] Quick Setup -->
+                <div class="feature-block">
+                    <div class="feature-number">03</div>
+                    <div class="feature-grid">
+                        <div class="feature-text">
+                            <h2>Up and running in minutes</h2>
+                            <p>Import existing patient data from any system. Our AI enriches records automatically, filling in missing information and standardizing formats.</p>
+                            <a href="#" class="feature-link">Learn about data migration <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="migration-steps">
+                                <div class="migration-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Import Data</h4>
+                                        <p>CSV, EHR export, or API</p>
+                                    </div>
+                                </div>
+                                <div class="migration-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>AI Enrichment</h4>
+                                        <p>Auto-fill & standardize</p>
+                                    </div>
+                                </div>
+                                <div class="migration-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Go Live</h4>
+                                        <p>Start managing patients</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- [04] Built for Scale -->
+                <div class="feature-block">
+                    <div class="feature-number">04</div>
+                    <div class="feature-grid reverse">
+                        <div class="feature-text">
+                            <h2>Built for healthcare at scale</h2>
+                            <p>Handle thousands of patient records securely. Enterprise security, compliance, and support that grows with your practice.</p>
+                            <a href="#" class="feature-link">View security & compliance <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="compliance-badges">
+                                <div class="badge-card">
+                                    <i class="fas fa-certificate"></i>
+                                    <h4>HIPAA</h4>
+                                    <p>Compliant</p>
+                                </div>
+                                <div class="badge-card">
+                                    <i class="fas fa-certificate"></i>
+                                    <h4>SOC 2 Type II</h4>
+                                    <p>Certified</p>
+                                </div>
+                                <div class="badge-card">
+                                    <i class="fas fa-certificate"></i>
+                                    <h4>GDPR</h4>
+                                    <p>Ready</p>
                                 </div>
                             </div>
                         </div>
@@ -120,112 +480,168 @@
             </div>
         </section>
 
-        <!-- AI Agents Section -->
-        <section id="features" class="section py-5">
+        <!-- Customer Logos -->
+        <section id="customers" class="customer-logos">
             <div class="container">
-                <h2 class="text-center mb-5">Our AI Agents</h2>
-                <div class="row g-4">
-                    <!-- AI Medical Assistant Card -->
-                    <div class="col-md-4">
-                        <div class="feature-card text-center">
-                            <div class="feature-icon mb-3">
-                                <i class="fas fa-user-md fa-3x"></i>
-                            </div>
-                            <h3>Healix</h3>
-                            <p class="text-muted">AI Medical Assistant</p>
-                            <p>Your intelligent companion providing real-time clinical support and evidence-based recommendations.</p>
-                            <a href="medical-assistant.html" class="btn btn-outline-primary">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <!-- AI Scribe Card -->
-                    <div class="col-md-4">
-                        <div class="feature-card text-center">
-                            <div class="feature-icon mb-3">
-                                <i class="fas fa-file-medical fa-3x"></i>
-                            </div>
-                            <h3>Healix</h3>
-                            <p class="text-muted">AI Scribe</p>
-                            <p>Automate your medical documentation with intelligent note-taking and SOAP format generation.</p>
-                            <a href="ai-scribe.html" class="btn btn-outline-primary">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <!-- AI Receptionist Card -->
-                    <div class="col-md-4">
-                        <div class="feature-card text-center">
-                            <div class="feature-icon mb-3">
-                                <i class="fas fa-calendar-check fa-3x"></i>
-                            </div>
-                            <h3>Healix</h3>
-                            <p class="text-muted">AI Receptionist</p>
-                            <p>Streamline patient scheduling, intake, and communication with our virtual receptionist.</p>
-                            <a href="ai-receptionist.html" class="btn btn-outline-primary">Learn More</a>
-                        </div>
-                    </div>
+                <p class="section-label">Trusted by healthcare providers nationwide</p>
+                <div class="logo-grid">
+                    <div class="customer-logo">Oakland Family Medicine</div>
+                    <div class="customer-logo">Summit Cardiology</div>
+                    <div class="customer-logo">Riverside Pediatrics</div>
+                    <div class="customer-logo">Metro Dermatology</div>
+                    <div class="customer-logo">Valley Orthopedics</div>
+                    <div class="customer-logo">Coastal Mental Health</div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section py-4 py-md-5 bg-light">
+        <!-- Customer Testimonials -->
+        <section class="testimonials-carousel">
             <div class="container">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6">
-                        <h2 class="mb-3">About Our AI Solution</h2>
-                        <p>Our domain-specific AI is designed to understand medical terminology and context, 
-                           providing unparalleled support for healthcare professionals. By leveraging cutting-edge 
-                           natural language processing, we enable more efficient and accurate patient interactions.</p>
-                        <div class="mt-3">
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="fas fa-check text-primary me-3"></i>
-                                <p class="mb-0">Specialized medical vocabulary and context understanding</p>
+                <h2 class="section-title">What healthcare providers say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Vantage has completely transformed our patient engagement. The automated workflows save us countless hours every week."</p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
                             </div>
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="fas fa-check text-primary me-3"></i>
-                                <p class="mb-0">Continuous learning and improvement system</p>
-                            </div>
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="fas fa-check text-primary me-3"></i>
-                                <p class="mb-0">Seamless integration with existing EHR systems</p>
+                            <div class="testimonial-info">
+                                <strong>Dr. Michael Chen</strong>
+                                <span>Cardiologist, Summit Cardiology</span>
                             </div>
                         </div>
+                        <div class="testimonial-features">
+                            <span><i class="fas fa-check"></i> Workflows</span>
+                            <span><i class="fas fa-check"></i> Integrations</span>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <img src="assets/ai-medicine.jpg" alt="AI in Healthcare" class="img-fluid rounded shadow-lg">
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The best investment we've made for our practice. Patient satisfaction scores increased by 30% in the first quarter."</p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <strong>Dr. Jennifer Park</strong>
+                                <span>Practice Manager, Riverside Pediatrics</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-features">
+                            <span><i class="fas fa-check"></i> Patient Portal</span>
+                            <span><i class="fas fa-check"></i> Reporting</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The AI scribe feature alone has been worth it. I spend more time with patients and less time on documentation."</p>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <strong>Dr. Amanda Foster</strong>
+                                <span>Family Medicine, Oakland Family Medicine</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-features">
+                            <span><i class="fas fa-check"></i> AI Scribe</span>
+                            <span><i class="fas fa-check"></i> EHR Integration</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="cta-section py-5">
-            <div class="container text-center">
-                <h2 class="text-white mb-4">Transform Your Practice Today</h2>
-                <p class="lead text-white mb-4">Join the future of healthcare with our AI-powered solutions.</p>
-                <button
-                    class="btn btn-light btn-lg"
-                    data-cal-link="qubex/30min"
-                    data-cal-namespace="30min">
-                    Book a Demo
-                </button>
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to transform your practice?</h2>
+                    <p>Join hundreds of healthcare providers using Vantage to deliver exceptional patient care.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Start for free</button>
+                        <button class="btn-secondary btn-lg" data-cal-link="qubex/30min" data-cal-namespace="30min">Talk to sales</button>
+                    </div>
+                    <p class="cta-note">Free 14-day trial • No credit card required • HIPAA compliant</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-4">
-        <div class="container text-center">
-            <p>&copy; 2024 QubeX, Inc. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="medical-assistant.html">AI Medical Assistant</a>
+                    <a href="ai-scribe.html">AI Scribe</a>
+                    <a href="ai-receptionist.html">AI Receptionist</a>
+                    <a href="#">Patient Portal</a>
+                    <a href="#">Analytics</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Integrations</h4>
+                    <a href="#">Epic</a>
+                    <a href="#">Cerner</a>
+                    <a href="#">Athenahealth</a>
+                    <a href="#">eClinicalWorks</a>
+                    <a href="#">View all</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Careers</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Partners</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="#">Security</a>
+                    <a href="#">HIPAA Compliance</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="assets/logowhite.png" alt="Vantage" height="24">
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="footer-copyright">&copy; 2025 QubeX, Inc. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <!-- Cal element-click embed code begins -->
     <script type="text/javascript">
       (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
       Cal("init", "30min", {origin:"https://cal.com"});
-      
+
       Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
     <!-- Cal element-click embed code ends -->
