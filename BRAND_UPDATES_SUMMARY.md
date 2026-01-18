@@ -43,13 +43,13 @@ Successfully updated the VantageAI website to align with the new Revenue Operati
 #### [01] Revenue Capture
 - **Value Prop:** Turn every patient interaction into a revenue opportunity
 - **Brand Language:** "Never miss a patient. Every inbound signal is captured."
-- **Backed by:** RetellAI voice, Twilio/SendGrid, consent enforcement, Calls UI
+- **Backed by:** Voice AI, SMS/email endpoints, consent enforcement, Calls UI
 - **Outcome:** Clinics stop losing revenue before visits happen
 
 #### [02] Revenue Conversion
 - **Value Prop:** Move patients from intent → booked → confirmed → arrived
 - **Brand Language:** "From interest to booked—automatically. No-shows are a systems problem."
-- **Backed by:** Cal.com scheduling, lifecycle APIs, automated reminders, patient timeline
+- **Backed by:** Deep scheduling sync, lifecycle APIs, automated reminders, patient timeline
 - **Outcome:** Fill more chairs without hiring more staff
 
 #### [03] Revenue Retention
@@ -62,7 +62,7 @@ Successfully updated the VantageAI website to align with the new Revenue Operati
 #### [04] Revenue Intelligence
 - **Value Prop:** AI doesn't suggest—it executes
 - **Brand Language:** "AI agents that work inside your ops. From insight to action, instantly."
-- **Backed by:** Healix AI, streaming context, safe actions, Inngest automation, audit trails
+- **Backed by:** Healix AI, streaming context, safe actions, automation engine, audit trails
 - **Outcome:** Staff spend time on patients—not systems
 - **Note:** Positioned as biggest differentiator
 
