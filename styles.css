@@ -11,22 +11,22 @@
 }
 
 :root {
-    /* Color System - Light Theme (Attio-inspired) */
-    --color-background: #ffffff;
-    --color-surface: #f8f9fa;
-    --color-surface-elevated: #ffffff;
-    --color-border: #e5e7eb;
-    --color-border-light: #f3f4f6;
+    /* Color System - Dark Theme */
+    --color-background: #0a0a0a;
+    --color-surface: #111111;
+    --color-surface-elevated: #1a1a1a;
+    --color-border: #2a2a2a;
+    --color-border-light: #333333;
 
     /* Text Colors */
-    --color-text-primary: #1D1E20;
-    --color-text-secondary: #6b7280;
-    --color-text-tertiary: #9ca3af;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a0a0a0;
+    --color-text-tertiary: #707070;
 
     /* Brand Colors */
-    --color-primary: #266DF0;
-    --color-primary-hover: #1e5acc;
-    --color-accent: #266DF0;
+    --color-primary: #ffffff;
+    --color-primary-hover: #f0f0f0;
+    --color-accent: #3b82f6;
 
     /* Status Colors */
     --color-success: #10b981;
