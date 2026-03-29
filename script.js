@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSpecialtyTabs();
     initializeCalButtons();
     initializeSmoothScroll();
+    initializeHeroEffects();
+    initializeStatCounters();
+    initializeScrollAnimations();
 });
 
 /**
@@ -241,6 +244,10 @@ function initializeSmoothScroll() {
  * Intersection Observer for Fade-in Animations (Optional Enhancement)
  */
 function initializeScrollAnimations() {
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if (revealElements.length === 0) return;
+
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -249,15 +256,87 @@ function initializeScrollAnimations() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe elements you want to animate
-    const animatedElements = document.querySelectorAll('.feature-block, .testimonial-card, .customer-logo');
-    animatedElements.forEach(el => observer.observe(el));
+    revealElements.forEach(el => observer.observe(el));
+}
+
+/**
+ * Hero pointer + parallax effects
+ */
+function initializeHeroEffects() {
+    const hero = document.querySelector('.hero-premium');
+    const parallaxTarget = document.querySelector('[data-hero-parallax]');
+
+    if (!hero) return;
+
+    hero.addEventListener('pointermove', function(e) {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+
+        hero.style.setProperty('--hero-mouse-x', x.toFixed(3));
+        hero.style.setProperty('--hero-mouse-y', y.toFixed(3));
+    });
+
+    window.addEventListener('scroll', function() {
+        if (!parallaxTarget) return;
+
+        const rect = hero.getBoundingClientRect();
+        const parallax = Math.max(-40, Math.min(40, rect.top * -0.08));
+        parallaxTarget.style.setProperty('--hero-parallax', `${parallax}px`);
+    });
+}
+
+/**
+ * Animate number counters when visible
+ */
+function initializeStatCounters() {
+    const counters = document.querySelectorAll('[data-count]');
+
+    if (counters.length === 0) return;
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.45
+    });
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(element) {
+    const target = Number(element.getAttribute('data-count'));
+
+    if (Number.isNaN(target)) return;
+
+    const originalText = element.textContent.trim();
+    const suffix = originalText.replace(String(target), '');
+    const duration = 1400;
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+
+        element.textContent = `${value}${suffix}`;
+
+        if (progress < 1) {
+            requestAnimationFrame(tick);
+        }
+    }
+
+    requestAnimationFrame(tick);
 }
 
 // Optional: Uncomment to enable scroll animations
