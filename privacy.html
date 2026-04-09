@@ -3,36 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vantage Privacy Policy — how we collect, use, and protect your information, including Protected Health Information under HIPAA.">
+    <meta property="og:title" content="Privacy Policy | Vantage">
+    <meta property="og:description" content="Vantage Privacy Policy — how we collect, use, and protect your information, including Protected Health Information under HIPAA.">
+    <meta property="og:type" content="website">
     <title>Privacy Policy | Vantage</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #1f2937;
             background-color: #ffffff;
-            padding: 3rem 1rem;
         }
+
         .container {
             max-width: 48rem;
             margin: 0 auto;
+            padding: 3rem 1rem;
         }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+        }
+
         h1 {
-            font-size: 2.25rem;
+            font-size: 1.875rem;
             font-weight: 600;
             color: #111827;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 640px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        .last-updated {
+            font-size: 0.875rem;
+            color: #6b7280;
             margin-bottom: 2rem;
         }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
         p {
             color: #374151;
             margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        ul li, ol li {
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .callout {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .callout h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .callout p {
+            font-size: 0.9rem;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        .hipaa-box {
+            background-color: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .hipaa-box p {
+            font-size: 0.875rem;
+            color: #14532d;
+            margin: 0;
+        }
+
+        .warning-box {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box p {
+            font-size: 0.875rem;
+            color: #78350f;
+            margin: 0;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1e40af;
+        }
+
+        .toc {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .toc h2 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .toc ol {
+            margin: 0;
+        }
+
+        .toc ol li {
+            font-size: 0.9rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .toc a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            border-top: 1px solid #e5e7eb;
+            margin-top: 4rem;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .divider {
+            border-top: 1px solid #e5e7eb;
+            margin-top: 3rem;
+            padding-top: 2rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Privacy Policy</h1>
-        <p>Privacy policy content goes here. This is a placeholder page.</p>
+        <article>
+            <h1>Privacy Policy</h1>
+            <p class="last-updated">Last updated: <span id="last-updated-date"></span></p>
+
+            <div class="callout">
+                <h2>HIPAA Notice</h2>
+                <p>Vantage is a HIPAA-compliant platform. Where applicable, we act as a Business Associate to covered healthcare entities and maintain appropriate safeguards for Protected Health Information (PHI) as required by the Health Insurance Portability and Accountability Act of 1996 (HIPAA) and the Health Information Technology for Economic and Clinical Health (HITECH) Act.</p>
+                <p>This Privacy Policy should be read in conjunction with your healthcare provider's own Notice of Privacy Practices.</p>
+            </div>
+
+            <nav class="toc">
+                <h2>Contents</h2>
+                <ol>
+                    <li><a href="#about">About Vantage</a></li>
+                    <li><a href="#information-we-collect">Information We Collect</a></li>
+                    <li><a href="#how-we-use">How We Use Your Information</a></li>
+                    <li><a href="#hipaa-compliance">HIPAA Compliance</a></li>
+                    <li><a href="#sharing">How We Share Information</a></li>
+                    <li><a href="#security">Data Security &amp; Safeguards</a></li>
+                    <li><a href="#retention">Data Retention</a></li>
+                    <li><a href="#your-rights">Your Rights</a></li>
+                    <li><a href="#third-party">Third-Party Services</a></li>
+                    <li><a href="#breach">Breach Notification</a></li>
+                    <li><a href="#children">Children's Privacy</a></li>
+                    <li><a href="#changes">Changes to This Policy</a></li>
+                    <li><a href="#contact">Contact &amp; Privacy Officer</a></li>
+                </ol>
+            </nav>
+
+            <!-- 1 -->
+            <section id="about">
+                <h2>1. About Vantage</h2>
+                <p>Vantage (getvantage.tech) is a healthcare revenue operations platform that provides AI-assisted patient communication, scheduling, and practice management tools to healthcare providers ("Covered Entities"). Vantage operates as a <strong>Business Associate</strong> to those Covered Entities when processing Protected Health Information on their behalf.</p>
+                <p>This Privacy Policy describes how Vantage, Inc. ("Vantage," "we," "us," or "our") collects, uses, discloses, and protects information when you use our platform, website, or services.</p>
+            </section>
+
+            <!-- 2 -->
+            <section id="information-we-collect">
+                <h2>2. Information We Collect</h2>
+
+                <h3>2.1 Information Provided by Healthcare Providers</h3>
+                <p>Healthcare providers who use Vantage may upload or transmit patient information to enable scheduling, communication, and care coordination. This may include:</p>
+                <ul>
+                    <li>Patient names, dates of birth, and contact information</li>
+                    <li>Appointment details and scheduling history</li>
+                    <li>Insurance information and billing data</li>
+                    <li>Clinical notes, care instructions, and relevant health information</li>
+                    <li>Communication preferences</li>
+                </ul>
+
+                <h3>2.2 Information Collected from Patients</h3>
+                <p>When patients interact with Vantage-powered communications (such as appointment reminders, SMS messages, or web intake forms), we may collect:</p>
+                <ul>
+                    <li>Name, phone number, and email address</li>
+                    <li>Appointment preferences and confirmations</li>
+                    <li>Responses to intake or screening questionnaires</li>
+                    <li>Opt-in/opt-out preferences for messaging</li>
+                </ul>
+
+                <h3>2.3 Information Collected Automatically</h3>
+                <p>When you visit our website or use our platform, we automatically collect certain technical information:</p>
+                <ul>
+                    <li>IP address and general geographic location</li>
+                    <li>Browser type, operating system, and device identifiers</li>
+                    <li>Pages viewed, features used, and time spent</li>
+                    <li>Referring URLs and navigation paths</li>
+                    <li>Cookies and similar tracking technologies</li>
+                </ul>
+
+                <h3>2.4 Account Information</h3>
+                <p>If you create a Vantage account (e.g., as a practice administrator or staff member), we collect:</p>
+                <ul>
+                    <li>Name, email address, and job title</li>
+                    <li>Login credentials (passwords are hashed and never stored in plain text)</li>
+                    <li>Billing and payment information (processed by PCI-compliant third-party processors)</li>
+                    <li>Communication and notification preferences</li>
+                </ul>
+            </section>
+
+            <!-- 3 -->
+            <section id="how-we-use">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Deliver, operate, and improve our platform and services</li>
+                    <li>Send appointment reminders, scheduling notifications, and care-related messages on behalf of healthcare providers</li>
+                    <li>Provide customer support and respond to inquiries</li>
+                    <li>Process billing and manage provider accounts</li>
+                    <li>Monitor system performance, security, and integrity</li>
+                    <li>Comply with legal obligations, including HIPAA requirements</li>
+                    <li>Investigate and prevent fraud, abuse, or unauthorized access</li>
+                    <li>Conduct internal analytics to improve our AI models and service quality (using de-identified data only)</li>
+                </ul>
+                <p>We do not sell, rent, or trade Personal Information or Protected Health Information to third parties for marketing or advertising purposes.</p>
+            </section>
+
+            <!-- 4 -->
+            <section id="hipaa-compliance">
+                <h2>4. HIPAA Compliance</h2>
+
+                <div class="hipaa-box">
+                    <p><strong>HIPAA Business Associate:</strong> Vantage enters into a Business Associate Agreement (BAA) with each healthcare provider (Covered Entity) that uses our platform. This agreement defines our respective obligations regarding the handling, protection, and permitted uses of Protected Health Information.</p>
+                </div>
+
+                <h3>4.1 Protected Health Information (PHI)</h3>
+                <p>PHI includes individually identifiable health information transmitted or maintained in any form or medium that relates to a patient's past, present, or future physical or mental health condition, the provision of healthcare, or payment for healthcare. When Vantage processes PHI on behalf of a Covered Entity, we do so only as permitted by the applicable BAA and HIPAA regulations.</p>
+
+                <h3>4.2 Permitted Uses and Disclosures of PHI</h3>
+                <p>As a Business Associate, Vantage may use or disclose PHI only to:</p>
+                <ul>
+                    <li>Perform services specified in the Business Associate Agreement</li>
+                    <li>Carry out our legal responsibilities as required by law</li>
+                    <li>Report violations to the applicable Covered Entity</li>
+                    <li>Respond to a data breach as required under the Breach Notification Rule</li>
+                </ul>
+                <p>We do not use PHI for our own purposes beyond those permitted under HIPAA and the applicable BAA.</p>
+
+                <h3>4.3 Minimum Necessary Standard</h3>
+                <p>Vantage applies the HIPAA Minimum Necessary Standard, meaning we access, use, and disclose only the minimum amount of PHI necessary to accomplish the intended purpose.</p>
+
+                <h3>4.4 Administrative, Physical, and Technical Safeguards</h3>
+                <p>We implement and maintain comprehensive HIPAA-required safeguards, including:</p>
+                <ul>
+                    <li><strong>Administrative:</strong> Designated Privacy Officer and Security Officer, workforce training, risk assessment procedures, and access management policies</li>
+                    <li><strong>Physical:</strong> Controlled facility access, workstation security policies, and device and media controls</li>
+                    <li><strong>Technical:</strong> Encryption of PHI at rest and in transit (AES-256 / TLS 1.2+), audit logging, automatic session timeouts, and role-based access controls</li>
+                </ul>
+
+                <h3>4.5 Subcontractors</h3>
+                <p>Any subcontractors or sub-Business Associates that handle PHI on our behalf are contractually required to implement equivalent HIPAA safeguards and enter into appropriate agreements prior to accessing any PHI.</p>
+            </section>
+
+            <!-- 5 -->
+            <section id="sharing">
+                <h2>5. How We Share Information</h2>
+                <p>We do not sell your personal information. We share information only in the following circumstances:</p>
+
+                <h3>5.1 With Healthcare Providers</h3>
+                <p>We share patient information with the healthcare provider on whose behalf that information was collected, as directed by that provider's instructions and consistent with the BAA.</p>
+
+                <h3>5.2 With Service Providers</h3>
+                <p>We work with vetted third-party vendors to help operate our platform (e.g., cloud hosting, SMS delivery, payment processing). These vendors are contractually bound to use information only for the services they provide and to maintain appropriate security standards. Those handling PHI are required to enter into BAAs with us.</p>
+
+                <h3>5.3 For Legal Compliance</h3>
+                <p>We may disclose information when required by law, court order, or government regulation, including responses to lawful requests from public authorities such as law enforcement or regulatory agencies, subject to applicable legal protections.</p>
+
+                <h3>5.4 Business Transfers</h3>
+                <p>If Vantage is involved in a merger, acquisition, or sale of assets, information may be transferred as part of that transaction. We will notify affected parties and ensure appropriate protections remain in place, including honoring existing BAAs.</p>
+
+                <h3>5.5 With Your Consent</h3>
+                <p>We may share information for other purposes with your explicit consent.</p>
+            </section>
+
+            <!-- 6 -->
+            <section id="security">
+                <h2>6. Data Security &amp; Safeguards</h2>
+                <p>Vantage takes data security seriously and employs industry-standard and HIPAA-required technical, administrative, and physical safeguards to protect your information, including:</p>
+                <ul>
+                    <li>End-to-end encryption of data in transit using TLS 1.2 or higher</li>
+                    <li>Encryption of PHI and sensitive data at rest using AES-256</li>
+                    <li>Role-based access controls limiting data access to authorized personnel only</li>
+                    <li>Multi-factor authentication for platform access</li>
+                    <li>Continuous system monitoring, intrusion detection, and audit logging</li>
+                    <li>Regular third-party security assessments and penetration testing</li>
+                    <li>Annual workforce security training and background screening policies</li>
+                    <li>Documented incident response and business continuity plans</li>
+                </ul>
+                <div class="warning-box">
+                    <p><strong>No method of electronic transmission or storage is 100% secure.</strong> While we use commercially reasonable and legally required measures, we cannot guarantee absolute security. If you believe your information has been compromised, contact us immediately at <a href="mailto:privacy@getvantage.tech">privacy@getvantage.tech</a>.</p>
+                </div>
+            </section>
+
+            <!-- 7 -->
+            <section id="retention">
+                <h2>7. Data Retention</h2>
+                <p>We retain information for as long as necessary to fulfill the purposes described in this Policy and to comply with applicable legal and regulatory requirements, including:</p>
+                <ul>
+                    <li><strong>PHI:</strong> Retained in accordance with the applicable BAA and applicable state medical records laws (typically a minimum of 6 years from the date of creation or last effective date, whichever is later)</li>
+                    <li><strong>Account information:</strong> Retained for the duration of the provider account and up to 7 years after account closure for legal and compliance purposes</li>
+                    <li><strong>Technical/usage data:</strong> Generally retained for up to 24 months</li>
+                    <li><strong>Communication logs:</strong> Retained for up to 3 years unless a longer period is required by law or contract</li>
+                </ul>
+                <p>When information is no longer required, we securely destroy or de-identify it in accordance with HIPAA and applicable law.</p>
+            </section>
+
+            <!-- 8 -->
+            <section id="your-rights">
+                <h2>8. Your Rights</h2>
+
+                <h3>8.1 HIPAA Patient Rights</h3>
+                <p>If you are a patient whose PHI is processed through Vantage on behalf of a healthcare provider, your rights under HIPAA are governed by your provider's Notice of Privacy Practices. These rights typically include:</p>
+                <ul>
+                    <li><strong>Right to Access:</strong> Request a copy of your health information</li>
+                    <li><strong>Right to Amend:</strong> Request corrections to inaccurate or incomplete health information</li>
+                    <li><strong>Right to an Accounting of Disclosures:</strong> Obtain a list of certain disclosures of your PHI</li>
+                    <li><strong>Right to Request Restrictions:</strong> Ask to limit how your information is used or disclosed</li>
+                    <li><strong>Right to Confidential Communications:</strong> Request that communications be sent by alternative means or to alternative locations</li>
+                    <li><strong>Right to a Paper Copy:</strong> Receive a paper copy of the Notice of Privacy Practices</li>
+                </ul>
+                <p>To exercise these rights, please contact your healthcare provider directly. Vantage will support your provider in fulfilling these requests as required by our BAA.</p>
+
+                <h3>8.2 General Privacy Rights</h3>
+                <p>Depending on your location, you may have additional rights under applicable privacy law (including, where applicable, the California Consumer Privacy Act and similar state laws):</p>
+                <ul>
+                    <li><strong>Right to Know:</strong> Request information about what personal data we hold about you</li>
+                    <li><strong>Right to Delete:</strong> Request deletion of your personal information, subject to legal exceptions</li>
+                    <li><strong>Right to Correct:</strong> Request correction of inaccurate personal information</li>
+                    <li><strong>Right to Opt Out:</strong> Opt out of certain sharing or processing activities</li>
+                    <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your privacy rights</li>
+                </ul>
+                <p>To submit a privacy request, contact us at <a href="mailto:privacy@getvantage.tech">privacy@getvantage.tech</a>. We will respond within the timeframe required by applicable law.</p>
+            </section>
+
+            <!-- 9 -->
+            <section id="third-party">
+                <h2>9. Third-Party Services</h2>
+                <p>Our platform integrates with third-party electronic health record (EHR) systems, communication providers, and other healthcare technology platforms to deliver our services. These integrations are governed by applicable BAAs and data use agreements. Integration partners currently include providers such as Epic, Cerner, Athenahealth, eClinicalWorks, and Curogram, among others.</p>
+                <p>Our website may also contain links to third-party websites. We are not responsible for the privacy practices of those sites and encourage you to review their privacy policies independently.</p>
+                <p>We use cookies and similar tracking technologies on our marketing website for analytics and performance purposes. You may adjust your browser settings to refuse cookies, though some features may not function as intended.</p>
+            </section>
+
+            <!-- 10 -->
+            <section id="breach">
+                <h2>10. Breach Notification</h2>
+                <p>In the event of a breach of unsecured PHI, Vantage will notify affected Covered Entities without unreasonable delay and no later than 60 calendar days after discovery of the breach, as required under the HIPAA Breach Notification Rule (45 CFR §§ 164.400–414).</p>
+                <p>Notification will include, to the extent possible:</p>
+                <ul>
+                    <li>A description of the breach, including the date of the breach and date of discovery</li>
+                    <li>The types of PHI involved</li>
+                    <li>Steps individuals should take to protect themselves</li>
+                    <li>Steps Vantage is taking to investigate, mitigate, and prevent recurrence</li>
+                    <li>Contact information for the Covered Entity and, where required, affected individuals</li>
+                </ul>
+                <p>Covered Entities remain responsible for notifying affected patients, the U.S. Department of Health and Human Services (HHS), and, where applicable, the media, as required under HIPAA.</p>
+            </section>
+
+            <!-- 11 -->
+            <section id="children">
+                <h2>11. Children's Privacy</h2>
+                <p>Vantage's platform is not directed to children under 13, and we do not knowingly collect personal information from children under 13 through our marketing website or platform accounts. Healthcare providers using Vantage may process health information for minor patients as part of their clinical operations; such processing is governed by the applicable BAA and the healthcare provider's own policies and applicable state minors' privacy laws.</p>
+                <p>If you believe we have inadvertently collected personal information from a child under 13 outside of a provider relationship, please contact us at <a href="mailto:privacy@getvantage.tech">privacy@getvantage.tech</a>.</p>
+            </section>
+
+            <!-- 12 -->
+            <section id="changes">
+                <h2>12. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or for other operational reasons. When we make material changes, we will update the "Last updated" date at the top of this page and, where required, provide additional notice (such as via email to registered account holders or through prominent notice on our website).</p>
+                <p>Your continued use of Vantage services after changes become effective constitutes your acceptance of the revised Policy. We encourage you to review this page periodically.</p>
+            </section>
+
+            <!-- 13 -->
+            <section id="contact" class="divider">
+                <h2>13. Contact &amp; Privacy Officer</h2>
+                <p>If you have questions, concerns, or requests relating to this Privacy Policy or our data practices, please contact our Privacy Officer:</p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li><strong>Privacy Officer, Vantage, Inc.</strong></li>
+                    <li>Email: <a href="mailto:privacy@getvantage.tech">privacy@getvantage.tech</a></li>
+                    <li>Website: <a href="https://getvantage.tech">getvantage.tech</a></li>
+                </ul>
+                <p style="margin-top: 1rem;">If you are a patient and your concern relates to your health information held by your healthcare provider, please contact your provider directly. You also have the right to file a complaint with the U.S. Department of Health and Human Services Office for Civil Rights at <a href="https://www.hhs.gov/ocr/privacy/hipaa/complaints/" target="_blank" rel="noopener noreferrer">hhs.gov/ocr</a>. We will not retaliate against you for filing a complaint.</p>
+            </section>
+        </article>
+
+        <footer>
+            <p>&copy; <span id="current-year"></span> Vantage, Inc. All rights reserved. &nbsp;|&nbsp; <a href="terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="sms-consent.html">SMS Consent</a></p>
+        </footer>
     </div>
+
+    <script>
+        document.getElementById('last-updated-date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
