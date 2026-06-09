@@ -3,37 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms governing access to the Vantage website, products, communications, and related services.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <title>Terms of Service | Vantage</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #1f2937;
             background-color: #ffffff;
-            padding: 3rem 1rem;
         }
+
         .container {
             max-width: 48rem;
             margin: 0 auto;
+            padding: 3rem 1rem;
         }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+        }
+
         h1 {
-            font-size: 2.25rem;
+            font-size: 1.875rem;
             font-weight: 600;
             color: #111827;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
+
+        @media (min-width: 640px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
         p {
             color: #374151;
             margin-bottom: 1rem;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .divider {
+            border-top: 1px solid #e5e7eb;
+            margin-top: 3rem;
+            padding-top: 2rem;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #1e40af;
+        }
+
+        .highlight-box {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Terms of Service</h1>
-        <p>Terms of service content goes here. This is a placeholder page.</p>
+        <article>
+            <h1>Terms of Service</h1>
+            <p class="last-updated">Last updated: June 8, 2026</p>
+
+            <section>
+                <h2>Agreement to Terms</h2>
+                <p>These Terms of Service govern your access to and use of the Vantage website, platform, and related services operated by Vantage AI, Inc. ("Vantage," "we," "us," or "our"). By accessing or using Vantage, you agree to be bound by these terms. If you do not agree, do not use the services.</p>
+            </section>
+
+            <section>
+                <h2>About Vantage</h2>
+                <p>Vantage provides AI-powered communication and workflow automation software for healthcare practices. Our platform enables medical offices, clinics, and health systems to automate patient outreach, appointment reminders, insurance verification, front-desk interactions, and related administrative workflows via voice, SMS, and other communication channels.</p>
+            </section>
+
+            <section>
+                <h2>SMS and Text Message Communications</h2>
+                <p>Vantage and its customers (healthcare providers and practices using the Vantage platform) may send SMS and MMS text messages to patients and contacts who have provided consent. By providing your mobile phone number and agreeing to receive text messages, you consent to receive automated SMS messages from or on behalf of the healthcare practice that collected your information.</p>
+
+                <p>Message types may include:</p>
+                <ul>
+                    <li>Appointment reminders and confirmations</li>
+                    <li>Appointment scheduling and rescheduling notifications</li>
+                    <li>Insurance verification and eligibility updates</li>
+                    <li>Post-visit follow-up and care coordination messages</li>
+                    <li>Administrative and billing notifications</li>
+                    <li>General healthcare practice updates and announcements</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Message Frequency:</strong> Message frequency varies based on your appointments and interactions with your healthcare provider. You may receive up to several messages per month per active care relationship.</p>
+                    <p><strong>Message &amp; Data Rates:</strong> Standard message and data rates from your mobile carrier may apply. Vantage is not responsible for any charges applied by your carrier.</p>
+                    <p><strong>To Opt Out:</strong> Reply <strong>STOP</strong> to any message to unsubscribe from that sender. You will receive a one-time confirmation and no further messages will be sent from that number. You can re-subscribe at any time by replying <strong>START</strong>.</p>
+                    <p><strong>For Help:</strong> Reply <strong>HELP</strong> to any message for assistance, or contact your healthcare provider directly.</p>
+                </div>
+
+                <p>Consent to receive SMS messages is not a condition of any purchase, service, or treatment. Phone numbers collected for SMS communications are not shared with third parties for their own marketing purposes.</p>
+            </section>
+
+            <section>
+                <h2>Consent and Opt-In</h2>
+                <p>SMS consent is obtained by the healthcare practice (Vantage customer) at the point of patient intake, registration, or scheduling. Vantage customers are responsible for:</p>
+                <ul>
+                    <li>Obtaining explicit written or electronic consent from patients before initiating text message communications.</li>
+                    <li>Providing patients with clear disclosure of message types, frequency, and opt-out instructions at the time of consent.</li>
+                    <li>Maintaining records of consent in compliance with applicable law.</li>
+                    <li>Honoring opt-out requests promptly and without condition.</li>
+                </ul>
+                <p>Vantage maintains opt-out and consent records at the platform level and processes STOP commands automatically. Healthcare providers using the platform agree to these requirements as a condition of service.</p>
+            </section>
+
+            <section>
+                <h2>Use of the Services</h2>
+                <p>You may use the services only in compliance with applicable law, these terms, and any applicable written agreement between you and Vantage. You are responsible for your users, credentials, configurations, and instructions submitted through the platform.</p>
+            </section>
+
+            <section>
+                <h2>Customer Responsibilities</h2>
+                <p>Customers (healthcare practices and organizations using Vantage) are responsible for:</p>
+                <ul>
+                    <li>Providing accurate account and business information.</li>
+                    <li>Obtaining necessary patient consents and permissions for all communications, including SMS.</li>
+                    <li>Using the platform only for authorized, lawful business purposes.</li>
+                    <li>Reviewing workflows, automations, and messaging configurations before deployment.</li>
+                    <li>Maintaining the confidentiality of login credentials and account access.</li>
+                    <li>Complying with TCPA, HIPAA, and any other applicable federal, state, or local laws governing patient communications.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Healthcare and Compliance</h2>
+                <p>Vantage provides software tools and workflow infrastructure for healthcare administrative communication. Unless expressly stated otherwise in a separate written agreement, Vantage does not provide medical advice, clinical judgment, diagnosis, or treatment. Customers remain solely responsible for patient care, regulatory compliance, and the content of communications sent through the platform.</p>
+                <p>Where required, Vantage enters into Business Associate Agreements (BAAs) with covered entities and business associates as defined under HIPAA. Use of the platform in connection with protected health information (PHI) requires execution of a BAA.</p>
+            </section>
+
+            <section>
+                <h2>Acceptable Use</h2>
+                <p>You may not use the services to:</p>
+                <ul>
+                    <li>Violate any law, regulation, contract, or third-party right, including the Telephone Consumer Protection Act (TCPA) and CAN-SPAM Act.</li>
+                    <li>Send unsolicited commercial messages or contact individuals who have opted out.</li>
+                    <li>Transmit unlawful, abusive, deceptive, or harmful content.</li>
+                    <li>Interfere with service security, integrity, or availability.</li>
+                    <li>Attempt unauthorized access to any user, account, system, or data.</li>
+                    <li>Use the services in a way that creates unreasonable risk for patients or end users.</li>
+                    <li>Misrepresent your identity, business, or the purpose of any communication.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Intellectual Property</h2>
+                <p>Vantage and its licensors retain all rights, title, and interest in the website, platform, software, branding, and related materials. Except for the limited right to use the services under these terms, no rights are granted to you.</p>
+            </section>
+
+            <section>
+                <h2>Third-Party Services</h2>
+                <p>The services may rely on or integrate with third-party products and providers, including communications, telephony, scheduling, payment, or hosting vendors. Vantage is not responsible for third-party services except as required by law or a separate written agreement. Third-party providers, including telecommunications carriers and messaging platforms, may apply their own terms, acceptable use policies, and filtering rules to messages sent through the platform.</p>
+            </section>
+
+            <section>
+                <h2>Disclaimers</h2>
+                <p>The services are provided on an "as is" and "as available" basis except as expressly stated in a signed agreement. To the fullest extent permitted by law, Vantage disclaims all implied warranties, including warranties of merchantability, fitness for a particular purpose, non-infringement, and uninterrupted availability.</p>
+            </section>
+
+            <section>
+                <h2>Limitation of Liability</h2>
+                <p>To the fullest extent permitted by law, Vantage will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, revenues, goodwill, data, or business opportunities arising out of or related to use of the services.</p>
+            </section>
+
+            <section>
+                <h2>Termination</h2>
+                <p>We may suspend or terminate access to the services if required for security, non-payment, legal compliance, or material violation of these terms or any separate agreement. You may stop using the services at any time, subject to any active contractual commitments.</p>
+            </section>
+
+            <section>
+                <h2>Governing Law</h2>
+                <p>These terms are governed by the laws of the State of Delaware, without regard to its conflict of law principles. Any disputes arising under these terms shall be resolved in the state or federal courts located in Delaware, and you consent to personal jurisdiction in those courts.</p>
+            </section>
+
+            <section>
+                <h2>Changes to These Terms</h2>
+                <p>We may revise these Terms of Service from time to time. If we do, we will update the "Last updated" date above. Continued use of the services after the effective date of any updated terms constitutes acceptance of those changes.</p>
+            </section>
+
+            <section>
+                <h2>Contact</h2>
+                <p>Questions about these terms, our SMS practices, or to submit an opt-out request may be directed to:</p>
+                <p>
+                    Vantage AI, Inc.<br>
+                    Email: <a href="mailto:support@getvantage.tech">support@getvantage.tech</a><br>
+                    Website: <a href="https://getvantage.tech">getvantage.tech</a>
+                </p>
+            </section>
+
+            <section class="divider">
+                <p>For more information about data handling, see our <a href="privacy.html">Privacy Policy</a>.</p>
+            </section>
+        </article>
     </div>
 </body>
 </html>
