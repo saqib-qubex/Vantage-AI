@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pricing.html
+Disallow: /pricing_old.html
+
+Sitemap: https://getvantage.tech/sitemap.xml

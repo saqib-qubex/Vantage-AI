@@ -47,20 +47,30 @@ function initializeMobileMenu() {
 
     if (!toggle || !mobileMenu) return;
 
-    toggle.addEventListener('click', function() {
-        toggle.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
+    // Keep the toggle's accessible state in sync with the menu
+    function setMenuOpen(isOpen) {
+        toggle.classList.toggle('active', isOpen);
+        mobileMenu.classList.toggle('active', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
 
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    toggle.addEventListener('click', function() {
+        setMenuOpen(!mobileMenu.classList.contains('active'));
     });
 
     // Close menu when clicking outside
     mobileMenu.addEventListener('click', function(e) {
         if (e.target === mobileMenu) {
-            toggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            setMenuOpen(false);
+        }
+    });
+
+    // Close menu on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            setMenuOpen(false);
+            toggle.focus();
         }
     });
 
@@ -68,18 +78,14 @@ function initializeMobileMenu() {
     const mobileLinks = mobileMenu.querySelectorAll('a');
     mobileLinks.forEach(link => {
         link.addEventListener('click', function() {
-            toggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            setMenuOpen(false);
         });
     });
 
     // Close menu on window resize to desktop
     window.addEventListener('resize', function() {
         if (window.innerWidth > 1024) {
-            toggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            setMenuOpen(false);
         }
     });
 }
