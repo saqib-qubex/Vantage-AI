@@ -1,0 +1,38 @@
+# VantageAI
+
+> VantageAI is an AI-native revenue operations platform for clinical practices. It answers patient phone calls 24/7, books appointments automatically, and re-engages dormant patients with HIPAA-aware workflows — so practices stop losing revenue to missed calls and no-shows. VantageAI is a product of QubeX, Inc.
+
+## What VantageAI does
+
+- **Revenue Capture** — Answers every inbound patient call 24/7, including after hours, so missed calls become booked appointments.
+- **Revenue Conversion** — Books appointments directly into the schedule, sends reminders, and reduces no-shows.
+- **Revenue Retention** — Runs automated recall and re-engagement campaigns to bring dormant patients back.
+- **Revenue Intelligence** — AI assistant and agents that execute work inside the practice, not just summarize it.
+- **Revenue Control** — Enterprise-grade safety with HIPAA-aware consent, quiet-hours enforcement, audit logging, and PHI redaction.
+
+## Key facts
+
+- **Compliance:** HIPAA-aware workflows; references to SOC 2 and GDPR.
+- **Setup time:** Minutes — practices can go live in as little as 3 minutes.
+- **Availability:** 24/7 automated patient coverage.
+- **Integrations:** eClinicalWorks and Curogram available today; Epic, Cerner, and Athenahealth coming soon.
+- **Best for:** Clinical practices including family medicine, dental, med spa, and primary care.
+
+## Pages
+
+- [Homepage](https://getvantage.tech/): Product overview, key outcomes, and FAQ.
+- [Revenue Operations Platform](https://getvantage.tech/revops.html): Detailed breakdown of the five revenue pillars (Capture, Conversion, Retention, Intelligence, Control).
+- [AI Receptionist](https://getvantage.tech/ai-receptionist.html): AI front-desk / phone answering.
+- [AI Scribe](https://getvantage.tech/ai-scribe.html): Clinical documentation assistant.
+- [AI Medical Assistant](https://getvantage.tech/medical-assistant.html): In-practice AI assistant.
+
+## Legal
+
+- [Privacy Policy](https://getvantage.tech/privacy.html): HIPAA-compliant privacy policy.
+- [Terms of Service](https://getvantage.tech/terms.html)
+- [SMS Consent & Messaging Disclosures](https://getvantage.tech/sms-consent.html)
+
+## Contact
+
+- Website: https://getvantage.tech/
+- Sign up for the beta via the "Sign Up for Beta" form on the homepage.

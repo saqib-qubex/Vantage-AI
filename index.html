@@ -36,20 +36,79 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "VantageAI",
-      "url": "https://getvantage.tech/",
-      "logo": "https://getvantage.tech/assets/logo.png",
-      "description": "AI-native revenue operations for clinical practices — never miss a patient call, fill the schedule, and retain patients with HIPAA-aware automation.",
-      "sameAs": []
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "VantageAI",
-      "url": "https://getvantage.tech/"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://getvantage.tech/#organization",
+          "name": "VantageAI",
+          "legalName": "QubeX, Inc.",
+          "url": "https://getvantage.tech/",
+          "logo": "https://getvantage.tech/assets/logo.png",
+          "description": "AI-native revenue operations for clinical practices — never miss a patient call, fill the schedule, and retain patients with HIPAA-aware automation.",
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://getvantage.tech/#website",
+          "name": "VantageAI",
+          "url": "https://getvantage.tech/",
+          "publisher": { "@id": "https://getvantage.tech/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://getvantage.tech/#software",
+          "name": "VantageAI",
+          "applicationCategory": "BusinessApplication",
+          "applicationSubCategory": "Healthcare Revenue Operations",
+          "operatingSystem": "Web",
+          "url": "https://getvantage.tech/",
+          "description": "AI revenue operations platform for clinical practices. VantageAI answers patient calls 24/7, books appointments automatically, and re-engages dormant patients with HIPAA-aware workflows.",
+          "provider": { "@id": "https://getvantage.tech/#organization" },
+          "featureList": [
+            "24/7 AI phone answering",
+            "Automated appointment booking",
+            "Patient recall and re-engagement",
+            "HIPAA-aware consent and audit logging",
+            "EHR integrations (eClinicalWorks, Curogram)"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://getvantage.tech/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is VantageAI?",
+              "acceptedAnswer": { "@type": "Answer", "text": "VantageAI is an AI-powered revenue operations platform for clinical practices. It answers patient calls 24/7, books appointments automatically, and re-engages dormant patients—so practices stop losing revenue to missed calls and no-shows." }
+            },
+            {
+              "@type": "Question",
+              "name": "Is VantageAI HIPAA compliant?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. VantageAI runs on HIPAA-aware workflows with enforced patient consent, quiet hours, and full audit logging—every patient interaction is logged automatically so your practice stays compliant." }
+            },
+            {
+              "@type": "Question",
+              "name": "How does VantageAI handle patient phone calls?",
+              "acceptedAnswer": { "@type": "Answer", "text": "VantageAI answers every inbound call 24/7, including after hours, and books appointments directly into your schedule. Calls that would otherwise be missed are captured and converted into booked visits." }
+            },
+            {
+              "@type": "Question",
+              "name": "Which practice systems does VantageAI integrate with?",
+              "acceptedAnswer": { "@type": "Answer", "text": "VantageAI currently integrates with eClinicalWorks and Curogram, with Epic, Cerner, and Athenahealth support coming soon." }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take to set up VantageAI?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Setup takes minutes. Most practices can go live in as little as 3 minutes, with no complex installation required." }
+            },
+            {
+              "@type": "Question",
+              "name": "Who is VantageAI built for?",
+              "acceptedAnswer": { "@type": "Answer", "text": "VantageAI is built for clinical practices—including family medicine, dental, med spa, and primary care—that want to capture every patient call, fill their schedule, and retain patients automatically." }
+            }
+          ]
+        }
+      ]
     }
     </script>
 </head>
@@ -737,6 +796,39 @@
                 </div>
             </div>
         </section> -->
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+            <div class="container">
+                <h2 id="faq-heading" class="section-title">Frequently asked questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>What is VantageAI?</summary>
+                        <p>VantageAI is an AI-powered revenue operations platform for clinical practices. It answers patient calls 24/7, books appointments automatically, and re-engages dormant patients—so practices stop losing revenue to missed calls and no-shows.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is VantageAI HIPAA compliant?</summary>
+                        <p>Yes. VantageAI runs on HIPAA-aware workflows with enforced patient consent, quiet hours, and full audit logging—every patient interaction is logged automatically so your practice stays compliant.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How does VantageAI handle patient phone calls?</summary>
+                        <p>VantageAI answers every inbound call 24/7, including after hours, and books appointments directly into your schedule. Calls that would otherwise be missed are captured and converted into booked visits.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Which practice systems does VantageAI integrate with?</summary>
+                        <p>VantageAI currently integrates with eClinicalWorks and Curogram, with Epic, Cerner, and Athenahealth support coming soon.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How long does it take to set up VantageAI?</summary>
+                        <p>Setup takes minutes. Most practices can go live in as little as 3 minutes, with no complex installation required.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Who is VantageAI built for?</summary>
+                        <p>VantageAI is built for clinical practices—including family medicine, dental, med spa, and primary care—that want to capture every patient call, fill their schedule, and retain patients automatically.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
 
         <!-- CTA Section -->
         <section class="cta-section">

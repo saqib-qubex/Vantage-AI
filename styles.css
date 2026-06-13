@@ -41,6 +41,59 @@
     margin-bottom: var(--space-xs);
 }
 
+/* FAQ section (answer-engine / SEO friendly) */
+.faq-section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--color-border, #2a2a2a);
+}
+
+.faq-section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--color-border, #2a2a2a);
+    padding: 1.25rem 0;
+}
+
+.faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #fff);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+    content: "+";
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text-secondary, #a0a0a0);
+    transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+    content: "\2212"; /* minus */
+}
+
+.faq-item p {
+    margin-top: 0.875rem;
+    color: var(--color-text-secondary, #a0a0a0);
+    line-height: 1.6;
+}
+
 :root {
     /* Color System - Dark Theme */
     --color-background: #0a0a0a;
