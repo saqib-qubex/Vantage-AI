@@ -3,7 +3,7 @@
 
 User-agent: *
 Allow: /
-Disallow: /pricing.html
+Disallow: /checkout.html
 Disallow: /pricing_old.html
 
 # --- AI / LLM crawlers (explicitly allowed) ---

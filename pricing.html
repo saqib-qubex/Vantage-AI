@@ -1,43 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<title>Pricing | VantageAI</title>
-<meta name="description" content="VantageAI pricing plans for clinical practices.">
-<meta name="robots" content="noindex, follow">
-<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <title>Pricing | VantageAI Inbound Front Desk</title>
+    <meta name="description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $449/mo with 24/7 call answering, scheduling, and EHR sync. HIPAA compliant, 99.9% uptime SLA, 14-day free trial.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="canonical" href="https://getvantage.tech/pricing.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VantageAI">
+    <meta property="og:title" content="Pricing | VantageAI Inbound Front Desk">
+    <meta property="og:description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $449/mo. HIPAA compliant, 99.9% uptime SLA, 14-day free trial.">
+    <meta property="og:url" content="https://getvantage.tech/pricing.html">
+    <meta property="og:image" content="https://getvantage.tech/assets/logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pricing | VantageAI Inbound Front Desk">
+    <meta name="twitter:description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $449/mo.">
+    <meta name="twitter:image" content="https://getvantage.tech/assets/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://embed.typeform.com/next/embed.js" defer></script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "VantageAI Inbound Front Desk",
+      "description": "AI inbound front desk agent for clinical practices — answers calls 24/7, books appointments, and syncs to your EHR.",
+      "brand": { "@type": "Brand", "name": "VantageAI" },
+      "offers": [
+        { "@type": "Offer", "name": "Starter", "price": "449", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "300 included calls/month, $0.99/call overage." },
+        { "@type": "Offer", "name": "Growth", "price": "899", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "750 included calls/month, $0.99/call overage." },
+        { "@type": "Offer", "name": "Scale", "price": "1599", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "1,500 included calls/month, $0.99/call overage." }
+      ]
+    }
+    </script>
+
+    <style>
+        .pricing-page { padding: 7rem 0 5rem; }
+        .pricing-head { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+        .pricing-head h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--color-text-primary, #fff); margin-bottom: 1rem; }
+        .pricing-head p { color: var(--color-text-secondary, #a0a0a0); font-size: 1.125rem; line-height: 1.6; }
+
+        /* Monthly / Annual toggle */
+        .pricing-toggle { display: flex; align-items: center; justify-content: center; gap: 0.875rem; margin-top: 2rem; flex-wrap: wrap; }
+        .pricing-toggle .toggle-label { font-size: 0.95rem; font-weight: 600; color: var(--color-text-secondary, #a0a0a0); transition: color .2s ease; }
+        .pricing-toggle .toggle-label.is-active { color: var(--color-text-primary, #fff); }
+        .switch { position: relative; display: inline-flex; width: 52px; height: 30px; flex: 0 0 auto; }
+        .switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+        .switch .track { position: absolute; inset: 0; border-radius: 999px; background: var(--color-border-light, #333); transition: background .2s ease; }
+        .switch .thumb { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; transition: transform .2s ease; }
+        .switch input:checked ~ .track { background: var(--color-accent, #3b82f6); }
+        .switch input:checked ~ .thumb { transform: translateX(22px); }
+        .switch input:focus-visible ~ .track { outline: 2px solid var(--color-accent, #3b82f6); outline-offset: 2px; }
+        .save-pill { font-size: 0.75rem; font-weight: 700; color: var(--color-success, #10b981); background: rgba(16,185,129,.12); padding: 0.25rem 0.6rem; border-radius: 999px; letter-spacing: .02em; }
+
+        /* Grid: 1 col mobile -> 4 col desktop */
+        .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1240px; margin: 0 auto; align-items: stretch; }
+        @media (min-width: 700px) { .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1080px) { .pricing-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .pricing-card { position: relative; display: flex; flex-direction: column; background: var(--color-surface, #111); border: 1px solid var(--color-border, #2a2a2a); border-radius: 16px; padding: 2rem 1.5rem; transition: transform .2s ease, border-color .2s ease; }
+        .pricing-card:hover { transform: translateY(-4px); border-color: var(--color-border-light, #333); }
+        .pricing-card.is-featured { border-color: var(--color-accent, #3b82f6); box-shadow: 0 0 0 1px var(--color-accent, #3b82f6), 0 20px 60px rgba(59,130,246,.18); background: var(--color-surface-elevated, #1a1a1a); }
+
+        .popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--color-accent, #3b82f6); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 0.4rem 0.85rem; border-radius: 999px; white-space: nowrap; }
+
+        .pricing-card .tier-name { font-size: 1.1rem; font-weight: 700; color: var(--color-text-primary, #fff); margin-bottom: 0.35rem; }
+        .pricing-card .tier-tagline { font-size: 0.85rem; color: var(--color-text-tertiary, #707070); min-height: 2.4em; margin-bottom: 1.25rem; }
+        .price-row { display: flex; align-items: baseline; gap: 0.4rem; }
+        .price-amount { font-size: 2.4rem; font-weight: 800; color: var(--color-text-primary, #fff); line-height: 1; }
+        .price-suffix { font-size: 0.9rem; color: var(--color-text-secondary, #a0a0a0); }
+        .price-billing { font-size: 0.8rem; color: var(--color-text-tertiary, #707070); margin-top: 0.5rem; min-height: 1.2em; }
+
+        .tier-meta { margin: 1.25rem 0; padding: 0.875rem 0; border-top: 1px solid var(--color-border, #2a2a2a); border-bottom: 1px solid var(--color-border, #2a2a2a); }
+        .tier-meta .meta-line { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--color-text-secondary, #a0a0a0); }
+        .tier-meta .meta-line + .meta-line { margin-top: 0.4rem; }
+        .tier-meta strong { color: var(--color-text-primary, #fff); font-weight: 600; }
+
+        .pricing-card .tier-cta { width: 100%; justify-content: center; margin-bottom: 1.5rem; }
+
+        .feature-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+        .feature-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.875rem; color: var(--color-text-secondary, #a0a0a0); line-height: 1.45; }
+        .feature-list i { color: var(--color-success, #10b981); font-size: 0.8rem; margin-top: 0.25rem; flex: 0 0 auto; }
+        .feature-list .feature-lead { color: var(--color-text-primary, #fff); font-weight: 600; }
+
+        .pricing-footnote { max-width: 760px; margin: 3rem auto 0; text-align: center; font-size: 0.825rem; color: var(--color-text-tertiary, #707070); line-height: 1.6; }
+    </style>
 </head>
 <body>
-<stripe-pricing-table
-    pricing-table-id="prctbl_1QebE0QOCJSKvHIqCqAKwO4r"
-    publishable-key="pk_test_51QeXHZQOCJSKvHIqL4WH588WSqXiaklVXSQAaJOJHB3uLbPYpfuTFWA0eLY0iW1doNKzj6fYmkpi8Lb1KErIB8eM00MfcCQHcn">
-</stripe-pricing-table>
-<script>
-    // Parse the query parameters from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    // Get the 'email' and 'isComingFromMobile' parameters
-    const email = urlParams.get('email');
-    const isComingFromMobile = urlParams.get('isComingFromMobile');
-    // If email is provided, update the stripe-pricing-table attribute
-    if (email) {
-      const pricingTable = document.querySelector('stripe-pricing-table');
-      if (pricingTable) {
-        pricingTable.setAttribute('customer-email', email);
-        console.log('Customer email set:', email);
-      } else {
-        console.error('Stripe pricing table not found.');
-      }
-    } else {
-      console.error('No email parameter found in URL.');
-    }
-    // Log the 'isComingFromMobile' parameter
-    if (isComingFromMobile) {
-      console.log('Incoming from mobile:', isComingFromMobile);
-    } else {
-      console.log('No mobile source information found.');
-    }
-</script>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Top Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="assets/logowhite.png" alt="Vantage" height="32">
+                </a>
+
+                <nav class="nav-menu">
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            Platform
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="revops.html#capture" class="dropdown-item">
+                                <i class="fas fa-phone-volume" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Never Miss a Call</strong>
+                                    <span>AI answers every patient</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#conversion" class="dropdown-item">
+                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Fill Your Schedule</strong>
+                                    <span>AI books appointments 24/7</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#retention" class="dropdown-item">
+                                <i class="fas fa-rotate" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Keep Patients Coming Back</strong>
+                                    <span>Automated recalls & follow-ups</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#intelligence" class="dropdown-item">
+                                <i class="fas fa-brain" aria-hidden="true"></i>
+                                <div>
+                                    <strong>AI Assistant</strong>
+                                    <span>Works inside your practice</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#control" class="dropdown-item">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <div>
+                                    <strong>HIPAA Compliant</strong>
+                                    <span>Secure & audited</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="pricing.html" class="nav-link active">Pricing</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button class="btn-primary" data-tf-popup="bVPcDjHL">Sign Up for Beta</button>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <h3>Platform</h3>
+                <a href="revops.html#capture">Answer Every Call</a>
+                <a href="revops.html#conversion">Fill Your Schedule</a>
+                <a href="revops.html#retention">Bring Patients Back</a>
+                <a href="revops.html#intelligence">AI Assistant</a>
+                <a href="revops.html#control">HIPAA Compliant</a>
+            </div>
+            <div class="mobile-menu-section">
+                <a href="pricing.html">Pricing</a>
+            </div>
+            <div class="mobile-menu-actions">
+                <button class="btn-primary" data-tf-popup="bVPcDjHL">Sign Up for Beta</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <section class="pricing-page">
+            <div class="container">
+                <div class="pricing-head">
+                    <h1>Simple, per-call pricing</h1>
+                    <p>Pay for the calls your AI front desk answers — nothing more. Every plan includes 24/7 answering, scheduling, and EHR sync.</p>
+
+                    <div class="pricing-toggle">
+                        <span class="toggle-label is-active" data-toggle-monthly>Monthly</span>
+                        <label class="switch">
+                            <input type="checkbox" id="billing-toggle" aria-label="Switch between monthly and annual billing">
+                            <span class="track" aria-hidden="true"></span>
+                            <span class="thumb" aria-hidden="true"></span>
+                        </label>
+                        <span class="toggle-label" data-toggle-annual>Annual</span>
+                        <span class="save-pill">Save 15%</span>
+                    </div>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Starter -->
+                    <div class="pricing-card">
+                        <div class="tier-name">Starter</div>
+                        <div class="tier-tagline">For solo practices getting started with an AI front desk.</div>
+                        <div class="price-row">
+                            <span class="price-amount" data-price data-monthly="$449" data-annual="$382">$449</span>
+                            <span class="price-suffix">/mo</span>
+                        </div>
+                        <div class="price-billing" data-billing hidden>Billed annually ($4,584/yr)</div>
+                        <div class="tier-meta">
+                            <div class="meta-line"><span>Included calls</span><strong>300 / mo</strong></div>
+                            <div class="meta-line"><span>Overage</span><strong>$0.99 / call</strong></div>
+                        </div>
+                        <button class="btn-primary tier-cta" data-tf-popup="bVPcDjHL">Get Started</button>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Inbound call answering 24/7</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Appointment scheduling</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Call logging to patient CRM</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>EHR sync (eCW + Open Dental)</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Call summaries</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Email support</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Growth (Most Popular) -->
+                    <div class="pricing-card is-featured">
+                        <span class="popular-badge">Most Popular</span>
+                        <div class="tier-name">Growth</div>
+                        <div class="tier-tagline">For growing practices that never want to miss a patient.</div>
+                        <div class="price-row">
+                            <span class="price-amount" data-price data-monthly="$899" data-annual="$764">$899</span>
+                            <span class="price-suffix">/mo</span>
+                        </div>
+                        <div class="price-billing" data-billing hidden>Billed annually ($9,168/yr)</div>
+                        <div class="tier-meta">
+                            <div class="meta-line"><span>Included calls</span><strong>750 / mo</strong></div>
+                            <div class="meta-line"><span>Overage</span><strong>$0.99 / call</strong></div>
+                        </div>
+                        <button class="btn-primary tier-cta" data-tf-popup="bVPcDjHL">Get Started</button>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span class="feature-lead">Everything in Starter</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>After-hours handling</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Prescription refill requests</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Spam call filtering</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Multilingual support</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Priority support</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Scale -->
+                    <div class="pricing-card">
+                        <div class="tier-name">Scale</div>
+                        <div class="tier-tagline">For multi-provider practices with high call volume.</div>
+                        <div class="price-row">
+                            <span class="price-amount" data-price data-monthly="$1,599" data-annual="$1,359">$1,599</span>
+                            <span class="price-suffix">/mo</span>
+                        </div>
+                        <div class="price-billing" data-billing hidden>Billed annually ($16,308/yr)</div>
+                        <div class="tier-meta">
+                            <div class="meta-line"><span>Included calls</span><strong>1,500 / mo</strong></div>
+                            <div class="meta-line"><span>Overage</span><strong>$0.99 / call</strong></div>
+                        </div>
+                        <button class="btn-primary tier-cta" data-tf-popup="bVPcDjHL">Get Started</button>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span class="feature-lead">Everything in Growth</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Outbound recall reminders</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>No-show reduction calls</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Dedicated onboarding</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>SLA guarantee</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="pricing-card">
+                        <div class="tier-name">Enterprise</div>
+                        <div class="tier-tagline">For groups and networks with custom requirements.</div>
+                        <div class="price-row">
+                            <span class="price-amount">Custom</span>
+                        </div>
+                        <div class="price-billing">Tailored to your organization</div>
+                        <div class="tier-meta">
+                            <div class="meta-line"><span>Included calls</span><strong>Unlimited</strong></div>
+                            <div class="meta-line"><span>Overage</span><strong>—</strong></div>
+                        </div>
+                        <a class="btn-secondary tier-cta" href="mailto:sales@getvantage.tech">Talk to Sales</a>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span class="feature-lead">Everything in Scale</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Custom EHR integrations</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>White-glove deployment</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Custom workflows</span></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i><span>Dedicated account manager</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="pricing-footnote">All plans include HIPAA compliance, 99.9% uptime SLA, and a 14-day free trial on Starter. Calls over 10 minutes count as 2 calls toward your monthly total.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="revops.html#capture">Answer Every Call</a>
+                    <a href="revops.html#conversion">Fill Your Schedule</a>
+                    <a href="revops.html#retention">Bring Patients Back</a>
+                    <a href="revops.html#intelligence">AI Assistant</a>
+                    <a href="revops.html#control">HIPAA Compliance</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Integrations</h4>
+                    <a href="https://www.eclinicalworks.com" target="_blank" rel="noopener noreferrer">eClinicalWorks</a>
+                    <a href="https://www.curogram.com" target="_blank" rel="noopener noreferrer">Curogram</a>
+                    <span class="footer-text">Epic</span>
+                    <span class="footer-text">Cerner</span>
+                    <span class="footer-text">Athenahealth</span>
+                    <span class="footer-text">More coming soon</span>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="revops.html">Platform Overview</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="revops.html#intelligence">AI Assistant</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="index.html">Home</a>
+                    <a href="revops.html">Revenue Operations</a>
+                    <a href="pricing.html">Pricing</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="revops.html#control">Security & Compliance</a>
+                    <a href="revops.html#control">HIPAA Compliance</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="assets/logowhite.png" alt="Vantage" height="24" loading="lazy" decoding="async">
+                </div>
+                <p class="footer-copyright">&copy; 2026 QubeX, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Monthly / annual billing toggle
+        (function () {
+            var toggle = document.getElementById('billing-toggle');
+            if (!toggle) return;
+            var monthlyLabel = document.querySelector('[data-toggle-monthly]');
+            var annualLabel = document.querySelector('[data-toggle-annual]');
+            var prices = document.querySelectorAll('[data-price]');
+            var billingNotes = document.querySelectorAll('[data-billing]');
+
+            function apply(isAnnual) {
+                prices.forEach(function (el) {
+                    el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+                });
+                billingNotes.forEach(function (el) {
+                    if (el.textContent.indexOf('Tailored') !== -1) return; // Enterprise note stays
+                    el.hidden = !isAnnual;
+                });
+                monthlyLabel.classList.toggle('is-active', !isAnnual);
+                annualLabel.classList.toggle('is-active', isAnnual);
+            }
+
+            toggle.addEventListener('change', function () { apply(toggle.checked); });
+        })();
+    </script>
 </body>
 </html>
