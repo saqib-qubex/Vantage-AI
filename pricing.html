@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <title>Pricing | VantageAI Inbound Front Desk</title>
-    <meta name="description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $449/mo with 24/7 call answering, scheduling, and EHR sync. HIPAA compliant, 99.9% uptime SLA, 14-day free trial.">
+    <meta name="description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $199/mo, and every plan includes a 1-month free trial. 24/7 call answering, scheduling, and EHR sync. HIPAA compliant with a 99.9% uptime SLA.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a0a0a">
     <link rel="canonical" href="https://getvantage.tech/pricing.html">
@@ -14,14 +14,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="VantageAI">
     <meta property="og:title" content="Pricing | VantageAI Inbound Front Desk">
-    <meta property="og:description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $449/mo. HIPAA compliant, 99.9% uptime SLA, 14-day free trial.">
+    <meta property="og:description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $199/mo — every plan includes a 1-month free trial. HIPAA compliant, 99.9% uptime SLA.">
     <meta property="og:url" content="https://getvantage.tech/pricing.html">
     <meta property="og:image" content="https://getvantage.tech/assets/logo.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pricing | VantageAI Inbound Front Desk">
-    <meta name="twitter:description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $449/mo.">
+    <meta name="twitter:description" content="Simple, per-call pricing for the VantageAI inbound front desk agent. Plans from $199/mo — every plan includes a 1-month free trial.">
     <meta name="twitter:image" content="https://getvantage.tech/assets/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,9 +41,9 @@
       "description": "AI inbound front desk agent for clinical practices — answers calls 24/7, books appointments, and syncs to your EHR.",
       "brand": { "@type": "Brand", "name": "VantageAI" },
       "offers": [
-        { "@type": "Offer", "name": "Starter", "price": "449", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "300 included calls/month, $0.99/call overage." },
-        { "@type": "Offer", "name": "Growth", "price": "899", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "750 included calls/month, $0.99/call overage." },
-        { "@type": "Offer", "name": "Scale", "price": "1599", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "1,500 included calls/month, $0.99/call overage." }
+        { "@type": "Offer", "name": "Starter", "price": "199", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "50 included calls/month, $0.99/call overage. Includes a 1-month free trial." },
+        { "@type": "Offer", "name": "Growth", "price": "499", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "150 included calls/month, $0.99/call overage. Includes a 1-month free trial." },
+        { "@type": "Offer", "name": "Scale", "price": "999", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "400 included calls/month, $0.99/call overage. Includes a 1-month free trial." }
       ]
     }
     </script>
@@ -66,6 +66,12 @@
         .switch input:checked ~ .thumb { transform: translateX(22px); }
         .switch input:focus-visible ~ .track { outline: 2px solid var(--color-accent, #3b82f6); outline-offset: 2px; }
         .save-pill { font-size: 0.75rem; font-weight: 700; color: var(--color-success, #10b981); background: rgba(16,185,129,.12); padding: 0.25rem 0.6rem; border-radius: 999px; letter-spacing: .02em; }
+
+        /* Free-trial callout */
+        .trial-banner { display: inline-flex; align-items: center; gap: 0.6rem; margin: 2rem auto 0; padding: 0.7rem 1.25rem; border-radius: 999px; background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.35); color: var(--color-text-primary, #fff); font-size: 0.95rem; font-weight: 600; }
+        .trial-banner i { color: var(--color-success, #10b981); }
+        .trial-note { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.75rem; font-size: 0.8rem; font-weight: 600; color: var(--color-success, #10b981); }
+        .trial-note i { font-size: 0.85rem; }
 
         /* Grid: 1 col mobile -> 4 col desktop */
         .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1240px; margin: 0 auto; align-items: stretch; }
@@ -208,6 +214,11 @@
                         <span class="toggle-label" data-toggle-annual>Annual</span>
                         <span class="save-pill">Save 15%</span>
                     </div>
+
+                    <div class="trial-banner">
+                        <i class="fas fa-gift" aria-hidden="true"></i>
+                        Every plan includes a 1-month free trial — no commitment
+                    </div>
                 </div>
 
                 <div class="pricing-grid">
@@ -216,15 +227,16 @@
                         <div class="tier-name">Starter</div>
                         <div class="tier-tagline">For solo practices getting started with an AI front desk.</div>
                         <div class="price-row">
-                            <span class="price-amount" data-price data-monthly="$449" data-annual="$382">$449</span>
+                            <span class="price-amount" data-price data-monthly="$199" data-annual="$169">$199</span>
                             <span class="price-suffix">/mo</span>
                         </div>
-                        <div class="price-billing" data-billing hidden>Billed annually ($4,584/yr)</div>
+                        <div class="price-billing" data-billing hidden>Billed annually ($2,028/yr)</div>
                         <div class="tier-meta">
-                            <div class="meta-line"><span>Included calls</span><strong>300 / mo</strong></div>
+                            <div class="meta-line"><span>Included calls</span><strong>50 / mo</strong></div>
                             <div class="meta-line"><span>Overage</span><strong>$0.99 / call</strong></div>
                         </div>
                         <button class="btn-primary tier-cta" data-tf-popup="bVPcDjHL">Get Started</button>
+                        <div class="trial-note"><i class="fas fa-gift" aria-hidden="true"></i>Starts with a 1-month free trial</div>
                         <ul class="feature-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Inbound call answering 24/7</span></li>
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Appointment scheduling</span></li>
@@ -241,15 +253,16 @@
                         <div class="tier-name">Growth</div>
                         <div class="tier-tagline">For growing practices that never want to miss a patient.</div>
                         <div class="price-row">
-                            <span class="price-amount" data-price data-monthly="$899" data-annual="$764">$899</span>
+                            <span class="price-amount" data-price data-monthly="$499" data-annual="$424">$499</span>
                             <span class="price-suffix">/mo</span>
                         </div>
-                        <div class="price-billing" data-billing hidden>Billed annually ($9,168/yr)</div>
+                        <div class="price-billing" data-billing hidden>Billed annually ($5,088/yr)</div>
                         <div class="tier-meta">
-                            <div class="meta-line"><span>Included calls</span><strong>750 / mo</strong></div>
+                            <div class="meta-line"><span>Included calls</span><strong>150 / mo</strong></div>
                             <div class="meta-line"><span>Overage</span><strong>$0.99 / call</strong></div>
                         </div>
                         <button class="btn-primary tier-cta" data-tf-popup="bVPcDjHL">Get Started</button>
+                        <div class="trial-note"><i class="fas fa-gift" aria-hidden="true"></i>Starts with a 1-month free trial</div>
                         <ul class="feature-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i><span class="feature-lead">Everything in Starter</span></li>
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>After-hours handling</span></li>
@@ -265,15 +278,16 @@
                         <div class="tier-name">Scale</div>
                         <div class="tier-tagline">For multi-provider practices with high call volume.</div>
                         <div class="price-row">
-                            <span class="price-amount" data-price data-monthly="$1,599" data-annual="$1,359">$1,599</span>
+                            <span class="price-amount" data-price data-monthly="$999" data-annual="$849">$999</span>
                             <span class="price-suffix">/mo</span>
                         </div>
-                        <div class="price-billing" data-billing hidden>Billed annually ($16,308/yr)</div>
+                        <div class="price-billing" data-billing hidden>Billed annually ($10,188/yr)</div>
                         <div class="tier-meta">
-                            <div class="meta-line"><span>Included calls</span><strong>1,500 / mo</strong></div>
+                            <div class="meta-line"><span>Included calls</span><strong>400 / mo</strong></div>
                             <div class="meta-line"><span>Overage</span><strong>$0.99 / call</strong></div>
                         </div>
                         <button class="btn-primary tier-cta" data-tf-popup="bVPcDjHL">Get Started</button>
+                        <div class="trial-note"><i class="fas fa-gift" aria-hidden="true"></i>Starts with a 1-month free trial</div>
                         <ul class="feature-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i><span class="feature-lead">Everything in Growth</span></li>
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Outbound recall reminders</span></li>
@@ -296,6 +310,7 @@
                             <div class="meta-line"><span>Overage</span><strong>—</strong></div>
                         </div>
                         <a class="btn-secondary tier-cta" href="mailto:sales@getvantage.tech">Talk to Sales</a>
+                        <div class="trial-note"><i class="fas fa-gift" aria-hidden="true"></i>Includes a 1-month free trial</div>
                         <ul class="feature-list">
                             <li><i class="fas fa-check" aria-hidden="true"></i><span class="feature-lead">Everything in Scale</span></li>
                             <li><i class="fas fa-check" aria-hidden="true"></i><span>Custom EHR integrations</span></li>
@@ -306,7 +321,7 @@
                     </div>
                 </div>
 
-                <p class="pricing-footnote">All plans include HIPAA compliance, 99.9% uptime SLA, and a 14-day free trial on Starter. Calls over 10 minutes count as 2 calls toward your monthly total.</p>
+                <p class="pricing-footnote">Every plan includes a 1-month free trial, HIPAA compliance, and a 99.9% uptime SLA. Calls over 10 minutes count as 2 calls toward your monthly total.</p>
             </div>
         </section>
     </main>
