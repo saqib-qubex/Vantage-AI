@@ -1930,7 +1930,8 @@ body {
     }
 
     .hero-title {
-        font-size: var(--font-size-2xl);
+        font-size: clamp(2.4rem, 11vw, 3.4rem);
+        line-height: 1.02;
     }
 
     .hero-badge,
