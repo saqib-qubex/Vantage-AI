@@ -394,7 +394,8 @@ function initializeAutoMotion() {
     const groups = [
         '.outcomes-grid', '.testimonials-grid', '.feature-grid', '.integration-grid',
         '.footer-grid', '.faq-list', '.proof-band-grid', '.pricing-grid',
-        '.chart-grid', '.numbered-features'
+        '.chart-grid', '.numbered-features',
+        '.agent-grid', '.agent-benefits', '.agent-cap-list'
     ];
     const singles = [
         '.section-title', '.section-eyebrow', '.section-label',
