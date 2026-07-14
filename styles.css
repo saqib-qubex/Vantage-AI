@@ -2164,3 +2164,143 @@ input:focus-visible {
     .outcomes-grid { grid-template-columns: 1fr; }
     .outcome-card { min-height: auto; }
 }
+
+/* ============================================
+   SITE-WIDE MOTION
+   ============================================ */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms);
+}
+
+[data-animate].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Hero aurora drift — slow, ambient movement behind the headline */
+.hero::before {
+    animation: auroraDrift 20s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift {
+    0%   { transform: translateX(-50%) translateY(0) scale(1); }
+    100% { transform: translateX(-50%) translateY(-16px) scale(1.06); }
+}
+
+/* Smooth interactive polish */
+.nav-link,
+.footer-column a,
+.btn-secondary {
+    transition: color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.footer-column a:hover {
+    transform: translateX(2px);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-1px);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    [data-animate],
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ============================================
+   REVOPS HERO LOOP CARD
+   ============================================ */
+.revops-loop {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 28px;
+    padding: clamp(1.6rem, 2.4vw, 2.2rem);
+    color: #ffffff;
+    background: linear-gradient(155deg, #1a7a48 0%, #0c3f24 100%);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+}
+
+.revops-loop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(120% 80% at 12% 0%, rgba(255, 255, 255, 0.22), transparent 55%);
+}
+
+.revops-loop-label {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: var(--space-lg);
+}
+
+.revops-loop-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.revops-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.15rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform var(--transition-base), background var(--transition-base);
+}
+
+.revops-step:hover {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.revops-step-num {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.16);
+    font-weight: 800;
+    font-size: var(--font-size-sm);
+    letter-spacing: -0.02em;
+}
+
+.revops-step strong {
+    display: block;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.revops-step span {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.4;
+}

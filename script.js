@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHeroEffects();
     initializeStatCounters();
     initializeScrollAnimations();
+    initializeAutoMotion();
 });
 
 /**
@@ -380,6 +381,57 @@ function initializeDropdownAccessibility() {
 }
 
 initializeDropdownAccessibility();
+
+/**
+ * Site-wide scroll motion.
+ * Auto-tags common sections/cards and fades + slides them into view as the
+ * user scrolls, with a light stagger for grid children. Progressive
+ * enhancement: tags are only added when JS runs, and reduced-motion is honored.
+ */
+function initializeAutoMotion() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const groups = [
+        '.outcomes-grid', '.testimonials-grid', '.feature-grid', '.integration-grid',
+        '.footer-grid', '.faq-list', '.proof-band-grid', '.pricing-grid',
+        '.chart-grid', '.numbered-features'
+    ];
+    const singles = [
+        '.section-title', '.section-eyebrow', '.section-label',
+        '.cta-section h2', '.cta-section p'
+    ];
+
+    function tag(el, index) {
+        if (!el || el.hasAttribute('data-animate') || el.classList.contains('reveal')) return;
+        if (el.closest('.hero')) return; // hero uses .reveal already; avoid a flash
+        if (!el.getClientRects().length) return; // skip hidden/zero-box (e.g. inactive tabs)
+        el.setAttribute('data-animate', '');
+        if (index) el.style.setProperty('--motion-delay', (Math.min(index, 6) * 70) + 'ms');
+    }
+
+    singles.forEach(sel => document.querySelectorAll(sel).forEach(el => tag(el, 0)));
+    groups.forEach(sel => document.querySelectorAll(sel).forEach(group => {
+        Array.prototype.forEach.call(group.children, (child, i) => tag(child, i));
+    }));
+
+    const targets = document.querySelectorAll('[data-animate]');
+
+    if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
+}
 
 /**
  * Performance: Debounce Helper
