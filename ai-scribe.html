@@ -5,297 +5,307 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <title>AI Scribe | VantageAI</title>
-    <meta name="description" content="VantageAI's AI Scribe turns medical conversations into precise, structured SOAP notes automatically — saving healthcare providers hours of documentation every day.">
+    <meta name="description" content="VantageAI's AI Scribe (Healix) turns medical conversations into structured SOAP notes automatically — real-time transcription, clinical insights, and EHR integration.">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://getvantage.tech/ai-scribe.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="VantageAI">
     <meta property="og:title" content="AI Scribe | VantageAI">
-    <meta property="og:description" content="AI medical scribing that converts conversations into structured SOAP notes automatically.">
+    <meta property="og:description" content="An AI medical scribe that turns conversations into structured SOAP notes and syncs to your EHR.">
     <meta property="og:url" content="https://getvantage.tech/ai-scribe.html">
     <meta property="og:image" content="https://getvantage.tech/assets/logo.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Scribe | VantageAI">
-    <meta name="twitter:description" content="AI medical scribing that converts conversations into structured SOAP notes automatically.">
+    <meta name="twitter:description" content="An AI medical scribe that turns conversations into structured SOAP notes and syncs to your EHR.">
     <meta name="twitter:image" content="https://getvantage.tech/assets/logo.png">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="styles.css" rel="stylesheet">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "SoftwareApplication",
-          "name": "VantageAI AI Scribe",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "url": "https://getvantage.tech/ai-scribe.html",
-          "description": "AI medical scribing that transforms clinical conversations into precise, structured SOAP notes automatically.",
-          "provider": { "@type": "Organization", "name": "VantageAI", "url": "https://getvantage.tech/" }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getvantage.tech/" },
-            { "@type": "ListItem", "position": 2, "name": "AI Scribe", "item": "https://getvantage.tech/ai-scribe.html" }
-          ]
-        }
-      ]
-    }
-    </script>
 </head>
 <body>
-    <header class="bg-light sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <a class="navbar-brand me-2" href="index.html">
-                    <img src="assets/logo.png" height="40" class="d-inline-block align-top" alt="Vantage AI Logo">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Vantage" height="32">
                 </a>
-                
-                <!-- AI Agents dropdown - visible only on desktop -->
-                <div class="nav-item dropdown primary-dropdown d-none d-lg-block">
-                    <a class="nav-link dropdown-toggle featured-dropdown" href="#" id="aiAgentsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        AI Agents
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdown">
-                        <li><a class="dropdown-item" href="medical-assistant.html">AI Medical Assistant</a></li>
-                        <li><a class="dropdown-item active" href="ai-scribe.html">AI Scribe</a></li>
-                        <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
-                    </ul>
-                </div>
-
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <!-- AI Agents dropdown - visible only on mobile -->
-                        <li class="nav-item dropdown d-lg-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="aiAgentsDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                AI Agents
+                <nav class="nav-menu">
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            AI Agents
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="medical-assistant.html" class="dropdown-item">
+                                <i class="fas fa-user-md" aria-hidden="true"></i>
+                                <div>
+                                    <strong>AI Medical Assistant</strong>
+                                    <span>Clinical support at the point of care</span>
+                                </div>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="aiAgentsDropdownMobile">
-                                <li><a class="dropdown-item" href="medical-assistant.html">AI Medical Assistant</a></li>
-                                <li><a class="dropdown-item active" href="ai-scribe.html">AI Scribe</a></li>
-                                <li><a class="dropdown-item" href="ai-receptionist.html">AI Receptionist</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#features">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
- <!--                       <li class="nav-item">
-                            <a class="nav-link" href="pricing.html">Pricing</a>
-                        </li> -->
-                        <li class="nav-item ms-lg-3">
-                            <button 
-                                class="btn btn-primary"
-                                data-cal-link="qubex/30min"
-                                data-cal-namespace="30min">
-                                Book a Demo
-                            </button>
-                        </li>
-                    </ul>
+                            <a href="ai-scribe.html" class="dropdown-item">
+                                <i class="fas fa-file-medical" aria-hidden="true"></i>
+                                <div>
+                                    <strong>AI Scribe</strong>
+                                    <span>Documentation, written for you</span>
+                                </div>
+                            </a>
+                            <a href="ai-receptionist.html" class="dropdown-item">
+                                <i class="fas fa-headset" aria-hidden="true"></i>
+                                <div>
+                                    <strong>AI Receptionist</strong>
+                                    <span>Your 24/7 automated front desk</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="revops.html" class="nav-link">Platform</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                </nav>
+                <div class="nav-actions">
+                    <button class="btn-primary" data-tf-popup="bVPcDjHL">Sign Up for Beta</button>
                 </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <main role="main">
-        <!-- Hero Section with Persona -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <h3>AI Agents</h3>
+                <a href="medical-assistant.html">AI Medical Assistant</a>
+                <a href="ai-scribe.html">AI Scribe</a>
+                <a href="ai-receptionist.html">AI Receptionist</a>
+            </div>
+            <div class="mobile-menu-section">
+                <a href="revops.html">Platform</a>
+                <a href="pricing.html">Pricing</a>
+            </div>
+            <div class="mobile-menu-actions">
+                <button class="btn-primary" data-tf-popup="bVPcDjHL">Sign Up for Beta</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero -->
         <section class="hero">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <h1 class="display-4 mb-4 fw-bold">AI Scribe</h1>
-                        <p class="lead mb-4">
-                            Automate your medical documentation with intelligent note-taking and SOAP format generation.
-                        </p>
-                        <div class="persona-details mb-4">
-                            <h2 class="h3 mb-2">Meet Healix</h2>
-                            <h3 class="text-primary mb-3">Your AI Medical Scribe</h3>
-                            <p>I transform medical conversations into precise, structured documentation, 
-                            ensuring every important detail is captured and properly formatted in SOAP notes.</p>
+                <div class="hero-shell">
+                    <div class="hero-content reveal">
+                        <div class="hero-badge">
+                            <span class="hero-badge-dot"></span>
+                            AI Scribe
                         </div>
-                        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-                            <a href="#features" class="btn btn-primary">Explore Features</a>
-                            <a href="#capabilities" class="btn btn-outline-primary">Learn More</a>
+                        <h1 class="hero-title">Meet Healix, your <span class="hero-title-accent">AI medical scribe</span></h1>
+                        <p class="hero-subtitle">Healix turns medical conversations into precise, structured SOAP notes — capturing every important detail and formatting it automatically, so clinicians spend their time with patients, not paperwork.</p>
+
+                        <div class="hero-cta">
+                            <button class="btn-primary btn-lg" data-tf-popup="bVPcDjHL">Get Early Access</button>
+                            <a href="#features" class="btn-secondary btn-lg hero-secondary-cta">
+                                <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                                Explore features
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="persona-container">
-                            <div class="persona-image-wrapper">
-                                <img src="assets/scribe-persona.png" alt="Healix" class="img-fluid rounded-circle persona-image">
-                                <div class="persona-overlay"></div>
+
+                        <div class="hero-signal-row">
+                            <div class="hero-signal-card">
+                                <strong data-count="2">2</strong>
+                                <span>+ hours saved per day</span>
+                            </div>
+                            <div class="hero-signal-card">
+                                <strong data-count="100">100</strong>
+                                <span>% SOAP-formatted notes</span>
+                            </div>
+                            <div class="hero-signal-card">
+                                <strong data-count="1">1</strong>
+                                <span>-click EHR sync</span>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="agent-portrait reveal">
+                        <img src="assets/scribe-persona.png" alt="Healix, the Vantage AI medical scribe" fetchpriority="high" decoding="async">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="features" class="feature-section py-4 py-md-5">
+        <!-- Features -->
+        <section id="features" class="agent-section">
             <div class="container">
-                <h2 class="text-center mb-5">Key Features</h2>
-                <div class="row g-4">
-                    <!-- SOAP Note Generation -->
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <div class="feature-icon mb-3">
-                                <i class="fas fa-file-medical fa-2x text-primary"></i>
-                            </div>
-                            <h3>SOAP Note Generation</h3>
-                            <p>Automatically convert conversations into properly structured SOAP notes with medical terminology.</p>
-                            <ul class="list-unstyled mt-3">
-                                <li><i class="fas fa-check text-primary me-2"></i>Structured documentation</li>
-                                <li><i class="fas fa-check text-primary me-2"></i>Medical terminology integration</li>
-                                <li><i class="fas fa-check text-primary me-2"></i>Customizable templates</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Clinical Insights -->
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <div class="feature-icon mb-3">
-                                <i class="fas fa-lightbulb fa-2x text-primary"></i>
-                            </div>
-                            <h3>Clinical Insights</h3>
-                            <p>Extract and highlight key clinical information from patient-doctor conversations.</p>
-                            <ul class="list-unstyled mt-3">
-                                <li><i class="fas fa-check text-primary me-2"></i>Key information extraction</li>
-                                <li><i class="fas fa-check text-primary me-2"></i>Automated summarization</li>
-                                <li><i class="fas fa-check text-primary me-2"></i>Clinical context awareness</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- EHR Integration -->
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <div class="feature-icon mb-3">
-                                <i class="fas fa-laptop-medical fa-2x text-primary"></i>
-                            </div>
-                            <h3>EHR Integration</h3>
-                            <p>Seamlessly integrate generated notes with your existing Electronic Health Record system.</p>
-                            <ul class="list-unstyled mt-3">
-                                <li><i class="fas fa-check text-primary me-2"></i>Direct EHR integration</li>
-                                <li><i class="fas fa-check text-primary me-2"></i>Format compatibility</li>
-                                <li><i class="fas fa-check text-primary me-2"></i>Secure data transfer</li>
-                            </ul>
-                        </div>
-                    </div>
+                <p class="section-eyebrow">What Healix handles</p>
+                <h2 class="section-title">Key features</h2>
+                <div class="agent-grid">
+                    <article class="agent-card">
+                        <div class="agent-card-icon"><i class="fas fa-file-lines" aria-hidden="true"></i></div>
+                        <h3>SOAP note generation</h3>
+                        <p>Automatically convert conversations into properly structured SOAP notes with accurate medical terminology.</p>
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Structured documentation</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Medical terminology integration</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Customizable templates</li>
+                        </ul>
+                    </article>
+                    <article class="agent-card">
+                        <div class="agent-card-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
+                        <h3>Clinical insights</h3>
+                        <p>Extract and highlight the key clinical information from every patient-provider conversation.</p>
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Key information extraction</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Automated summarization</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Clinical context awareness</li>
+                        </ul>
+                    </article>
+                    <article class="agent-card">
+                        <div class="agent-card-icon"><i class="fas fa-plug" aria-hidden="true"></i></div>
+                        <h3>EHR integration</h3>
+                        <p>Seamlessly push generated notes into your existing Electronic Health Record system.</p>
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Direct EHR integration</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Format compatibility</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Secure data transfer</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Workflow Section -->
-        <section id="workflow" class="workflow-section py-4 py-md-5">
+        <!-- Documentation Workflow -->
+        <section class="agent-section alt">
             <div class="container">
-                <h2 class="text-center mb-5">Documentation Workflow</h2>
-                <div class="row g-4">
-                    <div class="col-md-3">
-                        <div class="workflow-step text-center">
-                            <div class="step-number mb-3">1</div>
-                            <h3 class="h4">Record</h3>
-                            <p>Capture patient-doctor conversations with high-quality audio recording.</p>
-                        </div>
+                <p class="section-eyebrow">How it works</p>
+                <h2 class="section-title">Documentation workflow</h2>
+                <div class="agent-benefits">
+                    <div class="agent-benefit">
+                        <div class="agent-benefit-icon">1</div>
+                        <h3>Record</h3>
+                        <p>Capture patient-provider conversations with high-quality audio.</p>
                     </div>
-                    <div class="col-md-3">
-                        <div class="workflow-step text-center">
-                            <div class="step-number mb-3">2</div>
-                            <h3 class="h4">Transcribe</h3>
-                            <p>Convert speech to text with medical terminology recognition.</p>
-                        </div>
+                    <div class="agent-benefit">
+                        <div class="agent-benefit-icon">2</div>
+                        <h3>Transcribe</h3>
+                        <p>Convert speech to text with medical terminology recognition.</p>
                     </div>
-                    <div class="col-md-3">
-                        <div class="workflow-step text-center">
-                            <div class="step-number mb-3">3</div>
-                            <h3 class="h4">Structure</h3>
-                            <p>Organize information into proper SOAP format sections.</p>
-                        </div>
+                    <div class="agent-benefit">
+                        <div class="agent-benefit-icon">3</div>
+                        <h3>Structure</h3>
+                        <p>Organize information into proper SOAP-format sections.</p>
                     </div>
-                    <div class="col-md-3">
-                        <div class="workflow-step text-center">
-                            <div class="step-number mb-3">4</div>
-                            <h3 class="h4">Review</h3>
-                            <p>Verify and approve generated documentation.</p>
-                        </div>
+                    <div class="agent-benefit">
+                        <div class="agent-benefit-icon">4</div>
+                        <h3>Review</h3>
+                        <p>Verify and approve the generated documentation.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Capabilities Section -->
-        <section id="capabilities" class="capabilities-section py-4 py-md-5 bg-light">
+        <!-- Capabilities -->
+        <section id="capabilities" class="agent-section">
             <div class="container">
-                <h2 class="text-center mb-5">Advanced Capabilities</h2>
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-6">
-                        <img src="assets/ai-medicine.jpg" alt="AI Scribe Interface" class="img-fluid rounded shadow-lg">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="capability-list">
-                            <div class="mb-4">
-                                <h3><i class="fas fa-microphone me-2"></i>Real-time Transcription</h3>
-                                <p>Capture and transcribe medical conversations in real-time with high accuracy.</p>
-                            </div>
-                            <div class="mb-4">
-                                <h3><i class="fas fa-robot me-2"></i>Natural Language Processing</h3>
-                                <p>Advanced AI algorithms understand medical context and extract relevant information.</p>
-                            </div>
-                            <div class="mb-4">
-                                <h3><i class="fas fa-language me-2"></i>Medical Terminology</h3>
-                                <p>Comprehensive medical vocabulary ensures accurate documentation with proper terminology.</p>
-                            </div>
-                            <div class="mb-4">
-                                <h3><i class="fas fa-check-double me-2"></i>Quality Assurance</h3>
-                                <p>Automated review process ensures documentation meets clinical standards.</p>
-                            </div>
+                <div class="agent-split">
+                    <img src="assets/ai-medicine.jpg" alt="The Vantage AI scribe interface" loading="lazy" decoding="async">
+                    <div class="agent-cap-list">
+                        <p class="section-eyebrow" style="text-align:left;">Advanced capabilities</p>
+                        <div class="agent-cap">
+                            <h3><i class="fas fa-microphone-lines" aria-hidden="true"></i> Real-time transcription</h3>
+                            <p>Capture and transcribe medical conversations in real time with high accuracy.</p>
+                        </div>
+                        <div class="agent-cap">
+                            <h3><i class="fas fa-brain" aria-hidden="true"></i> Natural language processing</h3>
+                            <p>Advanced AI understands medical context and extracts the information that matters.</p>
+                        </div>
+                        <div class="agent-cap">
+                            <h3><i class="fas fa-book-medical" aria-hidden="true"></i> Medical terminology</h3>
+                            <p>A comprehensive medical vocabulary ensures documentation uses the right terms.</p>
+                        </div>
+                        <div class="agent-cap">
+                            <h3><i class="fas fa-clipboard-check" aria-hidden="true"></i> Quality assurance</h3>
+                            <p>An automated review process helps documentation meet clinical standards.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section py-4 py-md-5">
-            <div class="container text-center">
-                <h2 class="text-white mb-4">Ready to Transform Your Documentation Process?</h2>
-                <p class="lead text-white mb-4">Join healthcare providers who save hours every day with AI-powered medical scribing.</p>
-                <button
-                    class="btn btn-light btn-lg"
-                    data-cal-link="qubex/30min"
-                    data-cal-namespace="30min">
-                    Book a Demo
-                </button>
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to transform your documentation process?</h2>
+                    <p>Join healthcare providers who save hours every day with AI-powered medical scribing.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary btn-lg" data-tf-popup="bVPcDjHL">Get Started Free</button>
+                    </div>
+                    <p class="cta-note">Works 24/7 • HIPAA Compliant • Setup in minutes</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-4">
-        <div class="container text-center">
-            <p>&copy; 2026 QubeX, Inc. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>AI Agents</h4>
+                    <a href="medical-assistant.html">AI Medical Assistant</a>
+                    <a href="ai-scribe.html">AI Scribe</a>
+                    <a href="ai-receptionist.html">AI Receptionist</a>
+                    <a href="revops.html">Platform Overview</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Integrations</h4>
+                    <a href="https://www.eclinicalworks.com" target="_blank" rel="noopener noreferrer">eClinicalWorks</a>
+                    <a href="https://www.curogram.com" target="_blank" rel="noopener noreferrer">Curogram</a>
+                    <span class="footer-text">Epic</span>
+                    <span class="footer-text">Cerner</span>
+                    <span class="footer-text">More coming soon</span>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="revops.html">Platform Overview</a>
+                    <a href="revops.html#capture">Revenue Capture</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="index.html">Home</a>
+                    <a href="revops.html">Revenue Operations</a>
+                    <a href="ai-receptionist.html">AI Receptionist</a>
+                    <a href="ai-scribe.html">AI Scribe</a>
+                    <a href="medical-assistant.html">AI Medical Assistant</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="assets/logo.png" alt="Vantage" height="24" loading="lazy" decoding="async">
+                </div>
+                <p class="footer-copyright">&copy; 2026 QubeX, Inc. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    <!-- Cal element-click embed code begins -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "30min", {origin:"https://cal.com"});
-      
-      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
-    <!-- Cal element-click embed code ends -->
 </body>
 </html>
