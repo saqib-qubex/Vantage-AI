@@ -398,62 +398,16 @@ function initializeVoiceDemo() {
     const AGENT = 'Mira';
 
     const SCENARIOS = {
-        // Scheduling = real recorded call. Transcript is verbatim from the recording.
-        scheduling: {
-            label: 'Scheduling',
-            agent: AGENT,
-            practice: PRACTICE,
-            audio: 'assets/mira-scheduling.wav',
-            recorded: true,
-            outcome: 'Appointment booked · Thursday, Aug 6 at 4:30 PM',
-            turns: [
-                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville. This is Mira. How can I help you today?" },
-                { who: 'caller', text: "Hi, Mira. I need to make an appointment." },
-                { who: 'agent',  text: "Sure, I can help with that. Are you a new patient, or have you been here before?" },
-                { who: 'caller', text: "I've been there before." },
-                { who: 'agent',  text: "Okay. What's your full name?" },
-                { who: 'caller', text: "Michael Ryan." },
-                { who: 'agent',  text: "And what's your date of birth?" },
-                { who: 'caller', text: "My date of birth is December thirteenth nineteen sixty five." },
-                { who: 'agent',  text: "December 13th, 1965. And what's the reason for the visit?" },
-                { who: 'caller', text: "I'm just coming for checkup and cleaning." },
-                { who: 'agent',  text: "Okay. What day works best for you?" },
-                { who: 'caller', text: "Tell me what's available." },
-                { who: 'agent',  text: "What date or general window should I check?" },
-                { who: 'caller', text: "Yes. First available." },
-                { who: 'agent',  text: "Okay. I just need a day range to check. Like this week, next week, or" },
-                { who: 'caller', text: "Let's see" },
-                { who: 'agent',  text: "first available morning." },
-                { who: 'caller', text: "let's see this week anytime." },
-                { who: 'agent',  text: "Okay. I have 630-965-2880 from your caller ID. Is that the best number to use?" },
-                { who: 'caller', text: "No. No. Let me give you the number." },
-                { who: 'agent',  text: "Okay. What" },
-                { who: 'caller', text: "Six three zero" },
-                { who: 'agent',  text: "number should I use?" },
-                { who: 'caller', text: "nine six five two eight eight nine." },
-                { who: 'agent',  text: "Okay. So that's Michael Ryan, M I C H A E L, R Y A N, and December 13th, 1965, right?" },
-                { who: 'caller', text: "No. No. It's it's my client. M I k r y a n." },
-                { who: 'agent',  text: "Sorry, could you say the full name one more time, letter by letter?" },
-                { who: 'caller', text: "M as in Mary, I, k as in kite, e, Mike. Ryan, r y a n." },
-                { who: 'agent',  text: "Okay. So that's Mike Ryan, and you were born in 1965, right?" },
-                { who: 'caller', text: "Yeah. December thirteenth." },
-                { who: 'agent',  text: "Give me just a second to pull up your" },
-                { who: 'caller', text: "Yeah. Yeah." },
-                { who: 'agent',  text: "file. Let me check for the soonest openings this week. The earliest I have is Thursday, August 6th at 4:30. I also have Saturday, August 8th at 1:30. Which one works best for you?" },
-                { who: 'caller', text: "Sure. I think Thursday is better." },
-                { who: 'agent',  text: "Okay, Thursday, August 6th at 4:30 for a checkup and cleaning. Should I go ahead and book that?" },
-                { who: 'caller', text: "Yes, please." },
-                { who: 'agent',  text: "Perfect. I'll get that booked now. You're all set for Thursday, August 6th at 4:30." },
-                { who: 'caller', text: "Thanks, Mira. Take care." },
-                { who: 'agent',  text: "You're all set. Bye." }
-            ]
-        },
-        // Rescheduling & FAQ are illustrative scripts (browser voice) until real recordings are supplied.
+        // Rescheduling = real recorded call (assets/mira-rescheduling.wav).
+        // NOTE: `turns` and `outcome` below are PLACEHOLDER text and do NOT match the
+        // recording yet. Replace with the verbatim transcript to align 100%.
         rescheduling: {
             label: 'Rescheduling',
             agent: AGENT,
             practice: PRACTICE,
-            outcome: 'Rescheduled · Monday at 3:00 PM',
+            audio: 'assets/mira-rescheduling.wav',
+            recorded: true,
+            outcome: 'Appointment rescheduled',
             turns: [
                 { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville, this is Mira. How can I help?" },
                 { who: 'caller', text: "I need to move my cleaning appointment tomorrow." },
@@ -503,7 +457,7 @@ function initializeVoiceDemo() {
     const outcomeEl = section.querySelector('.callcard-outcome');
     const outcomeText = section.querySelector('.callcard-outcome-text');
 
-    let current = 'scheduling';
+    let current = 'rescheduling';
     let runId = 0;
     let playing = false;
     let soundOn = true; // sound on by default (real audio or browser voice)
