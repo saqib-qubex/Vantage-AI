@@ -394,49 +394,92 @@ function initializeVoiceDemo() {
     const section = document.querySelector('.voicedemo');
     if (!section) return;
 
+    const PRACTICE = 'Advanced Family Dental of Naperville';
+    const AGENT = 'Mira';
+
     const SCENARIOS = {
+        // Scheduling = real recorded call. Transcript is verbatim from the recording.
         scheduling: {
             label: 'Scheduling',
-            outcome: 'Appointment booked · Tue 2:30 PM with Dr. Bose',
+            agent: AGENT,
+            practice: PRACTICE,
+            audio: 'assets/mira-scheduling.wav',
+            recorded: true,
+            outcome: 'Appointment booked · Thursday, Aug 6 at 4:30 PM',
             turns: [
-                { who: 'agent',  text: "Thanks for calling Lonestar Rheumatology, this is Healix. How can I help?" },
-                { who: 'caller', text: "Hi — I'd like to book an appointment with Dr. Bose." },
-                { who: 'agent',  text: "I can help with that. Are you an existing patient?" },
-                { who: 'caller', text: "Yes, Maria Alvarez." },
-                { who: 'agent',  text: "Found you, Maria. Dr. Bose has Tuesday at 2:30 PM or Thursday at 10 AM. Which works better?" },
-                { who: 'caller', text: "Tuesday at 2:30 is perfect." },
-                { who: 'agent',  text: "Booked — Tuesday at 2:30 PM. I'll text you a confirmation. Anything else?" },
-                { who: 'caller', text: "That's all, thank you!" },
-                { who: 'agent',  text: "You're all set. Take care, Maria!" }
+                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville. This is Mira. How can I help you today?" },
+                { who: 'caller', text: "Hi, Nick. I need to make an appointment." },
+                { who: 'agent',  text: "Sure, I can help with that. Are you a new patient, or have you been here before?" },
+                { who: 'caller', text: "I've been there before." },
+                { who: 'agent',  text: "Okay. What's your full name?" },
+                { who: 'caller', text: "Michael Ryan." },
+                { who: 'agent',  text: "And what's your date of birth?" },
+                { who: 'caller', text: "My date of birth is December thirteenth nineteen sixty five." },
+                { who: 'agent',  text: "December 13th, 1965. And what's the reason for the visit?" },
+                { who: 'caller', text: "I'm just coming for checkup and cleaning." },
+                { who: 'agent',  text: "Okay. What day works best for you?" },
+                { who: 'caller', text: "Tell me what's available." },
+                { who: 'agent',  text: "What date or general window should I check?" },
+                { who: 'caller', text: "Yes. First available." },
+                { who: 'agent',  text: "Okay. I just need a day range to check. Like this week, next week, or" },
+                { who: 'caller', text: "Let's see" },
+                { who: 'agent',  text: "first available morning." },
+                { who: 'caller', text: "let's see this week anytime." },
+                { who: 'agent',  text: "Okay. I have 630-965-2880 from your caller ID. Is that the best number to use?" },
+                { who: 'caller', text: "No. No. Let me give you the number." },
+                { who: 'agent',  text: "Okay. What" },
+                { who: 'caller', text: "Six three zero" },
+                { who: 'agent',  text: "number should I use?" },
+                { who: 'caller', text: "nine six five two eight eight nine." },
+                { who: 'agent',  text: "Okay. So that's Michael Ryan, M I C H A E L, R Y A N, and December 13th, 1965, right?" },
+                { who: 'caller', text: "No. No. It's it's my client. M I k r y a n." },
+                { who: 'agent',  text: "Sorry, could you say the full name one more time, letter by letter?" },
+                { who: 'caller', text: "M as in Mary, I, k as in kite, e, Mike. Ryan, r y a n." },
+                { who: 'agent',  text: "Okay. So that's Mike Ryan, and you were born in 1965, right?" },
+                { who: 'caller', text: "Yeah. December thirteenth." },
+                { who: 'agent',  text: "Give me just a second to pull up your" },
+                { who: 'caller', text: "Yeah. Yeah." },
+                { who: 'agent',  text: "file. Let me check for the soonest openings this week. The earliest I have is Thursday, August 6th at 4:30. I also have Saturday, August 8th at 1:30. Which one works best for you?" },
+                { who: 'caller', text: "Sure. I think Thursday is better." },
+                { who: 'agent',  text: "Okay, Thursday, August 6th at 4:30 for a checkup and cleaning. Should I go ahead and book that?" },
+                { who: 'caller', text: "Yes, please." },
+                { who: 'agent',  text: "Perfect. I'll get that booked now. You're all set for Thursday, August 6th at 4:30." },
+                { who: 'caller', text: "Thanks, Mira. Take care." },
+                { who: 'agent',  text: "You're all set. Bye." }
             ]
         },
+        // Rescheduling & FAQ are illustrative scripts (browser voice) until real recordings are supplied.
         rescheduling: {
             label: 'Rescheduling',
-            outcome: 'Rescheduled · Monday 3:00 PM',
+            agent: AGENT,
+            practice: PRACTICE,
+            outcome: 'Rescheduled · Monday at 3:00 PM',
             turns: [
-                { who: 'agent',  text: "Lonestar Rheumatology, this is Healix. How can I help?" },
-                { who: 'caller', text: "I need to move my appointment tomorrow." },
+                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville, this is Mira. How can I help?" },
+                { who: 'caller', text: "I need to move my cleaning appointment tomorrow." },
                 { who: 'agent',  text: "No problem. Can I get your name and date of birth to pull it up?" },
                 { who: 'caller', text: "James Carter, April 12th, 1979." },
                 { who: 'agent',  text: "Thanks, James. I see your visit tomorrow at 9 AM. When would you like to move it to?" },
                 { who: 'caller', text: "Sometime next week, in the afternoon." },
                 { who: 'agent',  text: "I have Monday at 3 PM or Wednesday at 1:30 PM open." },
                 { who: 'caller', text: "Let's do Monday at 3." },
-                { who: 'agent',  text: "Done — moved to Monday at 3 PM. I've texted you the update. Anything else?" },
+                { who: 'agent',  text: "Done — I've moved you to Monday at 3 PM and texted the update. Anything else?" },
                 { who: 'caller', text: "Nope, thanks!" }
             ]
         },
         faq: {
             label: 'Answering FAQs',
+            agent: AGENT,
+            practice: PRACTICE,
             outcome: '3 questions answered · offered to book',
             turns: [
-                { who: 'agent',  text: "Thanks for calling, this is Healix. How can I help?" },
-                { who: 'caller', text: "Do you take Blue Cross insurance?" },
-                { who: 'agent',  text: "Yes, we're in-network with Blue Cross Blue Shield PPO plans. I can verify your specific coverage if you'd like." },
+                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville, this is Mira. How can I help?" },
+                { who: 'caller', text: "Do you take Delta Dental insurance?" },
+                { who: 'agent',  text: "Yes, we're in-network with Delta Dental PPO plans. I can verify your specific coverage if you'd like." },
                 { who: 'caller', text: "Good to know. And where are you located?" },
-                { who: 'agent',  text: "We're at 1200 Medical Parkway, Suite 300, with free parking in the garage next door." },
+                { who: 'agent',  text: "We're at 1516 North Naper Boulevard, Suite 200, with free parking right out front." },
                 { who: 'caller', text: "What are your hours?" },
-                { who: 'agent',  text: "We're open Monday through Friday, 8 AM to 5 PM. Would you like me to book you a visit?" },
+                { who: 'agent',  text: "We're open Monday through Friday, 8 AM to 5 PM, and Saturdays until noon. Would you like me to book you a cleaning?" },
                 { who: 'caller', text: "Maybe later — thanks for the help!" },
                 { who: 'agent',  text: "Of course. Have a great day!" }
             ]
@@ -455,31 +498,41 @@ function initializeVoiceDemo() {
     const muteBtn = section.querySelector('.callcard-mute');
     const muteIcon = muteBtn.querySelector('i');
     const timerEl = section.querySelector('.callcard-timer');
-    const scenarioLabel = section.querySelector('.callcard-scenario-label');
+    const subEl = section.querySelector('.callcard-sub');
+    const noteEl = section.querySelector('.callcard-note');
     const outcomeEl = section.querySelector('.callcard-outcome');
     const outcomeText = section.querySelector('.callcard-outcome-text');
 
     let current = 'scheduling';
     let runId = 0;
     let playing = false;
-    let soundOn = canSpeak; // default on where supported
+    let soundOn = true; // sound on by default (real audio or browser voice)
     let timerHandle = null;
     let seconds = 0;
-
-    if (!canSpeak) {
-        muteBtn.setAttribute('aria-pressed', 'false');
-        muteIcon.className = 'fas fa-volume-xmark';
-        muteBtn.disabled = true;
-        muteBtn.title = 'Voice not supported in this browser';
-    }
+    let audioEl = null; // active HTMLAudioElement for recorded scenarios
 
     function fmt(s) {
+        s = Math.max(0, Math.floor(s));
         const m = Math.floor(s / 60);
         const r = s % 60;
         return m + ':' + (r < 10 ? '0' : '') + r;
     }
 
     function stopSpeech() { if (canSpeak) window.speechSynthesis.cancel(); }
+
+    function stopAudio() {
+        if (audioEl) { try { audioEl.pause(); } catch (e) {} audioEl.src = ''; audioEl = null; }
+    }
+
+    function updateHeader() {
+        const d = SCENARIOS[current];
+        subEl.innerHTML = 'Answered by <b></b> · <span></span>';
+        subEl.querySelector('b').textContent = d.agent;
+        subEl.querySelector('span').textContent = d.practice;
+        noteEl.textContent = d.recorded
+            ? 'Real recorded call · ' + d.practice + '. Tap the speaker to mute.'
+            : 'Illustrative script, spoken by your browser. Tap the speaker to mute.';
+    }
 
     function reset(showPlaceholder) {
         runId++;
@@ -488,15 +541,17 @@ function initializeVoiceDemo() {
         seconds = 0;
         timerEl.textContent = '0:00';
         stopSpeech();
+        stopAudio();
         card.classList.remove('is-playing');
         playIcon.className = 'fas fa-play';
-        playLabel.textContent = 'Play call';
+        playLabel.textContent = SCENARIOS[current].recorded ? 'Play recording' : 'Play call';
         outcomeEl.hidden = true;
         transcript.innerHTML = '';
         if (showPlaceholder) {
             const p = document.createElement('p');
             p.className = 'callcard-placeholder';
-            p.textContent = 'Press play to hear how Healix handles a ' + SCENARIOS[current].label.toLowerCase() + ' call.';
+            p.textContent = (SCENARIOS[current].recorded ? 'Press play to hear a real ' : 'Press play to hear a ')
+                + SCENARIOS[current].label.toLowerCase() + ' call answered by ' + SCENARIOS[current].agent + '.';
             transcript.appendChild(p);
         }
     }
@@ -506,7 +561,7 @@ function initializeVoiceDemo() {
         el.className = 'callcard-turn callcard-turn--' + turn.who;
         const who = document.createElement('span');
         who.className = 'callcard-turn-who';
-        who.textContent = turn.who === 'agent' ? 'Healix' : 'Caller';
+        who.textContent = turn.who === 'agent' ? SCENARIOS[current].agent : 'Caller';
         el.appendChild(who);
         el.appendChild(document.createTextNode(turn.text));
         transcript.appendChild(el);
@@ -527,25 +582,69 @@ function initializeVoiceDemo() {
         clearInterval(timerHandle);
         card.classList.remove('is-playing');
         playIcon.className = 'fas fa-rotate-right';
-        playLabel.textContent = 'Replay call';
+        playLabel.textContent = SCENARIOS[current].recorded ? 'Replay recording' : 'Replay call';
         outcomeText.textContent = SCENARIOS[current].outcome;
         outcomeEl.hidden = false;
     }
 
-    function play() {
-        const data = SCENARIOS[current];
-        reset(false);
-        const myRun = runId;
-        playing = true;
-        card.classList.add('is-playing');
-        playIcon.className = 'fas fa-pause';
-        playLabel.textContent = 'Playing…';
+    // Recorded scenario: play the real audio and reveal transcript turns in sync.
+    // Per-turn timing is estimated from cumulative text length against the audio's
+    // duration (no per-line timestamps available), so it tracks closely but not to
+    // the exact word.
+    function playRecorded(data, myRun) {
+        // Weight each turn by its length plus a fixed per-turn overhead (pauses).
+        const weights = data.turns.map(t => t.text.length + 14);
+        const total = weights.reduce((a, w) => a + w, 0) || 1;
+        const startFrac = [];
+        let acc = 0;
+        for (let k = 0; k < weights.length; k++) { startFrac.push(acc / total); acc += weights[k]; }
+
+        let revealed = 0;
+        audioEl = new Audio(data.audio);
+        audioEl.preload = 'metadata';
+        audioEl.muted = !soundOn;
+
+        audioEl.addEventListener('timeupdate', function () {
+            if (myRun !== runId) return;
+            const dur = audioEl.duration || 0;
+            timerEl.textContent = fmt(audioEl.currentTime);
+            if (!dur) return;
+            while (revealed < data.turns.length && audioEl.currentTime >= startFrac[revealed] * dur) {
+                addTurn(data.turns[revealed++]);
+            }
+        });
+        audioEl.addEventListener('ended', function () {
+            if (myRun !== runId) return;
+            while (revealed < data.turns.length) addTurn(data.turns[revealed++]);
+            finish(myRun);
+        });
+        audioEl.addEventListener('error', function () {
+            if (myRun !== runId) return;
+            // If the audio can't load/play, fall back to showing the full transcript.
+            while (revealed < data.turns.length) addTurn(data.turns[revealed++]);
+            finish(myRun);
+        });
+
+        if (reduce) data.turns.forEach(function (t) { addTurn(t); revealed++; });
+
+        const p = audioEl.play();
+        if (p && p.catch) {
+            p.catch(function () {
+                if (myRun !== runId) return;
+                // Autoplay blocked: reveal the transcript so the call still "plays" visually.
+                while (revealed < data.turns.length) addTurn(data.turns[revealed++]);
+                finish(myRun);
+            });
+        }
+    }
+
+    // Scripted scenario: browser voice + timed reveal.
+    function playScripted(data, myRun) {
         timerHandle = setInterval(function () {
             if (myRun !== runId) return;
             seconds++; timerEl.textContent = fmt(seconds);
         }, 1000);
 
-        // Reduced motion: render everything at once.
         if (reduce) {
             data.turns.forEach(addTurn);
             if (soundOn) data.turns.filter(t => t.who === 'agent').forEach(t => speak(t.text));
@@ -559,7 +658,6 @@ function initializeVoiceDemo() {
             if (i >= data.turns.length) { finish(myRun); return; }
             const turn = data.turns[i++];
             const gap = Math.min(2600, 700 + turn.text.length * 32);
-
             if (turn.who === 'agent') {
                 const typing = document.createElement('div');
                 typing.className = 'callcard-typing';
@@ -570,21 +668,13 @@ function initializeVoiceDemo() {
                     if (myRun !== runId) return;
                     typing.remove();
                     addTurn(turn);
-                    // Advance exactly once — via speech end when speaking, otherwise a
-                    // reading-time gap. A fallback timer guards against TTS that never
-                    // fires onend (flaky/absent voices), so playback never stalls.
                     let advanced = false;
                     const advance = function () {
                         if (advanced || myRun !== runId) return;
-                        advanced = true;
-                        next();
+                        advanced = true; next();
                     };
-                    if (soundOn && canSpeak) {
-                        speak(turn.text, advance);
-                        setTimeout(advance, gap + 3500);
-                    } else {
-                        setTimeout(advance, gap);
-                    }
+                    if (soundOn && canSpeak) { speak(turn.text, advance); setTimeout(advance, gap + 3500); }
+                    else { setTimeout(advance, gap); }
                 }, 650);
             } else {
                 setTimeout(function () {
@@ -597,16 +687,28 @@ function initializeVoiceDemo() {
         next();
     }
 
+    function play() {
+        const data = SCENARIOS[current];
+        reset(false);
+        const myRun = runId;
+        playing = true;
+        card.classList.add('is-playing');
+        playIcon.className = 'fas fa-pause';
+        playLabel.textContent = 'Playing…';
+        if (data.audio) playRecorded(data, myRun);
+        else playScripted(data, myRun);
+    }
+
     playBtn.addEventListener('click', function () {
         if (playing) { reset(true); return; }
         play();
     });
 
     muteBtn.addEventListener('click', function () {
-        if (!canSpeak) return;
         soundOn = !soundOn;
         muteBtn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
         muteIcon.className = soundOn ? 'fas fa-volume-high' : 'fas fa-volume-xmark';
+        if (audioEl) audioEl.muted = !soundOn;
         if (!soundOn) stopSpeech();
     });
 
@@ -620,16 +722,17 @@ function initializeVoiceDemo() {
                 t.classList.toggle('active', on);
                 t.setAttribute('aria-selected', on ? 'true' : 'false');
             });
-            scenarioLabel.textContent = SCENARIOS[current].label;
+            updateHeader();
             reset(true);
         });
     });
 
-    // Stop audio if the user scrolls away or leaves the page.
+    // Stop audio if the user leaves the tab.
     document.addEventListener('visibilitychange', function () {
         if (document.hidden && playing) reset(true);
     });
 
+    updateHeader();
     reset(true);
 }
 
