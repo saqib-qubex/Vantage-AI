@@ -761,6 +761,69 @@
             </div>
         </section>
 
+        <!-- Voice Agent Demo -->
+        <section class="voicedemo reveal" id="hear-healix">
+            <div class="container">
+                <p class="section-eyebrow">Hear Healix in action</p>
+                <h2 class="section-title outcomes-title">Listen to real calls, answered by AI</h2>
+
+                <div class="voicedemo-shell">
+                    <div class="voicedemo-tabs" role="tablist" aria-label="Call scenarios">
+                        <button class="voicedemo-tab active" data-scenario="scheduling" role="tab" aria-selected="true">
+                            <i class="fas fa-calendar-plus" aria-hidden="true"></i> Scheduling
+                        </button>
+                        <button class="voicedemo-tab" data-scenario="rescheduling" role="tab" aria-selected="false">
+                            <i class="fas fa-calendar-day" aria-hidden="true"></i> Rescheduling
+                        </button>
+                        <button class="voicedemo-tab" data-scenario="faq" role="tab" aria-selected="false">
+                            <i class="fas fa-circle-question" aria-hidden="true"></i> Answering FAQs
+                        </button>
+                    </div>
+
+                    <div class="callcard">
+                        <div class="callcard-header">
+                            <div class="callcard-caller">
+                                <div class="callcard-avatar callcard-avatar--ai"><i class="fas fa-headset" aria-hidden="true"></i></div>
+                                <div>
+                                    <strong class="callcard-name">Incoming patient call</strong>
+                                    <span class="callcard-sub">Answered by <b>Healix</b> · <span class="callcard-scenario-label">Scheduling</span></span>
+                                </div>
+                            </div>
+                            <div class="callcard-live">
+                                <span class="callcard-dot"></span>
+                                <span class="callcard-timer">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="callcard-transcript" aria-live="polite"></div>
+
+                        <div class="callcard-controls">
+                            <button class="callcard-play" type="button">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                                <span class="callcard-play-label">Play call</span>
+                            </button>
+                            <div class="callcard-wave" aria-hidden="true">
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <button class="callcard-mute" type="button" aria-pressed="true" aria-label="Toggle voice">
+                                <i class="fas fa-volume-high" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        <div class="callcard-outcome" hidden>
+                            <i class="fas fa-circle-check" aria-hidden="true"></i>
+                            <span class="callcard-outcome-text"></span>
+                        </div>
+
+                        <p class="callcard-note">Simulated call for illustration. Healix speaks aloud in your browser when you press play — tap the speaker to mute.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Customer Logos -->
         <!-- <section id="customers" class="customer-logos">
             <div class="container">
