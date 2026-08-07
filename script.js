@@ -408,7 +408,7 @@ function initializeVoiceDemo() {
             outcome: 'Appointment booked · Thursday, Aug 6 at 4:30 PM',
             turns: [
                 { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville. This is Mira. How can I help you today?" },
-                { who: 'caller', text: "Hi, Nick. I need to make an appointment." },
+                { who: 'caller', text: "Hi, Mira. I need to make an appointment." },
                 { who: 'agent',  text: "Sure, I can help with that. Are you a new patient, or have you been here before?" },
                 { who: 'caller', text: "I've been there before." },
                 { who: 'agent',  text: "Okay. What's your full name?" },
