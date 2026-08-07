@@ -440,21 +440,38 @@ function initializeVoiceDemo() {
                 { who: 'agent',  text: "You're all set. Bye." }
             ]
         },
+        // FAQ = real recorded call. Transcript is verbatim from the recording.
         faq: {
             label: 'Answering FAQs',
             agent: AGENT,
             practice: PRACTICE,
-            outcome: '3 questions answered · offered to book',
+            audio: 'assets/mira-faq.wav',
+            recorded: true,
+            outcome: 'Insurance, hours, provider & treatment questions answered · caller will call back',
             turns: [
-                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville, this is Mira. How can I help?" },
-                { who: 'caller', text: "Do you take Delta Dental insurance?" },
-                { who: 'agent',  text: "Yes, we're in-network with Delta Dental PPO plans. I can verify your specific coverage if you'd like." },
-                { who: 'caller', text: "Good to know. And where are you located?" },
-                { who: 'agent',  text: "We're at 1516 North Naper Boulevard, Suite 200, with free parking right out front." },
-                { who: 'caller', text: "What are your hours?" },
-                { who: 'agent',  text: "We're open Monday through Friday, 8 AM to 5 PM, and Saturdays until noon. Would you like me to book you a cleaning?" },
-                { who: 'caller', text: "Maybe later — thanks for the help!" },
-                { who: 'agent',  text: "Of course. Have a great day!" }
+                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville. This is Mira. How can I help you today?" },
+                { who: 'caller', text: "Amy, I need to check what kind of insurance you guys take" },
+                { who: 'agent',  text: "We take most traditional plans. We don't do HMOs, but we can usually file claims for out-of-network plans. What insurance do you have?" },
+                { who: 'caller', text: "Well, I have a PPO, so that's a good thing. I have couple of more questions before I make the appointment. Who are the dentists there?" },
+                { who: 'agent',  text: "We only have one dentist here, Dr. Nasima Thobani. She's the main provider. What else did you want to know?" },
+                { who: 'caller', text: "What are the office hours during the week and where you guys are located?" },
+                { who: 'agent',  text: "We're at 609 South Route 59 in Aurora, right by Naperville. Weekdays are Monday nine to six, Tuesday nine to seven, Wednesday closed, Thursday nine to six, and Friday nine to four. Saturdays are eight to two." },
+                { who: 'caller', text: "I see. And what else I have? How long he and Doctor. Tabani has been practicing here?" },
+                { who: 'agent',  text: "She's been practicing since the nineteen nineties, and she bought the practice after working in Chicago. Want me to get you set up for a first visit?" },
+                { who: 'caller', text: "One more questions I have. Does she does in the office Invisalign and braces." },
+                { who: 'agent',  text: "She does Invisalign here. For traditional braces, that usually gets referred out. Want me to get a first visit set up?" },
+                { who: 'caller', text: "One last question before. Do you guys kinda see kids Does doctor Mussavani sees kids and elderly patients like people in Medicaid," },
+                { who: 'agent',  text: "She sees kids, adults, and older patients. The part to watch out for is Medicaid — we don't take those plans here. Want me to go ahead and get" },
+                { who: 'caller', text: "And does she does, like," },
+                { who: 'agent',  text: "you set up for a first visit?" },
+                { who: 'caller', text: "a ventures and brace crowns and other those kind of treatments?" },
+                { who: 'agent',  text: "Yeah, she does a lot of general work, including crowns, dentures, Invisalign, and braces. If something needs a specialist, they'll let you know upfront. Want me to go ahead and set up that" },
+                { who: 'caller', text: "No." },
+                { who: 'agent',  text: "first visit?" },
+                { who: 'caller', text: "Let me think about it and call you back. But really appreciate your time and giving me all the addressing my questions. You so much." },
+                { who: 'agent',  text: "No problem. Glad I could" },
+                { who: 'caller', text: "Take care." },
+                { who: 'agent',  text: "help. Have a good night." }
             ]
         }
     };
