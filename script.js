@@ -398,27 +398,46 @@ function initializeVoiceDemo() {
     const AGENT = 'Mira';
 
     const SCENARIOS = {
-        // Rescheduling = real recorded call (assets/mira-rescheduling.wav).
-        // NOTE: `turns` and `outcome` below are PLACEHOLDER text and do NOT match the
-        // recording yet. Replace with the verbatim transcript to align 100%.
+        // Rescheduling = real recorded call. Transcript is verbatim from the recording.
         rescheduling: {
             label: 'Rescheduling',
             agent: AGENT,
             practice: PRACTICE,
             audio: 'assets/mira-rescheduling.wav',
             recorded: true,
-            outcome: 'Appointment rescheduled',
+            outcome: 'Rescheduled · Tuesday, Aug 11 at 6:30 (old Thursday slot cancelled)',
             turns: [
-                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville, this is Mira. How can I help?" },
-                { who: 'caller', text: "I need to move my cleaning appointment tomorrow." },
-                { who: 'agent',  text: "No problem. Can I get your name and date of birth to pull it up?" },
-                { who: 'caller', text: "James Carter, April 12th, 1979." },
-                { who: 'agent',  text: "Thanks, James. I see your visit tomorrow at 9 AM. When would you like to move it to?" },
-                { who: 'caller', text: "Sometime next week, in the afternoon." },
-                { who: 'agent',  text: "I have Monday at 3 PM or Wednesday at 1:30 PM open." },
-                { who: 'caller', text: "Let's do Monday at 3." },
-                { who: 'agent',  text: "Done — I've moved you to Monday at 3 PM and texted the update. Anything else?" },
-                { who: 'caller', text: "Nope, thanks!" }
+                { who: 'agent',  text: "Thanks for calling Advanced Family Dental of Naperville. This is Mira. How can I help you today?" },
+                { who: 'caller', text: "I'm here. I need to reschedule my appointment." },
+                { who: 'agent',  text: "Sure, let's get that moved. What's your first and last name?" },
+                { who: 'caller', text: "Mike Ryan." },
+                { who: 'agent',  text: "So that's Mike, M-I-K-E, Ryan, R-Y-A-N, right?" },
+                { who: 'caller', text: "Yep." },
+                { who: 'agent',  text: "Okay. What's your date of birth?" },
+                { who: 'caller', text: "December thirteenth nineteen sixty five." },
+                { who: 'agent',  text: "I see your checkup and cleaning on Thursday, August 6th at" },
+                { who: 'caller', text: "Yeah. That's him. Yeah, that's the one I need to" },
+                { who: 'agent',  text: "4:30. Is that the one you want to move?" },
+                { who: 'caller', text: "move." },
+                { who: 'agent',  text: "Okay. What day works better for you?" },
+                { who: 'caller', text: "What's available? Next available?" },
+                { who: 'agent',  text: "Let me check. Do you want the first opening, or should I just keep it to" },
+                { who: 'caller', text: "Let me" },
+                { who: 'agent',  text: "mornings or afternoons?" },
+                { who: 'caller', text: "give you a date. Think I asked you before to find the first available and that didn't work. Do you have anything on on Tuesday. The eleventh of August." },
+                { who: 'agent',  text: "Give me just a second to check Tuesday." },
+                { who: 'caller', text: "Sure. Yeah. That works. Yeah. That" },
+                { who: 'agent',  text: "I see an opening at 6:30. Does that work for you?" },
+                { who: 'caller', text: "works. You move me?" },
+                { who: 'agent',  text: "So that's Tuesday, August 11th at 6:30 for your checkup and cleaning. Should I go" },
+                { who: 'caller', text: "Awesome." },
+                { who: 'agent',  text: "ahead and book it?" },
+                { who: 'caller', text: "Please. Yeah. Go ahead." },
+                { who: 'agent',  text: "Perfect, I'll get that set" },
+                { who: 'caller', text: "Thank you." },
+                { who: 'agent',  text: "up. And I'll cancel the old Thursday spot right now. You're all set." },
+                { who: 'caller', text: "Hey. Thanks, Neil." },
+                { who: 'agent',  text: "You're all set. Bye." }
             ]
         },
         faq: {
