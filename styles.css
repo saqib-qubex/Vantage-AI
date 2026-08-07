@@ -517,11 +517,11 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-size: clamp(3rem, 5vw, 4.5rem);
     font-weight: 800;
-    line-height: 0.98;
+    line-height: 1.0;
     margin-bottom: var(--space-md);
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
 }
 
 .hero-subtitle {
@@ -578,9 +578,9 @@ body {
 }
 
 .hero-premium {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .hero-shell {
