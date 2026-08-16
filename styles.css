@@ -2951,3 +2951,12 @@ input:focus-visible {
 @media (prefers-reduced-motion: reduce) {
     .lead-overlay, .lead-modal, .lead-progress-fill { transition: none; }
 }
+
+.lead-legal {
+    margin-top: var(--space-md);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-tertiary);
+    text-align: center;
+    line-height: 1.5;
+}
+.lead-legal a { color: var(--color-text-secondary); text-decoration: underline; }

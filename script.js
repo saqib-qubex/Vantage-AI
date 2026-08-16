@@ -862,6 +862,7 @@ function initializeLeadForm() {
                 <button class="lead-close" type="button" aria-label="Close">&times;</button>
             </div>
             <div class="lead-body"></div>
+            <p class="lead-legal">By submitting, you agree to our <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>. We’ll only use your details to contact you about VantageAI.</p>
             <input class="lead-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" name="company" placeholder="Company">
         </div>`;
     document.body.appendChild(overlay);
