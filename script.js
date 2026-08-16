@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeAutoMotion();
     initializeVoiceDemo();
+    initializeLeadForm();
 });
 
 /**
@@ -819,3 +820,221 @@ window.VantageAI = {
     debounce,
     throttle
 };
+
+/**
+ * Custom multi-step lead form ("Contact Us" / "Get Started").
+ * Replaces the Typeform popup. One question at a time, keyboard-friendly,
+ * posts to the CRM lead endpoint. Honors prefers-reduced-motion.
+ */
+function initializeLeadForm() {
+    const triggers = document.querySelectorAll('[data-open-lead]');
+    if (!triggers.length) return;
+
+    const ENDPOINT = 'https://app.getvantage.tech/api/leads';
+
+    const QUESTIONS = [
+        { key: 'practiceName', type: 'text', eyebrow: "Let's get you set up", q: 'What’s your practice name?', placeholder: 'e.g. Advanced Family Dental', required: true },
+        { key: 'contactName', type: 'text', q: 'And your name?', placeholder: 'First and last name', required: true },
+        { key: 'workEmail', type: 'email', q: 'What’s your work email?', hint: 'We’ll reach out here — no spam, ever.', placeholder: 'you@practice.com', required: true },
+        { key: 'practiceWebsite', type: 'url', q: 'Your practice website?', hint: 'Optional — helps us tailor the demo.', placeholder: 'https://', required: false },
+        { key: 'practiceType', type: 'choice', q: 'What type of practice?', options: ['Dental', 'Primary care', 'Specialty clinic', 'Multi-specialty', 'Other'] },
+        { key: 'providerCount', type: 'choice', q: 'How many providers?', options: ['1', '2-5', '6-10', '11+'] },
+        { key: 'automationFocus', type: 'choice', q: 'Where would automation help most right now?', options: ['Answering calls', 'Scheduling & reminders', 'Follow-ups & reactivation', 'All of the above'] }
+    ];
+
+    const total = QUESTIONS.length;
+    const answers = {};
+    let step = 0;
+    let source = '';
+    let lastFocus = null;
+
+    // Build the overlay once.
+    const overlay = document.createElement('div');
+    overlay.className = 'lead-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Get started with VantageAI');
+    overlay.innerHTML = `
+        <div class="lead-modal">
+            <div class="lead-progress"><div class="lead-progress-fill"></div></div>
+            <div class="lead-topbar">
+                <span class="lead-step-count"></span>
+                <button class="lead-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <div class="lead-body"></div>
+            <input class="lead-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" name="company" placeholder="Company">
+        </div>`;
+    document.body.appendChild(overlay);
+
+    const modal = overlay.querySelector('.lead-modal');
+    const body = overlay.querySelector('.lead-body');
+    const fill = overlay.querySelector('.lead-progress-fill');
+    const countEl = overlay.querySelector('.lead-step-count');
+    const closeBtn = overlay.querySelector('.lead-close');
+    const honeypot = overlay.querySelector('.lead-hp');
+
+    const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+    function open(src) {
+        source = src || 'Website';
+        step = 0;
+        Object.keys(answers).forEach((k) => delete answers[k]);
+        honeypot.value = '';
+        lastFocus = document.activeElement;
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        render();
+    }
+
+    function close() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function setProgress() {
+        fill.style.width = (step / total) * 100 + '%';
+        countEl.textContent = 'Question ' + (step + 1) + ' of ' + total;
+    }
+
+    function render() {
+        setProgress();
+        const item = QUESTIONS[step];
+        const isLast = step === total - 1;
+        let inner = '';
+        if (item.eyebrow) inner += `<p class="lead-eyebrow">${esc(item.eyebrow)}</p>`;
+        inner += `<h3 class="lead-question">${item.q}</h3>`;
+        if (item.hint) inner += `<p class="lead-hint">${esc(item.hint)}</p>`;
+
+        if (item.type === 'choice') {
+            inner += '<div class="lead-choices">';
+            item.options.forEach((opt, i) => {
+                const sel = answers[item.key] === opt ? ' selected' : '';
+                inner += `<button class="lead-choice${sel}" type="button" data-opt="${esc(opt)}">
+                    <span class="lead-choice-key">${i + 1}</span><span>${esc(opt)}</span></button>`;
+            });
+            inner += '</div>';
+        } else {
+            const val = answers[item.key] ? ' value="' + esc(answers[item.key]) + '"' : '';
+            const it = item.type === 'email' ? 'email' : (item.type === 'url' ? 'url' : 'text');
+            inner += `<input class="lead-input" type="${it}" inputmode="${item.type === 'email' ? 'email' : 'text'}" placeholder="${esc(item.placeholder || '')}"${val} autocomplete="off">`;
+        }
+        inner += '<p class="lead-error-msg"></p>';
+        inner += `<div class="lead-nav">
+            <button class="lead-back" type="button"${step === 0 ? ' hidden' : ''}>&larr; Back</button>
+            <button class="lead-next btn-primary btn-lg" type="button">${isLast ? 'Submit' : 'Continue'}</button>
+        </div>`;
+        body.innerHTML = inner;
+
+        const input = body.querySelector('.lead-input');
+        const nextBtn = body.querySelector('.lead-next');
+        const backBtn = body.querySelector('.lead-back');
+        const errEl = body.querySelector('.lead-error-msg');
+
+        if (input) {
+            setTimeout(() => input.focus(), 50);
+            input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); next(); } });
+        }
+        body.querySelectorAll('.lead-choice').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                answers[item.key] = btn.getAttribute('data-opt');
+                body.querySelectorAll('.lead-choice').forEach((b) => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                errEl.textContent = '';
+                setTimeout(next, 220);
+            });
+        });
+        nextBtn.addEventListener('click', next);
+        if (backBtn) backBtn.addEventListener('click', () => { if (step > 0) { step--; render(); } });
+    }
+
+    function validate() {
+        const item = QUESTIONS[step];
+        const errEl = body.querySelector('.lead-error-msg');
+        if (item.type === 'choice') {
+            if (!answers[item.key]) { if (errEl) errEl.textContent = 'Please pick an option.'; return false; }
+            return true;
+        }
+        const input = body.querySelector('.lead-input');
+        const v = (input.value || '').trim();
+        answers[item.key] = v;
+        if (item.required && !v) { errEl.textContent = 'This field is required.'; input.focus(); return false; }
+        if (item.type === 'email' && v && !emailOk(v)) { errEl.textContent = 'Please enter a valid email.'; input.focus(); return false; }
+        if (errEl) errEl.textContent = '';
+        return true;
+    }
+
+    function next() {
+        if (!validate()) return;
+        if (step < total - 1) { step++; render(); }
+        else submit();
+    }
+
+    function showState(kind, title, msg, retry) {
+        fill.style.width = '100%';
+        countEl.textContent = '';
+        const icon = kind === 'ok' ? '✓' : '!';
+        body.innerHTML = `<div class="lead-state">
+            <div class="lead-state-icon ${kind}">${icon}</div>
+            <h3>${esc(title)}</h3>
+            <p>${msg}</p>
+            <div class="lead-nav" style="justify-content:center;margin-top:1.5rem;">
+                ${retry ? '<button class="lead-next btn-primary btn-lg" type="button" style="margin:0;">Try again</button>'
+                        : '<button class="lead-close-cta btn-primary btn-lg" type="button" style="margin:0;">Done</button>'}
+            </div></div>`;
+        const retryBtn = body.querySelector('.lead-next');
+        if (retryBtn) retryBtn.addEventListener('click', () => { step = total - 1; render(); });
+        const doneBtn = body.querySelector('.lead-close-cta');
+        if (doneBtn) doneBtn.addEventListener('click', close);
+    }
+
+    async function submit() {
+        const nextBtn = body.querySelector('.lead-next');
+        if (nextBtn) { nextBtn.disabled = true; nextBtn.textContent = 'Sending…'; }
+        const payload = {
+            practiceName: answers.practiceName || '',
+            contactName: answers.contactName || '',
+            workEmail: answers.workEmail || '',
+            practiceWebsite: answers.practiceWebsite || '',
+            practiceType: answers.practiceType,
+            providerCount: answers.providerCount,
+            automationFocus: answers.automationFocus,
+            source: source,
+            company: honeypot.value || ''
+        };
+        try {
+            const res = await fetch(ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (!res.ok) throw new Error('bad status ' + res.status);
+            showState('ok', 'You’re all set!', 'Thanks, ' + esc((answers.contactName || '').split(' ')[0] || 'there') + '. Our team will reach out at <strong>' + esc(answers.workEmail) + '</strong> shortly.', false);
+        } catch (err) {
+            showState('err', 'Something went wrong', 'We couldn’t submit your details. Please try again, or email <a href="mailto:support@getvantage.tech">support@getvantage.tech</a>.', true);
+        }
+    }
+
+    // Wire triggers.
+    triggers.forEach((t) => {
+        t.addEventListener('click', (e) => {
+            e.preventDefault();
+            const label = (t.textContent || '').trim();
+            const page = (location.pathname.split('/').pop() || 'index.html');
+            open(label + ' · ' + page);
+        });
+    });
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('mousedown', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+        if (overlay.classList.contains('open') && /^[1-9]$/.test(e.key)) {
+            const choices = body.querySelectorAll('.lead-choice');
+            const idx = parseInt(e.key, 10) - 1;
+            if (choices[idx]) choices[idx].click();
+        }
+    });
+}

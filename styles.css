@@ -2729,3 +2729,225 @@ input:focus-visible {
     .callcard.is-playing .callcard-wave span { animation: none; }
     .callcard.is-playing .callcard-dot { animation: none; }
 }
+
+/* ============================================
+   LEAD FORM MODAL (custom multi-step, replaces Typeform)
+   ============================================ */
+.lead-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+    background: rgba(15, 23, 18, 0.55);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lead-overlay.open { opacity: 1; visibility: visible; }
+
+.lead-modal {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    transform: translateY(14px) scale(0.985);
+    transition: transform 0.3s ease;
+    max-height: calc(100vh - 2 * var(--space-md));
+    overflow-y: auto;
+}
+
+.lead-overlay.open .lead-modal { transform: none; }
+
+.lead-progress {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-surface);
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+}
+
+.lead-progress-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transition: width 0.35s ease;
+}
+
+.lead-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+}
+
+.lead-step-count {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+}
+
+.lead-close {
+    border: none;
+    background: var(--color-surface);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.lead-close:hover { background: var(--color-border); color: var(--color-text-primary); }
+
+.lead-body { min-height: 232px; }
+
+.lead-eyebrow {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    margin-bottom: 0.5rem;
+}
+
+.lead-question {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+}
+
+.lead-hint {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.lead-input {
+    width: 100%;
+    padding: 0.95rem 1.1rem;
+    font-size: var(--font-size-lg);
+    font-family: var(--font-family);
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.lead-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+    background: #ffffff;
+}
+
+.lead-choices { display: grid; gap: 0.6rem; }
+
+.lead-choice {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.1rem;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    font-family: var(--font-family);
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.lead-choice:hover { border-color: var(--color-accent); background: #ffffff; transform: translateY(-1px); }
+.lead-choice.selected { border-color: var(--color-primary); background: rgba(21, 128, 61, 0.08); }
+
+.lead-choice-key {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--color-text-secondary);
+}
+
+.lead-choice.selected .lead-choice-key { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+
+.lead-error-msg {
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+    margin-top: 0.5rem;
+    min-height: 1.2em;
+}
+
+.lead-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+}
+
+.lead-back {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    padding: 0.5rem;
+}
+
+.lead-back:hover { color: var(--color-text-primary); }
+.lead-back[hidden] { visibility: hidden; display: inline-block; }
+
+.lead-next { margin-left: auto; }
+.lead-next[disabled] { opacity: 0.6; cursor: default; }
+
+.lead-state { text-align: center; padding: var(--space-xl) 0; }
+
+.lead-state-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.lead-state-icon.ok { background: rgba(21, 128, 61, 0.12); color: var(--color-accent); }
+.lead-state-icon.err { background: rgba(239, 68, 68, 0.12); color: var(--color-error); }
+.lead-state h3 { font-size: var(--font-size-2xl); font-weight: 800; margin-bottom: 0.5rem; }
+.lead-state p { color: var(--color-text-secondary); }
+
+.lead-hp { position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .lead-overlay, .lead-modal, .lead-progress-fill { transition: none; }
+}
