@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="blog-page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../../styles.css" rel="stylesheet">
+    <link href="../../blog.css" rel="stylesheet">
+
+    <!-- Inline failsafe: dark theme even if external CSS fails -->
+    <style>
+        html.blog-page, body.blog-page { background: #0B3D2E !important; color: #F3EEE4 !important; }
+        html.blog-page .navbar, body.blog-page .navbar { background: rgba(11,61,46,0.95) !important; border-bottom-color: rgba(243,238,228,0.1) !important; }
+        html.blog-page .nav-link, body.blog-page .nav-link { color: rgba(243,238,228,0.7) !important; }
+        html.blog-page .dropdown-content, body.blog-page .dropdown-content { background: #0a3528 !important; border-color: rgba(243,238,228,0.12) !important; }
+        html.blog-page .dropdown-item, body.blog-page .dropdown-item { color: #F3EEE4 !important; }
+        html.blog-page .dropdown-item span, html.blog-page .dropdown-item i, body.blog-page .dropdown-item span, body.blog-page .dropdown-item i { color: rgba(243,238,228,0.6) !important; }
+        html.blog-page .mobile-menu, body.blog-page .mobile-menu { background: #0B3D2E !important; }
+        html.blog-page .mobile-menu-section h3, body.blog-page .mobile-menu-section h3 { color: rgba(243,238,228,0.6) !important; }
+        html.blog-page .mobile-menu-section a, body.blog-page .mobile-menu-section a { color: #F3EEE4 !important; }
+        html.blog-page .mobile-menu-toggle span, body.blog-page .mobile-menu-toggle span { background: #F3EEE4 !important; }
+        html.blog-page .footer, body.blog-page .footer { background: #0a3528 !important; border-top: 1px solid rgba(243,238,228,0.1) !important; }
+        html.blog-page .footer-column h4, body.blog-page .footer-column h4 { color: #F3EEE4 !important; }
+        html.blog-page .footer-column a, html.blog-page .footer-text, body.blog-page .footer-column a, body.blog-page .footer-text { color: rgba(243,238,228,0.6) !important; }
+        html.blog-page .footer-copyright, body.blog-page .footer-copyright { color: rgba(243,238,228,0.5) !important; }
+        html.blog-page .cta-section, body.blog-page .cta-section { background: #0a3528 !important; border-top: 1px solid rgba(243,238,228,0.1) !important; }
+        html.blog-page .cta-content h2, body.blog-page .cta-content h2 { color: #F3EEE4 !important; }
+        html.blog-page .cta-content p, html.blog-page .cta-note, body.blog-page .cta-content p, body.blog-page .cta-note { color: rgba(243,238,228,0.7) !important; }
+        .blog-post-header { padding: calc(80px + 3rem) 0 2rem; text-align: center; }
+        .blog-back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: rgba(243,238,228,0.6) !important; text-decoration: none !important; margin-bottom: 2rem; }
+        .blog-back-link:hover { color: #86EFAC !important; }
+        .blog-post-date { display: block; font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #86EFAC; margin-bottom: 1rem; }
+        .blog-post-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.03em; color: #F3EEE4; line-height: 1.1; margin: 0 0 1.25rem 0; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .blog-post-dek { font-size: 1.25rem; color: rgba(243,238,228,0.7); max-width: 600px; margin: 0 auto; line-height: 1.5; }
+        .blog-post-body { padding-bottom: 4rem; }
+        .blog-post-container { max-width: 38rem; margin: 0 auto; padding: 0 1.5rem; }
+        .blog-post-body p { font-size: 1.125rem; line-height: 1.7; color: #F3EEE4; margin-bottom: 1.5em; }
+        .blog-post-body h2 { font-size: 1.5rem; font-weight: 700; color: #86EFAC; margin-top: 3rem; margin-bottom: 1rem; letter-spacing: -0.02em; line-height: 1.2; }
+        .blog-post-body a { color: #86EFAC; text-decoration: underline; text-underline-offset: 3px; }
+        .blog-post-body a:hover { color: #F3EEE4; }
+        .blog-video-container { margin: 2.5rem 0; }
+        .blog-video-container video { width: 100%; display: block; border-radius: 12px; background: #000; aspect-ratio: 16/9; object-fit: contain; }
+        .blog-post-body .caption, .blog-video-container .caption { font-size: 0.9375rem; color: rgba(243,238,228,0.6); text-align: center; margin-top: 1rem; margin-bottom: 0; font-weight: 500; }
+        @media (max-width: 768px) { .blog-post-title { font-size: 1.75rem; } .blog-post-body p { font-size: 1rem; } .blog-post-body h2 { font-size: 1.25rem; } .blog-post-container { padding: 0 1rem; } }
+    </style>
 
     <!-- Website analytics -->
     <script async src="https://aromatic-caribou-889.convex.site/api/a/am_TPQ543Vzb4GcnVtM"></script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="blog-page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../styles.css" rel="stylesheet">
+    <link href="../blog.css" rel="stylesheet">
+
+    <!-- Inline failsafe: dark theme even if external CSS fails -->
+    <style>
+        html.blog-page, body.blog-page { background: #0B3D2E !important; color: #F3EEE4 !important; }
+        html.blog-page .navbar, body.blog-page .navbar { background: rgba(11,61,46,0.95) !important; border-bottom-color: rgba(243,238,228,0.1) !important; }
+        html.blog-page .nav-link, body.blog-page .nav-link { color: rgba(243,238,228,0.7) !important; }
+        html.blog-page .dropdown-content, body.blog-page .dropdown-content { background: #0a3528 !important; border-color: rgba(243,238,228,0.12) !important; }
+        html.blog-page .dropdown-item, body.blog-page .dropdown-item { color: #F3EEE4 !important; }
+        html.blog-page .dropdown-item span, html.blog-page .dropdown-item i, body.blog-page .dropdown-item span, body.blog-page .dropdown-item i { color: rgba(243,238,228,0.6) !important; }
+        html.blog-page .mobile-menu, body.blog-page .mobile-menu { background: #0B3D2E !important; }
+        html.blog-page .mobile-menu-section h3, body.blog-page .mobile-menu-section h3 { color: rgba(243,238,228,0.6) !important; }
+        html.blog-page .mobile-menu-section a, body.blog-page .mobile-menu-section a { color: #F3EEE4 !important; }
+        html.blog-page .mobile-menu-toggle span, body.blog-page .mobile-menu-toggle span { background: #F3EEE4 !important; }
+        html.blog-page .footer, body.blog-page .footer { background: #0a3528 !important; border-top: 1px solid rgba(243,238,228,0.1) !important; }
+        html.blog-page .footer-column h4, body.blog-page .footer-column h4 { color: #F3EEE4 !important; }
+        html.blog-page .footer-column a, html.blog-page .footer-text, body.blog-page .footer-column a, body.blog-page .footer-text { color: rgba(243,238,228,0.6) !important; }
+        html.blog-page .footer-copyright, body.blog-page .footer-copyright { color: rgba(243,238,228,0.5) !important; }
+        html.blog-page .cta-section, body.blog-page .cta-section { background: #0a3528 !important; border-top: 1px solid rgba(243,238,228,0.1) !important; }
+        html.blog-page .cta-content h2, body.blog-page .cta-content h2 { color: #F3EEE4 !important; }
+        html.blog-page .cta-content p, html.blog-page .cta-note, body.blog-page .cta-content p, body.blog-page .cta-note { color: rgba(243,238,228,0.7) !important; }
+        .blog-index-hero { padding: calc(80px + 4rem) 0 2rem; text-align: center; }
+        .blog-index-kicker { display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #86EFAC; margin-bottom: 0.75rem; }
+        .blog-index-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; color: #F3EEE4; margin-bottom: 1rem; line-height: 1.1; }
+        .blog-index-dek { font-size: 1.125rem; color: rgba(243,238,228,0.7); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .blog-index-posts { padding: 3rem 0 5rem; }
+        .blog-posts-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 720px; margin: 0 auto; }
+        a.blog-post-card, a.blog-post-card:link, a.blog-post-card:visited, a.blog-post-card:hover, a.blog-post-card:active { display: block; background: #0a3528; border: 1px solid rgba(243,238,228,0.1); border-radius: 16px; overflow: hidden; text-decoration: none !important; color: inherit !important; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        a.blog-post-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); border-color: rgba(134,239,172,0.3); }
+        a.blog-post-card *, a.blog-post-card:link *, a.blog-post-card:visited * { text-decoration: none !important; }
+        .blog-post-card-thumbnail { aspect-ratio: 16/9; background: #0a3528; overflow: hidden; }
+        .blog-post-card-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+        .blog-post-card-content { padding: 1.5rem; }
+        .blog-post-card-date { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #86EFAC !important; margin-bottom: 0.5rem; }
+        .blog-post-card-title { font-size: 1.5rem; font-weight: 700; color: #F3EEE4 !important; line-height: 1.25; margin: 0 0 0.5rem 0; }
+        .blog-post-card-dek { font-size: 1rem; color: rgba(243,238,228,0.65) !important; line-height: 1.5; margin: 0; }
+        @media (max-width: 768px) { .blog-index-title { font-size: 2rem; } .blog-post-card-title { font-size: 1.25rem; } }
+    </style>
 
     <!-- Website analytics -->
     <script async src="https://aromatic-caribou-889.convex.site/api/a/am_TPQ543Vzb4GcnVtM"></script>
@@ -142,7 +180,8 @@
     <main id="main-content">
         <section class="blog-index-hero">
             <div class="container">
-                <h1 class="blog-index-title">Blog</h1>
+                <span class="blog-index-kicker">Blog</span>
+                <h1 class="blog-index-title">The automated patient operating system</h1>
                 <p class="blog-index-dek">Independent practice still runs on a phone. We built the system that closes the work.</p>
             </div>
         </section>
