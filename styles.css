@@ -3100,117 +3100,12 @@ input:focus-visible {
 
 /* ========================================
    BLOG STYLES
-   Dark cinematic theme: forest #0B3D2E, cream #F3EEE4, mint #86EFAC
+   Layout-only rules using site design tokens
    ======================================== */
 
-.blog-page {
-    --blog-bg: #0B3D2E;
-    --blog-bg-surface: #0a3528;
-    --blog-text: #F3EEE4;
-    --blog-text-muted: rgba(243, 238, 228, 0.7);
-    --blog-accent: #86EFAC;
-    --blog-border: rgba(243, 238, 228, 0.12);
-}
-
-.blog-page body,
-.blog-page {
-    background: var(--blog-bg);
-    color: var(--blog-text);
-}
-
-.blog-page .navbar {
-    background: rgba(11, 61, 46, 0.92);
-    backdrop-filter: blur(20px);
-    border-bottom-color: var(--blog-border);
-}
-
-.blog-page .navbar.scrolled {
-    background: rgba(11, 61, 46, 0.98);
-}
-
-.blog-page .nav-link {
-    color: var(--blog-text-muted);
-}
-
-.blog-page .nav-link:hover {
-    color: var(--blog-text);
-    background: rgba(243, 238, 228, 0.08);
-}
-
-.blog-page .dropdown-content {
-    background: var(--blog-bg-surface);
-    border-color: var(--blog-border);
-}
-
-.blog-page .dropdown-item {
-    color: var(--blog-text);
-}
-
-.blog-page .dropdown-item:hover {
-    background: rgba(243, 238, 228, 0.06);
-}
-
-.blog-page .dropdown-item i {
-    color: var(--blog-text-muted);
-}
-
-.blog-page .dropdown-item span {
-    color: var(--blog-text-muted);
-}
-
-.blog-page .mobile-menu {
-    background: var(--blog-bg);
-}
-
-.blog-page .mobile-menu-section h3 {
-    color: var(--blog-text-muted);
-}
-
-.blog-page .mobile-menu-section a {
-    color: var(--blog-text);
-}
-
-.blog-page .mobile-menu-toggle span {
-    background: var(--blog-text);
-}
-
-.blog-page .footer {
-    background: var(--blog-bg-surface);
-    border-top: 1px solid var(--blog-border);
-}
-
-.blog-page .footer-column h4 {
-    color: var(--blog-text);
-}
-
-.blog-page .footer-column a,
-.blog-page .footer-text {
-    color: var(--blog-text-muted);
-}
-
-.blog-page .footer-column a:hover {
-    color: var(--blog-text);
-}
-
-.blog-page .footer-copyright {
-    color: var(--blog-text-muted);
-}
-
+/* Hide CTA section on blog pages */
 .blog-page .cta-section {
-    background: var(--blog-bg-surface);
-    border-top: 1px solid var(--blog-border);
-}
-
-.blog-page .cta-content h2 {
-    color: var(--blog-text);
-}
-
-.blog-page .cta-content p {
-    color: var(--blog-text-muted);
-}
-
-.blog-page .cta-note {
-    color: var(--blog-text-muted);
+    display: none;
 }
 
 /* Blog Index Hero */
@@ -3223,13 +3118,13 @@ input:focus-visible {
     font-size: var(--font-size-5xl);
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: var(--blog-text);
+    color: var(--color-text-primary);
     margin-bottom: var(--space-sm);
 }
 
 .blog-index-dek {
     font-size: var(--font-size-lg);
-    color: var(--blog-text-muted);
+    color: var(--color-text-secondary);
     max-width: 540px;
     margin: 0 auto;
 }
@@ -3247,8 +3142,8 @@ input:focus-visible {
 
 .blog-post-card {
     display: block;
-    background: var(--blog-bg-surface);
-    border: 1px solid var(--blog-border);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     overflow: hidden;
     text-decoration: none;
@@ -3257,12 +3152,12 @@ input:focus-visible {
 
 .blog-post-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
 
 .blog-post-card-thumbnail {
     aspect-ratio: 16 / 9;
-    background: rgba(134, 239, 172, 0.08);
+    background: var(--color-surface);
     overflow: hidden;
 }
 
@@ -3287,21 +3182,21 @@ input:focus-visible {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--blog-accent);
+    color: var(--color-primary);
     margin-bottom: var(--space-xs);
 }
 
 .blog-post-card-title {
     font-size: var(--font-size-xl);
     font-weight: 700;
-    color: var(--blog-text);
+    color: var(--color-text-primary);
     line-height: 1.3;
     margin-bottom: var(--space-xs);
 }
 
 .blog-post-card-dek {
     font-size: var(--font-size-sm);
-    color: var(--blog-text-muted);
+    color: var(--color-text-secondary);
     line-height: 1.5;
 }
 
@@ -3317,14 +3212,14 @@ input:focus-visible {
     gap: 0.5rem;
     font-size: var(--font-size-sm);
     font-weight: 500;
-    color: var(--blog-text-muted);
+    color: var(--color-text-secondary);
     text-decoration: none;
     margin-bottom: var(--space-lg);
     transition: color var(--transition-fast);
 }
 
 .blog-back-link:hover {
-    color: var(--blog-accent);
+    color: var(--color-primary);
 }
 
 .blog-post-date {
@@ -3333,7 +3228,7 @@ input:focus-visible {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--blog-accent);
+    color: var(--color-primary);
     margin-bottom: var(--space-sm);
 }
 
@@ -3341,7 +3236,7 @@ input:focus-visible {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: var(--blog-text);
+    color: var(--color-text-primary);
     line-height: 1.1;
     margin-bottom: var(--space-md);
     max-width: 900px;
@@ -3351,7 +3246,7 @@ input:focus-visible {
 
 .blog-post-dek {
     font-size: var(--font-size-xl);
-    color: var(--blog-text-muted);
+    color: var(--color-text-secondary);
     max-width: 680px;
     margin: 0 auto;
     line-height: 1.5;
@@ -3369,27 +3264,27 @@ input:focus-visible {
 .blog-post-body p {
     font-size: var(--font-size-lg);
     line-height: 1.75;
-    color: var(--blog-text);
+    color: var(--color-text-primary);
     margin-bottom: 1.5em;
 }
 
 .blog-post-body h2 {
     font-size: var(--font-size-2xl);
     font-weight: 700;
-    color: var(--blog-text);
+    color: var(--color-primary);
     margin-top: 2.5em;
     margin-bottom: 0.75em;
     letter-spacing: -0.02em;
 }
 
 .blog-post-body a {
-    color: var(--blog-accent);
+    color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
 
 .blog-post-body a:hover {
-    color: var(--blog-text);
+    color: var(--color-primary);
 }
 
 /* Blog Video */
@@ -3412,7 +3307,7 @@ input:focus-visible {
 
 .blog-post-body .caption {
     font-size: var(--font-size-sm);
-    color: var(--blog-text-muted);
+    color: var(--color-text-secondary);
     text-align: center;
     margin-top: var(--space-sm);
     margin-bottom: 0;
