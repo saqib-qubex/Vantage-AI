@@ -7,7 +7,7 @@
     <title>Blog | VantageAI</title>
     <meta name="description" content="Independent practice still runs on a phone. The automated patient operating system. One patient. One thread.">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0B3D2E">
+    <meta name="theme-color" content="#0B0F0D">
     <link rel="canonical" href="https://getvantage.tech/blog/">
 
     <!-- Open Graph -->
@@ -34,15 +34,16 @@
 
     <!-- Inline fallback: ensures dark theme even if old styles.css is cached -->
     <style>
-    html.blog-page,body.blog-page{--blog-bg:#0B3D2E;--blog-text:#F3EEE4;--blog-text-muted:rgba(243,238,228,0.65);--blog-accent:#86EFAC;--blog-border:rgba(243,238,228,0.12);background:var(--blog-bg);color:var(--blog-text)}
-    html.blog-page .navbar,body.blog-page .navbar{background:rgba(11,61,46,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--blog-border)}
-    html.blog-page .nav-link,body.blog-page .nav-link{color:var(--blog-text-muted)}
-    html.blog-page .nav-actions .btn-primary,body.blog-page .nav-actions .btn-primary{background:var(--blog-text);color:var(--blog-bg)}
-    html.blog-page a.blog-post-card,html.blog-page a.blog-post-card:link,html.blog-page a.blog-post-card:visited{color:inherit;text-decoration:none}
-    html.blog-page .blog-post-card-date{color:var(--blog-accent)}
-    html.blog-page .blog-post-card-title{color:var(--blog-text)}
-    html.blog-page .blog-post-card-dek{color:var(--blog-text-muted)}
-    html.blog-page .blog-post-card-thumbnail{aspect-ratio:16/9;background:var(--blog-bg)}
+    html.blog-page,body.blog-page{background:#0B0F0D!important;color:#F3EEE4!important}
+    html.blog-page .navbar,body.blog-page .navbar{background:rgba(11,15,13,0.92)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(243,238,228,0.1)!important}
+    html.blog-page .nav-link,body.blog-page .nav-link{color:rgba(243,238,228,0.65)!important}
+    html.blog-page .nav-actions .btn-primary,body.blog-page .nav-actions .btn-primary{background:#0B3D2E!important;color:#F3EEE4!important}
+    html.blog-page a.blog-post-card,html.blog-page a.blog-post-card:link,html.blog-page a.blog-post-card:visited{color:inherit;text-decoration:none;background:#161C18}
+    html.blog-page .blog-post-card-date{color:#86EFAC!important}
+    html.blog-page .blog-post-card-title{color:#F3EEE4!important}
+    html.blog-page .blog-post-card-dek{color:rgba(243,238,228,0.65)!important}
+    html.blog-page .blog-post-card-thumbnail{aspect-ratio:16/9;background:#1a1f1c}
+    html.blog-page .cta-section{display:none!important}
     </style>
 
     <!-- Website analytics -->
@@ -178,19 +179,6 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to grow your practice?</h2>
-                    <p>Join medical practices using VantageAI to answer every call, fill their schedule, and keep patients coming back—all on autopilot.</p>
-                    <div class="cta-buttons">
-                        <button class="btn-primary btn-lg" data-open-lead>Get Started Free</button>
-                    </div>
-                    <p class="cta-note">Works 24/7 • HIPAA Compliant • Setup in minutes</p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
