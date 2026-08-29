@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <rect width="1920" height="1080" fill="#0B0F0D"/>
+  <rect x="60" y="40" width="1800" height="1000" rx="24" fill="#161C18"/>
+  <text x="960" y="420" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="72" font-weight="800" fill="#F3EEE4" letter-spacing="-0.03em">
+    <tspan x="960" dy="0">The automated patient</tspan>
+    <tspan x="960" dy="90">operating system</tspan>
+  </text>
+  <text x="960" y="280" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="600" fill="#86EFAC" letter-spacing="0.08em" text-transform="uppercase">
+    AUGUST 28, 2026
+  </text>
+  <circle cx="960" cy="640" r="56" fill="none" stroke="#F3EEE4" stroke-width="3"/>
+  <polygon points="948,616 948,664 988,640" fill="#F3EEE4"/>
+</svg>

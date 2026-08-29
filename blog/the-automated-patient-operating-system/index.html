@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="blog-page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <title>The automated patient operating system | VantageAI</title>
     <meta name="description" content="Independent practice still runs on a phone. The automated patient operating system. One patient. One thread.">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0B3D2E">
+    <meta name="theme-color" content="#0B0F0D">
     <link rel="canonical" href="https://getvantage.tech/blog/the-automated-patient-operating-system">
 
     <!-- Open Graph -->
@@ -30,6 +30,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="../../styles.css" rel="stylesheet">
+    <link href="../../blog.css" rel="stylesheet">
+
+    <!-- Inline fallback: ensures dark theme even if old styles.css is cached -->
+    <style>
+    html.blog-page,body.blog-page{background:#0B0F0D!important;color:#F3EEE4!important}
+    html.blog-page .navbar,body.blog-page .navbar{background:rgba(11,15,13,0.92)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(243,238,228,0.1)!important}
+    html.blog-page .nav-link,body.blog-page .nav-link{color:rgba(243,238,228,0.65)!important}
+    html.blog-page .nav-actions .btn-primary,body.blog-page .nav-actions .btn-primary{background:#0B3D2E!important;color:#F3EEE4!important}
+    html.blog-page .blog-post-body p{font-size:1.125rem;line-height:1.7;color:#F3EEE4}
+    html.blog-page .blog-post-body h2{color:#86EFAC;margin-top:3rem}
+    html.blog-page .blog-video-container video{width:100%;aspect-ratio:16/9;border-radius:12px;background:#000}
+    html.blog-page .cta-section{display:none!important}
+    </style>
 
     <!-- Website analytics -->
     <script async src="https://aromatic-caribou-889.convex.site/api/a/am_TPQ543Vzb4GcnVtM"></script>
@@ -193,19 +206,6 @@
             </div>
         </article>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to grow your practice?</h2>
-                    <p>Join medical practices using VantageAI to answer every call, fill their schedule, and keep patients coming back—all on autopilot.</p>
-                    <div class="cta-buttons">
-                        <button class="btn-primary btn-lg" data-open-lead>Get Started Free</button>
-                    </div>
-                    <p class="cta-note">Works 24/7 • HIPAA Compliant • Setup in minutes</p>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
