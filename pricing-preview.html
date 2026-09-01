@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <title>Pricing preview | VantageAI</title>
+    <meta name="description" content="Build a plan for the automated patient operating system. Preview only — dollars are a draft. Live pricing is unchanged.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#14532d">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VantageAI">
+    <meta property="og:title" content="Pricing preview | VantageAI">
+    <meta property="og:description" content="Preview builder for the automated patient operating system. Not live. Dollars are a draft.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Pricing preview | VantageAI">
+    <meta name="twitter:description" content="Preview builder. Not live. Dollars are a draft.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+
+    <style>
+        /* Preview builder — scoped. Live pricing.html styles are not used. */
+        :root {
+            --pp-forest: #14532d;
+            --pp-forest-deep: #0f3d21;
+            --pp-accent: #15803d;
+            --pp-cream: #f6f4f0;
+            --pp-ink: #191919;
+            --pp-muted: #57534e;
+            --pp-faint: #8a8580;
+            --pp-line: #e7e4de;
+            --pp-white: #ffffff;
+            --pp-radius: 18px;
+            --pp-ease: 200ms ease;
+        }
+
+        .pp-page :focus-visible,
+        .pp-banner :focus-visible,
+        .pp-mobile-bar :focus-visible {
+            outline: 2px solid var(--pp-accent);
+            outline-offset: 2px;
+        }
+
+        .pp-banner {
+            margin-top: 4.6rem;
+            background: #14532d;
+            color: #f6f4f0;
+            text-align: center;
+            padding: 0.7rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            line-height: 1.4;
+            position: relative;
+            z-index: 20;
+        }
+
+        .pp-page {
+            background: var(--pp-white);
+            color: var(--pp-ink);
+            padding-bottom: 6rem;
+        }
+
+        .pp-hero {
+            background: var(--pp-cream);
+            padding: 3.25rem 0 2.5rem;
+            border-bottom: 1px solid var(--pp-line);
+        }
+
+        .pp-kicker {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--pp-accent);
+            margin-bottom: 0.85rem;
+        }
+
+        .pp-hero h1 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.6vw, 3.15rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--pp-ink);
+            max-width: 18ch;
+            margin-bottom: 1rem;
+        }
+
+        .pp-hero h1 em {
+            font-style: italic;
+            color: var(--pp-forest);
+        }
+
+        .pp-hero-sub {
+            font-size: 1.125rem;
+            color: var(--pp-muted);
+            line-height: 1.6;
+            max-width: 38rem;
+            margin-bottom: 1rem;
+        }
+
+        .pp-hero-meta {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--pp-ink);
+            margin-bottom: 1.75rem;
+        }
+
+        .pp-hero-meta span { color: var(--pp-faint); font-weight: 500; }
+
+        .pp-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .pp-step {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--pp-ink);
+        }
+
+        .pp-step-n {
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            background: var(--pp-forest);
+            color: var(--pp-cream);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .pp-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .pp-toggle .toggle-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--pp-faint);
+            transition: color var(--pp-ease);
+            background: none;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .pp-toggle .toggle-label.is-active { color: var(--pp-ink); }
+
+        .pp-switch {
+            position: relative;
+            display: inline-flex;
+            width: 52px;
+            height: 30px;
+            flex: 0 0 auto;
+        }
+
+        .pp-switch input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .pp-switch .track {
+            position: absolute;
+            inset: 0;
+            border-radius: 999px;
+            background: #d7d3cb;
+            transition: background var(--pp-ease);
+        }
+
+        .pp-switch .thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,.18);
+            transition: transform var(--pp-ease);
+        }
+
+        .pp-switch input:checked ~ .track { background: var(--pp-accent); }
+        .pp-switch input:checked ~ .thumb { transform: translateX(22px); }
+        .pp-switch input:focus-visible ~ .track {
+            outline: 2px solid var(--pp-accent);
+            outline-offset: 2px;
+        }
+
+        .pp-save-pill {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--pp-forest);
+            background: rgba(21, 128, 61, 0.12);
+            padding: 0.28rem 0.65rem;
+            border-radius: 999px;
+            letter-spacing: 0.02em;
+        }
+
+        .pp-shell {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 2.5rem var(--space-lg, 2rem) 1rem;
+        }
+
+        .pp-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.75rem;
+            align-items: start;
+        }
+
+        @media (min-width: 980px) {
+            .pp-layout {
+                grid-template-columns: minmax(0, 65%) minmax(280px, 35%);
+                gap: 2rem;
+            }
+            .pp-rail {
+                position: sticky;
+                top: 6rem;
+            }
+            .pp-mobile-bar { display: none !important; }
+            .pp-page { padding-bottom: 3rem; }
+        }
+
+        .pp-section {
+            margin-bottom: 1.75rem;
+        }
+
+        .pp-section-h {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.35rem;
+            color: var(--pp-ink);
+        }
+
+        .pp-section-p {
+            color: var(--pp-muted);
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+
+        .pp-card {
+            background: var(--pp-white);
+            border: 1px solid var(--pp-line);
+            border-radius: var(--pp-radius);
+            padding: 1.5rem 1.4rem;
+            transition: border-color var(--pp-ease), box-shadow var(--pp-ease), transform var(--pp-ease);
+        }
+
+        .pp-card:hover {
+            border-color: #d7d3cb;
+            box-shadow: 0 10px 28px rgba(20, 83, 45, 0.06);
+        }
+
+        .pp-card.is-on {
+            border-color: var(--pp-accent);
+            box-shadow: 0 0 0 1px var(--pp-accent);
+        }
+
+        .pp-card-base {
+            border-left: 4px solid var(--pp-forest);
+            background: var(--pp-cream);
+        }
+
+        .pp-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pp-card-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--pp-ink);
+        }
+
+        .pp-card-tag {
+            font-size: 0.88rem;
+            color: var(--pp-muted);
+            margin-top: 0.2rem;
+            line-height: 1.45;
+        }
+
+        .pp-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: var(--pp-forest);
+            color: var(--pp-cream);
+            padding: 0.28rem 0.6rem;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .pp-price {
+            font-family: "Playfair Display", Georgia, serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--pp-forest);
+        }
+
+        .pp-price-unit {
+            font-family: Inter, sans-serif;
+            font-style: normal;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--pp-muted);
+            margin-left: 0.2rem;
+        }
+
+        .pp-price-note {
+            font-size: 0.78rem;
+            color: var(--pp-faint);
+            margin-top: 0.35rem;
+            min-height: 1.1em;
+        }
+
+        .pp-list {
+            list-style: none;
+            margin: 1rem 0 0;
+            padding: 0;
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .pp-list li {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            line-height: 1.45;
+            color: var(--pp-ink);
+        }
+
+        .pp-list i {
+            color: var(--pp-accent);
+            margin-top: 0.2rem;
+            width: 1rem;
+            text-align: center;
+        }
+
+        .pp-bundles {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 700px) {
+            .pp-bundles { grid-template-columns: 1fr 1fr; }
+        }
+
+        .pp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            border-radius: 999px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.7rem 1.15rem;
+            cursor: pointer;
+            border: 1.5px solid transparent;
+            transition: background var(--pp-ease), color var(--pp-ease), border-color var(--pp-ease), transform var(--pp-ease);
+            text-decoration: none;
+        }
+
+        .pp-btn:active { transform: translateY(1px); }
+
+        .pp-btn-primary {
+            background: var(--pp-forest);
+            color: var(--pp-cream);
+            border-color: var(--pp-forest);
+        }
+
+        .pp-btn-primary:hover { background: var(--pp-forest-deep); border-color: var(--pp-forest-deep); color: var(--pp-cream); }
+
+        .pp-btn-ghost {
+            background: transparent;
+            color: var(--pp-forest);
+            border-color: var(--pp-forest);
+        }
+
+        .pp-btn-ghost:hover { background: rgba(20, 83, 45, 0.06); }
+
+        .pp-btn-on {
+            background: var(--pp-forest);
+            color: var(--pp-cream);
+            border-color: var(--pp-forest);
+        }
+
+        .pp-btn[disabled],
+        .pp-stepper button[disabled] {
+            opacity: 0.45;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .pp-card-cta { margin-top: 1.1rem; }
+
+        .pp-aria {
+            background: var(--pp-forest);
+            color: var(--pp-cream);
+            border: 0;
+            border-radius: var(--pp-radius);
+            padding: 1.6rem 1.5rem;
+        }
+
+        .pp-aria:hover { box-shadow: 0 14px 36px rgba(20, 83, 45, 0.28); }
+
+        .pp-aria .pp-card-name,
+        .pp-aria .pp-price { color: var(--pp-cream); }
+
+        .pp-aria .pp-card-tag,
+        .pp-aria .pp-price-unit,
+        .pp-aria .pp-price-note,
+        .pp-aria p { color: rgba(246, 244, 240, 0.78); }
+
+        .pp-aria .pp-badge {
+            background: rgba(246, 244, 240, 0.14);
+            color: var(--pp-cream);
+        }
+
+        .pp-aria-body {
+            display: grid;
+            gap: 1rem;
+        }
+
+        @media (min-width: 700px) {
+            .pp-aria-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+        }
+
+        .pp-stepper {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(246, 244, 240, 0.1);
+            border-radius: 999px;
+            padding: 0.25rem;
+        }
+
+        .pp-stepper button {
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            border: 0;
+            background: var(--pp-cream);
+            color: var(--pp-forest);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background var(--pp-ease), color var(--pp-ease);
+        }
+
+        .pp-stepper button:hover:not([disabled]) { background: #fff; }
+        .pp-stepper output {
+            min-width: 2.4rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--pp-cream);
+        }
+
+        .pp-aria .pp-btn-ghost {
+            color: var(--pp-cream);
+            border-color: rgba(246, 244, 240, 0.45);
+        }
+
+        .pp-aria .pp-btn-ghost:hover { background: rgba(246, 244, 240, 0.1); }
+
+        .pp-aria .pp-btn-on {
+            background: var(--pp-cream);
+            color: var(--pp-forest);
+            border-color: var(--pp-cream);
+        }
+
+        .pp-addon {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 0.85rem 1rem;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--pp-line);
+        }
+
+        .pp-addon:last-child { border-bottom: 0; }
+
+        .pp-addon-name { font-weight: 700; color: var(--pp-ink); }
+        .pp-addon-line { font-size: 0.85rem; color: var(--pp-muted); margin-top: 0.15rem; }
+        .pp-addon-price {
+            font-weight: 700;
+            color: var(--pp-forest);
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        .pp-check {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--pp-forest);
+            cursor: pointer;
+        }
+
+        .pp-qty {
+            grid-column: 2 / -1;
+            display: none;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .pp-qty.is-open { display: flex; }
+
+        .pp-qty .pp-stepper {
+            background: var(--pp-cream);
+        }
+
+        .pp-qty .pp-stepper button {
+            background: var(--pp-forest);
+            color: var(--pp-cream);
+        }
+
+        .pp-qty .pp-stepper output { color: var(--pp-ink); }
+
+        .pp-qty-label { font-size: 0.8rem; font-weight: 600; color: var(--pp-muted); }
+
+        .pp-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .pp-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--pp-cream);
+            border: 1px solid var(--pp-line);
+            border-radius: 999px;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--pp-ink);
+        }
+
+        .pp-chip.is-draft {
+            background: rgba(20, 83, 45, 0.08);
+            border-color: transparent;
+            color: var(--pp-forest);
+        }
+
+        .pp-form {
+            display: grid;
+            gap: 0.9rem;
+            max-width: 520px;
+        }
+
+        .pp-field label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pp-muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .pp-field input,
+        .pp-field select {
+            width: 100%;
+            padding: 0.8rem 0.95rem;
+            border: 1px solid var(--pp-line);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--pp-ink);
+            background: var(--pp-white);
+            transition: border-color var(--pp-ease), box-shadow var(--pp-ease);
+        }
+
+        .pp-field input:focus,
+        .pp-field select:focus {
+            outline: none;
+            border-color: var(--pp-accent);
+            box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+        }
+
+        .pp-subcopy {
+            font-size: 0.88rem;
+            color: var(--pp-muted);
+            margin: 0.7rem 0 0.35rem;
+        }
+
+        .pp-mail-fallback {
+            font-size: 0.85rem;
+            color: var(--pp-faint);
+        }
+
+        .pp-mail-fallback a { color: var(--pp-forest); font-weight: 600; }
+
+        .pp-rail {
+            background: var(--pp-cream);
+            border: 1px solid var(--pp-line);
+            border-radius: var(--pp-radius);
+            padding: 1.4rem 1.25rem 1.25rem;
+        }
+
+        .pp-rail h2 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .pp-rail-lines { display: grid; gap: 0.55rem; }
+
+        .pp-rail-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--pp-ink);
+        }
+
+        .pp-rail-line span:last-child { font-weight: 700; white-space: nowrap; }
+
+        .pp-rail-line.is-muted { color: var(--pp-muted); font-size: 0.82rem; }
+
+        .pp-rail-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--pp-line);
+        }
+
+        .pp-rail-total strong {
+            font-family: "Playfair Display", Georgia, serif;
+            font-style: italic;
+            font-size: 1.85rem;
+            color: var(--pp-forest);
+        }
+
+        .pp-rail-note {
+            font-size: 0.82rem;
+            color: var(--pp-muted);
+            line-height: 1.45;
+            margin: 0.75rem 0 1rem;
+        }
+
+        .pp-rail .pp-btn { width: 100%; }
+
+        .pp-rail-tiny {
+            text-align: center;
+            font-size: 0.72rem;
+            color: var(--pp-faint);
+            margin-top: 0.65rem;
+        }
+
+        .pp-faq {
+            background: var(--pp-cream);
+            padding: 3.5rem 0 4rem;
+            border-top: 1px solid var(--pp-line);
+        }
+
+        .pp-faq h2 {
+            text-align: center;
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            margin-bottom: 1.75rem;
+            font-family: "Playfair Display", Georgia, serif;
+            font-style: italic;
+        }
+
+        .pp-faq-list { max-width: 760px; margin: 0 auto; }
+
+        .pp-faq details {
+            border-bottom: 1px solid var(--pp-line);
+            padding: 1.1rem 0;
+        }
+
+        .pp-faq summary {
+            cursor: pointer;
+            list-style: none;
+            font-size: 1.05rem;
+            font-weight: 650;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .pp-faq summary::-webkit-details-marker { display: none; }
+
+        .pp-faq summary::after {
+            content: "+";
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--pp-faint);
+        }
+
+        .pp-faq details[open] summary::after { content: "\2212"; }
+
+        .pp-faq details p {
+            margin-top: 0.7rem;
+            color: var(--pp-muted);
+            line-height: 1.6;
+        }
+
+        .pp-mobile-bar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.8rem 1rem calc(0.8rem + env(safe-area-inset-bottom));
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid var(--pp-line);
+        }
+
+        .pp-mobile-bar .pp-m-total {
+            font-family: "Playfair Display", Georgia, serif;
+            font-style: italic;
+            font-size: 1.45rem;
+            color: var(--pp-forest);
+            line-height: 1;
+        }
+
+        .pp-mobile-bar .pp-m-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--pp-faint);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .pp-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--pp-faint);
+            margin: 0 0 0.4rem;
+        }
+        .pp-aria .pp-eyebrow { color: rgba(246, 244, 240, 0.62); }
+        .pp-rail-year {
+            font-size: 0.82rem;
+            color: var(--pp-muted);
+            margin: 0.35rem 0 0;
+            text-align: right;
+        }
+        .pp-card-base .pp-card-tag { margin-top: 0.35rem; }
+        html { scroll-behavior: smooth; }
+        .pp-section, #faq, #review { scroll-margin-top: 6.5rem; }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Top Navigation — copied from live pricing.html. Pricing stays on pricing.html. No preview URL. -->
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Vantage" height="32">
+                </a>
+
+                <nav class="nav-menu">
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            Platform
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="revops.html#capture" class="dropdown-item">
+                                <i class="fas fa-phone-volume" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Never Miss a Call</strong>
+                                    <span>AI answers every patient</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#conversion" class="dropdown-item">
+                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Fill Your Schedule</strong>
+                                    <span>AI books appointments 24/7</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#retention" class="dropdown-item">
+                                <i class="fas fa-rotate" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Keep Patients Coming Back</strong>
+                                    <span>Automated recalls &amp; follow-ups</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#intelligence" class="dropdown-item">
+                                <i class="fas fa-brain" aria-hidden="true"></i>
+                                <div>
+                                    <strong>AI Assistant</strong>
+                                    <span>Works inside your practice</span>
+                                </div>
+                            </a>
+                            <a href="revops.html#control" class="dropdown-item">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <div>
+                                    <strong>HIPAA Compliant</strong>
+                                    <span>Secure &amp; audited</span>
+                                </div>
+                            </a>
+                            <a href="insurance-eligibility.html" class="dropdown-item">
+                                <i class="fas fa-file-medical" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Insurance Eligibility</strong>
+                                    <span>Know what's covered before they sit down</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="pricing.html" class="nav-link active">Pricing</a>
+                    <a href="blog/" class="nav-link">Blog</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button class="btn-primary" data-open-lead>Contact Us</button>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <h3>Platform</h3>
+                <a href="revops.html#capture">Answer Every Call</a>
+                <a href="revops.html#conversion">Fill Your Schedule</a>
+                <a href="revops.html#retention">Bring Patients Back</a>
+                <a href="revops.html#intelligence">AI Assistant</a>
+                <a href="revops.html#control">HIPAA Compliant</a>
+                <a href="insurance-eligibility.html">Insurance Eligibility</a>
+            </div>
+            <div class="mobile-menu-section">
+                <a href="pricing.html">Pricing</a>
+                <a href="blog/">Blog</a>
+            </div>
+            <div class="mobile-menu-actions">
+                <button class="btn-primary" data-open-lead>Contact Us</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="pp-banner" role="status">Preview · not live · dollars are a draft. Live pricing is unchanged.</div>
+
+    <main id="main-content" class="pp-page">
+        <section class="pp-hero">
+            <div class="container">
+                <p class="pp-kicker">Build your plan</p>
+                <h1>Build the <em>operating system</em> for your practice.</h1>
+                <p class="pp-hero-sub">Start with the OS. Add the loops you actually run. See the number.</p>
+                <p class="pp-hero-meta">Starting at $199/mo <span>·</span> 1–5 providers <span>·</span> independent medical and dental</p>
+
+                <div class="pp-steps" aria-label="How to build a plan">
+                    <div class="pp-step"><span class="pp-step-n">1</span> Start with the OS</div>
+                    <div class="pp-step"><span class="pp-step-n">2</span> Add a loop</div>
+                    <div class="pp-step"><span class="pp-step-n">3</span> Fine-tune</div>
+                </div>
+
+                <div class="pp-toggle">
+                    <button type="button" class="toggle-label is-active" data-toggle-monthly id="pp-label-monthly">Monthly</button>
+                    <label class="pp-switch">
+                        <input type="checkbox" id="pp-billing" aria-label="Switch between monthly and annual billing">
+                        <span class="track" aria-hidden="true"></span>
+                        <span class="thumb" aria-hidden="true"></span>
+                    </label>
+                    <button type="button" class="toggle-label" data-toggle-annual id="pp-label-annual">Annual</button>
+                    <span class="pp-save-pill">Save 15%</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="pp-shell">
+            <div class="pp-layout">
+                <div class="pp-builder">
+                    <section id="base" class="pp-section">
+                        <article class="pp-card pp-card-base">
+                            <div class="pp-card-top">
+                                <div>
+                                    <span class="pp-badge">Included</span>
+                                    <p class="pp-eyebrow" style="margin-top:0.7rem;">Base · included</p>
+                                    <h2 class="pp-card-name">The operating system</h2>
+                                    <p class="pp-card-tag">Everything the practice runs on. One patient. One thread.</p>
+                                </div>
+                                <div style="text-align:right;">
+                                    <div class="pp-price">$<span data-money="base">199</span><span class="pp-price-unit">/mo</span></div>
+                                    <div class="pp-price-note" data-annual-note></div>
+                                </div>
+                            </div>
+                            <ul class="pp-list">
+                                <li><i class="fas fa-check" aria-hidden="true"></i><span>Mira on inbound, and the missed-call callback</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i><span>Booking written to the chart</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i><span>Healix in the CRM</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i><span>One patient thread</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i><span>Refill as a closed loop (protocol + a person signs)</span></li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i><span>HIPAA, BAA, audit log</span></li>
+                            </ul>
+                        </article>
+                    </section>
+
+                    <section id="bundles" class="pp-section">
+                        <h2 class="pp-section-h">Add a loop</h2>
+                        <p class="pp-section-p">Optional. Same patient. Same thread. Turn on only what you actually run.</p>
+                        <div class="pp-bundles">
+                            <article class="pp-card" data-card="coverage">
+                                <div class="pp-card-top">
+                                    <div>
+                                        <p class="pp-eyebrow">Bundle</p>
+                                        <h3 class="pp-card-name">Coverage</h3>
+                                        <p class="pp-card-tag">The visit starts with known coverage.</p>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        <div class="pp-price">$<span data-money="coverage">149</span><span class="pp-price-unit">/mo</span></div>
+                                        <div class="pp-price-note" data-annual-note></div>
+                                    </div>
+                                </div>
+                                <ul class="pp-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i><span>Copay on the chart before they sit down</span></li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i><span>Remaining deductible</span></li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i><span>In-network vs out of network</span></li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i><span>Collect the right copay at check-in</span></li>
+                                </ul>
+                                <div class="pp-card-cta">
+                                    <button type="button" class="pp-btn pp-btn-ghost" data-toggle="coverage" aria-pressed="false">Add to plan</button>
+                                </div>
+                            </article>
+                            <article class="pp-card" data-card="chair">
+                                <div class="pp-card-top">
+                                    <div>
+                                        <p class="pp-eyebrow">Bundle</p>
+                                        <h3 class="pp-card-name">Chair</h3>
+                                        <p class="pp-card-tag">Same patient. The chair doesn’t stay empty.</p>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        <div class="pp-price">$<span data-money="chair">149</span><span class="pp-price-unit">/mo</span></div>
+                                        <div class="pp-price-note" data-annual-note></div>
+                                    </div>
+                                </div>
+                                <ul class="pp-list">
+                                    <li><i class="fas fa-check" aria-hidden="true"></i><span>Cancel outreach the same day</span></li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i><span>Slot fill</span></li>
+                                    <li><i class="fas fa-check" aria-hidden="true"></i><span>Recall / bring-back on the same thread</span></li>
+                                </ul>
+                                <div class="pp-card-cta">
+                                    <button type="button" class="pp-btn pp-btn-ghost" data-toggle="chair" aria-pressed="false">Add to plan</button>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="aria" class="pp-section">
+                        <article class="pp-aria">
+                            <div class="pp-card-top">
+                                <div>
+                                    <span class="pp-badge">Add-on · scribe</span>
+                                    <h2 class="pp-card-name" style="margin-top:0.55rem;">Aria</h2>
+                                    <p class="pp-card-tag">Notes into the same patient thread. Optional.</p>
+                                </div>
+                                <div style="text-align:right;">
+                                    <div class="pp-price">$<span data-money="aria">99</span><span class="pp-price-unit">/provider/mo</span></div>
+                                    <div class="pp-price-note" data-annual-note></div>
+                                </div>
+                            </div>
+                            <div class="pp-aria-body">
+                                <p>Off until you add it. Priced per provider, 1–5.</p>
+                                <div class="pp-aria-row">
+                                    <div>
+                                        <div class="pp-qty-label" style="color:rgba(246,244,240,.75);margin-bottom:0.4rem;">Providers</div>
+                                        <div class="pp-stepper" data-stepper="ariaQty">
+                                            <button type="button" data-step="-1" aria-label="Fewer providers" disabled>−</button>
+                                            <output data-qty="ariaQty" aria-live="polite">1</output>
+                                            <button type="button" data-step="1" aria-label="More providers" disabled>+</button>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="pp-btn pp-btn-ghost" data-toggle="aria" aria-pressed="false">Add to plan</button>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+
+                    <section id="addons" class="pp-section">
+                        <h2 class="pp-section-h">Fine-tune</h2>
+                        <p class="pp-section-p">Locations, numbers, after-hours. Custom EHR is a conversation — we will price it.</p>
+                        <div class="pp-card">
+                            <div class="pp-addon">
+                                <input class="pp-check" type="checkbox" id="pp-extraLoc" data-check="extraLoc">
+                                <div>
+                                    <label class="pp-addon-name" for="pp-extraLoc">Extra location</label>
+                                    <div class="pp-addon-line">Another site on the same operating system</div>
+                                </div>
+                                <div class="pp-addon-price">$<span data-money="extraLoc">99</span>/mo</div>
+                                <div class="pp-qty" data-qty-wrap="extraLocQty">
+                                    <span class="pp-qty-label">Locations</span>
+                                    <div class="pp-stepper" data-stepper="extraLocQty">
+                                        <button type="button" data-step="-1" aria-label="Fewer locations">−</button>
+                                        <output data-qty="extraLocQty">1</output>
+                                        <button type="button" data-step="1" aria-label="More locations">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pp-addon">
+                                <input class="pp-check" type="checkbox" id="pp-extraNum" data-check="extraNum">
+                                <div>
+                                    <label class="pp-addon-name" for="pp-extraNum">Extra number</label>
+                                    <div class="pp-addon-line">Another inbound line Mira picks up</div>
+                                </div>
+                                <div class="pp-addon-price">$<span data-money="extraNum">49</span>/mo</div>
+                                <div class="pp-qty" data-qty-wrap="extraNumQty">
+                                    <span class="pp-qty-label">Numbers</span>
+                                    <div class="pp-stepper" data-stepper="extraNumQty">
+                                        <button type="button" data-step="-1" aria-label="Fewer numbers">−</button>
+                                        <output data-qty="extraNumQty">1</output>
+                                        <button type="button" data-step="1" aria-label="More numbers">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pp-addon">
+                                <input class="pp-check" type="checkbox" id="pp-afterHours" data-check="afterHours">
+                                <div>
+                                    <label class="pp-addon-name" for="pp-afterHours">After-hours overflow</label>
+                                    <div class="pp-addon-line">When the office is closed, the loop still answers</div>
+                                </div>
+                                <div class="pp-addon-price">$<span data-money="afterHours">79</span>/mo</div>
+                            </div>
+                            <div class="pp-addon">
+                                <input class="pp-check" type="checkbox" id="pp-customEhr" data-check="customEhr">
+                                <div>
+                                    <label class="pp-addon-name" for="pp-customEhr">Custom EHR</label>
+                                    <div class="pp-addon-line">Talk to us. We sit on top of the chart you already run.</div>
+                                </div>
+                                <div class="pp-addon-price">Talk to us</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="review" class="pp-section">
+                        <h2 class="pp-section-h">Review your plan.</h2>
+                        <p class="pp-section-p">Recap, then a walkthrough. No checkout. Dollars on this page are a draft.</p>
+                        <div class="pp-chip-row" id="pp-recap" aria-live="polite"></div>
+                        <form class="pp-form" id="pp-form" onsubmit="return false;">
+                            <div class="pp-field">
+                                <label for="pp-industry">Industry</label>
+                                <select id="pp-industry" name="industry">
+                                    <option value="">Select one</option>
+                                    <option>Dental</option>
+                                    <option>Orthodontics</option>
+                                    <option>Family practice</option>
+                                    <option>Primary care</option>
+                                    <option>Rheumatology</option>
+                                    <option>Dermatology</option>
+                                    <option>Pediatrics</option>
+                                    <option>Physical therapy</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="pp-field">
+                                <label for="pp-ehr">EHR / PMS</label>
+                                <input id="pp-ehr" name="ehr" type="text" placeholder="eClinicalWorks, Open Dental, …" autocomplete="off">
+                            </div>
+                            <div class="pp-field">
+                                <label for="pp-email">Email</label>
+                                <input id="pp-email" name="email" type="email" placeholder="you@practice.com" autocomplete="email">
+                            </div>
+                            <div class="pp-field">
+                                <label for="pp-practice">Practice name <span style="font-weight:500;text-transform:none;letter-spacing:0;">(optional)</span></label>
+                                <input id="pp-practice" name="practice" type="text" placeholder="Practice name" autocomplete="organization">
+                            </div>
+                            <div>
+                                <button type="button" class="pp-btn pp-btn-primary" data-open-lead>See this plan</button>
+                                <p class="pp-subcopy">We’ll walk the number on a call. No checkout.</p>
+                                <p class="pp-mail-fallback">Prefer email? <a id="pp-mailto" href="mailto:sales@getvantage.tech">sales@getvantage.tech</a> — the link already has your SKUs and total.</p>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+                <aside class="pp-rail" aria-label="Your plan">
+                    <h2>Your plan</h2>
+                    <div class="pp-rail-lines" id="pp-rail-lines"></div>
+                    <div class="pp-rail-total">
+                        <span id="pp-cadence">Monthly total</span>
+                        <strong>$<span id="pp-total">199</span><span class="pp-price-unit">/mo</span></strong>
+                    </div>
+                    <p class="pp-rail-year" id="pp-year" hidden></p>
+                    <p class="pp-rail-note">Starting point. We confirm on a walkthrough.</p>
+                    <a class="pp-btn pp-btn-primary" href="#review">See this plan</a>
+                    <p class="pp-rail-tiny">Preview · not a checkout</p>
+                </aside>
+            </div>
+        </div>
+
+        <section id="faq" class="pp-faq">
+            <div class="container">
+                <h2>Questions</h2>
+                <div class="pp-faq-list">
+                    <details>
+                        <summary>How does this work?</summary>
+                        <p>Start with the OS at $199. Add Coverage, Chair, Aria, or a la carte.</p>
+                    </details>
+                    <details>
+                        <summary>Is refill extra?</summary>
+                        <p>No. Refill is a call type inside the OS. Protocol decides, a person signs. The model never acts as prescriber.</p>
+                    </details>
+                    <details>
+                        <summary>Do I have to buy Coverage?</summary>
+                        <p>No. Most practices that collect at check-in add it.</p>
+                    </details>
+                    <details>
+                        <summary>Contract?</summary>
+                        <p>Month to month. Annual saves 15%.</p>
+                    </details>
+                    <details>
+                        <summary>Will this replace my EHR?</summary>
+                        <p>No. Booking and notes write back. We sit on top.</p>
+                    </details>
+                    <details>
+                        <summary>How many providers?</summary>
+                        <p>1–5 providers. Six and up is a conversation (Enterprise, custom).</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer — copied from live pricing.html. Pricing stays on pricing.html. No preview URL. -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="revops.html#capture">Answer Every Call</a>
+                    <a href="revops.html#conversion">Fill Your Schedule</a>
+                    <a href="revops.html#retention">Bring Patients Back</a>
+                    <a href="revops.html#intelligence">AI Assistant</a>
+                    <a href="revops.html#control">HIPAA Compliance</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Integrations</h4>
+                    <a href="https://www.eclinicalworks.com" target="_blank" rel="noopener noreferrer">eClinicalWorks</a>
+                    <a href="https://www.curogram.com" target="_blank" rel="noopener noreferrer">Curogram</a>
+                    <span class="footer-text">Epic</span>
+                    <span class="footer-text">Cerner</span>
+                    <span class="footer-text">Athenahealth</span>
+                    <span class="footer-text">More coming soon</span>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="revops.html">Platform Overview</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="revops.html#intelligence">AI Assistant</a>
+                    <a href="blog/">Blog</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="index.html">Home</a>
+                    <a href="revops.html">Revenue Operations</a>
+                    <a href="pricing.html">Pricing</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="revops.html#control">Security &amp; Compliance</a>
+                    <a href="revops.html#control">HIPAA Compliance</a>
+                    <a href="sms-consent.html">SMS Consent</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="assets/logo.png" alt="Vantage" height="24" loading="lazy" decoding="async">
+                </div>
+                <p class="footer-copyright">&copy; 2026 QubeX, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="pp-mobile-bar" aria-label="Plan total">
+        <div>
+            <div class="pp-m-label">Your plan</div>
+            <div class="pp-m-total">$<span id="pp-total-mobile">199</span>/mo</div>
+        </div>
+        <a class="pp-btn pp-btn-primary" href="#review">See this plan</a>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    /**
+     * Expected totals (monthly, nearest dollar):
+     *   base only                              199
+     *   base + coverage + chair                497
+     *   base + aria × 2                        397
+     *   base + coverage + 2 extra locations    546  (199 + 149 + 198)
+     * Annual = 15% off, Math.round. 199 * 0.85 = 169.15 → $169/mo
+     */
+    (function () {
+        var KEY = "vantage.pricingPreview.v1";
+        var MONTHLY = {
+            base: 199,
+            coverage: 149,
+            chair: 149,
+            aria: 99,
+            extraLoc: 99,
+            extraNum: 49,
+            afterHours: 79,
+            customEhr: 0
+        };
+        var LIMITS = {
+            ariaQty: { min: 1, max: 5 },
+            extraLocQty: { min: 1, max: 4 },
+            extraNumQty: { min: 1, max: 4 }
+        };
+
+        var state = {
+            annual: false,
+            coverage: false,
+            chair: false,
+            aria: false,
+            ariaQty: 1,
+            extraLoc: false,
+            extraLocQty: 1,
+            extraNum: false,
+            extraNumQty: 1,
+            afterHours: false,
+            customEhr: false,
+            industry: "",
+            ehr: "",
+            email: "",
+            practice: ""
+        };
+
+        try {
+            var saved = JSON.parse(localStorage.getItem(KEY) || "null");
+            if (saved && typeof saved === "object") {
+                Object.keys(state).forEach(function (k) {
+                    if (saved[k] !== undefined) state[k] = saved[k];
+                });
+            }
+        } catch (e) { /* ignore */ }
+
+        function billed(monthly) {
+            return state.annual ? Math.round(monthly * 0.85) : monthly;
+        }
+
+        function persist() {
+            try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+        }
+
+        function lines() {
+            var out = [
+                { sku: "The operating system", qty: 1, amount: billed(MONTHLY.base), always: true }
+            ];
+            if (state.coverage) out.push({ sku: "Coverage", qty: 1, amount: billed(MONTHLY.coverage) });
+            if (state.chair) out.push({ sku: "Chair", qty: 1, amount: billed(MONTHLY.chair) });
+            if (state.aria) out.push({ sku: "Aria", qty: state.ariaQty, amount: billed(MONTHLY.aria * state.ariaQty), unit: "provider" });
+            if (state.extraLoc) out.push({ sku: "Extra location", qty: state.extraLocQty, amount: billed(MONTHLY.extraLoc * state.extraLocQty) });
+            if (state.extraNum) out.push({ sku: "Extra number", qty: state.extraNumQty, amount: billed(MONTHLY.extraNum * state.extraNumQty) });
+            if (state.afterHours) out.push({ sku: "After-hours overflow", qty: 1, amount: billed(MONTHLY.afterHours) });
+            if (state.customEhr) out.push({ sku: "Custom EHR · we’ll price it", qty: 1, amount: 0, talk: true });
+            return out;
+        }
+
+        function total() {
+            return lines().reduce(function (sum, row) { return sum + row.amount; }, 0);
+        }
+
+        function moneyEls() {
+            document.querySelectorAll("[data-money]").forEach(function (el) {
+                var key = el.getAttribute("data-money");
+                if (MONTHLY[key] === undefined) return;
+                var qty = 1;
+                if (key === "aria") qty = state.aria ? state.ariaQty : 1;
+                if (key === "extraLoc") qty = state.extraLoc ? state.extraLocQty : 1;
+                if (key === "extraNum") qty = state.extraNum ? state.extraNumQty : 1;
+                el.textContent = String(billed(MONTHLY[key] * qty));
+            });
+            var note = state.annual ? "billed annually" : "";
+            document.querySelectorAll("[data-annual-note]").forEach(function (el) {
+                el.textContent = note;
+            });
+        }
+
+        function toggleBtn(key, on) {
+            var btn = document.querySelector('[data-toggle="' + key + '"]');
+            var card = document.querySelector('[data-card="' + key + '"]');
+            if (btn) {
+                btn.setAttribute("aria-pressed", on ? "true" : "false");
+                btn.textContent = on ? "Added to plan" : "Add to plan";
+                btn.classList.toggle("pp-btn-on", on);
+                btn.classList.toggle("pp-btn-ghost", !on);
+            }
+            if (card) card.classList.toggle("is-on", on);
+        }
+
+        function stepperEnabled(name, on) {
+            document.querySelectorAll('[data-stepper="' + name + '"] button').forEach(function (b) {
+                b.disabled = !on;
+            });
+        }
+
+        function recap() {
+            var wrap = document.getElementById("pp-recap");
+            var html = '<span class="pp-chip is-draft">Preview · draft dollars</span>';
+            html += '<span class="pp-chip">' + (state.annual ? "Annual · 15% off" : "Monthly") + "</span>";
+            lines().forEach(function (row) {
+                var label = row.sku;
+                if (row.qty > 1) label += " × " + row.qty;
+                if (row.talk) html += '<span class="pp-chip">' + label + "</span>";
+                else html += '<span class="pp-chip">' + label + " · $" + row.amount + "/mo</span>";
+            });
+            html += '<span class="pp-chip is-draft">Total $' + total() + "/mo</span>";
+            wrap.innerHTML = html;
+        }
+
+        function rail() {
+            var wrap = document.getElementById("pp-rail-lines");
+            wrap.innerHTML = lines().map(function (row) {
+                var left = row.sku;
+                if (row.unit) left += " × " + row.qty;
+                else if (row.qty > 1) left += " × " + row.qty;
+                var right = row.talk ? "Talk to us" : ("$" + row.amount);
+                var cls = row.talk ? " pp-rail-line is-muted" : "pp-rail-line";
+                return '<div class="' + cls + '"><span>' + left + "</span><span>" + right + "</span></div>";
+            }).join("");
+            var t = total();
+            document.getElementById("pp-total").textContent = String(t);
+            document.getElementById("pp-total-mobile").textContent = String(t);
+            var cadence = document.getElementById("pp-cadence");
+            if (cadence) cadence.textContent = state.annual ? "Annual billed monthly equivalent" : "Monthly total";
+            var yearEl = document.getElementById("pp-year");
+            if (yearEl) {
+                if (state.annual) {
+                    yearEl.hidden = false;
+                    yearEl.textContent = "$" + (t * 12).toLocaleString("en-US") + " /yr";
+                } else {
+                    yearEl.hidden = true;
+                    yearEl.textContent = "";
+                }
+            }
+        }
+
+        function mailto() {
+            var t = total();
+            var cycle = state.annual ? "annual (15% off, /mo equivalent)" : "monthly";
+            var body = [
+                "Pricing preview — not live, dollars are a draft.",
+                "Billing: " + cycle,
+                "",
+                "SKUs:"
+            ];
+            lines().forEach(function (row) {
+                var bit = "- " + row.sku;
+                if (row.qty > 1) bit += " × " + row.qty;
+                bit += row.talk ? " — Talk to us" : (" — $" + row.amount + "/mo");
+                body.push(bit);
+            });
+            body.push("", "Total: $" + t + "/mo");
+            body.push("", "Industry: " + (state.industry || "(not set)"));
+            body.push("EHR/PMS: " + (state.ehr || "(not set)"));
+            body.push("Email: " + (state.email || "(not set)"));
+            if (state.practice) body.push("Practice: " + state.practice);
+            var href = "mailto:sales@getvantage.tech?subject=" +
+                encodeURIComponent("Plan preview") +
+                "&body=" + encodeURIComponent(body.join("\n"));
+            var a = document.getElementById("pp-mailto");
+            if (a) a.setAttribute("href", href);
+        }
+
+        function render() {
+            moneyEls();
+            toggleBtn("coverage", state.coverage);
+            toggleBtn("chair", state.chair);
+            toggleBtn("aria", state.aria);
+            stepperEnabled("ariaQty", state.aria);
+            (function syncBounds() {
+                [["ariaQty", state.aria], ["extraLocQty", state.extraLoc], ["extraNumQty", state.extraNum]].forEach(function (pair) {
+                    var name = pair[0], on = pair[1];
+                    var lim = LIMITS[name];
+                    var val = state[name];
+                    document.querySelectorAll('[data-stepper="' + name + '"] [data-step]').forEach(function (b) {
+                        var dir = Number(b.getAttribute("data-step"));
+                        var over = (dir < 0 && val <= lim.min) || (dir > 0 && val >= lim.max);
+                        if (name === "ariaQty") b.disabled = !on || over;
+                        else if (on) b.disabled = over;
+                    });
+                });
+            })();
+            document.querySelector('[data-qty="ariaQty"]').textContent = String(state.ariaQty);
+            document.querySelector('[data-qty="extraLocQty"]').textContent = String(state.extraLocQty);
+            document.querySelector('[data-qty="extraNumQty"]').textContent = String(state.extraNumQty);
+            document.getElementById("pp-extraLoc").checked = state.extraLoc;
+            document.getElementById("pp-extraNum").checked = state.extraNum;
+            document.getElementById("pp-afterHours").checked = state.afterHours;
+            document.getElementById("pp-customEhr").checked = state.customEhr;
+            document.querySelector('[data-qty-wrap="extraLocQty"]').classList.toggle("is-open", state.extraLoc);
+            document.querySelector('[data-qty-wrap="extraNumQty"]').classList.toggle("is-open", state.extraNum);
+            document.getElementById("pp-billing").checked = state.annual;
+            document.getElementById("pp-label-monthly").classList.toggle("is-active", !state.annual);
+            document.getElementById("pp-label-annual").classList.toggle("is-active", state.annual);
+            document.getElementById("pp-industry").value = state.industry;
+            document.getElementById("pp-ehr").value = state.ehr;
+            document.getElementById("pp-email").value = state.email;
+            document.getElementById("pp-practice").value = state.practice;
+            recap();
+            rail();
+            mailto();
+            persist();
+        }
+
+        document.getElementById("pp-billing").addEventListener("change", function (e) {
+            state.annual = !!e.target.checked;
+            render();
+        });
+        document.getElementById("pp-label-monthly").addEventListener("click", function () {
+            state.annual = false;
+            render();
+        });
+        document.getElementById("pp-label-annual").addEventListener("click", function () {
+            state.annual = true;
+            render();
+        });
+
+        document.querySelectorAll("[data-toggle]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                var key = btn.getAttribute("data-toggle");
+                state[key] = !state[key];
+                if (key === "aria" && state.aria && !state.ariaQty) state.ariaQty = 1;
+                render();
+            });
+        });
+
+        document.querySelectorAll("[data-stepper]").forEach(function (wrap) {
+            wrap.addEventListener("click", function (e) {
+                var btn = e.target.closest("[data-step]");
+                if (!btn || btn.disabled) return;
+                var name = wrap.getAttribute("data-stepper");
+                var lim = LIMITS[name];
+                var next = state[name] + Number(btn.getAttribute("data-step"));
+                state[name] = Math.max(lim.min, Math.min(lim.max, next));
+                render();
+            });
+        });
+
+        document.querySelectorAll("[data-check]").forEach(function (box) {
+            box.addEventListener("change", function () {
+                var key = box.getAttribute("data-check");
+                state[key] = !!box.checked;
+                render();
+            });
+        });
+
+        ["industry", "ehr", "email", "practice"].forEach(function (name) {
+            var el = document.getElementById("pp-" + name);
+            el.addEventListener("input", function () {
+                state[name] = el.value;
+                persist();
+                mailto();
+            });
+            el.addEventListener("change", function () {
+                state[name] = el.value;
+                persist();
+                mailto();
+            });
+        });
+
+        render();
+    })();
+    </script>
+</body>
+</html>
