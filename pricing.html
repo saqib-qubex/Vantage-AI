@@ -36,14 +36,17 @@
     {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": "VantageAI Inbound Front Desk",
-      "description": "AI inbound front desk agent for clinical practices — answers calls 24/7, books appointments, and syncs to your EHR.",
+      "name": "VantageAI",
+      "description": "The automated patient operating system for 1–5 provider independent medical and dental practices. Mira on the phone, Healix in the CRM, coverage on the chart.",
       "brand": { "@type": "Brand", "name": "VantageAI" },
-      "offers": [
-        { "@type": "Offer", "name": "Starter", "price": "199", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "50 included calls/month, $0.99/call overage. Includes a 1-month free trial." },
-        { "@type": "Offer", "name": "Growth", "price": "499", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "150 included calls/month, $0.99/call overage. Includes a 1-month free trial." },
-        { "@type": "Offer", "name": "Scale", "price": "999", "priceCurrency": "USD", "url": "https://getvantage.tech/pricing.html", "description": "400 included calls/month, $0.99/call overage. Includes a 1-month free trial." }
-      ]
+      "offers": {
+        "@type": "AggregateOffer",
+        "url": "https://getvantage.tech/pricing.html",
+        "priceCurrency": "USD",
+        "lowPrice": "199",
+        "offerCount": "4",
+        "description": "Plans for solo practices through enterprise. All plans include a 1-month free trial and HIPAA compliance."
+      }
     }
     </script>
 
