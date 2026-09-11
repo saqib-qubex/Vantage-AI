@@ -1012,6 +1012,26 @@ function initializeLeadForm() {
                 body: JSON.stringify(payload)
             });
             if (!res.ok) throw new Error('bad status ' + res.status);
+
+            // --- Lead Conversion Tracking (fires ONLY on successful submit) ---
+            // GTM/GA4: push generate_lead event to dataLayer (primary event name)
+            // Also push lead_submit alias for flexibility in tag configuration
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'generate_lead',
+                form_id: 'lead_modal',
+                practice_type: answers.practiceType || '',
+                provider_count: answers.providerCount || '',
+                transport_type: 'beacon'
+            });
+            window.dataLayer.push({ event: 'lead_submit', form_id: 'lead_modal' });
+
+            // Meta Pixel: fire Lead event on actual form success (not just CTA click)
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead', { content_name: 'lead_modal_submit' });
+            }
+            // --- End Lead Conversion Tracking ---
+
             showState('ok', 'You’re all set!', 'Thanks, ' + esc((answers.contactName || '').split(' ')[0] || 'there') + '. Our team will reach out at <strong>' + esc(answers.workEmail) + '</strong> shortly.', false);
         } catch (err) {
             showState('err', 'Something went wrong', 'We couldn’t submit your details. Please try again, or email <a href="mailto:support@getvantage.tech">support@getvantage.tech</a>.', true);
@@ -1039,3 +1059,34 @@ function initializeLeadForm() {
         }
     });
 }
+
+/* =========================================================================
+   Optional Conversion Event Stubs (commented out, ready to wire)
+   =========================================================================
+   These dataLayer pushes are prepared for future tracking. To enable:
+   1. Uncomment the function.
+   2. Wire to the appropriate UI element/event.
+   3. Create corresponding GTM tags/triggers.
+
+// Phone click tracking — call when user clicks a tel: link
+// function trackPhoneClick(phoneNumber) {
+//     window.dataLayer = window.dataLayer || [];
+//     window.dataLayer.push({
+//         event: 'phone_click',
+//         phone_number: phoneNumber || 'unknown'
+//     });
+// }
+
+// Pricing page view — fire on pricing.html load (or when pricing section scrolls into view)
+// function trackPricingView() {
+//     window.dataLayer = window.dataLayer || [];
+//     window.dataLayer.push({ event: 'pricing_view' });
+// }
+
+// Insurance eligibility page view — fire on insurance-eligibility.html load
+// function trackEligibilityView() {
+//     window.dataLayer = window.dataLayer || [];
+//     window.dataLayer.push({ event: 'eligibility_view' });
+// }
+
+   ========================================================================= */
