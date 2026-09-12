@@ -24,21 +24,22 @@
             --color-primary: #14532d;
             --color-accent: #15803d;
             
-            /* Persona colors */
-            --mira-coral: #f08b6d;
-            --mira-coral-light: #fcd5c8;
-            --mira-cream: #fef7f0;
-            --mira-face: #1a1a2e;
+            /* Persona colors - v2 colorways */
+            --mira-sage: #7A8B6F;
+            --mira-sage-light: #8B9A7D;
+            --mira-cream: #F5F2E8;
+            --mira-face: #0B3D2E;
+            --mira-gold: #C9A227;
             
-            --healix-teal: #22b8cf;
-            --healix-teal-light: #c5f6fa;
+            --healix-ink: #0E4A52;
+            --healix-sky: #A8C5C9;
             --healix-white: #ffffff;
-            --healix-face: #1a2744;
+            --healix-face: #0E4A52;
             
-            --aria-violet: #a78bfa;
-            --aria-violet-light: #ede9fe;
-            --aria-cream: #faf8ff;
-            --aria-face: #2d2044;
+            --aria-lilac: #E8E4F0;
+            --aria-plum: #4A3560;
+            --aria-cream: #F7F1E8;
+            --aria-face: #F7F1E8;
             
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --radius-lg: 18px;
@@ -321,7 +322,7 @@
 
         .call-turn.agent {
             align-self: flex-start;
-            background: rgba(240, 139, 109, 0.15);
+            background: rgba(11, 61, 46, 0.12);
             color: var(--color-text-primary);
             border-bottom-left-radius: 4px;
         }
@@ -372,7 +373,7 @@
             font-size: 0.875rem;
         }
 
-        .activity-icon.chart { background: rgba(34, 184, 207, 0.15); color: var(--healix-teal); }
+        .activity-icon.chart { background: rgba(14, 74, 82, 0.15); color: var(--healix-ink); }
         .activity-icon.verified { background: rgba(16, 185, 129, 0.12); color: #10b981; }
         .activity-icon.scheduled { background: rgba(99, 102, 241, 0.12); color: #6366f1; }
 
@@ -421,7 +422,7 @@
             display: inline-block;
             width: 2px;
             height: 1em;
-            background: var(--aria-violet);
+            background: var(--aria-plum);
             animation: blink 1s step-end infinite;
             vertical-align: text-bottom;
             margin-left: 2px;
@@ -491,53 +492,55 @@
             <div class="persona-card" data-persona="mira">
                 <div class="persona-avatar" id="miraAvatar">
                     <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Mira body: coral cream pill bot -->
+                        <!-- Mira v2 forest: ivory body, sage accents, forest face, gold details -->
                         <defs>
                             <linearGradient id="miraBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#fef7f0"/>
-                                <stop offset="100%" style="stop-color:#fcd5c8"/>
+                                <stop offset="0%" style="stop-color:#FAF8F3"/>
+                                <stop offset="100%" style="stop-color:#F5F2E8"/>
                             </linearGradient>
                             <filter id="miraShadow" x="-20%" y="-20%" width="140%" height="140%">
                                 <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.15"/>
                             </filter>
                         </defs>
                         
-                        <!-- Main body (pill shape) -->
+                        <!-- Main body (pill shape - ivory/cream) -->
                         <ellipse cx="100" cy="130" rx="70" ry="90" fill="url(#miraBodyGradient)" filter="url(#miraShadow)"/>
                         
-                        <!-- Top cap (coral) -->
-                        <ellipse cx="100" cy="50" rx="45" ry="30" fill="#f08b6d"/>
-                        <ellipse cx="100" cy="52" rx="40" ry="25" fill="#f5a088"/>
+                        <!-- Top cap (sage green) -->
+                        <ellipse cx="100" cy="50" rx="45" ry="30" fill="#7A8B6F"/>
+                        <ellipse cx="100" cy="52" rx="40" ry="25" fill="#8B9A7D"/>
                         
-                        <!-- Face plate (black rounded rectangle) -->
-                        <rect x="50" y="70" width="100" height="75" rx="20" ry="20" fill="#1a1a2e"/>
+                        <!-- Face plate (deep forest) -->
+                        <rect x="50" y="70" width="100" height="75" rx="20" ry="20" fill="#0B3D2E"/>
                         
-                        <!-- Eyes - idle state -->
+                        <!-- Eyes - soft gold happy curves -->
                         <g class="mira-eyes" data-state="idle">
-                            <circle cx="75" cy="100" r="10" fill="#ffffff"/>
-                            <circle cx="125" cy="100" r="10" fill="#ffffff"/>
-                            <circle cx="77" cy="102" r="5" fill="#1a1a2e"/>
-                            <circle cx="127" cy="102" r="5" fill="#1a1a2e"/>
+                            <path d="M65 98 Q75 108 85 98" stroke="#C9A227" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M115 98 Q125 108 135 98" stroke="#C9A227" stroke-width="3" fill="none" stroke-linecap="round"/>
                         </g>
                         
-                        <!-- Smile -->
-                        <path d="M80 125 Q100 138 120 125" stroke="#f08b6d" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <!-- Smile (soft gold) -->
+                        <path d="M80 120 Q100 132 120 120" stroke="#C9A227" stroke-width="3" fill="none" stroke-linecap="round"/>
                         
-                        <!-- Sound wave on right cheek -->
-                        <g transform="translate(140, 95)" opacity="0.7">
-                            <path d="M0 10 Q3 5 0 0" stroke="#f08b6d" stroke-width="2" fill="none"/>
-                            <path d="M5 12 Q10 5 5 -2" stroke="#f08b6d" stroke-width="2" fill="none"/>
-                            <path d="M10 14 Q17 5 10 -4" stroke="#f08b6d" stroke-width="2" fill="none"/>
+                        <!-- Sound wave on right cheek (soft gold) -->
+                        <g transform="translate(140, 95)" opacity="0.85">
+                            <path d="M0 10 Q3 5 0 0" stroke="#C9A227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M6 12 Q11 5 6 -2" stroke="#C9A227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M12 14 Q19 5 12 -4" stroke="#C9A227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
                         </g>
                         
-                        <!-- Arms (stubby coral) -->
-                        <ellipse cx="30" cy="140" rx="18" ry="25" fill="#f08b6d"/>
-                        <ellipse cx="170" cy="140" rx="18" ry="25" fill="#f08b6d"/>
+                        <!-- Ear nubs (sage green) -->
+                        <circle cx="38" cy="110" r="12" fill="#7A8B6F"/>
+                        <circle cx="162" cy="110" r="12" fill="#7A8B6F"/>
                         
-                        <!-- Bottom ring (coral) -->
-                        <ellipse cx="100" cy="215" rx="55" ry="15" fill="#f08b6d"/>
+                        <!-- Arms (stubby sage with cream band) -->
+                        <ellipse cx="28" cy="145" rx="16" ry="24" fill="#7A8B6F"/>
+                        <ellipse cx="172" cy="145" rx="16" ry="24" fill="#7A8B6F"/>
+                        <rect x="20" y="155" width="16" height="8" rx="4" fill="#F5F2E8"/>
+                        <rect x="164" y="155" width="16" height="8" rx="4" fill="#F5F2E8"/>
                         
-                        <!-- Speaker dots on back (shown from angle view hint) -->
+                        <!-- Bottom base (deep forest) -->
+                        <ellipse cx="100" cy="215" rx="55" ry="15" fill="#0B3D2E"/>
                     </svg>
                 </div>
                 <div class="persona-info">
@@ -555,57 +558,57 @@
             <div class="persona-card" data-persona="healix">
                 <div class="persona-avatar" id="healixAvatar">
                     <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Healix body: white/teal bot -->
+                        <!-- Healix v2 ink: white body, deep teal-ink accents, sky-mist face graphics -->
                         <defs>
                             <linearGradient id="healixBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" style="stop-color:#ffffff"/>
-                                <stop offset="100%" style="stop-color:#f0fdfa"/>
+                                <stop offset="100%" style="stop-color:#fafafa"/>
                             </linearGradient>
                             <filter id="healixShadow" x="-20%" y="-20%" width="140%" height="140%">
                                 <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.12"/>
                             </filter>
                         </defs>
                         
-                        <!-- Main body (rounded rectangle) -->
-                        <rect x="40" y="50" width="120" height="150" rx="50" ry="50" fill="url(#healixBodyGradient)" filter="url(#healixShadow)" stroke="#22b8cf" stroke-width="2"/>
+                        <!-- Main body (rounded pill - clean white) -->
+                        <rect x="40" y="50" width="120" height="150" rx="50" ry="50" fill="url(#healixBodyGradient)" filter="url(#healixShadow)"/>
                         
-                        <!-- Top head (white dome) -->
-                        <ellipse cx="100" cy="55" rx="45" ry="30" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+                        <!-- Top cap (deep teal-ink) -->
+                        <ellipse cx="100" cy="55" rx="45" ry="30" fill="#0E4A52"/>
                         
-                        <!-- Face plate (navy rounded) -->
-                        <rect x="55" y="70" width="90" height="60" rx="18" ry="18" fill="#1a2744"/>
+                        <!-- Face plate (teal-ink bezel) -->
+                        <rect x="55" y="70" width="90" height="60" rx="18" ry="18" fill="#0E4A52"/>
                         
-                        <!-- Eyes - happy state -->
+                        <!-- Eyes - happy curves (sky-mist) -->
                         <g class="healix-eyes" data-state="idle">
-                            <circle cx="78" cy="95" r="9" fill="#ffffff"/>
-                            <circle cx="122" cy="95" r="9" fill="#ffffff"/>
-                            <circle cx="80" cy="96" r="4" fill="#1a2744"/>
-                            <circle cx="124" cy="96" r="4" fill="#1a2744"/>
+                            <path d="M68 92 Q78 102 88 92" stroke="#A8C5C9" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <path d="M112 92 Q122 102 132 92" stroke="#A8C5C9" stroke-width="3" fill="none" stroke-linecap="round"/>
                         </g>
                         
-                        <!-- Smile -->
-                        <path d="M82 115 Q100 125 118 115" stroke="#22b8cf" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <!-- Smile (sky-mist) -->
+                        <path d="M82 112 Q100 122 118 112" stroke="#A8C5C9" stroke-width="2.5" fill="none" stroke-linecap="round"/>
                         
-                        <!-- Checklist sparkle on chest -->
+                        <!-- Checklist sparkle on chest (teal-ink) -->
                         <g transform="translate(85, 145)">
-                            <circle cx="15" cy="15" r="18" fill="rgba(34, 184, 207, 0.15)" stroke="#22b8cf" stroke-width="1.5"/>
-                            <path d="M8 15 L13 20 L22 10" stroke="#22b8cf" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="15" cy="15" r="18" fill="rgba(14, 74, 82, 0.12)" stroke="#0E4A52" stroke-width="1.5"/>
+                            <path d="M8 15 L13 20 L22 10" stroke="#0E4A52" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                             <!-- Sparkle rays -->
-                            <line x1="15" y1="-5" x2="15" y2="0" stroke="#22b8cf" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="30" y1="10" x2="35" y2="10" stroke="#22b8cf" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="0" y1="20" x2="-5" y2="20" stroke="#22b8cf" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="15" y1="-5" x2="15" y2="0" stroke="#0E4A52" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="35" y2="10" stroke="#0E4A52" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="0" y1="20" x2="-5" y2="20" stroke="#0E4A52" stroke-width="1.5" stroke-linecap="round"/>
                         </g>
                         
-                        <!-- Ear pieces (teal) -->
-                        <ellipse cx="38" cy="100" rx="12" ry="18" fill="#22b8cf"/>
-                        <ellipse cx="162" cy="100" rx="12" ry="18" fill="#22b8cf"/>
+                        <!-- Ear discs (teal-ink) -->
+                        <ellipse cx="38" cy="100" rx="12" ry="18" fill="#0E4A52"/>
+                        <ellipse cx="162" cy="100" rx="12" ry="18" fill="#0E4A52"/>
                         
-                        <!-- Arms -->
-                        <ellipse cx="25" cy="150" rx="15" ry="20" fill="#ffffff" stroke="#22b8cf" stroke-width="2"/>
-                        <ellipse cx="175" cy="150" rx="15" ry="20" fill="#ffffff" stroke="#22b8cf" stroke-width="2"/>
+                        <!-- Arms (white with teal-ink band) -->
+                        <ellipse cx="25" cy="150" rx="15" ry="20" fill="#ffffff"/>
+                        <ellipse cx="175" cy="150" rx="15" ry="20" fill="#ffffff"/>
+                        <rect x="18" y="160" width="14" height="6" rx="3" fill="#0E4A52"/>
+                        <rect x="168" y="160" width="14" height="6" rx="3" fill="#0E4A52"/>
                         
-                        <!-- Bottom (teal base) -->
-                        <ellipse cx="100" cy="200" rx="45" ry="12" fill="#22b8cf"/>
+                        <!-- Bottom base (teal-ink) -->
+                        <ellipse cx="100" cy="200" rx="45" ry="12" fill="#0E4A52"/>
                     </svg>
                 </div>
                 <div class="persona-info">
@@ -623,53 +626,57 @@
             <div class="persona-card" data-persona="aria">
                 <div class="persona-avatar" id="ariaAvatar">
                     <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Aria body: soft violet + cream pill bot -->
+                        <!-- Aria v2 plum: lilac-gray body, plum accents, cream face, closed eyes -->
                         <defs>
                             <linearGradient id="ariaBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#faf8ff"/>
-                                <stop offset="100%" style="stop-color:#ede9fe"/>
+                                <stop offset="0%" style="stop-color:#EBE8F2"/>
+                                <stop offset="100%" style="stop-color:#E8E4F0"/>
                             </linearGradient>
                             <filter id="ariaShadow" x="-20%" y="-20%" width="140%" height="140%">
                                 <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.12"/>
                             </filter>
                         </defs>
                         
-                        <!-- Main body (pill shape) -->
-                        <ellipse cx="100" cy="130" rx="65" ry="85" fill="url(#ariaBodyGradient)" filter="url(#ariaShadow)" stroke="#a78bfa" stroke-width="1.5"/>
+                        <!-- Main body (pill shape - soft lilac-gray) -->
+                        <ellipse cx="100" cy="130" rx="65" ry="85" fill="url(#ariaBodyGradient)" filter="url(#ariaShadow)"/>
                         
-                        <!-- Top cap (soft violet) -->
-                        <ellipse cx="100" cy="52" rx="42" ry="28" fill="#a78bfa"/>
-                        <ellipse cx="100" cy="54" rx="37" ry="23" fill="#c4b5fd"/>
+                        <!-- Top cap (deep plum) -->
+                        <ellipse cx="100" cy="52" rx="42" ry="28" fill="#4A3560"/>
+                        <!-- Small dot on top of cap -->
+                        <circle cx="100" cy="32" r="6" fill="#B8A9D4"/>
                         
-                        <!-- Face plate (dark violet) -->
-                        <rect x="52" y="72" width="96" height="68" rx="18" ry="18" fill="#2d2044"/>
+                        <!-- Face plate (warm cream) -->
+                        <rect x="52" y="72" width="96" height="68" rx="18" ry="18" fill="#F7F1E8"/>
                         
-                        <!-- Eyes - gentle/soft state -->
+                        <!-- Eyes - closed gentle curves (deep plum) -->
                         <g class="aria-eyes" data-state="idle">
-                            <ellipse cx="75" cy="100" rx="9" ry="8" fill="#ffffff"/>
-                            <ellipse cx="125" cy="100" rx="9" ry="8" fill="#ffffff"/>
-                            <circle cx="77" cy="101" r="4" fill="#2d2044"/>
-                            <circle cx="127" cy="101" r="4" fill="#2d2044"/>
+                            <path d="M68 100 Q78 95 88 100" stroke="#4A3560" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                            <path d="M112 100 Q122 95 132 100" stroke="#4A3560" stroke-width="2.5" fill="none" stroke-linecap="round"/>
                         </g>
                         
-                        <!-- Gentle smile -->
-                        <path d="M85 122 Q100 130 115 122" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <!-- Gentle closed smile (muted lavender) -->
+                        <path d="M88 118 Q100 124 112 118" stroke="#B8A9D4" stroke-width="2" fill="none" stroke-linecap="round"/>
                         
-                        <!-- Note mark on chest -->
-                        <g transform="translate(82, 150)">
-                            <rect x="0" y="0" width="36" height="28" rx="6" fill="rgba(167, 139, 250, 0.2)" stroke="#a78bfa" stroke-width="1.5"/>
-                            <!-- Note lines -->
-                            <line x1="6" y1="8" x2="30" y2="8" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="6" y1="14" x2="24" y2="14" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
-                            <line x1="6" y1="20" x2="18" y2="20" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
+                        <!-- Quill/feather mark on chest (deep plum) -->
+                        <g transform="translate(90, 155)">
+                            <circle cx="10" cy="10" r="14" fill="rgba(74, 53, 96, 0.15)"/>
+                            <!-- Feather quill icon -->
+                            <path d="M10 2 Q6 8 10 18 Q14 8 10 2" fill="#4A3560"/>
+                            <line x1="10" y1="12" x2="10" y2="20" stroke="#4A3560" stroke-width="1.5" stroke-linecap="round"/>
                         </g>
                         
-                        <!-- Arms (soft violet) -->
-                        <ellipse cx="32" cy="140" rx="15" ry="22" fill="#c4b5fd"/>
-                        <ellipse cx="168" cy="140" rx="15" ry="22" fill="#c4b5fd"/>
+                        <!-- Ear discs (deep plum) -->
+                        <ellipse cx="38" cy="105" rx="10" ry="15" fill="#4A3560"/>
+                        <ellipse cx="162" cy="105" rx="10" ry="15" fill="#4A3560"/>
                         
-                        <!-- Bottom ring (violet) -->
-                        <ellipse cx="100" cy="210" rx="50" ry="13" fill="#a78bfa"/>
+                        <!-- Arms (deep plum with muted lavender band) -->
+                        <ellipse cx="30" cy="145" rx="14" ry="22" fill="#4A3560"/>
+                        <ellipse cx="170" cy="145" rx="14" ry="22" fill="#4A3560"/>
+                        <rect x="23" y="155" width="14" height="6" rx="3" fill="#B8A9D4"/>
+                        <rect x="163" y="155" width="14" height="6" rx="3" fill="#B8A9D4"/>
+                        
+                        <!-- Bottom base (deep plum) -->
+                        <ellipse cx="100" cy="210" rx="50" ry="13" fill="#4A3560"/>
                     </svg>
                 </div>
                 <div class="persona-info">
@@ -731,11 +738,12 @@
                 <div class="mira-demo">
                     <div class="panel-header">
                         <svg class="panel-avatar" viewBox="0 0 48 48">
-                            <ellipse cx="24" cy="26" rx="16" ry="20" fill="#fef7f0" stroke="#f08b6d" stroke-width="2"/>
-                            <ellipse cx="24" cy="10" rx="10" ry="7" fill="#f08b6d"/>
-                            <rect x="12" y="16" width="24" height="18" rx="5" fill="#1a1a2e"/>
-                            <circle cx="18" cy="24" r="3" fill="white"/>
-                            <circle cx="30" cy="24" r="3" fill="white"/>
+                            <ellipse cx="24" cy="26" rx="16" ry="20" fill="#F5F2E8"/>
+                            <ellipse cx="24" cy="10" rx="10" ry="7" fill="#7A8B6F"/>
+                            <rect x="12" y="16" width="24" height="18" rx="5" fill="#0B3D2E"/>
+                            <path d="M16 24 Q20 28 24 24" stroke="#C9A227" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <path d="M24 24 Q28 28 32 24" stroke="#C9A227" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="24" cy="42" rx="12" ry="4" fill="#0B3D2E"/>
                         </svg>
                         <div>
                             <h3 class="panel-title">Mira — Incoming Call</h3>
@@ -771,11 +779,12 @@
                 <div class="healix-demo">
                     <div class="panel-header">
                         <svg class="panel-avatar" viewBox="0 0 48 48">
-                            <rect x="10" y="12" width="28" height="32" rx="12" fill="white" stroke="#22b8cf" stroke-width="2"/>
-                            <rect x="14" y="17" width="20" height="14" rx="5" fill="#1a2744"/>
-                            <circle cx="20" cy="23" r="2.5" fill="white"/>
-                            <circle cx="28" cy="23" r="2.5" fill="white"/>
-                            <ellipse cx="24" cy="42" rx="10" ry="3" fill="#22b8cf"/>
+                            <rect x="10" y="12" width="28" height="32" rx="12" fill="white"/>
+                            <ellipse cx="24" cy="14" rx="10" ry="6" fill="#0E4A52"/>
+                            <rect x="14" y="17" width="20" height="14" rx="5" fill="#0E4A52"/>
+                            <path d="M17 23 Q21 27 25 23" stroke="#A8C5C9" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <path d="M23 23 Q27 27 31 23" stroke="#A8C5C9" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="24" cy="42" rx="10" ry="3" fill="#0E4A52"/>
                         </svg>
                         <div>
                             <h3 class="panel-title">Healix — CRM Activity</h3>
@@ -817,12 +826,12 @@
                 <div class="aria-demo">
                     <div class="panel-header">
                         <svg class="panel-avatar" viewBox="0 0 48 48">
-                            <ellipse cx="24" cy="26" rx="15" ry="19" fill="#faf8ff" stroke="#a78bfa" stroke-width="2"/>
-                            <ellipse cx="24" cy="11" rx="10" ry="7" fill="#a78bfa"/>
-                            <rect x="13" y="17" width="22" height="16" rx="5" fill="#2d2044"/>
-                            <ellipse cx="19" cy="24" r="2.5" fill="white"/>
-                            <ellipse cx="29" cy="24" r="2.5" fill="white"/>
-                            <ellipse cx="24" cy="44" rx="11" ry="3" fill="#a78bfa"/>
+                            <ellipse cx="24" cy="26" rx="15" ry="19" fill="#E8E4F0"/>
+                            <ellipse cx="24" cy="11" rx="10" ry="7" fill="#4A3560"/>
+                            <rect x="13" y="17" width="22" height="16" rx="5" fill="#F7F1E8"/>
+                            <path d="M17 24 Q21 22 25 24" stroke="#4A3560" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <path d="M23 24 Q27 22 31 24" stroke="#4A3560" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <ellipse cx="24" cy="44" rx="11" ry="3" fill="#4A3560"/>
                         </svg>
                         <div>
                             <h3 class="panel-title">Aria — Clinical Notes</h3>
