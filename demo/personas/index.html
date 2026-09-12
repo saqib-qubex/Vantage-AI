@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <title>Meet the Team — VantageAI Personas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-background: #fafaf8;
+            --color-surface: #ffffff;
+            --color-text-primary: #191919;
+            --color-text-secondary: #57534e;
+            --color-text-tertiary: #8a8580;
+            --color-border: #e7e4de;
+            --color-primary: #14532d;
+            
+            /* Mira palette */
+            --mira-cream: #f5f0e8;
+            --mira-coral: #e8967a;
+            --mira-coral-light: #f0b8a8;
+            --mira-face-bg: #3d3d3d;
+            
+            /* Healix palette */
+            --healix-white: #ffffff;
+            --healix-teal: #4db6ac;
+            --healix-teal-dark: #26a69a;
+            --healix-face-bg: #2d4a5e;
+            
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-family);
+            background: var(--color-background);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        
+        .demo-header {
+            padding: 1.5rem 2rem;
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .demo-header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .demo-logo {
+            height: 28px;
+        }
+        
+        .demo-badge {
+            padding: 0.35rem 0.75rem;
+            background: rgba(20, 83, 45, 0.08);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .demo-back {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        
+        .demo-back:hover { color: var(--color-text-primary); }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .demo-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-eyebrow {
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .demo-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .persona-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .persona-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .persona-card.active {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(20, 83, 45, 0.12);
+        }
+        
+        .persona-character {
+            width: 200px;
+            height: 260px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        
+        .persona-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        
+        .persona-role {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .persona-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-background);
+            border-radius: 999px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+        
+        .persona-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cbd5c5;
+        }
+        
+        .persona-card.active .persona-status-dot {
+            background: #10b981;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        }
+        
+        .activity-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 24px;
+            padding: 2rem;
+            min-height: 200px;
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+        
+        .activity-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .activity-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            border-radius: 999px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-family);
+        }
+        
+        .activity-btn:hover {
+            background: var(--color-background);
+        }
+        
+        .activity-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+        
+        .activity-content {
+            display: none;
+        }
+        
+        .activity-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .activity-snippet {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--color-background);
+            border-radius: 16px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.125rem;
+        }
+        
+        .activity-icon.mira { background: rgba(232, 150, 122, 0.15); color: var(--mira-coral); }
+        .activity-icon.healix { background: rgba(77, 182, 172, 0.15); color: var(--healix-teal); }
+        
+        .activity-text strong {
+            display: block;
+            font-size: 0.875rem;
+            margin-bottom: 0.15rem;
+        }
+        
+        .activity-text span {
+            font-size: 0.8125rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            padding: 0.75rem 1rem;
+            background: var(--color-background);
+            border-radius: 16px;
+        }
+        
+        .typing-indicator span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-text-tertiary);
+            animation: typing 1.2s ease-in-out infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) { animation-delay: 0.15s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.3s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+            30% { transform: translateY(-4px); opacity: 1; }
+        }
+        
+        /* =========================================
+           MIRA SVG CHARACTER
+           Cream pill body, coral accents, sound-wave cheek
+           ========================================= */
+        .mira-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .mira-body {
+            fill: var(--mira-cream);
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+        }
+        
+        .mira-face-screen {
+            fill: var(--mira-face-bg);
+        }
+        
+        .mira-coral-accent {
+            fill: var(--mira-coral);
+        }
+        
+        .mira-coral-light {
+            fill: var(--mira-coral-light);
+        }
+        
+        .mira-eye {
+            fill: white;
+        }
+        
+        .mira-pupil {
+            fill: #1a1a1a;
+        }
+        
+        .mira-mouth {
+            fill: none;
+            stroke: var(--mira-coral-light);
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+        
+        .mira-sound-wave {
+            fill: none;
+            stroke: var(--mira-coral);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            opacity: 0.9;
+        }
+        
+        /* Mira states */
+        .mira-svg[data-state="idle"] .mira-pupil {
+            animation: miraLookAround 4s ease-in-out infinite;
+        }
+        
+        @keyframes miraLookAround {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(2px); }
+            75% { transform: translateX(-2px); }
+        }
+        
+        .mira-svg[data-state="listening"] .mira-sound-wave {
+            animation: soundWavePulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes soundWavePulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        
+        .mira-svg[data-state="talking"] .mira-mouth {
+            animation: miraTalk 0.3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes miraTalk {
+            0% { d: path("M 85 145 Q 100 150 115 145"); }
+            100% { d: path("M 85 145 Q 100 158 115 145"); }
+        }
+        
+        .mira-svg[data-state="thinking"] .mira-pupil {
+            animation: miraThink 0.8s ease-in-out infinite;
+        }
+        
+        @keyframes miraThink {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        /* =========================================
+           HEALIX SVG CHARACTER
+           White/teal pill body, teal base + discs
+           ========================================= */
+        .healix-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .healix-body {
+            fill: var(--healix-white);
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+        }
+        
+        .healix-face-screen {
+            fill: var(--healix-face-bg);
+        }
+        
+        .healix-teal-accent {
+            fill: var(--healix-teal);
+        }
+        
+        .healix-teal-dark {
+            fill: var(--healix-teal-dark);
+        }
+        
+        .healix-eye {
+            fill: white;
+            stroke: none;
+        }
+        
+        .healix-eye-happy {
+            fill: none;
+            stroke: white;
+            stroke-width: 4;
+            stroke-linecap: round;
+        }
+        
+        .healix-mouth {
+            fill: none;
+            stroke: white;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+        
+        .healix-checkmark {
+            fill: none;
+            stroke: var(--healix-teal);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .healix-sparkle {
+            fill: var(--healix-teal);
+            opacity: 0;
+        }
+        
+        /* Healix states */
+        .healix-svg[data-state="idle"] .healix-sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        .healix-svg[data-state="working"] .healix-checkmark {
+            stroke-dasharray: 20;
+            stroke-dashoffset: 20;
+            animation: drawCheck 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes drawCheck {
+            0% { stroke-dashoffset: 20; }
+            50% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: 20; }
+        }
+        
+        .healix-svg[data-state="thinking"] .healix-eye {
+            animation: healixBlink 2s ease-in-out infinite;
+        }
+        
+        @keyframes healixBlink {
+            0%, 45%, 55%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.1); }
+        }
+        
+        .healix-svg[data-state="success"] .healix-sparkle {
+            opacity: 1;
+            animation: successSparkle 0.6s ease-out forwards;
+        }
+        
+        @keyframes successSparkle {
+            0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+            100% { opacity: 1; transform: scale(1) rotate(360deg); }
+        }
+        
+        /* Arm animations */
+        .arm-wave {
+            transform-origin: 50% 0%;
+            animation: wave 0.6s ease-in-out infinite alternate;
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(-10deg); }
+            100% { transform: rotate(10deg); }
+        }
+        
+        /* Category label */
+        .category-label {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(20, 83, 45, 0.04);
+            border-radius: 12px;
+        }
+        
+        .category-label p {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .category-label strong {
+            color: var(--color-primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .demo-container { padding: 2rem 1rem; }
+            .personas-grid { grid-template-columns: 1fr; }
+            .persona-character { width: 160px; height: 210px; }
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="demo-header">
+        <div class="demo-header-left">
+            <img src="../../assets/logo.png" alt="VantageAI" class="demo-logo">
+            <span class="demo-badge">Internal Demo</span>
+        </div>
+        <a href="../../index.html" class="demo-back">
+            <span>←</span> Back to site
+        </a>
+    </header>
+    
+    <main class="demo-container">
+        <div class="demo-intro">
+            <p class="demo-eyebrow">Automated Patient Operating System</p>
+            <h1 class="demo-title">Meet the team</h1>
+            <p class="demo-subtitle">Click a character to see them in action. Mira handles patient calls; Healix runs your CRM workflows.</p>
+        </div>
+        
+        <div class="personas-grid">
+            <!-- MIRA CARD -->
+            <div class="persona-card active" data-persona="mira" onclick="selectPersona('mira')">
+                <div class="persona-character">
+                    <svg class="mira-svg" data-state="idle" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Body (cream pill shape) -->
+                        <ellipse class="mira-body" cx="100" cy="130" rx="65" ry="85"/>
+                        
+                        <!-- Coral top cap -->
+                        <ellipse class="mira-coral-accent" cx="100" cy="55" rx="40" ry="22"/>
+                        
+                        <!-- Coral base ring -->
+                        <ellipse class="mira-coral-accent" cx="100" cy="210" rx="50" ry="12"/>
+                        
+                        <!-- Face screen (rounded rectangle) -->
+                        <rect class="mira-face-screen" x="55" y="85" width="90" height="70" rx="20" ry="20"/>
+                        
+                        <!-- Eyes -->
+                        <g class="mira-eyes">
+                            <ellipse class="mira-eye" cx="80" cy="115" rx="12" ry="14"/>
+                            <ellipse class="mira-eye" cx="120" cy="115" rx="12" ry="14"/>
+                            <circle class="mira-pupil" cx="80" cy="117" r="6"/>
+                            <circle class="mira-pupil" cx="120" cy="117" r="6"/>
+                            <!-- Eye shine -->
+                            <circle fill="white" cx="83" cy="113" r="3"/>
+                            <circle fill="white" cx="123" cy="113" r="3"/>
+                        </g>
+                        
+                        <!-- Smile -->
+                        <path class="mira-mouth" d="M 85 140 Q 100 150 115 140"/>
+                        
+                        <!-- Sound wave marks on right cheek (outside face screen) -->
+                        <g class="mira-sound-waves" transform="translate(150, 110)">
+                            <path class="mira-sound-wave" d="M 0 0 Q 8 -8 0 -16"/>
+                            <path class="mira-sound-wave" d="M 6 2 Q 16 -10 6 -22" opacity="0.7"/>
+                            <path class="mira-sound-wave" d="M 12 4 Q 24 -12 12 -28" opacity="0.5"/>
+                        </g>
+                        
+                        <!-- Left arm (coral, stubby) -->
+                        <ellipse class="mira-coral-accent" cx="30" cy="140" rx="18" ry="28" transform="rotate(-15 30 140)"/>
+                        
+                        <!-- Right arm (coral, stubby) -->
+                        <ellipse class="mira-coral-accent" cx="170" cy="140" rx="18" ry="28" transform="rotate(15 170 140)"/>
+                        
+                        <!-- Speaker grille dots on back (decorative) -->
+                        <g fill="var(--mira-coral)" opacity="0.4">
+                            <circle cx="100" cy="175" r="2"/>
+                            <circle cx="108" cy="175" r="2"/>
+                            <circle cx="92" cy="175" r="2"/>
+                            <circle cx="100" cy="183" r="2"/>
+                            <circle cx="108" cy="183" r="2"/>
+                            <circle cx="92" cy="183" r="2"/>
+                            <circle cx="100" cy="191" r="2"/>
+                            <circle cx="108" cy="191" r="2"/>
+                            <circle cx="92" cy="191" r="2"/>
+                        </g>
+                    </svg>
+                </div>
+                <h2 class="persona-name">Mira</h2>
+                <p class="persona-role">Front-desk voice agent</p>
+                <div class="persona-status">
+                    <span class="persona-status-dot"></span>
+                    <span>Click to interact</span>
+                </div>
+            </div>
+            
+            <!-- HEALIX CARD -->
+            <div class="persona-card" data-persona="healix" onclick="selectPersona('healix')">
+                <div class="persona-character">
+                    <svg class="healix-svg" data-state="idle" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Body (white pill shape) -->
+                        <ellipse class="healix-body" cx="100" cy="130" rx="60" ry="80"/>
+                        
+                        <!-- Teal top cap/head -->
+                        <ellipse class="healix-teal-accent" cx="100" cy="58" rx="45" ry="20"/>
+                        
+                        <!-- Teal base ring -->
+                        <ellipse class="healix-teal-accent" cx="100" cy="205" rx="45" ry="12"/>
+                        
+                        <!-- Side discs (ears/sensors) -->
+                        <ellipse class="healix-teal-accent" cx="35" cy="105" rx="12" ry="18"/>
+                        <ellipse class="healix-teal-accent" cx="165" cy="105" rx="12" ry="18"/>
+                        
+                        <!-- Face screen (rounded rectangle) -->
+                        <rect class="healix-face-screen" x="55" y="80" width="90" height="65" rx="18" ry="18"/>
+                        
+                        <!-- Happy curved eyes -->
+                        <g class="healix-eyes">
+                            <path class="healix-eye-happy" d="M 70 105 Q 80 95 90 105"/>
+                            <path class="healix-eye-happy" d="M 110 105 Q 120 95 130 105"/>
+                        </g>
+                        
+                        <!-- Smile -->
+                        <path class="healix-mouth" d="M 80 125 Q 100 140 120 125"/>
+                        
+                        <!-- Checkmark sparkle on chest -->
+                        <g transform="translate(100, 175)">
+                            <circle fill="none" stroke="var(--healix-teal)" stroke-width="2" cx="0" cy="0" r="15" opacity="0.3"/>
+                            <path class="healix-checkmark" d="M -6 0 L -2 4 L 6 -4"/>
+                            
+                            <!-- Sparkle rays -->
+                            <g class="healix-sparkle">
+                                <line x1="0" y1="-20" x2="0" y2="-24" stroke="var(--healix-teal)" stroke-width="2"/>
+                                <line x1="14" y1="-14" x2="17" y2="-17" stroke="var(--healix-teal)" stroke-width="2"/>
+                                <line x1="20" y1="0" x2="24" y2="0" stroke="var(--healix-teal)" stroke-width="2"/>
+                                <line x1="-20" y1="0" x2="-24" y2="0" stroke="var(--healix-teal)" stroke-width="2"/>
+                                <line x1="-14" y1="-14" x2="-17" y2="-17" stroke="var(--healix-teal)" stroke-width="2"/>
+                            </g>
+                        </g>
+                        
+                        <!-- Left arm (white with teal cuff, stubby) -->
+                        <g class="healix-left-arm">
+                            <ellipse fill="white" cx="32" cy="145" rx="16" ry="24" transform="rotate(-10 32 145)"/>
+                            <ellipse class="healix-teal-accent" cx="30" cy="165" rx="10" ry="6"/>
+                        </g>
+                        
+                        <!-- Right arm (white with teal cuff, stubby, waving) -->
+                        <g class="healix-right-arm arm-wave">
+                            <ellipse fill="white" cx="168" cy="135" rx="16" ry="24" transform="rotate(25 168 135)"/>
+                            <ellipse class="healix-teal-accent" cx="175" cy="118" rx="10" ry="6" transform="rotate(25 175 118)"/>
+                        </g>
+                        
+                        <!-- Small indicator light -->
+                        <circle fill="var(--healix-teal)" cx="100" cy="220" r="4" opacity="0.6"/>
+                    </svg>
+                </div>
+                <h2 class="persona-name">Healix</h2>
+                <p class="persona-role">In-CRM admin AI</p>
+                <div class="persona-status">
+                    <span class="persona-status-dot"></span>
+                    <span>Click to interact</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity Panel -->
+        <div class="activity-panel">
+            <div class="activity-header">
+                <h3 class="activity-title" id="activity-title">Mira is listening...</h3>
+                <div class="activity-controls">
+                    <button class="activity-btn active" data-state="idle" onclick="setState('idle')">Idle</button>
+                    <button class="activity-btn" data-state="listening" onclick="setState('listening')">Listening</button>
+                    <button class="activity-btn" data-state="talking" onclick="setState('talking')">Talking</button>
+                    <button class="activity-btn" data-state="thinking" onclick="setState('thinking')">Thinking</button>
+                </div>
+            </div>
+            
+            <!-- Mira Activity Content -->
+            <div class="activity-content active" id="mira-activity">
+                <div class="activity-snippet">
+                    <div class="activity-icon mira">📞</div>
+                    <div class="activity-text">
+                        <strong>Incoming call answered</strong>
+                        <span>Patient: Sarah M. — Rescheduling appointment</span>
+                    </div>
+                </div>
+                <div class="activity-snippet">
+                    <div class="activity-icon mira">📅</div>
+                    <div class="activity-text">
+                        <strong>Appointment booked</strong>
+                        <span>Tuesday, Sept 15 at 2:30 PM — Cleaning</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Healix Activity Content -->
+            <div class="activity-content" id="healix-activity">
+                <div class="activity-snippet">
+                    <div class="activity-icon healix">✓</div>
+                    <div class="activity-text">
+                        <strong>Running recall campaign...</strong>
+                        <span>18 dormant patients identified</span>
+                    </div>
+                </div>
+                <div class="activity-snippet">
+                    <div class="activity-icon healix">📊</div>
+                    <div class="activity-text">
+                        <strong>Updating patient records</strong>
+                        <span>Syncing consent status with EHR</span>
+                    </div>
+                </div>
+                <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-label">
+            <p>Part of the <strong>automated patient operating system</strong> — not just an AI receptionist.</p>
+        </div>
+    </main>
+    
+    <script>
+        let currentPersona = 'mira';
+        let currentState = 'idle';
+        
+        function selectPersona(persona) {
+            currentPersona = persona;
+            
+            // Update card active states
+            document.querySelectorAll('.persona-card').forEach(card => {
+                card.classList.toggle('active', card.dataset.persona === persona);
+            });
+            
+            // Update activity panel
+            document.getElementById('mira-activity').classList.toggle('active', persona === 'mira');
+            document.getElementById('healix-activity').classList.toggle('active', persona === 'healix');
+            
+            // Update title
+            updateActivityTitle();
+            
+            // Reset state to idle
+            setState('idle');
+        }
+        
+        function setState(state) {
+            currentState = state;
+            
+            // Update button active states
+            document.querySelectorAll('.activity-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.state === state);
+            });
+            
+            // Update SVG state
+            const svg = document.querySelector(`.${currentPersona}-svg`);
+            if (svg) {
+                // Map state names for Healix
+                let svgState = state;
+                if (currentPersona === 'healix') {
+                    if (state === 'listening') svgState = 'working';
+                    if (state === 'talking') svgState = 'success';
+                }
+                svg.dataset.state = svgState;
+            }
+            
+            updateActivityTitle();
+        }
+        
+        function updateActivityTitle() {
+            const title = document.getElementById('activity-title');
+            const name = currentPersona.charAt(0).toUpperCase() + currentPersona.slice(1);
+            
+            const stateLabels = {
+                mira: {
+                    idle: 'Mira is ready',
+                    listening: 'Mira is listening to a call...',
+                    talking: 'Mira is speaking with a patient...',
+                    thinking: 'Mira is processing...'
+                },
+                healix: {
+                    idle: 'Healix is standing by',
+                    listening: 'Healix is working on a task...',
+                    talking: 'Healix completed a task!',
+                    thinking: 'Healix is analyzing data...'
+                }
+            };
+            
+            title.textContent = stateLabels[currentPersona][currentState];
+        }
+        
+        // Initialize
+        updateActivityTitle();
+    </script>
+</body>
+</html>
