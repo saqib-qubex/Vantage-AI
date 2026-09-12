@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <title>Meet the Team — VantageAI Personas Demo</title>
+    <meta name="description" content="Interactive demo of VantageAI personas: Mira, Healix, and Aria.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-background: #ffffff;
+            --color-surface: #f6f4f0;
+            --color-border: #e7e4de;
+            --color-text-primary: #191919;
+            --color-text-secondary: #57534e;
+            --color-text-tertiary: #8a8580;
+            --color-primary: #14532d;
+            --color-accent: #15803d;
+            
+            /* Persona colors */
+            --mira-coral: #f08b6d;
+            --mira-coral-light: #fcd5c8;
+            --mira-cream: #fef7f0;
+            --mira-face: #1a1a2e;
+            
+            --healix-teal: #22b8cf;
+            --healix-teal-light: #c5f6fa;
+            --healix-white: #ffffff;
+            --healix-face: #1a2744;
+            
+            --aria-violet: #a78bfa;
+            --aria-violet-light: #ede9fe;
+            --aria-cream: #faf8ff;
+            --aria-face: #2d2044;
+            
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --radius-lg: 18px;
+            --radius-xl: 28px;
+            --transition-base: 250ms ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-background);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Theme toggle */
+        body.dark-mode {
+            --color-background: #0f1419;
+            --color-surface: #1a1f26;
+            --color-border: #2a3038;
+            --color-text-primary: #f0f4f8;
+            --color-text-secondary: #9ca3af;
+            --color-text-tertiary: #6b7280;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .demo-header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .demo-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--color-text-primary);
+        }
+
+        .demo-logo img {
+            height: 28px;
+        }
+
+        .demo-badge {
+            padding: 0.25rem 0.6rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+        }
+
+        .theme-toggle {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 999px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            transition: all var(--transition-base);
+        }
+
+        .theme-toggle:hover {
+            background: var(--color-border);
+            color: var(--color-text-primary);
+        }
+
+        /* Hero */
+        .personas-hero {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .personas-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .personas-hero p {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Personas Grid */
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0 4rem;
+        }
+
+        /* Persona Card */
+        .persona-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .persona-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .persona-card.active {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.15);
+        }
+
+        .persona-avatar {
+            width: 200px;
+            height: 240px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .persona-info {
+            text-align: center;
+        }
+
+        .persona-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .persona-role {
+            font-size: 0.875rem;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .persona-desc {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        /* State indicator */
+        .persona-state {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 999px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+        }
+
+        .state-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-border);
+        }
+
+        .persona-card.active .state-dot {
+            background: #10b981;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        }
+
+        /* Interaction Panel */
+        .interaction-panel {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            margin-bottom: 4rem;
+            min-height: 280px;
+            display: none;
+        }
+
+        .interaction-panel.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .panel-avatar {
+            width: 48px;
+            height: 48px;
+        }
+
+        .panel-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .panel-subtitle {
+            font-size: 0.8125rem;
+            color: var(--color-text-tertiary);
+        }
+
+        .panel-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--color-text-tertiary);
+            font-size: 1.25rem;
+        }
+
+        .panel-close:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Mira Call Demo */
+        .mira-demo .call-transcript {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .call-turn {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 16px;
+            font-size: 0.9375rem;
+            line-height: 1.45;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .call-turn.agent {
+            align-self: flex-start;
+            background: rgba(240, 139, 109, 0.15);
+            color: var(--color-text-primary);
+            border-bottom-left-radius: 4px;
+        }
+
+        .call-turn.patient {
+            align-self: flex-end;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-bottom-right-radius: 4px;
+        }
+
+        .call-turn-who {
+            display: block;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            opacity: 0.6;
+            margin-bottom: 0.15rem;
+        }
+
+        /* Healix Activity */
+        .healix-demo .activity-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.875rem;
+        }
+
+        .activity-icon.chart { background: rgba(34, 184, 207, 0.15); color: var(--healix-teal); }
+        .activity-icon.verified { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+        .activity-icon.scheduled { background: rgba(99, 102, 241, 0.12); color: #6366f1; }
+
+        .activity-content strong {
+            display: block;
+            font-size: 0.875rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .activity-content span {
+            font-size: 0.8125rem;
+            color: var(--color-text-secondary);
+        }
+
+        .activity-time {
+            margin-left: auto;
+            font-size: 0.75rem;
+            color: var(--color-text-tertiary);
+            white-space: nowrap;
+        }
+
+        /* Aria Notes */
+        .aria-demo .note-draft {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+        }
+
+        .note-draft h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-text-tertiary);
+            margin-bottom: 0.75rem;
+        }
+
+        .note-draft p {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .note-draft .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--aria-violet);
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Footer */
+        .demo-footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--color-text-tertiary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .personas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .persona-avatar {
+                width: 160px;
+                height: 200px;
+            }
+
+            .call-turn {
+                max-width: 90%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="demo-header">
+            <a href="../../index.html" class="demo-logo">
+                <img src="../../assets/logo.png" alt="VantageAI" height="28">
+                <span class="demo-badge">Personas Demo</span>
+            </a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+        </header>
+
+        <section class="personas-hero">
+            <h1>Meet the Team</h1>
+            <p>Click on a persona to see them in action. Mira answers calls, Healix runs the CRM, and Aria captures notes.</p>
+        </section>
+
+        <div class="interaction-panel" id="interactionPanel">
+            <!-- Dynamic content -->
+        </div>
+
+        <div class="personas-grid">
+            <!-- Mira -->
+            <div class="persona-card" data-persona="mira">
+                <div class="persona-avatar" id="miraAvatar">
+                    <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Mira body: coral cream pill bot -->
+                        <defs>
+                            <linearGradient id="miraBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#fef7f0"/>
+                                <stop offset="100%" style="stop-color:#fcd5c8"/>
+                            </linearGradient>
+                            <filter id="miraShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.15"/>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Main body (pill shape) -->
+                        <ellipse cx="100" cy="130" rx="70" ry="90" fill="url(#miraBodyGradient)" filter="url(#miraShadow)"/>
+                        
+                        <!-- Top cap (coral) -->
+                        <ellipse cx="100" cy="50" rx="45" ry="30" fill="#f08b6d"/>
+                        <ellipse cx="100" cy="52" rx="40" ry="25" fill="#f5a088"/>
+                        
+                        <!-- Face plate (black rounded rectangle) -->
+                        <rect x="50" y="70" width="100" height="75" rx="20" ry="20" fill="#1a1a2e"/>
+                        
+                        <!-- Eyes - idle state -->
+                        <g class="mira-eyes" data-state="idle">
+                            <circle cx="75" cy="100" r="10" fill="#ffffff"/>
+                            <circle cx="125" cy="100" r="10" fill="#ffffff"/>
+                            <circle cx="77" cy="102" r="5" fill="#1a1a2e"/>
+                            <circle cx="127" cy="102" r="5" fill="#1a1a2e"/>
+                        </g>
+                        
+                        <!-- Smile -->
+                        <path d="M80 125 Q100 138 120 125" stroke="#f08b6d" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Sound wave on right cheek -->
+                        <g transform="translate(140, 95)" opacity="0.7">
+                            <path d="M0 10 Q3 5 0 0" stroke="#f08b6d" stroke-width="2" fill="none"/>
+                            <path d="M5 12 Q10 5 5 -2" stroke="#f08b6d" stroke-width="2" fill="none"/>
+                            <path d="M10 14 Q17 5 10 -4" stroke="#f08b6d" stroke-width="2" fill="none"/>
+                        </g>
+                        
+                        <!-- Arms (stubby coral) -->
+                        <ellipse cx="30" cy="140" rx="18" ry="25" fill="#f08b6d"/>
+                        <ellipse cx="170" cy="140" rx="18" ry="25" fill="#f08b6d"/>
+                        
+                        <!-- Bottom ring (coral) -->
+                        <ellipse cx="100" cy="215" rx="55" ry="15" fill="#f08b6d"/>
+                        
+                        <!-- Speaker dots on back (shown from angle view hint) -->
+                    </svg>
+                </div>
+                <div class="persona-info">
+                    <h2 class="persona-name">Mira</h2>
+                    <p class="persona-role">Voice Agent</p>
+                    <p class="persona-desc">Answers every call 24/7, identifies patients, and books appointments directly on the chart.</p>
+                    <div class="persona-state">
+                        <span class="state-dot"></span>
+                        <span class="state-text">Click to hear Mira</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Healix -->
+            <div class="persona-card" data-persona="healix">
+                <div class="persona-avatar" id="healixAvatar">
+                    <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Healix body: white/teal bot -->
+                        <defs>
+                            <linearGradient id="healixBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff"/>
+                                <stop offset="100%" style="stop-color:#f0fdfa"/>
+                            </linearGradient>
+                            <filter id="healixShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.12"/>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Main body (rounded rectangle) -->
+                        <rect x="40" y="50" width="120" height="150" rx="50" ry="50" fill="url(#healixBodyGradient)" filter="url(#healixShadow)" stroke="#22b8cf" stroke-width="2"/>
+                        
+                        <!-- Top head (white dome) -->
+                        <ellipse cx="100" cy="55" rx="45" ry="30" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
+                        
+                        <!-- Face plate (navy rounded) -->
+                        <rect x="55" y="70" width="90" height="60" rx="18" ry="18" fill="#1a2744"/>
+                        
+                        <!-- Eyes - happy state -->
+                        <g class="healix-eyes" data-state="idle">
+                            <circle cx="78" cy="95" r="9" fill="#ffffff"/>
+                            <circle cx="122" cy="95" r="9" fill="#ffffff"/>
+                            <circle cx="80" cy="96" r="4" fill="#1a2744"/>
+                            <circle cx="124" cy="96" r="4" fill="#1a2744"/>
+                        </g>
+                        
+                        <!-- Smile -->
+                        <path d="M82 115 Q100 125 118 115" stroke="#22b8cf" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Checklist sparkle on chest -->
+                        <g transform="translate(85, 145)">
+                            <circle cx="15" cy="15" r="18" fill="rgba(34, 184, 207, 0.15)" stroke="#22b8cf" stroke-width="1.5"/>
+                            <path d="M8 15 L13 20 L22 10" stroke="#22b8cf" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Sparkle rays -->
+                            <line x1="15" y1="-5" x2="15" y2="0" stroke="#22b8cf" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="30" y1="10" x2="35" y2="10" stroke="#22b8cf" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="0" y1="20" x2="-5" y2="20" stroke="#22b8cf" stroke-width="1.5" stroke-linecap="round"/>
+                        </g>
+                        
+                        <!-- Ear pieces (teal) -->
+                        <ellipse cx="38" cy="100" rx="12" ry="18" fill="#22b8cf"/>
+                        <ellipse cx="162" cy="100" rx="12" ry="18" fill="#22b8cf"/>
+                        
+                        <!-- Arms -->
+                        <ellipse cx="25" cy="150" rx="15" ry="20" fill="#ffffff" stroke="#22b8cf" stroke-width="2"/>
+                        <ellipse cx="175" cy="150" rx="15" ry="20" fill="#ffffff" stroke="#22b8cf" stroke-width="2"/>
+                        
+                        <!-- Bottom (teal base) -->
+                        <ellipse cx="100" cy="200" rx="45" ry="12" fill="#22b8cf"/>
+                    </svg>
+                </div>
+                <div class="persona-info">
+                    <h2 class="persona-name">Healix</h2>
+                    <p class="persona-role">In-CRM Agent</p>
+                    <p class="persona-desc">Works inside your CRM—updates charts, verifies coverage, and runs admin tasks automatically.</p>
+                    <div class="persona-state">
+                        <span class="state-dot"></span>
+                        <span class="state-text">Click to see activity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aria -->
+            <div class="persona-card" data-persona="aria">
+                <div class="persona-avatar" id="ariaAvatar">
+                    <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Aria body: soft violet + cream pill bot -->
+                        <defs>
+                            <linearGradient id="ariaBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#faf8ff"/>
+                                <stop offset="100%" style="stop-color:#ede9fe"/>
+                            </linearGradient>
+                            <filter id="ariaShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.12"/>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Main body (pill shape) -->
+                        <ellipse cx="100" cy="130" rx="65" ry="85" fill="url(#ariaBodyGradient)" filter="url(#ariaShadow)" stroke="#a78bfa" stroke-width="1.5"/>
+                        
+                        <!-- Top cap (soft violet) -->
+                        <ellipse cx="100" cy="52" rx="42" ry="28" fill="#a78bfa"/>
+                        <ellipse cx="100" cy="54" rx="37" ry="23" fill="#c4b5fd"/>
+                        
+                        <!-- Face plate (dark violet) -->
+                        <rect x="52" y="72" width="96" height="68" rx="18" ry="18" fill="#2d2044"/>
+                        
+                        <!-- Eyes - gentle/soft state -->
+                        <g class="aria-eyes" data-state="idle">
+                            <ellipse cx="75" cy="100" rx="9" ry="8" fill="#ffffff"/>
+                            <ellipse cx="125" cy="100" rx="9" ry="8" fill="#ffffff"/>
+                            <circle cx="77" cy="101" r="4" fill="#2d2044"/>
+                            <circle cx="127" cy="101" r="4" fill="#2d2044"/>
+                        </g>
+                        
+                        <!-- Gentle smile -->
+                        <path d="M85 122 Q100 130 115 122" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        
+                        <!-- Note mark on chest -->
+                        <g transform="translate(82, 150)">
+                            <rect x="0" y="0" width="36" height="28" rx="6" fill="rgba(167, 139, 250, 0.2)" stroke="#a78bfa" stroke-width="1.5"/>
+                            <!-- Note lines -->
+                            <line x1="6" y1="8" x2="30" y2="8" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="6" y1="14" x2="24" y2="14" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="6" y1="20" x2="18" y2="20" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/>
+                        </g>
+                        
+                        <!-- Arms (soft violet) -->
+                        <ellipse cx="32" cy="140" rx="15" ry="22" fill="#c4b5fd"/>
+                        <ellipse cx="168" cy="140" rx="15" ry="22" fill="#c4b5fd"/>
+                        
+                        <!-- Bottom ring (violet) -->
+                        <ellipse cx="100" cy="210" rx="50" ry="13" fill="#a78bfa"/>
+                    </svg>
+                </div>
+                <div class="persona-info">
+                    <h2 class="persona-name">Aria</h2>
+                    <p class="persona-role">AI Scribe</p>
+                    <p class="persona-desc">Listens during visits, captures clinical notes, and drafts documentation—no typing required.</p>
+                    <div class="persona-state">
+                        <span class="state-dot"></span>
+                        <span class="state-text">Click to see notes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="demo-footer">
+            <p>Internal demo · Not for public distribution · VantageAI by QubeX, Inc.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeToggle.innerHTML = isDark 
+                ? '<i class="fas fa-sun"></i> Light Mode'
+                : '<i class="fas fa-moon"></i> Dark Mode';
+        });
+
+        // Persona interactions
+        const personaCards = document.querySelectorAll('.persona-card');
+        const interactionPanel = document.getElementById('interactionPanel');
+        let activePersona = null;
+
+        // Demo content for each persona
+        const miraScript = [
+            { who: 'Mira', type: 'agent', text: "Good afternoon, Advanced Family Dental. This is Mira, how can I help you today?" },
+            { who: 'Patient', type: 'patient', text: "Hi, I need to reschedule my cleaning appointment." },
+            { who: 'Mira', type: 'agent', text: "Of course! I can help with that. May I have your name and date of birth to pull up your appointment?" },
+            { who: 'Patient', type: 'patient', text: "Sarah Johnson, March 15th, 1985." },
+            { who: 'Mira', type: 'agent', text: "Thank you, Sarah. I see your cleaning is scheduled for Thursday at 2 PM. Would you like to move that to a different day?" },
+            { who: 'Patient', type: 'patient', text: "Yes, do you have anything next week Tuesday morning?" },
+            { who: 'Mira', type: 'agent', text: "I have Tuesday at 9:30 AM or 11 AM available. Which works better for you?" },
+            { who: 'Patient', type: 'patient', text: "9:30 works great." },
+            { who: 'Mira', type: 'agent', text: "I've rescheduled your cleaning to Tuesday at 9:30 AM. You'll receive a confirmation text shortly. Is there anything else I can help with today?" }
+        ];
+
+        const healixActivities = [
+            { icon: 'chart', title: 'Updating patient chart', subtitle: 'Sarah Johnson — adding appointment notes', time: 'Just now' },
+            { icon: 'verified', title: 'Coverage verified', subtitle: 'Delta Dental PPO — cleaning covered 100%', time: '2 min ago' },
+            { icon: 'scheduled', title: 'Recall campaign sent', subtitle: '12 patients due for 6-month checkup', time: '15 min ago' }
+        ];
+
+        const ariaNoteText = "Patient presents for routine dental cleaning. Reports no sensitivity or discomfort since last visit. Gingival health appears stable with mild inflammation noted in lower anteriors. Discussed importance of daily flossing. Patient receptive to recommendations. Next cleaning scheduled in 6 months.";
+
+        function showMiraDemo() {
+            interactionPanel.innerHTML = `
+                <div class="mira-demo">
+                    <div class="panel-header">
+                        <svg class="panel-avatar" viewBox="0 0 48 48">
+                            <ellipse cx="24" cy="26" rx="16" ry="20" fill="#fef7f0" stroke="#f08b6d" stroke-width="2"/>
+                            <ellipse cx="24" cy="10" rx="10" ry="7" fill="#f08b6d"/>
+                            <rect x="12" y="16" width="24" height="18" rx="5" fill="#1a1a2e"/>
+                            <circle cx="18" cy="24" r="3" fill="white"/>
+                            <circle cx="30" cy="24" r="3" fill="white"/>
+                        </svg>
+                        <div>
+                            <h3 class="panel-title">Mira — Incoming Call</h3>
+                            <p class="panel-subtitle">Sample: Patient rescheduling (HIPAA-compliant demo)</p>
+                        </div>
+                        <button class="panel-close" onclick="closePanel()"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="call-transcript" id="callTranscript"></div>
+                </div>
+            `;
+            
+            const transcript = document.getElementById('callTranscript');
+            let index = 0;
+            
+            function addMessage() {
+                if (index < miraScript.length) {
+                    const msg = miraScript[index];
+                    const turn = document.createElement('div');
+                    turn.className = `call-turn ${msg.type}`;
+                    turn.innerHTML = `<span class="call-turn-who">${msg.who}</span>${msg.text}`;
+                    transcript.appendChild(turn);
+                    transcript.scrollTop = transcript.scrollHeight;
+                    index++;
+                    setTimeout(addMessage, 1200 + Math.random() * 800);
+                }
+            }
+            
+            addMessage();
+        }
+
+        function showHealixDemo() {
+            interactionPanel.innerHTML = `
+                <div class="healix-demo">
+                    <div class="panel-header">
+                        <svg class="panel-avatar" viewBox="0 0 48 48">
+                            <rect x="10" y="12" width="28" height="32" rx="12" fill="white" stroke="#22b8cf" stroke-width="2"/>
+                            <rect x="14" y="17" width="20" height="14" rx="5" fill="#1a2744"/>
+                            <circle cx="20" cy="23" r="2.5" fill="white"/>
+                            <circle cx="28" cy="23" r="2.5" fill="white"/>
+                            <ellipse cx="24" cy="42" rx="10" ry="3" fill="#22b8cf"/>
+                        </svg>
+                        <div>
+                            <h3 class="panel-title">Healix — CRM Activity</h3>
+                            <p class="panel-subtitle">Working on your patient records in real-time</p>
+                        </div>
+                        <button class="panel-close" onclick="closePanel()"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="activity-feed" id="activityFeed"></div>
+                </div>
+            `;
+            
+            const feed = document.getElementById('activityFeed');
+            let index = 0;
+            
+            function addActivity() {
+                if (index < healixActivities.length) {
+                    const act = healixActivities[index];
+                    const item = document.createElement('div');
+                    item.className = 'activity-item';
+                    item.innerHTML = `
+                        <div class="activity-icon ${act.icon}"><i class="fas fa-${act.icon === 'chart' ? 'clipboard-list' : act.icon === 'verified' ? 'check-circle' : 'calendar-check'}"></i></div>
+                        <div class="activity-content">
+                            <strong>${act.title}</strong>
+                            <span>${act.subtitle}</span>
+                        </div>
+                        <span class="activity-time">${act.time}</span>
+                    `;
+                    feed.appendChild(item);
+                    index++;
+                    setTimeout(addActivity, 1500);
+                }
+            }
+            
+            addActivity();
+        }
+
+        function showAriaDemo() {
+            interactionPanel.innerHTML = `
+                <div class="aria-demo">
+                    <div class="panel-header">
+                        <svg class="panel-avatar" viewBox="0 0 48 48">
+                            <ellipse cx="24" cy="26" rx="15" ry="19" fill="#faf8ff" stroke="#a78bfa" stroke-width="2"/>
+                            <ellipse cx="24" cy="11" rx="10" ry="7" fill="#a78bfa"/>
+                            <rect x="13" y="17" width="22" height="16" rx="5" fill="#2d2044"/>
+                            <ellipse cx="19" cy="24" r="2.5" fill="white"/>
+                            <ellipse cx="29" cy="24" r="2.5" fill="white"/>
+                            <ellipse cx="24" cy="44" rx="11" ry="3" fill="#a78bfa"/>
+                        </svg>
+                        <div>
+                            <h3 class="panel-title">Aria — Clinical Notes</h3>
+                            <p class="panel-subtitle">Drafting documentation from encounter</p>
+                        </div>
+                        <button class="panel-close" onclick="closePanel()"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="note-draft">
+                        <h4>Visit Note Draft</h4>
+                        <p id="noteText"></p>
+                    </div>
+                </div>
+            `;
+            
+            const noteEl = document.getElementById('noteText');
+            let charIndex = 0;
+            
+            function typeNote() {
+                if (charIndex <= ariaNoteText.length) {
+                    noteEl.innerHTML = ariaNoteText.substring(0, charIndex) + '<span class="typing-cursor"></span>';
+                    charIndex++;
+                    setTimeout(typeNote, 30);
+                } else {
+                    noteEl.innerHTML = ariaNoteText;
+                }
+            }
+            
+            typeNote();
+        }
+
+        function closePanel() {
+            interactionPanel.classList.remove('visible');
+            if (activePersona) {
+                activePersona.classList.remove('active');
+                activePersona.querySelector('.state-text').textContent = `Click to ${activePersona.dataset.persona === 'mira' ? 'hear Mira' : activePersona.dataset.persona === 'healix' ? 'see activity' : 'see notes'}`;
+                activePersona = null;
+            }
+        }
+
+        personaCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const persona = card.dataset.persona;
+                
+                // Toggle off if clicking same card
+                if (activePersona === card) {
+                    closePanel();
+                    return;
+                }
+                
+                // Deactivate previous
+                if (activePersona) {
+                    activePersona.classList.remove('active');
+                    activePersona.querySelector('.state-text').textContent = `Click to ${activePersona.dataset.persona === 'mira' ? 'hear Mira' : activePersona.dataset.persona === 'healix' ? 'see activity' : 'see notes'}`;
+                }
+                
+                // Activate new
+                card.classList.add('active');
+                card.querySelector('.state-text').textContent = persona === 'mira' ? 'Listening...' : persona === 'healix' ? 'Working...' : 'Drafting...';
+                activePersona = card;
+                
+                // Show panel
+                interactionPanel.classList.add('visible');
+                
+                if (persona === 'mira') {
+                    showMiraDemo();
+                } else if (persona === 'healix') {
+                    showHealixDemo();
+                } else if (persona === 'aria') {
+                    showAriaDemo();
+                }
+                
+                // Scroll to panel
+                interactionPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        });
+
+        // Eye animation on hover
+        personaCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const persona = card.dataset.persona;
+                // Could add eye tracking animation here
+            });
+        });
+    </script>
+</body>
+</html>
