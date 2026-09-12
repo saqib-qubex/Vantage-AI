@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
     <title>Meet the Team — VantageAI Personas Demo</title>
     <meta name="description" content="Interactive demo of VantageAI personas: Mira, Healix, and Aria.">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,99 +15,66 @@
     
     <style>
         :root {
-            --color-stage: #0f1113;
-            --color-stage-surface: #151719;
-            --color-stage-border: #252729;
-            --color-text-primary: #f0f4f8;
-            --color-text-secondary: #9ca3af;
-            --color-text-tertiary: #6b7280;
-            --color-gold: #C9A227;
-            --color-gold-dim: rgba(201, 162, 39, 0.4);
+            --stage-bg: #0f1113;
+            --stage-surface: #1a1d21;
+            --stage-border: #2a2d32;
+            --text-primary: #f0f4f8;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --gold-accent: #C9A227;
+            --gold-glow: rgba(201, 162, 39, 0.3);
             
-            --mira-primary: #14532d;
+            /* Mira: forest green + cream + gold */
+            --mira-primary: #22c55e;
+            --mira-secondary: #f5f5dc;
             --mira-accent: #C9A227;
-            --healix-primary: #0d9488;
-            --healix-accent: #22d3ee;
+            --mira-glow: rgba(34, 197, 94, 0.4);
+            
+            /* Healix: deep teal + cyan/sky */
+            --healix-primary: #0E4A52;
+            --healix-secondary: #22d3ee;
+            --healix-accent: #67e8f9;
+            --healix-glow: rgba(34, 211, 238, 0.4);
+            
+            /* Aria: plum + lilac */
             --aria-primary: #7c3aed;
-            --aria-accent: #c4b5fd;
+            --aria-secondary: #c4b5fd;
+            --aria-accent: #e9d5ff;
+            --aria-glow: rgba(167, 139, 250, 0.4);
             
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
             --radius-lg: 18px;
             --radius-xl: 28px;
-            --transition-base: 300ms ease;
+            --transition-base: 250ms ease;
+            --transition-slow: 600ms ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-family);
-            background: var(--color-stage);
-            color: var(--color-text-primary);
+            background: var(--stage-bg);
+            color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        /* Boot screen */
-        .boot-screen {
-            position: fixed;
-            inset: 0;
-            background: var(--color-stage);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        .boot-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .boot-logo {
-            height: 32px;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-
-        .boot-spinner {
-            width: 48px;
-            height: 48px;
-            border: 2px solid var(--color-stage-border);
-            border-top-color: var(--color-gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .boot-text {
-            margin-top: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--color-text-tertiary);
-            letter-spacing: 0.04em;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
         /* Header */
         .demo-header {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--color-stage-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background: linear-gradient(to bottom, var(--stage-bg), transparent);
         }
 
         .demo-logo {
@@ -115,7 +82,7 @@
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: var(--color-text-primary);
+            color: var(--text-primary);
         }
 
         .demo-logo img {
@@ -125,752 +92,849 @@
 
         .demo-badge {
             padding: 0.25rem 0.6rem;
-            background: var(--color-stage-surface);
-            border: 1px solid var(--color-gold-dim);
+            background: var(--stage-surface);
+            border: 1px solid var(--gold-accent);
             border-radius: 999px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--color-gold);
+            letter-spacing: 0.08em;
+            color: var(--gold-accent);
         }
 
-        .header-tagline {
-            font-size: 0.875rem;
-            color: var(--color-text-tertiary);
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        /* Hero Stage */
-        .hero-stage {
-            position: relative;
-            min-height: 70vh;
+        .talk-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--stage-surface);
+            border: 1px solid var(--stage-border);
+            border-radius: 999px;
+            color: var(--text-secondary);
+            font-family: var(--font-family);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .talk-btn:hover {
+            background: var(--stage-border);
+            color: var(--text-primary);
+        }
+
+        .talk-btn.active {
+            background: var(--gold-accent);
+            border-color: var(--gold-accent);
+            color: var(--stage-bg);
+        }
+
+        /* Main Stage */
+        .stage {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem;
-            overflow: hidden;
-        }
-
-        .hero-stage::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(201, 162, 39, 0.08) 0%, transparent 60%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        /* Persona Image Container */
-        .persona-hero-image {
+            padding: 6rem 2rem 4rem;
             position: relative;
-            width: 100%;
-            max-width: 900px;
-            aspect-ratio: 16 / 9;
-            margin-bottom: 3rem;
         }
 
-        .persona-image {
+        /* Orb Container */
+        .orb-container {
+            position: relative;
+            width: 420px;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orb-glow {
             position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            animation: float 6s ease-in-out infinite;
-            animation-play-state: paused;
-            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
-        }
-
-        .persona-image.active {
-            opacity: 1;
-            transform: scale(1);
-            animation-play-state: running;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-12px) scale(1.01); }
-        }
-
-        /* Glow effect behind active image */
-        .persona-glow {
-            position: absolute;
-            inset: 10%;
+            inset: -60px;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0;
-            transition: opacity 1s ease, background 1s ease;
+            background: radial-gradient(circle at center, var(--mira-glow) 0%, transparent 70%);
+            filter: blur(40px);
+            opacity: 0.8;
+            transition: background var(--transition-slow);
             pointer-events: none;
         }
 
-        .persona-glow.active {
-            opacity: 0.4;
+        .orb-canvas {
+            position: relative;
+            z-index: 1;
+            border-radius: 50%;
         }
 
-        .persona-glow[data-persona="mira"] { background: linear-gradient(135deg, #14532d, #C9A227); }
-        .persona-glow[data-persona="healix"] { background: linear-gradient(135deg, #0d9488, #22d3ee); }
-        .persona-glow[data-persona="aria"] { background: linear-gradient(135deg, #7c3aed, #c4b5fd); }
-
-        /* HUD Info */
-        .hero-hud {
-            text-align: center;
-            margin-bottom: 2rem;
+        /* State HUD */
+        .state-hud {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .hero-persona-name {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.25rem;
-            background: linear-gradient(135deg, var(--color-text-primary), var(--color-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-persona-role {
-            font-size: 0.875rem;
+        .state-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--stage-surface);
+            border: 1px solid var(--stage-border);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--color-gold);
-            margin-bottom: 0.75rem;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
         }
 
-        .hero-persona-desc {
-            font-size: 1.125rem;
-            color: var(--color-text-secondary);
-            max-width: 500px;
-            margin: 0 auto;
+        .state-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            transition: background var(--transition-base);
+        }
+
+        .state-chip[data-state="idle"] .state-dot { background: var(--text-muted); }
+        .state-chip[data-state="listening"] .state-dot { background: #22c55e; animation: pulse-green 1.5s ease-in-out infinite; }
+        .state-chip[data-state="thinking"] .state-dot { background: #f59e0b; animation: pulse-amber 1s ease-in-out infinite; }
+        .state-chip[data-state="speaking"] .state-dot { background: #3b82f6; animation: pulse-blue 0.8s ease-in-out infinite; }
+
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+        @keyframes pulse-amber {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+        }
+        @keyframes pulse-blue {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
         }
 
         /* Mode Rail */
         .mode-rail {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background: var(--color-stage-surface);
-            border: 1px solid var(--color-stage-border);
-            border-radius: 999px;
-            margin-bottom: 3rem;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 50;
         }
 
         .mode-btn {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            background: transparent;
-            border: none;
-            border-radius: 999px;
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--stage-border);
+            background: var(--stage-surface);
             cursor: pointer;
-            font-family: var(--font-family);
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--color-text-tertiary);
             transition: all var(--transition-base);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            color: var(--text-secondary);
+            font-family: var(--font-family);
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .mode-btn:hover {
-            color: var(--color-text-secondary);
+            background: var(--stage-border);
+            transform: scale(1.05);
         }
 
         .mode-btn.active {
-            background: var(--color-stage-border);
-            color: var(--color-text-primary);
+            border-color: var(--gold-accent);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
-        .mode-number {
-            width: 22px;
-            height: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--color-stage-border);
-            border-radius: 50%;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
+        .mode-btn[data-mode="mira"].active { border-color: var(--mira-primary); box-shadow: 0 0 20px var(--mira-glow); }
+        .mode-btn[data-mode="healix"].active { border-color: var(--healix-secondary); box-shadow: 0 0 20px var(--healix-glow); }
+        .mode-btn[data-mode="aria"].active { border-color: var(--aria-primary); box-shadow: 0 0 20px var(--aria-glow); }
 
-        .mode-btn.active .mode-number {
-            background: var(--color-gold);
-            color: var(--color-stage);
-        }
-
-        /* Demo Panel */
-        .demo-panel {
-            width: 100%;
-            max-width: 700px;
-            background: var(--color-stage-surface);
-            border: 1px solid var(--color-stage-border);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .demo-panel.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .panel-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid var(--color-stage-border);
-        }
-
-        .panel-indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #10b981;
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-        }
-
-        .panel-title {
-            font-size: 0.9375rem;
-            font-weight: 700;
-        }
-
-        .panel-subtitle {
-            font-size: 0.75rem;
-            color: var(--color-text-tertiary);
-        }
-
-        .panel-content {
-            padding: 1.5rem;
-            max-height: 320px;
-            overflow-y: auto;
-        }
-
-        /* Mira Call Demo */
-        .call-transcript {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .call-turn {
-            max-width: 85%;
-            padding: 0.875rem 1rem;
-            border-radius: 16px;
-            font-size: 0.9375rem;
-            line-height: 1.5;
-            animation: slideIn 0.4s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .call-turn.agent {
-            align-self: flex-start;
-            background: rgba(20, 83, 45, 0.3);
-            border: 1px solid rgba(20, 83, 45, 0.5);
-            border-bottom-left-radius: 4px;
-        }
-
-        .call-turn.patient {
-            align-self: flex-end;
-            background: var(--color-stage-border);
-            border-bottom-right-radius: 4px;
-        }
-
-        .call-turn-who {
-            display: block;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--color-text-tertiary);
-            margin-bottom: 0.25rem;
-        }
-
-        /* Healix Activity */
-        .activity-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .activity-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.875rem;
-            padding: 1rem;
-            background: var(--color-stage-border);
-            border-radius: 14px;
-            animation: slideIn 0.4s ease;
-        }
-
-        .activity-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 0.9rem;
-        }
-
-        .activity-icon.chart { background: rgba(13, 148, 136, 0.2); color: var(--healix-accent); }
-        .activity-icon.verified { background: rgba(16, 185, 129, 0.15); color: #10b981; }
-        .activity-icon.scheduled { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
-
-        .activity-content {
-            flex: 1;
-        }
-
-        .activity-content strong {
-            display: block;
+        .mode-key {
             font-size: 0.875rem;
-            margin-bottom: 0.15rem;
+            font-weight: 800;
         }
 
-        .activity-content span {
-            font-size: 0.8125rem;
-            color: var(--color-text-secondary);
+        .mode-btn[data-mode="mira"] .mode-key { color: var(--mira-primary); }
+        .mode-btn[data-mode="healix"] .mode-key { color: var(--healix-secondary); }
+        .mode-btn[data-mode="aria"] .mode-key { color: var(--aria-primary); }
+
+        /* Persona Info Panel */
+        .persona-panel {
+            margin-top: 5rem;
+            text-align: center;
+            max-width: 480px;
         }
 
-        .activity-time {
-            font-size: 0.75rem;
-            color: var(--color-text-tertiary);
-            white-space: nowrap;
+        .persona-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.25rem;
+            transition: color var(--transition-slow);
         }
 
-        /* Aria Notes */
-        .note-draft {
-            background: var(--color-stage-border);
-            border-radius: 14px;
-            padding: 1.25rem;
-        }
-
-        .note-draft h4 {
-            font-size: 0.75rem;
-            font-weight: 700;
+        .persona-role {
+            font-size: 0.875rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--color-text-tertiary);
-            margin-bottom: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
         }
 
-        .note-draft p {
-            font-size: 0.9375rem;
-            color: var(--color-text-secondary);
+        .persona-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
             line-height: 1.7;
         }
 
-        .typing-cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1em;
-            background: var(--aria-accent);
-            animation: blink 1s step-end infinite;
-            vertical-align: text-bottom;
-            margin-left: 2px;
+        /* Product Locks HUD */
+        .product-hud {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            background: var(--stage-surface);
+            border: 1px solid var(--stage-border);
+            border-radius: var(--radius-lg);
+            z-index: 50;
         }
 
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+        .product-lock {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        /* Particle overlay (optional subtle effect) */
-        .particles {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
+        .product-lock i {
+            font-size: 1rem;
         }
 
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--color-gold);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particle-drift 8s linear infinite;
+        .product-lock.active {
+            color: var(--gold-accent);
         }
 
-        @keyframes particle-drift {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh) scale(0);
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-20vh) scale(1);
-            }
+        .product-lock.active i {
+            color: var(--gold-accent);
         }
 
         /* Footer */
         .demo-footer {
-            padding: 2rem 0;
-            border-top: 1px solid var(--color-stage-border);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.75rem 2rem;
             text-align: center;
-            font-size: 0.8125rem;
-            color: var(--color-text-tertiary);
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+            background: linear-gradient(to top, var(--stage-bg), transparent);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-stage {
-                padding: 3rem 1.5rem;
-                min-height: 60vh;
-            }
-
-            .persona-hero-image {
-                max-width: 100%;
-            }
-
-            .mode-rail {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .mode-btn {
-                padding: 0.625rem 1rem;
-                font-size: 0.8125rem;
-            }
-
-            .mode-btn span:last-child {
-                display: none;
-            }
-
-            .demo-panel {
-                max-width: 100%;
-            }
-
-            .call-turn {
-                max-width: 92%;
-            }
-        }
-
+        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.001ms !important;
                 transition-duration: 0.001ms !important;
             }
+            .orb-canvas {
+                opacity: 1 !important;
+            }
+        }
 
-            .persona-image,
-            .persona-image.active {
-                animation: none !important;
-                opacity: 1;
-                transform: scale(1);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stage {
+                padding: 5rem 1rem 12rem;
+            }
+
+            .orb-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .orb-glow {
+                inset: -40px;
+            }
+
+            .state-hud {
+                bottom: -50px;
+            }
+
+            .mode-rail {
+                position: fixed;
+                right: auto;
+                left: 50%;
+                top: auto;
+                bottom: 2rem;
+                transform: translateX(-50%);
+                flex-direction: row;
+                background: var(--stage-surface);
+                padding: 0.5rem;
+                border-radius: var(--radius-lg);
+                border: 1px solid var(--stage-border);
+            }
+
+            .mode-btn {
+                width: 56px;
+                height: 56px;
+            }
+
+            .product-hud {
+                display: none;
+            }
+
+            .persona-panel {
+                margin-top: 4rem;
+                padding: 0 1rem;
+            }
+
+            .persona-name {
+                font-size: 1.75rem;
+            }
+
+            .persona-desc {
+                font-size: 0.9rem;
+            }
+
+            .demo-footer {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Boot Screen -->
-    <div class="boot-screen" id="bootScreen">
-        <img src="../../assets/logowhite.png" alt="VantageAI" class="boot-logo">
-        <div class="boot-spinner"></div>
-        <p class="boot-text">Initializing personas...</p>
-    </div>
-
-    <div class="container">
-        <header class="demo-header">
-            <a href="../../index.html" class="demo-logo">
-                <img src="../../assets/logo.png" alt="VantageAI" height="28">
-                <span class="demo-badge">Personas Demo</span>
-            </a>
-            <span class="header-tagline">Automated Patient Operating System</span>
-        </header>
-    </div>
-
-    <!-- Hero Stage -->
-    <section class="hero-stage">
-        <!-- Subtle particles -->
-        <div class="particles" id="particles"></div>
-
-        <!-- Persona Images -->
-        <div class="persona-hero-image">
-            <div class="persona-glow active" data-persona="mira" id="personaGlow"></div>
-            <img src="assets/mira-abstract-light.png" alt="Mira - Abstract energy form" class="persona-image active" data-persona="mira">
-            <img src="assets/healix-abstract-light.png" alt="Healix - Abstract crystalline form" class="persona-image" data-persona="healix">
-            <img src="assets/aria-abstract-light.png" alt="Aria - Abstract fluid form" class="persona-image" data-persona="aria">
-        </div>
-
-        <!-- HUD Info -->
-        <div class="hero-hud">
-            <h1 class="hero-persona-name" id="heroName">Mira</h1>
-            <p class="hero-persona-role" id="heroRole">Front-Desk Voice</p>
-            <p class="hero-persona-desc" id="heroDesc">Answers every call 24/7, identifies patients, and books appointments directly on the chart.</p>
-        </div>
-
-        <!-- Mode Rail -->
-        <div class="mode-rail">
-            <button class="mode-btn active" data-mode="1" data-persona="mira">
-                <span class="mode-number">1</span>
-                <span>Mira</span>
-            </button>
-            <button class="mode-btn" data-mode="2" data-persona="healix">
-                <span class="mode-number">2</span>
-                <span>Healix</span>
-            </button>
-            <button class="mode-btn" data-mode="3" data-persona="aria">
-                <span class="mode-number">3</span>
-                <span>Aria</span>
+    <header class="demo-header">
+        <a href="../../index.html" class="demo-logo">
+            <img src="../../assets/logo.png" alt="VantageAI" height="28">
+            <span class="demo-badge">Personas</span>
+        </a>
+        <div class="header-actions">
+            <button class="talk-btn" id="talkBtn" title="Enable microphone for live amplitude">
+                <i class="fas fa-microphone"></i>
+                <span>Talk</span>
             </button>
         </div>
+    </header>
 
-        <!-- Demo Panel -->
-        <div class="demo-panel visible" id="demoPanel">
-            <div class="panel-header">
-                <div class="panel-indicator"></div>
-                <div>
-                    <h3 class="panel-title" id="panelTitle">Incoming Call</h3>
-                    <p class="panel-subtitle" id="panelSubtitle">Sample: Patient rescheduling</p>
+    <main class="stage">
+        <div class="orb-container">
+            <div class="orb-glow" id="orbGlow"></div>
+            <canvas class="orb-canvas" id="orbCanvas" width="350" height="350"></canvas>
+            <div class="state-hud">
+                <div class="state-chip" id="stateChip" data-state="idle">
+                    <span class="state-dot"></span>
+                    <span class="state-label">Idle</span>
                 </div>
             </div>
-            <div class="panel-content" id="panelContent">
-                <!-- Dynamic content -->
-            </div>
         </div>
-    </section>
 
-    <footer class="demo-footer container">
-        <p>Internal demo · Not for public distribution · VantageAI by QubeX, Inc.</p>
+        <section class="persona-panel">
+            <h1 class="persona-name" id="personaName">Mira</h1>
+            <p class="persona-role" id="personaRole">Front-Desk Voice</p>
+            <p class="persona-desc" id="personaDesc">Answers every call 24/7, identifies patients, and books appointments directly on the chart. Your always-on front desk.</p>
+        </section>
+    </main>
+
+    <nav class="mode-rail">
+        <button class="mode-btn active" data-mode="mira" title="Mira — Front-Desk Voice (Press 1)">
+            <span class="mode-key">1</span>
+            <span>Mira</span>
+        </button>
+        <button class="mode-btn" data-mode="healix" title="Healix — In-CRM Agent (Press 2)">
+            <span class="mode-key">2</span>
+            <span>Healix</span>
+        </button>
+        <button class="mode-btn" data-mode="aria" title="Aria — AI Scribe (Press 3)">
+            <span class="mode-key">3</span>
+            <span>Aria</span>
+        </button>
+    </nav>
+
+    <div class="product-hud">
+        <div class="product-lock active" data-product="voice">
+            <i class="fas fa-phone-volume"></i>
+            <span>Voice</span>
+        </div>
+        <div class="product-lock" data-product="crm">
+            <i class="fas fa-database"></i>
+            <span>CRM</span>
+        </div>
+        <div class="product-lock" data-product="scribe">
+            <i class="fas fa-file-medical"></i>
+            <span>Scribe</span>
+        </div>
+    </div>
+
+    <footer class="demo-footer">
+        Internal demo · Not for public distribution · VantageAI by QubeX, Inc.
     </footer>
 
     <script>
-        // Persona data
+    (function() {
+        'use strict';
+
+        // Persona definitions
         const personas = {
             mira: {
                 name: 'Mira',
                 role: 'Front-Desk Voice',
-                desc: 'Answers every call 24/7, identifies patients, and books appointments directly on the chart.',
-                panelTitle: 'Incoming Call',
-                panelSubtitle: 'Sample: Patient rescheduling'
+                desc: 'Answers every call 24/7, identifies patients, and books appointments directly on the chart. Your always-on front desk.',
+                colors: {
+                    primary: [34, 197, 94],      // green
+                    secondary: [245, 245, 220],  // cream
+                    accent: [201, 162, 39],      // gold
+                    glow: 'rgba(34, 197, 94, 0.4)'
+                },
+                product: 'voice'
             },
             healix: {
                 name: 'Healix',
                 role: 'In-CRM Agent',
-                desc: 'Works inside your CRM—updates charts, verifies coverage, and runs admin tasks automatically.',
-                panelTitle: 'CRM Activity',
-                panelSubtitle: 'Working on patient records'
+                desc: 'Works inside your CRM—updates charts, verifies coverage, and runs admin tasks automatically. Non-clinical automation.',
+                colors: {
+                    primary: [14, 74, 82],       // deep teal
+                    secondary: [34, 211, 238],   // cyan
+                    accent: [103, 232, 249],     // sky
+                    glow: 'rgba(34, 211, 238, 0.4)'
+                },
+                product: 'crm'
             },
             aria: {
                 name: 'Aria',
                 role: 'Clinical Scribe',
-                desc: 'Listens during visits, captures clinical notes, and drafts documentation—no typing required.',
-                panelTitle: 'Clinical Notes',
-                panelSubtitle: 'Drafting from encounter'
+                desc: 'Listens during visits, captures clinical notes, and drafts documentation—no typing required. HIPAA-aware transcription.',
+                colors: {
+                    primary: [124, 58, 237],     // plum
+                    secondary: [196, 181, 253],  // lilac
+                    accent: [233, 213, 255],     // light lavender
+                    glow: 'rgba(167, 139, 250, 0.4)'
+                },
+                product: 'scribe'
             }
         };
 
-        // Demo content
-        const miraScript = [
-            { who: 'Mira', type: 'agent', text: "Good afternoon, Greenfield Family Dentistry. This is Mira, how can I help you today?" },
-            { who: 'Patient', type: 'patient', text: "Hi, I need to reschedule my cleaning appointment." },
-            { who: 'Mira', type: 'agent', text: "Of course! May I have your name and date of birth to pull up your appointment?" },
-            { who: 'Patient', type: 'patient', text: "Sarah Johnson, March 15th, 1985." },
-            { who: 'Mira', type: 'agent', text: "Thank you, Sarah. I see your cleaning is scheduled for Thursday at 2 PM. Would you like to move that?" },
-            { who: 'Patient', type: 'patient', text: "Yes, do you have anything next week Tuesday morning?" },
-            { who: 'Mira', type: 'agent', text: "I have Tuesday at 9:30 AM or 11 AM available. Which works better?" },
-            { who: 'Patient', type: 'patient', text: "9:30 works great." },
-            { who: 'Mira', type: 'agent', text: "Done! I've rescheduled you for Tuesday at 9:30 AM. You'll get a confirmation text shortly." }
-        ];
+        // State definitions
+        const states = ['idle', 'listening', 'thinking', 'speaking'];
+        const stateLabels = {
+            idle: 'Idle',
+            listening: 'Listening',
+            thinking: 'Thinking',
+            speaking: 'Speaking'
+        };
 
-        const healixActivities = [
-            { icon: 'chart', title: 'Updating patient chart', subtitle: 'Sarah Johnson — adding appointment notes', time: 'Just now' },
-            { icon: 'verified', title: 'Coverage verified', subtitle: 'Delta Dental PPO — cleaning covered 100%', time: '2 min ago' },
-            { icon: 'scheduled', title: 'Recall campaign sent', subtitle: '12 patients due for 6-month checkup', time: '15 min ago' }
-        ];
+        // Current state
+        let currentPersona = 'mira';
+        let currentState = 'idle';
+        let targetColors = { ...personas.mira.colors };
+        let currentColors = {
+            primary: [...personas.mira.colors.primary],
+            secondary: [...personas.mira.colors.secondary],
+            accent: [...personas.mira.colors.accent]
+        };
 
-        const ariaNoteText = "Patient presents for routine dental cleaning. Reports no sensitivity or discomfort since last visit. Gingival health appears stable with mild inflammation noted in lower anteriors. Discussed importance of daily flossing. Patient receptive to recommendations. Next cleaning scheduled in 6 months.";
+        // Animation state
+        let animationId = null;
+        let time = 0;
+        let amplitude = 0;
+        let targetAmplitude = 0;
+        let stateTimer = 0;
+        let stateCycleDuration = 4000; // ms per state in demo cycle
 
-        // Elements
-        const bootScreen = document.getElementById('bootScreen');
+        // Audio state
+        let audioContext = null;
+        let analyser = null;
+        let micStream = null;
+        let useMic = false;
+
+        // DOM elements
+        const canvas = document.getElementById('orbCanvas');
+        const ctx = canvas.getContext('2d');
+        const orbGlow = document.getElementById('orbGlow');
+        const stateChip = document.getElementById('stateChip');
+        const personaName = document.getElementById('personaName');
+        const personaRole = document.getElementById('personaRole');
+        const personaDesc = document.getElementById('personaDesc');
         const modeBtns = document.querySelectorAll('.mode-btn');
-        const personaImages = document.querySelectorAll('.persona-image');
-        const personaGlow = document.getElementById('personaGlow');
-        const heroName = document.getElementById('heroName');
-        const heroRole = document.getElementById('heroRole');
-        const heroDesc = document.getElementById('heroDesc');
-        const panelTitle = document.getElementById('panelTitle');
-        const panelSubtitle = document.getElementById('panelSubtitle');
-        const panelContent = document.getElementById('panelContent');
-        const demoPanel = document.getElementById('demoPanel');
+        const productLocks = document.querySelectorAll('.product-lock');
+        const talkBtn = document.getElementById('talkBtn');
 
-        let activePersona = 'mira';
-        let demoInterval = null;
+        // High DPI canvas setup
+        const dpr = window.devicePixelRatio || 1;
+        const size = 350;
+        canvas.width = size * dpr;
+        canvas.height = size * dpr;
+        canvas.style.width = size + 'px';
+        canvas.style.height = size + 'px';
+        ctx.scale(dpr, dpr);
 
-        // Boot sequence
-        function boot() {
-            setTimeout(() => {
-                bootScreen.classList.add('hidden');
-                startDemo(activePersona);
-            }, 1200);
+        // Check reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Lerp helper
+        function lerp(a, b, t) {
+            return a + (b - a) * t;
+        }
+
+        // Lerp color arrays
+        function lerpColor(c1, c2, t) {
+            return [
+                Math.round(lerp(c1[0], c2[0], t)),
+                Math.round(lerp(c1[1], c2[1], t)),
+                Math.round(lerp(c1[2], c2[2], t))
+            ];
+        }
+
+        // RGB to CSS
+        function rgb(c, a = 1) {
+            return `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${a})`;
+        }
+
+        // Generate simulated amplitude based on state
+        function getSimulatedAmplitude(state, t) {
+            switch (state) {
+                case 'idle':
+                    return 0.15 + 0.05 * Math.sin(t * 0.5);
+                case 'listening':
+                    return 0.25 + 0.15 * Math.sin(t * 2) + 0.1 * Math.sin(t * 5.3);
+                case 'thinking':
+                    return 0.35 + 0.2 * Math.sin(t * 3) * Math.sin(t * 0.7);
+                case 'speaking':
+                    return 0.5 + 0.3 * Math.abs(Math.sin(t * 4)) * Math.sin(t * 8.7) + 0.15 * Math.sin(t * 12);
+                default:
+                    return 0.2;
+            }
+        }
+
+        // Get microphone amplitude
+        function getMicAmplitude() {
+            if (!analyser) return 0;
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(dataArray);
+            let sum = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+                sum += dataArray[i];
+            }
+            return (sum / dataArray.length) / 255;
+        }
+
+        // Draw the Siri-style orb
+        function drawOrb(timestamp) {
+            const dt = 1 / 60;
+            time += dt;
+
+            // Update colors with smooth interpolation
+            const colorLerpSpeed = 0.05;
+            currentColors.primary = lerpColor(currentColors.primary, targetColors.primary, colorLerpSpeed);
+            currentColors.secondary = lerpColor(currentColors.secondary, targetColors.secondary, colorLerpSpeed);
+            currentColors.accent = lerpColor(currentColors.accent, targetColors.accent, colorLerpSpeed);
+
+            // Get amplitude
+            if (useMic && analyser) {
+                targetAmplitude = getMicAmplitude();
+            } else {
+                targetAmplitude = getSimulatedAmplitude(currentState, time);
+            }
+            amplitude = lerp(amplitude, targetAmplitude, 0.1);
+
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+
+            const cx = size / 2;
+            const cy = size / 2;
+            const baseRadius = size * 0.38;
+
+            // Breathing effect
+            const breathe = 1 + 0.03 * Math.sin(time * 0.8);
+
+            // Morph factor based on amplitude
+            const morphIntensity = amplitude * 0.15;
+
+            // Draw multiple layers for depth
+            const layers = 5;
+            for (let layer = layers; layer >= 0; layer--) {
+                const layerProgress = layer / layers;
+                const layerRadius = baseRadius * (0.5 + 0.5 * layerProgress) * breathe;
+                const layerAlpha = 0.1 + 0.15 * (1 - layerProgress);
+
+                // Create morphing path
+                ctx.beginPath();
+                const points = 64;
+                for (let i = 0; i <= points; i++) {
+                    const angle = (i / points) * Math.PI * 2;
+                    
+                    // Multiple sine waves for organic morph
+                    const morph1 = Math.sin(angle * 3 + time * 2) * morphIntensity;
+                    const morph2 = Math.sin(angle * 5 - time * 1.5) * morphIntensity * 0.5;
+                    const morph3 = Math.sin(angle * 7 + time * 3) * morphIntensity * 0.3;
+                    const morph = morph1 + morph2 + morph3;
+                    
+                    const r = layerRadius * (1 + morph);
+                    const x = cx + Math.cos(angle) * r;
+                    const y = cy + Math.sin(angle) * r;
+                    
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.closePath();
+
+                // Create gradient for this layer
+                const gradient = ctx.createRadialGradient(
+                    cx + Math.sin(time) * 20,
+                    cy + Math.cos(time * 0.7) * 20,
+                    0,
+                    cx,
+                    cy,
+                    layerRadius * 1.2
+                );
+
+                // Rotating color stops
+                const rotationOffset = time * 0.3 + layer * 0.5;
+                const c1 = currentColors.primary;
+                const c2 = currentColors.secondary;
+                const c3 = currentColors.accent;
+
+                gradient.addColorStop(0, rgb(c3, layerAlpha * 1.5));
+                gradient.addColorStop(0.3, rgb(c2, layerAlpha));
+                gradient.addColorStop(0.6, rgb(c1, layerAlpha * 0.8));
+                gradient.addColorStop(1, rgb(c1, 0));
+
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+
+            // Core bright center
+            const coreGradient = ctx.createRadialGradient(
+                cx + Math.sin(time * 1.3) * 10,
+                cy + Math.cos(time) * 10,
+                0,
+                cx,
+                cy,
+                baseRadius * 0.6
+            );
+            coreGradient.addColorStop(0, rgb(currentColors.accent, 0.9));
+            coreGradient.addColorStop(0.3, rgb(currentColors.secondary, 0.5));
+            coreGradient.addColorStop(0.7, rgb(currentColors.primary, 0.2));
+            coreGradient.addColorStop(1, 'rgba(0,0,0,0)');
+
+            ctx.beginPath();
+            ctx.arc(cx, cy, baseRadius * 0.5 * breathe, 0, Math.PI * 2);
+            ctx.fillStyle = coreGradient;
+            ctx.fill();
+
+            // Inner glow ring
+            ctx.beginPath();
+            const ringRadius = baseRadius * 0.7 * breathe * (1 + amplitude * 0.2);
+            ctx.arc(cx, cy, ringRadius, 0, Math.PI * 2);
+            ctx.strokeStyle = rgb(currentColors.accent, 0.3 + amplitude * 0.3);
+            ctx.lineWidth = 2 + amplitude * 4;
+            ctx.stroke();
+
+            // Outer subtle ring
+            ctx.beginPath();
+            ctx.arc(cx, cy, baseRadius * breathe * (1 + amplitude * 0.1), 0, Math.PI * 2);
+            ctx.strokeStyle = rgb(currentColors.primary, 0.15);
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Particles for extra life
+            const particleCount = Math.floor(8 + amplitude * 12);
+            for (let i = 0; i < particleCount; i++) {
+                const particleAngle = (i / particleCount) * Math.PI * 2 + time * 0.5;
+                const particleRadius = baseRadius * (0.8 + 0.4 * Math.sin(time * 2 + i));
+                const px = cx + Math.cos(particleAngle) * particleRadius;
+                const py = cy + Math.sin(particleAngle) * particleRadius;
+                const particleSize = 1 + amplitude * 3;
+                
+                ctx.beginPath();
+                ctx.arc(px, py, particleSize, 0, Math.PI * 2);
+                ctx.fillStyle = rgb(currentColors.accent, 0.3 + amplitude * 0.4);
+                ctx.fill();
+            }
+
+            // Continue animation
+            if (!prefersReducedMotion) {
+                animationId = requestAnimationFrame(drawOrb);
+            }
+        }
+
+        // Draw static orb for reduced motion
+        function drawStaticOrb() {
+            ctx.clearRect(0, 0, size, size);
+            const cx = size / 2;
+            const cy = size / 2;
+            const radius = size * 0.38;
+
+            const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+            gradient.addColorStop(0, rgb(currentColors.accent, 0.9));
+            gradient.addColorStop(0.5, rgb(currentColors.secondary, 0.5));
+            gradient.addColorStop(1, rgb(currentColors.primary, 0.3));
+
+            ctx.beginPath();
+            ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+        }
+
+        // Update state cycling (demo mode)
+        function cycleStates() {
+            if (useMic) return; // Don't auto-cycle when mic is active
+
+            stateTimer += 16; // ~60fps
+            if (stateTimer >= stateCycleDuration) {
+                stateTimer = 0;
+                const currentIndex = states.indexOf(currentState);
+                const nextIndex = (currentIndex + 1) % states.length;
+                setOrbState(states[nextIndex]);
+            }
+        }
+
+        // Set orb state
+        function setOrbState(state) {
+            currentState = state;
+            stateChip.dataset.state = state;
+            stateChip.querySelector('.state-label').textContent = stateLabels[state];
         }
 
         // Switch persona
-        function switchPersona(persona) {
-            if (persona === activePersona) return;
-            activePersona = persona;
+        function switchPersona(mode) {
+            if (mode === currentPersona) return;
+
+            currentPersona = mode;
+            const persona = personas[mode];
+
+            // Update target colors
+            targetColors = { ...persona.colors };
+
+            // Update glow
+            orbGlow.style.background = `radial-gradient(circle at center, ${persona.colors.glow} 0%, transparent 70%)`;
+
+            // Update info panel
+            personaName.textContent = persona.name;
+            personaRole.textContent = persona.role;
+            personaDesc.textContent = persona.desc;
 
             // Update mode buttons
             modeBtns.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.persona === persona);
+                btn.classList.toggle('active', btn.dataset.mode === mode);
             });
 
-            // Update images
-            personaImages.forEach(img => {
-                img.classList.toggle('active', img.dataset.persona === persona);
+            // Update product locks
+            productLocks.forEach(lock => {
+                lock.classList.toggle('active', lock.dataset.product === persona.product);
             });
 
-            // Update glow
-            personaGlow.dataset.persona = persona;
-
-            // Update HUD
-            const data = personas[persona];
-            heroName.textContent = data.name;
-            heroRole.textContent = data.role;
-            heroDesc.textContent = data.desc;
-            panelTitle.textContent = data.panelTitle;
-            panelSubtitle.textContent = data.panelSubtitle;
-
-            // Start new demo
-            startDemo(persona);
+            // Reset state cycle
+            stateTimer = 0;
+            setOrbState('idle');
         }
 
-        // Demo runners
-        function startDemo(persona) {
-            if (demoInterval) clearInterval(demoInterval);
-            panelContent.innerHTML = '';
-            demoPanel.classList.remove('visible');
-
-            setTimeout(() => {
-                demoPanel.classList.add('visible');
-                if (persona === 'mira') runMiraDemo();
-                else if (persona === 'healix') runHealixDemo();
-                else if (persona === 'aria') runAriaDemo();
-            }, 300);
-        }
-
-        function runMiraDemo() {
-            panelContent.innerHTML = '<div class="call-transcript" id="callTranscript"></div>';
-            const transcript = document.getElementById('callTranscript');
-            let index = 0;
-
-            function addMessage() {
-                if (index < miraScript.length && activePersona === 'mira') {
-                    const msg = miraScript[index];
-                    const turn = document.createElement('div');
-                    turn.className = `call-turn ${msg.type}`;
-                    turn.innerHTML = `<span class="call-turn-who">${msg.who}</span>${msg.text}`;
-                    transcript.appendChild(turn);
-                    transcript.scrollTop = transcript.scrollHeight;
-                    index++;
-                    demoInterval = setTimeout(addMessage, 1400 + Math.random() * 600);
-                }
+        // Initialize microphone
+        async function initMicrophone() {
+            try {
+                micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 256;
+                const source = audioContext.createMediaStreamSource(micStream);
+                source.connect(analyser);
+                useMic = true;
+                talkBtn.classList.add('active');
+                setOrbState('listening');
+            } catch (err) {
+                console.log('Microphone access denied, using simulated amplitude');
+                useMic = false;
             }
-
-            addMessage();
         }
 
-        function runHealixDemo() {
-            panelContent.innerHTML = '<div class="activity-feed" id="activityFeed"></div>';
-            const feed = document.getElementById('activityFeed');
-            let index = 0;
-
-            function addActivity() {
-                if (index < healixActivities.length && activePersona === 'healix') {
-                    const act = healixActivities[index];
-                    const iconClass = act.icon === 'chart' ? 'fa-clipboard-list' : act.icon === 'verified' ? 'fa-check-circle' : 'fa-calendar-check';
-                    const item = document.createElement('div');
-                    item.className = 'activity-item';
-                    item.innerHTML = `
-                        <div class="activity-icon ${act.icon}"><i class="fas ${iconClass}"></i></div>
-                        <div class="activity-content">
-                            <strong>${act.title}</strong>
-                            <span>${act.subtitle}</span>
-                        </div>
-                        <span class="activity-time">${act.time}</span>
-                    `;
-                    feed.appendChild(item);
-                    index++;
-                    demoInterval = setTimeout(addActivity, 1500);
-                }
+        // Stop microphone
+        function stopMicrophone() {
+            if (micStream) {
+                micStream.getTracks().forEach(track => track.stop());
+                micStream = null;
             }
-
-            addActivity();
-        }
-
-        function runAriaDemo() {
-            panelContent.innerHTML = `
-                <div class="note-draft">
-                    <h4>Visit Note Draft</h4>
-                    <p id="noteText"></p>
-                </div>
-            `;
-            const noteEl = document.getElementById('noteText');
-            let charIndex = 0;
-
-            function typeNote() {
-                if (charIndex <= ariaNoteText.length && activePersona === 'aria') {
-                    noteEl.innerHTML = ariaNoteText.substring(0, charIndex) + '<span class="typing-cursor"></span>';
-                    charIndex++;
-                    demoInterval = setTimeout(typeNote, 28);
-                } else if (activePersona === 'aria') {
-                    noteEl.innerHTML = ariaNoteText;
-                }
+            if (audioContext) {
+                audioContext.close();
+                audioContext = null;
+                analyser = null;
             }
-
-            typeNote();
-        }
-
-        // Create particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = (6 + Math.random() * 4) + 's';
-                container.appendChild(particle);
-            }
+            useMic = false;
+            talkBtn.classList.remove('active');
+            setOrbState('idle');
         }
 
         // Event listeners
         modeBtns.forEach(btn => {
-            btn.addEventListener('click', () => switchPersona(btn.dataset.persona));
+            btn.addEventListener('click', () => switchPersona(btn.dataset.mode));
         });
 
-        // Keyboard shortcuts (1, 2, 3)
+        talkBtn.addEventListener('click', () => {
+            if (useMic) {
+                stopMicrophone();
+            } else {
+                initMicrophone();
+            }
+        });
+
+        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === '1') switchPersona('mira');
-            else if (e.key === '2') switchPersona('healix');
-            else if (e.key === '3') switchPersona('aria');
+            if (e.key === '2') switchPersona('healix');
+            if (e.key === '3') switchPersona('aria');
         });
 
-        // Initialize
-        createParticles();
-        boot();
+        // Animation loop with state cycling
+        function mainLoop(timestamp) {
+            cycleStates();
+            if (!prefersReducedMotion) {
+                requestAnimationFrame(mainLoop);
+            }
+        }
+
+        // Start
+        if (prefersReducedMotion) {
+            drawStaticOrb();
+        } else {
+            drawOrb();
+            mainLoop();
+        }
+
+    })();
     </script>
 </body>
 </html>
