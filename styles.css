@@ -117,21 +117,24 @@
 }
 
 :root {
-    /* Color System - Light Theme (Owner.com-inspired) */
+    /* Color System - Light Theme (Hello Patient-inspired warm cream + Vantage forest) */
     --color-background: #ffffff;
-    --color-surface: #f6f4f0;          /* warm cream for alternating sections */
+    --color-surface: #faf6f1;          /* warm cream paper (HP-inspired) */
+    --color-surface-warm: #f5efe8;     /* slightly darker warm cream */
     --color-surface-elevated: #ffffff; /* cards */
-    --color-border: #e7e4de;
-    --color-border-light: #d7d3cb;
+    --color-border: #e8e2d9;           /* warm border */
+    --color-border-light: #d9d3ca;
+    --color-border-dotted: #d4cec5;    /* for soft dividers */
 
     /* Text Colors */
-    --color-text-primary: #191919;     /* near-black charcoal headings */
-    --color-text-secondary: #57534e;   /* medium gray body */
+    --color-text-primary: #1a1a1a;     /* near-black charcoal headings */
+    --color-text-secondary: #52504c;   /* warm gray body */
     --color-text-tertiary: #8a8580;
 
-    /* Brand Colors */
+    /* Brand Colors - Vantage forest green */
     --color-primary: #14532d;          /* deep forest green (primary buttons) */
     --color-primary-hover: #0f3d21;
+    --color-primary-dark: #042f1a;     /* darker for contrast sections */
     --color-accent: #15803d;           /* green accent */
     --color-ink: #1c1c1c;              /* charcoal/black pill (nav CTA) */
 
@@ -161,11 +164,12 @@
     --font-size-4xl: 2.5rem;   /* 40px */
     --font-size-5xl: 3.5rem;   /* 56px */
 
-    /* Border Radius */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 18px;
+    /* Border Radius - Hello Patient-inspired rounder cards */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
     --radius-xl: 28px;
+    --radius-2xl: 32px;
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -529,9 +533,9 @@ body {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 82% 18%, rgba(21, 128, 61, 0.10) 0%, transparent 40%),
-        radial-gradient(circle at 12% 30%, rgba(20, 83, 45, 0.06) 0%, transparent 38%),
-        linear-gradient(180deg, #f6f4f0 0%, #ffffff 60%);
+        radial-gradient(circle at 82% 18%, rgba(21, 128, 61, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 12% 30%, rgba(20, 83, 45, 0.05) 0%, transparent 38%),
+        linear-gradient(180deg, var(--color-surface) 0%, #ffffff 60%);
     pointer-events: none;
     z-index: 0;
 }
@@ -963,19 +967,32 @@ body {
     }
 }
 
-/* TESTIMONIAL HERO — Hello Patient-inspired clean quote block */
+/* TESTIMONIAL HERO — Hello Patient-inspired warm cream + soft proof tiles */
 .testimonial-hero {
-    padding: clamp(4rem, 8vw, 6rem) 0;
-    background: #ffffff;
+    padding: clamp(5rem, 10vw, 7rem) 0;
+    background: var(--color-surface);
+    position: relative;
+}
+
+.testimonial-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 1000px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .testimonial-quote {
-    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    line-height: 1.35;
-    max-width: 800px;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 720px;
     margin: 0 0 var(--space-lg);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     color: var(--color-text-primary);
 }
 
@@ -998,14 +1015,13 @@ body {
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
     gap: var(--space-2xl);
-    padding: clamp(2rem, 4vw, 3rem);
-    border-radius: 32px;
+    padding: clamp(2.25rem, 4.5vw, 3.5rem);
+    border-radius: var(--radius-2xl);
     background: #ffffff;
     border: 1px solid var(--color-border);
     box-shadow:
-        0 1px 3px rgba(0, 0, 0, 0.04),
-        0 8px 24px rgba(0, 0, 0, 0.04),
-        0 24px 48px rgba(0, 0, 0, 0.03);
+        0 1px 2px rgba(0, 0, 0, 0.02),
+        0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .proof-band-label {
@@ -1024,23 +1040,39 @@ body {
 }
 
 .proof-stat-card {
-    padding: 1.5rem;
-    border-radius: 20px;
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-lg);
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px dashed var(--color-border);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .proof-stat-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    border-color: var(--color-border-light);
+    border-style: solid;
 }
 
 .proof-stat-card strong { color: var(--color-primary); }
 
 /* FEATURE TABS — Hello Patient-inspired clean tabs */
 .feature-tabs {
-    padding: clamp(4rem, 8vw, 6rem) 0;
+    padding: clamp(5rem, 10vw, 7rem) 0;
+    background: var(--color-surface);
+    position: relative;
+}
+
+.feature-tabs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 1000px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .tabs-wrapper {
@@ -1129,16 +1161,16 @@ body {
     line-height: 1.6;
 }
 
-/* Dashboard Mockups — softer Hello Patient-inspired shadows */
+/* Dashboard Mockups — Hello Patient-inspired rounder cards, softer shadows */
 .dashboard-mockup {
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-lg);
     padding: var(--space-lg);
     box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.04),
-        0 8px 24px rgba(0, 0, 0, 0.06),
-        0 20px 40px rgba(0, 0, 0, 0.04);
+        0 1px 2px rgba(0, 0, 0, 0.02),
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 12px 24px rgba(0, 0, 0, 0.03);
 }
 
 .mockup-header {
@@ -1348,13 +1380,17 @@ body {
 
 /* NUMBERED FEATURES — Hello Patient-inspired calmer rhythm */
 .numbered-features {
-    padding: var(--space-3xl) 0 var(--space-2xl);
+    padding: clamp(4rem, 8vw, 6rem) 0 var(--space-2xl);
 }
 
 .feature-block {
     position: relative;
-    padding: clamp(3rem, 6vw, 5rem) 0;
-    border-top: 1px solid var(--color-border);
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+    border-top: 1px dashed var(--color-border);
+}
+
+.feature-block:first-child {
+    border-top: none;
 }
 
 .feature-number {
@@ -1623,22 +1659,22 @@ body {
 .testimonial-card {
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
-    padding: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(1.75rem, 3.5vw, 2.25rem);
     border-radius: var(--radius-xl);
     display: flex;
     flex-direction: column;
     transition: all var(--transition-base);
     box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.03),
-        0 4px 12px rgba(0, 0, 0, 0.04);
+        0 1px 2px rgba(0, 0, 0, 0.02),
+        0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .testimonial-card:hover {
     border-color: var(--color-border-light);
     transform: translateY(-4px);
     box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.06),
-        0 16px 40px rgba(0, 0, 0, 0.08);
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 16px 32px rgba(0, 0, 0, 0.06);
 }
 
 .testimonial-content {
@@ -1696,16 +1732,29 @@ body {
 
 /* CTA SECTION — Hello Patient-inspired warm, inviting feel */
 .cta-section {
-    padding: clamp(4rem, 8vw, 6rem) 0;
+    padding: clamp(5rem, 10vw, 7rem) 0;
     background: var(--color-surface);
     text-align: center;
+    position: relative;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 800px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .cta-content h2 {
-    font-size: clamp(2rem, 4vw, var(--font-size-4xl));
+    font-size: clamp(2rem, 4.5vw, var(--font-size-4xl));
     font-weight: 800;
     margin-bottom: var(--space-md);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
 }
 
 .cta-content > p {
@@ -1728,9 +1777,9 @@ body {
 
 /* FOOTER */
 .footer {
-    background: var(--color-background);
+    background: var(--color-surface);
     border-top: 1px solid var(--color-border);
-    padding: var(--space-3xl) 0 var(--space-xl);
+    padding: clamp(3rem, 6vw, 5rem) 0 var(--space-xl);
 }
 
 .footer-grid {
@@ -2059,7 +2108,20 @@ input:focus-visible {
    OUTCOME CARDS — Hello Patient-inspired vivid gradient cards
    ============================================ */
 .outcomes {
-    padding: clamp(4rem, 8vw, 6rem) 0;
+    padding: clamp(5rem, 10vw, 7rem) 0;
+    position: relative;
+}
+
+.outcomes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 1000px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .section-eyebrow {
@@ -2497,22 +2559,37 @@ input:focus-visible {
 
 /* ============================================
    VOICE AGENT DEMO — "Meet Mira" live-demo block
-   Hello Patient-inspired: prominent framing, soft card, specialty tabs
+   Hello Patient-inspired: prominent framing, warm cream bg, specialty feel
    ============================================ */
 .voicedemo {
-    padding: var(--space-3xl) 0;
+    padding: clamp(5rem, 10vw, 8rem) 0;
     background: var(--color-surface);
     position: relative;
 }
 
+.voicedemo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 800px);
+    height: 1px;
+    background: var(--color-border-dotted);
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
+}
+
 .voicedemo .section-eyebrow {
     color: var(--color-primary);
-    font-weight: 800;
+    font-weight: 700;
+    letter-spacing: 0.12em;
 }
 
 .voicedemo .section-title {
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(2rem, 4.5vw, 3rem);
     margin-bottom: var(--space-md);
+    letter-spacing: -0.03em;
 }
 
 .voicedemo-shell { max-width: 800px; margin: 0 auto; }
@@ -2520,25 +2597,6 @@ input:focus-visible {
 .voicedemo-intro {
     text-align: center;
     margin-bottom: var(--space-xl);
-}
-
-.voicedemo-intro .section-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: rgba(20, 83, 45, 0.08);
-    border-radius: 999px;
-    margin-bottom: var(--space-md);
-}
-
-.voicedemo-intro .section-eyebrow::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-success);
-    animation: pulse-dot 2s ease-in-out infinite;
 }
 
 @keyframes pulse-dot {
@@ -2549,9 +2607,35 @@ input:focus-visible {
 .voicedemo-dek {
     font-size: var(--font-size-lg);
     color: var(--color-text-secondary);
-    max-width: 540px;
+    max-width: 580px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.65;
+}
+
+.voicedemo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(20, 83, 45, 0.06);
+    border: 1px solid rgba(20, 83, 45, 0.12);
+    border-radius: 999px;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-md);
+}
+
+.voicedemo-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    animation: pulse-dot 2s ease-in-out infinite;
 }
 
 .voicedemo-tabs {
@@ -2600,12 +2684,12 @@ input:focus-visible {
 .callcard {
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
-    border-radius: 28px;
+    border-radius: var(--radius-xl);
     box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.04),
-        0 8px 24px rgba(0, 0, 0, 0.06),
-        0 24px 48px rgba(0, 0, 0, 0.04);
-    padding: clamp(1.5rem, 3vw, 2.25rem);
+        0 1px 3px rgba(0, 0, 0, 0.02),
+        0 8px 24px rgba(0, 0, 0, 0.04),
+        0 24px 48px rgba(0, 0, 0, 0.03);
+    padding: clamp(1.75rem, 3.5vw, 2.5rem);
     overflow: hidden;
 }
 
