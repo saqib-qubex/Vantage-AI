@@ -43,13 +43,14 @@
 
 /* FAQ section (answer-engine / SEO friendly) */
 .faq-section {
-    padding: 6rem 0;
-    border-top: 1px solid var(--color-border, #2a2a2a);
+    padding: clamp(4rem, 8vw, 6rem) 0;
+    border-top: 1px solid var(--color-border);
+    background: #ffffff;
 }
 
 .faq-section .section-title {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
 }
 
 .faq-list {
@@ -58,58 +59,82 @@
 }
 
 .faq-item {
-    border-bottom: 1px solid var(--color-border, #2a2a2a);
-    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.5rem 0;
 }
 
 .faq-item summary {
     cursor: pointer;
     list-style: none;
     font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-text-primary, #fff);
+    font-weight: 700;
+    color: var(--color-text-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    transition: color var(--transition-fast);
+}
+
+.faq-item summary:hover {
+    color: var(--color-primary);
 }
 
 .faq-item summary::-webkit-details-marker { display: none; }
 
 .faq-item summary::after {
     content: "+";
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--color-text-secondary, #a0a0a0);
-    transition: transform 0.2s ease;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    transition: transform 0.2s ease, color 0.2s ease;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-surface);
+    flex-shrink: 0;
+}
+
+.faq-item summary:hover::after {
+    color: var(--color-primary);
+    background: rgba(20, 83, 45, 0.08);
 }
 
 .faq-item[open] summary::after {
     content: "\2212"; /* minus */
+    color: var(--color-primary);
+    background: rgba(20, 83, 45, 0.08);
 }
 
 .faq-item p {
-    margin-top: 0.875rem;
-    color: var(--color-text-secondary, #a0a0a0);
-    line-height: 1.6;
+    margin-top: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    padding-right: 3rem;
 }
 
 :root {
-    /* Color System - Light Theme (Owner.com-inspired) */
+    /* Color System - Light Theme (Hello Patient-inspired warm cream + Vantage forest) */
     --color-background: #ffffff;
-    --color-surface: #f6f4f0;          /* warm cream for alternating sections */
+    --color-surface: #faf6f1;          /* warm cream paper (HP-inspired) */
+    --color-surface-warm: #f5efe8;     /* slightly darker warm cream */
     --color-surface-elevated: #ffffff; /* cards */
-    --color-border: #e7e4de;
-    --color-border-light: #d7d3cb;
+    --color-border: #e8e2d9;           /* warm border */
+    --color-border-light: #d9d3ca;
+    --color-border-dotted: #d4cec5;    /* for soft dividers */
 
     /* Text Colors */
-    --color-text-primary: #191919;     /* near-black charcoal headings */
-    --color-text-secondary: #57534e;   /* medium gray body */
+    --color-text-primary: #1a1a1a;     /* near-black charcoal headings */
+    --color-text-secondary: #52504c;   /* warm gray body */
     --color-text-tertiary: #8a8580;
 
-    /* Brand Colors */
+    /* Brand Colors - Vantage forest green */
     --color-primary: #14532d;          /* deep forest green (primary buttons) */
     --color-primary-hover: #0f3d21;
+    --color-primary-dark: #042f1a;     /* darker for contrast sections */
     --color-accent: #15803d;           /* green accent */
     --color-ink: #1c1c1c;              /* charcoal/black pill (nav CTA) */
 
@@ -139,11 +164,12 @@
     --font-size-4xl: 2.5rem;   /* 40px */
     --font-size-5xl: 3.5rem;   /* 56px */
 
-    /* Border Radius */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 18px;
+    /* Border Radius - Hello Patient-inspired rounder cards */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
     --radius-xl: 28px;
+    --radius-2xl: 32px;
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -336,11 +362,15 @@ body {
     cursor: pointer;
     transition: all var(--transition-fast);
     font-family: var(--font-family);
+    box-shadow: 0 1px 2px rgba(20, 83, 45, 0.15);
 }
 
 .btn-primary:hover {
     background: var(--color-primary-hover);
     transform: translateY(-1px);
+    box-shadow:
+        0 2px 4px rgba(20, 83, 45, 0.15),
+        0 6px 16px rgba(20, 83, 45, 0.18);
 }
 
 /* Nav CTA: charcoal pill, like Owner's "Get a free demo" */
@@ -378,7 +408,7 @@ body {
 }
 
 .btn-lg {
-    padding: var(--space-sm) var(--space-lg);
+    padding: 0.875rem 1.75rem;
     font-size: var(--font-size-base);
 }
 
@@ -503,9 +533,9 @@ body {
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 82% 18%, rgba(21, 128, 61, 0.10) 0%, transparent 40%),
-        radial-gradient(circle at 12% 30%, rgba(20, 83, 45, 0.06) 0%, transparent 38%),
-        linear-gradient(180deg, #f6f4f0 0%, #ffffff 60%);
+        radial-gradient(circle at 82% 18%, rgba(21, 128, 61, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 12% 30%, rgba(20, 83, 45, 0.05) 0%, transparent 38%),
+        linear-gradient(180deg, var(--color-surface) 0%, #ffffff 60%);
     pointer-events: none;
     z-index: 0;
 }
@@ -644,11 +674,21 @@ body {
 }
 
 .hero-signal-card {
-    padding: 1rem 1.1rem;
+    padding: 1.15rem 1.25rem;
     border-radius: 20px;
     background: #ffffff;
     border: 1px solid var(--color-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.03),
+        0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hero-signal-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.06),
+        0 12px 28px rgba(0, 0, 0, 0.06);
 }
 
 .hero-signal-card strong { color: var(--color-primary); }
@@ -756,11 +796,14 @@ body {
     position: relative;
     width: min(100%, 460px);
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 1.75rem;
     background: #ffffff;
     border: 1px solid var(--color-border);
-    border-radius: 24px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    border-radius: 28px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.04),
+        0 8px 24px rgba(0, 0, 0, 0.06),
+        0 24px 48px rgba(0, 0, 0, 0.06);
     backdrop-filter: blur(24px);
     transform: translateY(calc(var(--hero-parallax, 0px) * 0.15));
 }
@@ -924,21 +967,33 @@ body {
     }
 }
 
-/* TESTIMONIAL HERO */
+/* TESTIMONIAL HERO — Hello Patient-inspired warm cream + soft proof tiles */
 .testimonial-hero {
-    padding: var(--space-3xl) 0;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%),
-        var(--color-surface);
+    padding: clamp(5rem, 10vw, 7rem) 0;
+    background: var(--color-surface);
+    position: relative;
+}
+
+.testimonial-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 1000px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .testimonial-quote {
-    font-size: clamp(2rem, 4vw, 3.3rem);
-    font-weight: 700;
-    line-height: 1.3;
-    max-width: 900px;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 720px;
     margin: 0 0 var(--space-lg);
     letter-spacing: -0.01em;
+    color: var(--color-text-primary);
 }
 
 .testimonial-author {
@@ -960,11 +1015,13 @@ body {
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
     gap: var(--space-2xl);
-    padding: clamp(1.8rem, 3vw, 2.5rem);
-    border-radius: 32px;
-    background: var(--color-surface);
+    padding: clamp(2.25rem, 4.5vw, 3.5rem);
+    border-radius: var(--radius-2xl);
+    background: #ffffff;
     border: 1px solid var(--color-border);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.02),
+        0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .proof-band-label {
@@ -983,17 +1040,39 @@ body {
 }
 
 .proof-stat-card {
-    padding: 1.3rem;
-    border-radius: 22px;
-    background: #ffffff;
-    border: 1px solid var(--color-border);
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.proof-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    border-color: var(--color-border-light);
+    border-style: solid;
 }
 
 .proof-stat-card strong { color: var(--color-primary); }
 
-/* FEATURE TABS */
+/* FEATURE TABS — Hello Patient-inspired clean tabs */
 .feature-tabs {
-    padding: var(--space-3xl) 0;
+    padding: clamp(5rem, 10vw, 7rem) 0;
+    background: var(--color-surface);
+    position: relative;
+}
+
+.feature-tabs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 1000px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .tabs-wrapper {
@@ -1003,11 +1082,12 @@ body {
 
 .tab-buttons {
     display: flex;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
     margin-bottom: var(--space-xl);
-    padding: var(--space-xs);
+    padding: 6px;
     background: var(--color-surface);
-    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     overflow-x: auto;
 }
 
@@ -1036,12 +1116,13 @@ body {
 
 .tab-button:hover {
     color: var(--color-text-primary);
-    background: var(--color-surface-elevated);
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .tab-button.active {
-    background: var(--color-background);
+    background: #ffffff;
     color: var(--color-text-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .tab-content-wrapper {
@@ -1080,13 +1161,16 @@ body {
     line-height: 1.6;
 }
 
-/* Dashboard Mockups */
+/* Dashboard Mockups — Hello Patient-inspired rounder cards, softer shadows */
 .dashboard-mockup {
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.02),
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 12px 24px rgba(0, 0, 0, 0.03);
 }
 
 .mockup-header {
@@ -1294,15 +1378,19 @@ body {
     color: var(--color-text-secondary);
 }
 
-/* NUMBERED FEATURES */
+/* NUMBERED FEATURES — Hello Patient-inspired calmer rhythm */
 .numbered-features {
-    padding: var(--space-3xl) 0;
+    padding: clamp(4rem, 8vw, 6rem) 0 var(--space-2xl);
 }
 
 .feature-block {
     position: relative;
-    padding: var(--space-3xl) 0;
-    border-top: 1px solid var(--color-border);
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+    border-top: 1px dashed var(--color-border);
+}
+
+.feature-block:first-child {
+    border-top: none;
 }
 
 .feature-number {
@@ -1554,10 +1642,12 @@ body {
 }
 
 .section-title {
-    font-size: var(--font-size-3xl);
-    font-weight: 700;
+    font-size: clamp(1.75rem, 3.5vw, var(--font-size-3xl));
+    font-weight: 800;
     text-align: center;
     margin-bottom: var(--space-2xl);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
 
 .testimonials-grid {
@@ -1569,17 +1659,22 @@ body {
 .testimonial-card {
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
-    padding: var(--space-lg);
-    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 3.5vw, 2.25rem);
+    border-radius: var(--radius-xl);
     display: flex;
     flex-direction: column;
     transition: all var(--transition-base);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.02),
+        0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .testimonial-card:hover {
     border-color: var(--color-border-light);
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 16px 32px rgba(0, 0, 0, 0.06);
 }
 
 .testimonial-content {
@@ -1635,17 +1730,31 @@ body {
     color: var(--color-success);
 }
 
-/* CTA SECTION */
+/* CTA SECTION — Hello Patient-inspired warm, inviting feel */
 .cta-section {
-    padding: var(--space-3xl) 0;
+    padding: clamp(5rem, 10vw, 7rem) 0;
     background: var(--color-surface);
     text-align: center;
+    position: relative;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 800px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .cta-content h2 {
-    font-size: var(--font-size-4xl);
-    font-weight: 700;
+    font-size: clamp(2rem, 4.5vw, var(--font-size-4xl));
+    font-weight: 800;
     margin-bottom: var(--space-md);
+    letter-spacing: -0.025em;
 }
 
 .cta-content > p {
@@ -1668,9 +1777,9 @@ body {
 
 /* FOOTER */
 .footer {
-    background: var(--color-background);
+    background: var(--color-surface);
     border-top: 1px solid var(--color-border);
-    padding: var(--space-3xl) 0 var(--space-xl);
+    padding: clamp(3rem, 6vw, 5rem) 0 var(--space-xl);
 }
 
 .footer-grid {
@@ -1996,26 +2105,40 @@ input:focus-visible {
 }
 
 /* ============================================
-   OUTCOME CARDS (Owner.com-style gradient highlights)
+   OUTCOME CARDS — Hello Patient-inspired vivid gradient cards
    ============================================ */
 .outcomes {
-    padding: var(--space-3xl) 0;
+    padding: clamp(5rem, 10vw, 7rem) 0;
+    position: relative;
+}
+
+.outcomes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 1000px);
+    height: 1px;
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
 }
 
 .section-eyebrow {
     text-align: center;
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
 }
 
 .outcomes-title {
-    max-width: 900px;
-    margin: 0 auto var(--space-2xl);
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
     letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .outcomes-grid {
@@ -2029,13 +2152,15 @@ input:focus-visible {
     overflow: hidden;
     isolation: isolate;
     border-radius: 28px;
-    padding: clamp(1.5rem, 2.4vw, 2.1rem);
+    padding: clamp(1.75rem, 3vw, 2.25rem);
     min-height: 430px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: #ffffff;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 16px 40px rgba(0, 0, 0, 0.10);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
@@ -2050,7 +2175,9 @@ input:focus-visible {
 
 .outcome-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 34px 80px rgba(0, 0, 0, 0.20);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.10),
+        0 28px 60px rgba(0, 0, 0, 0.14);
 }
 
 .outcome-card--green  { background: linear-gradient(155deg, #1a7a48 0%, #0c3f24 100%); }
@@ -2431,20 +2558,95 @@ input:focus-visible {
 }
 
 /* ============================================
-   VOICE AGENT DEMO ("Hear Healix in action")
+   VOICE AGENT DEMO — "Meet Mira" live-demo block
+   Hello Patient-inspired: prominent framing, warm cream bg, specialty feel
    ============================================ */
-.voicedemo { padding: var(--space-3xl) 0; }
+.voicedemo {
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    background: var(--color-surface);
+    position: relative;
+}
 
-.voicedemo-shell { max-width: 760px; margin: 0 auto; }
+.voicedemo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 800px);
+    height: 1px;
+    background: var(--color-border-dotted);
+    background-image: linear-gradient(to right, var(--color-border-dotted) 50%, transparent 50%);
+    background-size: 8px 1px;
+}
+
+.voicedemo .section-eyebrow {
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.voicedemo .section-title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.03em;
+}
+
+.voicedemo-shell { max-width: 800px; margin: 0 auto; }
+
+.voicedemo-intro {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+.voicedemo-dek {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.65;
+}
+
+.voicedemo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(20, 83, 45, 0.06);
+    border: 1px solid rgba(20, 83, 45, 0.12);
+    border-radius: 999px;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-md);
+}
+
+.voicedemo-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    animation: pulse-dot 2s ease-in-out infinite;
+}
 
 .voicedemo-tabs {
     display: flex;
     gap: var(--space-xs);
-    padding: var(--space-xs);
-    background: var(--color-surface);
+    padding: 6px;
+    background: #ffffff;
     border: 1px solid var(--color-border);
     border-radius: 999px;
     margin-bottom: var(--space-lg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .voicedemo-tab {
@@ -2466,20 +2668,28 @@ input:focus-visible {
     white-space: nowrap;
 }
 
-.voicedemo-tab:hover { color: var(--color-text-primary); }
+.voicedemo-tab:hover {
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+}
 
 .voicedemo-tab.active {
     background: var(--color-primary);
     color: #ffffff;
-    box-shadow: 0 6px 16px rgba(20, 83, 45, 0.22);
+    box-shadow:
+        0 2px 4px rgba(20, 83, 45, 0.15),
+        0 6px 16px rgba(20, 83, 45, 0.20);
 }
 
 .callcard {
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
-    border-radius: 24px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.10);
-    padding: clamp(1.25rem, 2.5vw, 1.9rem);
+    border-radius: var(--radius-xl);
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.02),
+        0 8px 24px rgba(0, 0, 0, 0.04),
+        0 24px 48px rgba(0, 0, 0, 0.03);
+    padding: clamp(1.75rem, 3.5vw, 2.5rem);
     overflow: hidden;
 }
 
