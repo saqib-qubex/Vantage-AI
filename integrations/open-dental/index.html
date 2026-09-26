@@ -45,17 +45,17 @@
         {
           "@type": "Question",
           "name": "What information writes back to Open Dental?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Appointments and the patient and visit information needed to book them. VantageAI does not write clinical notes, charting, billing, or treatment plans back to Open Dental." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Appointments (including reschedules and cancellations), a new patient chart when a caller isn't in Open Dental yet, and a commlog summarizing each call, including any insurance, medical-history, or records-request details the caller provides for your team to review. VantageAI does not write charting, treatment plans, claims, payments, or insurance plan records." }
         },
         {
           "@type": "Question",
           "name": "What do I need to get started with Open Dental?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You need Open Dental API access enabled. Once that is in place, most practices are live within days." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Open Dental API enabled: the Open Dental eConnector running in your office, API turned on under Setup → Advanced Setup → API, and VantageAI's customer key added. The timeline depends on how quickly your office enables the API and adds our key." }
         },
         {
           "@type": "Question",
           "name": "How long does setup take?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Once your Open Dental API access is in place, most practices go live within days. The timeline depends on how quickly you can enable API access with Open Dental." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Once the Open Dental eConnector is running and the API is enabled with VantageAI's customer key added, most practices go live within days. The timeline depends on how quickly your office enables the API and adds our key." }
         },
         {
           "@type": "Question",
@@ -313,11 +313,11 @@
                     <div class="feature-grid">
                         <div class="feature-text">
                             <h2>What writes back to Open Dental</h2>
-                            <p>VantageAI writes appointments and the patient and visit information needed to book them. Your front desk sees the booking immediately—no manual entry, no lag.</p>
+                            <p>VantageAI writes appointments (with visit reason and new-patient flag), creates a patient chart when a new caller isn't in Open Dental yet, and adds a commlog for every call with the call summary, plus any insurance, medical-history, or records-request details the caller provides. Your front desk sees it immediately.</p>
                             <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Appointments</li>
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Patient information needed to book</li>
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Visit details for the appointment</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Appointments, reschedules, and cancellations</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> New patient charts (name, DOB, contact info, address)</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Call commlogs with summary and caller-provided updates</li>
                             </ul>
                         </div>
                         <div class="feature-visual">
@@ -329,8 +329,8 @@
                                 </div>
                                 <div class="demo-card">
                                     <i class="fas fa-user-plus" aria-hidden="true"></i>
-                                    <h4>Patient Info</h4>
-                                    <p>Name, contact, visit reason</p>
+                                    <h4>Patient Charts</h4>
+                                    <p>Name, DOB, contact, address, visit reason</p>
                                 </div>
                             </div>
                         </div>
@@ -342,12 +342,12 @@
                     <div class="feature-grid reverse">
                         <div class="feature-text">
                             <h2>What does not write back</h2>
-                            <p>VantageAI is not a clinical tool. It books appointments—that's it. Your clinical data stays where it belongs: in the hands of your team.</p>
+                            <p>It handles calls and scheduling. It doesn't chart, treatment-plan, or bill.</p>
                             <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Clinical notes</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Procedures or completed work</li>
                                 <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Charting</li>
                                 <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Treatment plans</li>
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Billing or insurance claims</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Claims, payments, or insurance plan records</li>
                             </ul>
                         </div>
                         <div class="feature-visual">
@@ -377,12 +377,13 @@
                     <div class="feature-grid">
                         <div class="feature-text">
                             <h2>What you need to get started</h2>
-                            <p>VantageAI connects to Open Dental through the Open Dental API. Once API access is enabled, most practices are live within days.</p>
+                            <p>VantageAI connects to Open Dental through the Open Dental API. Your office needs the eConnector running, the API enabled, and VantageAI's customer key added.</p>
                             <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Open Dental API access enabled</li>
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> A few minutes to configure your preferences</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Open Dental eConnector running in your office</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> API turned on under Setup → Advanced Setup → API</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> VantageAI's customer key added and enabled</li>
                             </ul>
-                            <p style="margin-top: var(--space-md); color: var(--color-text-secondary);">The timeline depends on how quickly Open Dental can enable API access for your practice. Once that's done, we handle the rest.</p>
+                            <p style="margin-top: var(--space-md); color: var(--color-text-secondary);">The timeline depends on how quickly your office enables the API and adds our key. Once that's done, we handle the rest.</p>
                             <a href="../../pricing.html" class="feature-link">See pricing <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                         <div class="feature-visual">
@@ -391,7 +392,7 @@
                                     <div class="step-number">1</div>
                                     <div class="step-content">
                                         <h4>Enable API access</h4>
-                                        <p>Contact Open Dental to enable API access</p>
+                                        <p>eConnector running, API on, key added</p>
                                     </div>
                                 </div>
                                 <div class="migration-step">
@@ -426,15 +427,15 @@
                     </details>
                     <details class="faq-item">
                         <summary>What information writes back to Open Dental?</summary>
-                        <p>Appointments and the patient and visit information needed to book them. VantageAI does not write clinical notes, charting, billing, or treatment plans back to Open Dental.</p>
+                        <p>Appointments (including reschedules and cancellations), a new patient chart when a caller isn't in Open Dental yet, and a commlog summarizing each call, including any insurance, medical-history, or records-request details the caller provides for your team to review. VantageAI does not write charting, treatment plans, claims, payments, or insurance plan records.</p>
                     </details>
                     <details class="faq-item">
                         <summary>What do I need to get started with Open Dental?</summary>
-                        <p>You need Open Dental API access enabled. Once that is in place, most practices are live within days.</p>
+                        <p>Open Dental API enabled: the Open Dental eConnector running in your office, API turned on under Setup → Advanced Setup → API, and VantageAI's customer key added. The timeline depends on how quickly your office enables the API and adds our key.</p>
                     </details>
                     <details class="faq-item">
                         <summary>How long does setup take?</summary>
-                        <p>Once your Open Dental API access is in place, most practices go live within days. The timeline depends on how quickly you can enable API access with Open Dental.</p>
+                        <p>Once the Open Dental eConnector is running and the API is enabled with VantageAI's customer key added, most practices go live within days. The timeline depends on how quickly your office enables the API and adds our key.</p>
                     </details>
                     <details class="faq-item">
                         <summary>What happens after hours?</summary>
