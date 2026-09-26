@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
     <title>eClinicalWorks Integration | VantageAI</title>
-    <meta name="description" content="VantageAI connects to eClinicalWorks through the eCW FHIR API to answer patient calls, check your schedule for conflicts, and log every call to the patient's chart.">
+    <meta name="description" content="VantageAI connects to eClinicalWorks through the eCW FHIR API to answer patient calls, check for booked visits before offering times, and log patient calls to the chart.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#ffffff">
     <link rel="canonical" href="https://getvantage.tech/integrations/eclinicalworks/">
@@ -14,14 +14,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="VantageAI">
     <meta property="og:title" content="eClinicalWorks Integration | VantageAI">
-    <meta property="og:description" content="VantageAI connects to eClinicalWorks through the eCW FHIR API to answer patient calls, check your schedule for conflicts, and log every call to the patient's chart.">
+    <meta property="og:description" content="VantageAI connects to eClinicalWorks through the eCW FHIR API to answer patient calls, check for booked visits before offering times, and log patient calls to the chart.">
     <meta property="og:url" content="https://getvantage.tech/integrations/eclinicalworks/">
     <meta property="og:image" content="https://getvantage.tech/assets/logo.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="eClinicalWorks Integration | VantageAI">
-    <meta name="twitter:description" content="VantageAI connects to eClinicalWorks through the eCW FHIR API to answer patient calls, check your schedule for conflicts, and log every call to the patient's chart.">
+    <meta name="twitter:description" content="VantageAI connects to eClinicalWorks through the eCW FHIR API to answer patient calls, check for booked visits before offering times, and log patient calls to the chart.">
     <meta name="twitter:image" content="https://getvantage.tech/assets/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
         {
           "@type": "Question",
           "name": "Does VantageAI book on my real eClinicalWorks schedule?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Mira checks your eClinicalWorks schedule for booked visits before offering times, and every call is logged to the patient's chart as a telephone encounter. Direct appointment write-back into eClinicalWorks is on our roadmap." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Mira checks eClinicalWorks for booked visits before offering times, and calls from identified patients are logged to their chart as a telephone encounter. Direct appointment write-back into eClinicalWorks is on our roadmap." }
         },
         {
           "@type": "Question",
@@ -208,8 +208,8 @@
                             eClinicalWorks Integration
                         </div>
 
-                        <h1 class="hero-title">Every call answered. <span class="hero-title-accent">Every call logged.</span></h1>
-                        <p class="hero-subtitle">VantageAI answers patient calls, checks your eClinicalWorks schedule before offering times, and logs every call to the patient's chart as a telephone encounter, so nothing falls through the cracks.</p>
+                        <h1 class="hero-title">Every call answered. <span class="hero-title-accent">Patient calls logged.</span></h1>
+                        <p class="hero-subtitle">VantageAI answers patient calls, checks eClinicalWorks for booked visits before offering times, and logs each identified patient's call to their chart as a telephone encounter, so nothing falls through the cracks.</p>
 
                         <div class="hero-cta">
                             <button class="btn-primary btn-lg" data-open-lead>Get Started</button>
@@ -226,7 +226,7 @@
                             <div class="hero-command-header">
                                 <div>
                                     <p class="hero-command-label">eClinicalWorks + VantageAI</p>
-                                    <h3>Every call logged to the chart</h3>
+                                    <h3>Patient calls logged to the chart</h3>
                                 </div>
                                 <span class="hero-command-status">Connected</span>
                             </div>
@@ -264,7 +264,7 @@
         <section class="outcomes reveal" id="how-it-works">
             <div class="container">
                 <p class="section-eyebrow">What VantageAI does in eClinicalWorks</p>
-                <h2 class="section-title outcomes-title">Answer calls, check for conflicts, log every call</h2>
+                <h2 class="section-title outcomes-title">Answer calls, check for conflicts, log patient calls</h2>
                 <div class="outcomes-grid">
                     <article class="outcome-card outcome-card--green">
                         <div class="outcome-body">
@@ -280,8 +280,8 @@
                     <article class="outcome-card outcome-card--indigo">
                         <div class="outcome-body">
                             <span class="outcome-eyebrow">Check for conflicts</span>
-                            <h3>Mira checks your schedule before offering times</h3>
-                            <p>Mira checks your eClinicalWorks schedule for booked visits before offering times, so patients aren't offered times that conflict with existing appointments.</p>
+                            <h3>Mira checks for booked visits before offering times</h3>
+                            <p>Mira checks eClinicalWorks for booked visits before offering times, so patients aren't offered times that conflict with existing appointments.</p>
                         </div>
                         <div class="outcome-flow">
                             <span class="outcome-flow-step">Patient calls</span>
@@ -293,9 +293,9 @@
 
                     <article class="outcome-card outcome-card--amber">
                         <div class="outcome-body">
-                            <span class="outcome-eyebrow">Every call lands in eClinicalWorks</span>
+                            <span class="outcome-eyebrow">Patient calls land in eClinicalWorks</span>
                             <h3>Telephone encounters logged automatically</h3>
-                            <p>After each call, Mira logs a telephone encounter with the call summary and requested time on the patient's chart, so your front desk can confirm the visit in eCW.</p>
+                            <p>After each call with an identified patient, Mira logs a telephone encounter with the call summary on the patient's chart, so your front desk can follow up in eCW.</p>
                         </div>
                         <div class="outcome-visual">
                             <div class="outcome-chip"><span class="outcome-dot"></span> Encounter logged to chart</div>
@@ -313,7 +313,7 @@
                     <div class="feature-grid">
                         <div class="feature-text">
                             <h2>What writes back to eClinicalWorks</h2>
-                            <p>After each call, VantageAI writes a telephone encounter with the call summary, a draft (unsigned) call-summary note, and, for new callers, a patient record with name, date of birth, and contact details. Appointments are not written directly into eClinicalWorks today.</p>
+                            <p>After each call with an identified patient, VantageAI writes a telephone encounter with the call summary, a draft (unsigned) call-summary note, and, for new callers, a patient record with name, date of birth, and contact details. Appointments are not written directly into eClinicalWorks today.</p>
                             <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
                                 <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Telephone encounter with call summary</li>
                                 <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Draft call-summary note (never signed)</li>
@@ -380,7 +380,7 @@
                             <p>VantageAI connects to eClinicalWorks through the eCW FHIR API. Your practice authorizes VantageAI's apps in eClinicalWorks, and we configure the connection.</p>
                             <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
                                 <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> eClinicalWorks FHIR API access: your practice authorizes VantageAI's apps</li>
-                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> A few minutes to configure your preferences</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Your scheduling preferences (we set them up with you)</li>
                             </ul>
                             <p style="margin-top: var(--space-md); color: var(--color-text-secondary);">Timing depends on how quickly access is authorized. Once that's done, we handle the rest.</p>
                             <a href="../../pricing.html" class="feature-link">See pricing <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
@@ -422,7 +422,7 @@
                 <div class="faq-list">
                     <details class="faq-item">
                         <summary>Does VantageAI book on my real eClinicalWorks schedule?</summary>
-                        <p>Mira checks your eClinicalWorks schedule for booked visits before offering times, and every call is logged to the patient's chart as a telephone encounter. Direct appointment write-back into eClinicalWorks is on our roadmap.</p>
+                        <p>Mira checks eClinicalWorks for booked visits before offering times, and calls from identified patients are logged to their chart as a telephone encounter. Direct appointment write-back into eClinicalWorks is on our roadmap.</p>
                     </details>
                     <details class="faq-item">
                         <summary>What information writes back to eClinicalWorks?</summary>
@@ -457,11 +457,11 @@
             <div class="container">
                 <div class="cta-content">
                     <h2>Ready to stop missing calls?</h2>
-                    <p>See how VantageAI works with eClinicalWorks to answer every call, log every request, and free up your front desk.</p>
+                    <p>See how VantageAI works with eClinicalWorks to answer every call, log patient requests, and free up your front desk.</p>
                     <div class="cta-buttons">
                         <button class="btn-primary btn-lg" data-open-lead>Get Started</button>
                     </div>
-                    <p class="cta-note">Works 24/7 • HIPAA Compliant • Every call logged</p>
+                    <p class="cta-note">Works 24/7 • HIPAA Compliant • Patient calls logged to the chart</p>
                 </div>
             </div>
         </section>
