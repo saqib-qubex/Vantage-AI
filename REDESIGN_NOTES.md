@@ -71,10 +71,8 @@ This redesign transforms Vantage AI's website into a modern, professional SaaS p
 - Security assurances throughout
 
 ### Integration Focus
-- EHR systems (Epic, Cerner, Athenahealth, eClinicalWorks)
-- Billing software
-- Telemedicine platforms
-- Patient communication tools
+- EHR systems: eClinicalWorks and Open Dental are integrated today; Epic, Cerner, and Athenahealth are on the roadmap (not integrated)
+- Patient communication tools (Curogram)
 
 ## 🛠 Technical Implementation
 
