@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+    <title>Open Dental Integration | VantageAI</title>
+    <meta name="description" content="VantageAI integrates with Open Dental to answer patient calls, book appointments on your real schedule, and write appointments back automatically.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="https://getvantage.tech/integrations/open-dental/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VantageAI">
+    <meta property="og:title" content="Open Dental Integration | VantageAI">
+    <meta property="og:description" content="VantageAI integrates with Open Dental to answer patient calls, book appointments on your real schedule, and write appointments back automatically.">
+    <meta property="og:url" content="https://getvantage.tech/integrations/open-dental/">
+    <meta property="og:image" content="https://getvantage.tech/assets/logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Open Dental Integration | VantageAI">
+    <meta name="twitter:description" content="VantageAI integrates with Open Dental to answer patient calls, book appointments on your real schedule, and write appointments back automatically.">
+    <meta name="twitter:image" content="https://getvantage.tech/assets/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="../../styles.css" rel="stylesheet">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does VantageAI book on my real Open Dental schedule?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Mira reads your live Open Dental schedule and books patients into actual open slots. Mira only offers times Open Dental shows as open." }
+        },
+        {
+          "@type": "Question",
+          "name": "What information writes back to Open Dental?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Appointments (including reschedules and cancellations), a new patient chart when a caller isn't in Open Dental yet, and a commlog summarizing each call from a patient in Open Dental, including any insurance, medical-history, or records-request details the caller provides for your team to review. VantageAI does not write charting, treatment plans, claims, payments, or insurance plan records." }
+        },
+        {
+          "@type": "Question",
+          "name": "What do I need to get started with Open Dental?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Open Dental API enabled: the Open Dental eConnector running in your office, API turned on under Setup → Advanced Setup → API, and VantageAI's customer key added. The timeline depends on how quickly your office enables the API and adds our key." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does setup take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Once the Open Dental eConnector is running, the API is enabled, and VantageAI's customer key is added, we configure the connection. The timeline depends on how quickly your office enables the API and adds our key." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after hours?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Mira answers calls 24/7. Patients calling after hours can still book, reschedule, or get answers—no voicemail, no missed opportunities." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does VantageAI replace my front desk?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. VantageAI covers the calls your team cannot get to—overflow during busy hours and after-hours calls. Your front desk stays in control." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if we use a different practice management system?",
+          "acceptedAnswer": { "@type": "Answer", "text": "VantageAI currently integrates with Open Dental and eClinicalWorks. If you use a different system, contact us to discuss your options." }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MGGCHTK8');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Website analytics -->
+    <script async src="https://aromatic-caribou-889.convex.site/api/a/am_TPQ543Vzb4GcnVtM"></script>
+    <!-- Meta Pixel -->
+    <script src="/js/meta-pixel.js" defer></script>
+    <noscript><img height="1" width="1" style="display:none" alt=""
+      src="https://www.facebook.com/tr?id=1109217551779890&ev=PageView&noscript=1" /></noscript>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGGCHTK8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Top Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../../index.html" class="logo">
+                    <img src="../../assets/logo.png" alt="Vantage" height="32">
+                </a>
+
+                <nav class="nav-menu">
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            Platform
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="../../revops.html#capture" class="dropdown-item">
+                                <i class="fas fa-phone-volume" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Never Miss a Call</strong>
+                                    <span>AI answers every patient</span>
+                                </div>
+                            </a>
+                            <a href="../../revops.html#conversion" class="dropdown-item">
+                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Fill Your Schedule</strong>
+                                    <span>AI books appointments 24/7</span>
+                                </div>
+                            </a>
+                            <a href="../../revops.html#retention" class="dropdown-item">
+                                <i class="fas fa-rotate" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Keep Patients Coming Back</strong>
+                                    <span>Automated recalls &amp; follow-ups</span>
+                                </div>
+                            </a>
+                            <a href="../../revops.html#intelligence" class="dropdown-item">
+                                <i class="fas fa-brain" aria-hidden="true"></i>
+                                <div>
+                                    <strong>AI Assistant</strong>
+                                    <span>Works inside your practice</span>
+                                </div>
+                            </a>
+                            <a href="../../revops.html#control" class="dropdown-item">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <div>
+                                    <strong>HIPAA Compliant</strong>
+                                    <span>Secure &amp; audited</span>
+                                </div>
+                            </a>
+                            <a href="../../insurance-eligibility.html" class="dropdown-item">
+                                <i class="fas fa-file-medical" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Insurance Eligibility</strong>
+                                    <span>Know what's covered before they sit down</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="../../pricing.html" class="nav-link">Pricing</a>
+                    <a href="../../blog/" class="nav-link">Blog</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button class="btn-primary" data-open-lead>Contact Us</button>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-section">
+                <h3>Platform</h3>
+                <a href="../../revops.html#capture">Answer Every Call</a>
+                <a href="../../revops.html#conversion">Fill Your Schedule</a>
+                <a href="../../revops.html#retention">Bring Patients Back</a>
+                <a href="../../revops.html#intelligence">AI Assistant</a>
+                <a href="../../revops.html#control">HIPAA Compliant</a>
+                <a href="../../insurance-eligibility.html">Insurance Eligibility</a>
+            </div>
+            <div class="mobile-menu-section">
+                <a href="../../pricing.html">Pricing</a>
+                <a href="../../blog/">Blog</a>
+            </div>
+            <div class="mobile-menu-actions">
+                <button class="btn-primary" data-open-lead>Contact Us</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero hero-premium">
+            <div class="container">
+                <div class="hero-shell">
+                    <div class="hero-content reveal">
+                        <div class="hero-badge">
+                            <span class="hero-badge-dot"></span>
+                            Open Dental Integration
+                        </div>
+
+                        <h1 class="hero-title">Stop missing calls. <span class="hero-title-accent">Start filling chairs.</span></h1>
+                        <p class="hero-subtitle">VantageAI answers patient calls, books on your real Open Dental schedule, and writes appointments back—so you capture every opportunity without adding staff.</p>
+
+                        <div class="hero-cta">
+                            <button class="btn-primary btn-lg" data-open-lead>Get Started</button>
+                            <a href="#how-it-works" class="btn-secondary btn-lg hero-secondary-cta">
+                                See how it works
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual reveal" data-hero-parallax>
+                        <div class="hero-ambient-glow"></div>
+
+                        <div class="hero-command-center dashboard-mockup">
+                            <div class="hero-command-header">
+                                <div>
+                                    <p class="hero-command-label">Open Dental + VantageAI</p>
+                                    <h3>Appointments sync automatically</h3>
+                                </div>
+                                <span class="hero-command-status">Connected</span>
+                            </div>
+
+                            <div class="hero-command-feed">
+                                <div class="hero-feed-item">
+                                    <div class="hero-feed-icon success"><i class="fas fa-phone-volume" aria-hidden="true"></i></div>
+                                    <div>
+                                        <strong>Call answered</strong>
+                                        <span>New patient booked for Thursday 10:00 AM</span>
+                                    </div>
+                                </div>
+                                <div class="hero-feed-item">
+                                    <div class="hero-feed-icon success"><i class="fas fa-calendar-check" aria-hidden="true"></i></div>
+                                    <div>
+                                        <strong>Appointment written to Open Dental</strong>
+                                        <span>Patient record updated</span>
+                                    </div>
+                                </div>
+                                <div class="hero-feed-item">
+                                    <div class="hero-feed-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
+                                    <div>
+                                        <strong>After-hours booking</strong>
+                                        <span>Cleaning scheduled for Monday 2:30 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What It Does Section -->
+        <section class="outcomes reveal" id="how-it-works">
+            <div class="container">
+                <p class="section-eyebrow">What VantageAI does in Open Dental</p>
+                <h2 class="section-title outcomes-title">Answer calls, book appointments, sync to your schedule</h2>
+                <div class="outcomes-grid">
+                    <article class="outcome-card outcome-card--green">
+                        <div class="outcome-body">
+                            <span class="outcome-eyebrow">Answer every call</span>
+                            <h3>Mira picks up when your team can't</h3>
+                            <p>Overflow calls, after-hours calls, and calls your team can't get to—Mira answers them all. Patients get help immediately instead of leaving voicemail.</p>
+                        </div>
+                        <div class="outcome-visual">
+                            <div class="outcome-chip"><span class="outcome-dot"></span> Call answered · booking in progress</div>
+                        </div>
+                    </article>
+
+                    <article class="outcome-card outcome-card--indigo">
+                        <div class="outcome-body">
+                            <span class="outcome-eyebrow">Book on your real schedule</span>
+                            <h3>Mira sees your actual availability</h3>
+                            <p>Mira reads your Open Dental schedule in real time and books patients into actual open slots. Mira only offers times Open Dental shows as open.</p>
+                        </div>
+                        <div class="outcome-flow">
+                            <span class="outcome-flow-step">Patient calls</span>
+                            <span class="outcome-flow-step">Mira checks schedule</span>
+                            <span class="outcome-flow-step">Slot confirmed</span>
+                            <span class="outcome-flow-win"><i class="fas fa-check" aria-hidden="true"></i> Booked</span>
+                        </div>
+                    </article>
+
+                    <article class="outcome-card outcome-card--amber">
+                        <div class="outcome-body">
+                            <span class="outcome-eyebrow">Sync automatically</span>
+                            <h3>Appointments land in Open Dental</h3>
+                            <p>When Mira books, the appointment writes back to Open Dental immediately. Your front desk sees it. Your schedule stays accurate.</p>
+                        </div>
+                        <div class="outcome-visual">
+                            <div class="outcome-chip"><span class="outcome-dot"></span> Synced to Open Dental</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Writes Back Section -->
+        <section class="numbered-features">
+            <div class="container">
+                <div class="feature-block">
+                    <div class="feature-number">01</div>
+                    <div class="feature-grid">
+                        <div class="feature-text">
+                            <h2>What writes back to Open Dental</h2>
+                            <p>VantageAI writes appointments (with visit reason and new-patient flag), creates a patient chart when a new caller isn't in Open Dental yet, and adds a commlog for each call from a patient in Open Dental with the call summary, plus any insurance, medical-history, or records-request details the caller provides. Your front desk sees it immediately.</p>
+                            <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Appointments, reschedules, and cancellations</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> New patient charts (name, DOB, contact info, address)</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Call commlogs with summary and caller-provided updates</li>
+                            </ul>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="platform-demo">
+                                <div class="demo-card">
+                                    <i class="fas fa-calendar-plus" aria-hidden="true"></i>
+                                    <h4>Appointments</h4>
+                                    <p>Booked directly on your schedule</p>
+                                </div>
+                                <div class="demo-card">
+                                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                                    <h4>Patient Charts</h4>
+                                    <p>Name, DOB, contact, address</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-number">02</div>
+                    <div class="feature-grid reverse">
+                        <div class="feature-text">
+                            <h2>What does not write back</h2>
+                            <p>It handles calls and scheduling. It doesn't chart, treatment-plan, or bill.</p>
+                            <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Procedures or completed work</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Charting</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Treatment plans</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-times" style="color: var(--color-error);" aria-hidden="true"></i> Claims, payments, or insurance plan records</li>
+                            </ul>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="compliance-badges">
+                                <div class="badge-card">
+                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <h4>HIPAA</h4>
+                                    <p>Compliant</p>
+                                </div>
+                                <div class="badge-card">
+                                    <i class="fas fa-lock" aria-hidden="true"></i>
+                                    <h4>Clinical Data</h4>
+                                    <p>Stays in Open Dental</p>
+                                </div>
+                                <div class="badge-card">
+                                    <i class="fas fa-file-contract" aria-hidden="true"></i>
+                                    <h4>Audit Trails</h4>
+                                    <p>Full logging</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-block">
+                    <div class="feature-number">03</div>
+                    <div class="feature-grid">
+                        <div class="feature-text">
+                            <h2>What you need to get started</h2>
+                            <p>VantageAI connects to Open Dental through the Open Dental API. Your office needs the eConnector running, the API enabled, and VantageAI's customer key added.</p>
+                            <ul style="list-style: none; padding: 0; margin-top: var(--space-md);">
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> Open Dental eConnector running in your office</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> API turned on under Setup → Advanced Setup → API</li>
+                                <li style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.5rem; color: var(--color-text-secondary);"><i class="fas fa-check" style="color: var(--color-accent);" aria-hidden="true"></i> VantageAI's customer key added and enabled</li>
+                            </ul>
+                            <p style="margin-top: var(--space-md); color: var(--color-text-secondary);">The timeline depends on how quickly your office enables the API and adds our key. Once that's done, we handle the rest.</p>
+                            <a href="../../pricing.html" class="feature-link">See pricing <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="feature-visual">
+                            <div class="migration-steps">
+                                <div class="migration-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Enable API access</h4>
+                                        <p>eConnector running, API on, key added</p>
+                                    </div>
+                                </div>
+                                <div class="migration-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Connect VantageAI</h4>
+                                        <p>We configure the integration</p>
+                                    </div>
+                                </div>
+                                <div class="migration-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Go live</h4>
+                                        <p>Mira starts answering calls</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+            <div class="container">
+                <h2 id="faq-heading" class="section-title">Frequently asked questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Does VantageAI book on my real Open Dental schedule?</summary>
+                        <p>Yes. Mira reads your live Open Dental schedule and books patients into actual open slots. Mira only offers times Open Dental shows as open.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What information writes back to Open Dental?</summary>
+                        <p>Appointments (including reschedules and cancellations), a new patient chart when a caller isn't in Open Dental yet, and a commlog summarizing each call from a patient in Open Dental, including any insurance, medical-history, or records-request details the caller provides for your team to review. VantageAI does not write charting, treatment plans, claims, payments, or insurance plan records.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What do I need to get started with Open Dental?</summary>
+                        <p>Open Dental API enabled: the Open Dental eConnector running in your office, API turned on under Setup → Advanced Setup → API, and VantageAI's customer key added. The timeline depends on how quickly your office enables the API and adds our key.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How long does setup take?</summary>
+                        <p>Once the Open Dental eConnector is running, the API is enabled, and VantageAI's customer key is added, we configure the connection. The timeline depends on how quickly your office enables the API and adds our key.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What happens after hours?</summary>
+                        <p>Mira answers calls 24/7. Patients calling after hours can still book, reschedule, or get answers—no voicemail, no missed opportunities.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Does VantageAI replace my front desk?</summary>
+                        <p>No. VantageAI covers the calls your team cannot get to—overflow during busy hours and after-hours calls. Your front desk stays in control.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What if we use a different practice management system?</summary>
+                        <p>VantageAI currently integrates with Open Dental and eClinicalWorks. If you use a different system, <a href="../../index.html" data-open-lead style="color: var(--color-accent); cursor: pointer;">contact us</a> to discuss your options.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to stop missing calls?</h2>
+                    <p>See how VantageAI works with Open Dental to answer every call, fill your schedule, and free up your front desk.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary btn-lg" data-open-lead>Get Started</button>
+                    </div>
+                    <p class="cta-note">Works 24/7 • HIPAA Compliant • Guided setup</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="../../revops.html#capture">Answer Every Call</a>
+                    <a href="../../revops.html#conversion">Fill Your Schedule</a>
+                    <a href="../../revops.html#retention">Bring Patients Back</a>
+                    <a href="../../revops.html#intelligence">AI Assistant</a>
+                    <a href="../../revops.html#control">HIPAA Compliance</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Integrations</h4>
+                    <a href="../eclinicalworks/">eClinicalWorks</a>
+                    <a href="./">Open Dental</a>
+                    <a href="https://www.curogram.com" target="_blank" rel="noopener noreferrer">Curogram</a>
+                    <span class="footer-text">More coming soon</span>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="../../revops.html">Platform Overview</a>
+                    <a href="../../revops.html#capture">Revenue Capture</a>
+                    <a href="../../revops.html#intelligence">AI Assistant</a>
+                    <a href="../../blog/">Blog</a>
+                    <a href="../../sms-consent.html">SMS Consent</a>
+                    <a href="../../privacy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="../../index.html">Home</a>
+                    <a href="../../revops.html">Revenue Operations</a>
+                    <a href="../../insurance-eligibility.html">Insurance Eligibility</a>
+                    <a href="../../blog/">Blog</a>
+                    <a href="../../pricing.html">Pricing</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="../../privacy.html">Privacy Policy</a>
+                    <a href="../../terms.html">Terms of Service</a>
+                    <a href="../../revops.html#control">Security & Compliance</a>
+                    <a href="../../revops.html#control">HIPAA Compliance</a>
+                    <a href="../../sms-consent.html">SMS Consent</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="../../assets/logo.png" alt="Vantage" height="24" loading="lazy" decoding="async">
+                </div>
+                <p class="footer-copyright">&copy; 2026 QubeX, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
